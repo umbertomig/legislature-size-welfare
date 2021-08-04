@@ -1,18 +1,17 @@
 ---
 title:  |
-        | The Effect of Legislature Size on Public Spending:
-        | A Meta-Analysis
+        | Legislature Size and Welfare:
+        | Evidence from Brazil
 author: 
-  - Huzeyfe Alptekin[^huzeyfe]
+  - Gabriel Cepaluni[^gabriel]
   - Danilo Freire[^danilo]
   - Umberto Mignozzetti[^umberto]
-  - Catarina Roman[^catarina]
 date: \today
-thanks: "The authors thank Guilherme Duarte, Robert Myles McDonnell, and David Skarbek for their constructive feedback. We also thank Cedric Antunes, Luis Castro, Giovanna França, Julia Oriente, and Lucas Mingardi for their excellent research assistance. Replication materials are available at <https://github.com/danilofreire/legislature-size-meta-analysis>. We kindly acknowledge funding from the São Paulo State Science Foundation (FAPESP grant number 2018/00646-1)."
-abstract: "In a seminal article, @weingast1981political argue that there is a positive relationship between legislature size and inefficiency in public expenditures. Their proposition is currently known as the \"law of $1/n$\" and has been widely debated in political science and public administration. However, recent studies have questioned the validity of the theory. In this letter, we estimate the first meta-analysis of the relationship between the number of legislators and public spending. Based on a sample of 29 articles, we find no robust evidence for the effect of legislature size on government budgets. Yet the aggregate results show significant heterogeneity. While earlier studies provide moderate support for the \"law of $1/n$\", papers using causal inference methods consistently find a negative relationship between seats and spending. The available evidence also indicates that proportional representation and mixed voting systems are no more likely to overspend than majoritarian ones."
+thanks: "We thank Cedric Antunes, Victor Araujo, Eric Arias, Taylor Boas, Natalia Bueno, Andrea Freitas, Saad Gulzar, James Mahon, Lucas Novaes, Nelson Ruiz, Catarina Roman, David Skarbek, and Denis Stukal for their valuable comments. We also thank the participants of seminars and conferences at CEPESP, CUNY, INSPER, IPSA, LACEA, LASA, MPSA, Notre Dame, NYU, PUC Chile, SPSA, and Uppsala. We gratefully acknowledge the financial support of the São Paulo Research Foundation (FAPESP), grant number 2017/07290-5. All materials required to replicate this study are available at <https://github.com/umbertomig/legislature-size-welfare>."
+abstract: "What is the effect of legislature size on social welfare? While the literature suggests that increasing the number of legislators broadens political representation and raises government expenditures, its implications for public service provision remain understudied. In this paper, we exploit exogenous changes in city-council size in Brazil and show that adding a legislator increases education and healthcare indicators. XXXX Education quality and preventive health care remain unaffected, but primary school enrolment and infant mortality significantly improve. To investigate the mechanism, we surveyed former councillors and analysed 346,553 bills proposed between 2005 and 2008. This analysis shows that politicians prefer to provide private and targeted goods instead of public goods. This paper has implications for the design of legislative institutions."
 abstractspacing: double
-keywords: distributive politics; law of $1/n$; legislature size; meta-analysis; public spending
-jelcodes: H21; H23; H50; H61
+keywords: Legislature size; Legislative politics; Public goods provision; Regression discontinuity design; Brazil
+jelcodes: HXXXX
 fontsize: 11pt
 margin: 2cm
 urlcolor: darkblue
@@ -41,1328 +40,377 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, results='hide'}
-# Clean up
-rm(list = ls())
-
-## Starting
-set.seed(732578) # From random.org
-
-# Needed packages
-pkgs <- c("tidyverse", "meta", "metafor",
-          "readxl", "data.table",
-          "knitr", "gridGraphics", "gridExtra",
-          "ggpubr", "kableExtra", "magick")
-
-# Install if not already installed
-installIfNot <- function(x) {
-  if (x %in% rownames(installed.packages()) == FALSE)
-    install.packages(x, dependencies = T,
-					 repos = "http://cran.us.r-project.org")
-}
-lapply(pkgs, installIfNot)
-
-# Load packages
-lapply(pkgs, require, character.only = T)
-devtools::install_github("isubirana/compareGroups")
-library("compareGroups")
-
-# Load datasets
-load("../dataset/dataCoefs.RData")
-
-# Build plot function for forest plots
-build_forest <- function(mod, capt, lsize = 22, ttl = NULL) {
-  # Build dataset for plot
-  mod2 <- tibble(
-    TE = mod$TE,
-    seTE = mod$seTE,
-    studlab = mod$studlab,
-    lower = mod$lower,
-    upper = mod$upper,
-    group = "A") %>%
-    bind_rows(.,
-              aux = tibble(
-                TE = c(mod$TE.random, NA),
-                seTE = c(mod$seTE.random, NA),
-                studlab = c("Overall Effect",
-                            "Prediction Interval"),
-                lower = c(mod$lower.random,
-                          mod$lower.predict),
-                upper = c(mod$upper.random,
-                          mod$upper.predict),
-                group = "B")) %>%
-    group_by(studlab) %>%
-    mutate(studlab2 = paste0(studlab, "_", 1:n())) %>%
-    ungroup()
-
-  # Graph limits
-  limg <- max(abs(c(mod2$lower, mod2$upper)))
-
-  # Build plot
-  p <- mod2 %>%
-    ggplot(aes(y = reorder(studlab2, TE),
-               x = TE, xmin = lower, xmax = upper)) +
-    geom_point(aes(color = group)) +
-    geom_errorbarh(aes(color = group),
-                   height = 0.1) +
-    scale_color_manual(values = c("#000000", "#8b0000")) +
-    scale_x_continuous(limits = c(-1.1 * limg, 1.1 * limg)) +
-    scale_y_discrete(
-      labels = function(x)
-        str_replace(x, "_[0-9]*$", "")) +
-    geom_vline(xintercept = 0,
-               color = "#000000", linetype = "dashed") +
-    labs(x = "",
-         y = "") +
-    facet_grid(group~., scales = "free", space = "free") +
-    labs(caption = capt,
-         title = ttl) +
-    theme_minimal() %+replace%
-    theme(strip.text.y = element_blank(),
-          legend.position = "none",
-          axis.text.y = element_text(size = .8 * lsize,
-                                     hjust = 1),
-          axis.text.x = element_text(size = .6 * lsize,
-                                     hjust = 1.1),
-          plot.caption = element_text(size = lsize),
-          plot.title.position = "plot",
-          plot.title = element_text(hjust = 0.5,
-                                    face = "bold",
-                                    margin = margin(0, 0, 10, 0)),
-          panel.grid.major = element_blank())
-  return(p)
-}
-
-# Build forest plot for heterogeneous analysis
-# Build plot function for forest plots
-build_forest_het <- function(mod, capt, lsize = 22, ttl = NULL, hetvar = NULL) {
-  mod <- update(mod, byvar = hetvar, print.byvar = F)
-  
-  # Build dataset for plot
-  mod2 <- tibble(
-    byvar = mod$byvar,
-    TE = mod$TE,
-    seTE = mod$seTE,
-    studlab = mod$studlab,
-    lower = mod$lower,
-    upper = mod$upper,
-    group = "A") %>%
-    arrange(byvar)
-  auxmod <- tibble()
-  for (i in rev(mod$bylevs)){
-    auxmod <- rbind(auxmod, tibble(byvar = i,
-                    TE = NA,
-                    seTE = NA,
-                    studlab = toupper(i),
-                    lower = NA,
-                    upper = NA,
-                    group = "B"))
-    auxmod <- rbind(auxmod, 
-                    filter(mod2, byvar==i) %>% 
-                      arrange(desc(TE)))
-    auxmod <- rbind(auxmod, tibble(
-      byvar = i,
-      TE = mod$TE.random.w[which(mod$bylevs==i)],
-      seTE = mod$seTE.random.w[which(mod$bylevs==i)],
-      studlab = 'Subgroup Effect',
-      lower = mod$lower.random.w[which(mod$bylevs==i)],
-      upper = mod$upper.random.w[which(mod$bylevs==i)],
-      group = "B"))
-  }
-  auxmod <- rbind(auxmod, tibble(
-    byvar = NA,
-    TE = c(mod$TE.random, NA),
-    seTE = c(mod$seTE.random, NA),
-    studlab = c("Overall Effect", "Prediction Interval"),
-    lower = c(mod$lower.random, mod$lower.predict),
-    upper = c(mod$upper.random, mod$upper.predict),
-    group = "B"))
-  mod2 <- data.frame(auxmod)
-  mod2$byvar <- toupper(mod2$byvar)
-  TEaux <- mod2$TE
-  TEaux[mod2$studlab== 'Subgroup Effect'] = TEaux[mod2$studlab== 'Subgroup Effect'] - 100
-  
-  # Graph limits
-  limg <- max(abs(c(mod2$lower, mod2$upper)))
-  
-  # Build plot
-  p <- mod2 %>%
-    ggplot(aes(y = reorder(studlab, TEaux),
-               x = TE, xmin = lower, xmax = upper)) +
-    geom_point(aes(color = group)) +
-    geom_errorbarh(aes(color = group),
-                   height = 0.1) +
-    scale_color_manual(values = c("#000000", "#8b0000")) +
-    scale_x_continuous(limits = c(-1.1 * limg, 1.1 * limg)) +
-    scale_y_discrete(
-      labels = function(x)
-        str_replace(x, "_[0-9]*$", "")) +
-    geom_vline(xintercept = 0,
-               color = "#000000", linetype = "dashed") +
-    labs(x = "",
-         y = "") +
-    facet_grid(byvar~., scales = "free", space = "free") +
-    labs(caption = capt,
-         title = ttl) +
-    theme_minimal() %+replace%
-    theme(strip.text.y = element_blank(),
-          legend.position = "none",
-          axis.text.y = element_text(size = .8 * lsize,
-                                     hjust = 1),
-          axis.text.x = element_text(size = .6 * lsize,
-                                     hjust = 1.1),
-          plot.caption = element_text(size = lsize),
-          plot.title.position = "plot",
-          plot.title = element_text(hjust = 0.5,
-                                    face = "bold",
-                                    margin = margin(0, 0, 10, 0)),
-          panel.grid.major = element_blank())
-  return(p)
-}
+# XXXX
 ```
-
-[^huzeyfe]: Research Associate, Contemporary Brazilian History Research and Documentation Center, School of Social Sciences, Fundação Getulio Vargas, <huzeyfealptekin@gmail.com>.
-
-[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <danilofreire@gmail.com>, <https://danilofreire.github.io>. 
 
 [^umberto]: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>. Corresponding author.
 
-[^catarina]: PhD Student, Department of Political Science, University of California San Diego, <catarinamroman@gmail.com>, <http://catarinaroman.github.io>.
+[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <danilofreire@gmail.com>, <https://danilofreire.github.io>.
+
+[^gabriel]: Associate Professor, Department of International Relations, São Paulo State University, <gabi.cepal@gmail.com>.
 
 \newpage
 
 # Introduction
 \label{sec:intro}
 
-Over the past decades, a large literature has examined the relationship between
-legislature size and public expenditure. @weingast1981political provided the
-general framework to analyse distributive politics. The authors argue that the
-larger the number of legislative districts ($n$), the smaller the share of tax
-burden each one will bear ($1/n$), thus legislators have an incentive to
-overspend in their districts and transfer the costs to the entire polity. Early
-studies that empirically tested the "law of $1/n$", as the theory is currently
-known, indeed found a positive correlation between the number of legislature
-seats and different measures of government spending, although these first
-results were mainly based on US state legislatures and the effect was often
-limited to one house [e.g., @baqir2002districting; @gilligan1995deviations;
-@gilligan2001fiscal]. 
+Legislative institutions are crucial for welfare and service provision in democratic countries. Historically, the division of power and the birth of a representative government placed the legislatures at the center of popular consent \citep{north1989constitutions}. In modern democracies, most countries have assemblies at all levels of government. These institutions affect the information and quality of legislation \citep{krehbiel2010information}, check and veto the other political powers \citep{tsebelis2002veto}, and influence policymaking \citep{weingast1988industrial, north1989constitutions, auriol2012optimal}. Moreover, they also determine taxation, government expenditure \citep{Weingastetal1981, PrimoSnyder2008, stasavage2011states}, and oversee service provision \citep{mccubbins1984congressional, poulsen2018political}.
 
-Later research, however, has questioned the validity of the "law of $1/n$".
-@primo2008distributive affirm that, due to spatial spillovers, a collection of
-small districts can supply public goods more efficiently than the central
-government. The authors conclude that a "reverse law of $1/n$" may hold,
-wherein a higher number of legislators in small constituencies decrease the
-overall public spending. Similarly, @primo2006stop and @chen2007law find that
-lower and upper chambers may have mixed effects on government spending, while
-@petterssonlidbom2012size argues that the impact of larger chamber sizes is
-negative when using data from Finland and Sweden.
+Regardless of differences in electoral rules, social composition, and procedures, all legislatures share one feature: more than one representative composes them. Legislature size relates to collective action problems \citep{crain1979cost, rogers2002free}, government spending \citep{Weingastetal1981, PrimoSnyder2008}, and representation \citep{allenrepresentation}, but how these components affect welfare remain understudied. On the one hand, enlarged legislatures increase government spending and lawmaking, and this may improve some services \citep{Weingastetal1981, }. On the other hand, adding a legislator can increase the number of veto players and broaden the collective action problems, hindering service provision. Therefore, larger legislatures have an ambiguous effect on welfare, and XXXX.
 
-Since many empirical tests of the "law of $1/n$" have produced conflicting
-results, scholars have expanded this research agenda and closely investigated
-how institutional factors condition the original formulation of the theory. For
-instance, authors such as @crowley2019law and @pecorino2018supermajority
-accurately point out that collective action problems have been overlooked in
-the literature, and recent findings indicate that bicameralism
-[@maldonado2013legislatures], intergovernmental competition
-[@crowley2015local], redistricting [@lee2018court], and party ideology
-[@bjedov2014impact] strongly influence the relationship between seats and
-spending. Moreover, the literature has increasingly applied causal inference
-designs to estimate the effect of the "law of $1/n$", and in contrast to
-previous studies using panel data, regression discontinuity designs generally
-indicate that more legislators decrease public expenditures
-[@debenedetto2018effect; @hohmann2017effect; @lewis2019legislature]. In this
-respect, scholars have long been aware of the theoretical and empirical
-limitations of the "law of $1/n$", and the proliferation of new studies reflect
-a conscious attempt to assess the robustness of the theory [@crowley2019law].
+In this paper, we propose a theory of legislature size and welfare that takes into account two crucial components: the XXXX and the partisan affiliation of the legislators.
 
-In this letter, we conduct the first meta-analysis that tests the generality of
-the "law of $1/n$". We select `r length(unique(dat$id))` articles that
-use quantitative methods to evaluate the impact of legislature size over
-government spending across several dimensions. Our study sample mirrors the
-diversity of the literature. Out of the `r dim(dat)[1]` coefficients
-included in our main analysis, `r as.numeric(round(prop.table(table(dat$scoefnd))*100, 1)[which(names(prop.table(table(dat$scoefnd)))=='Positive Significant')])`\% of
-them are positive and statistically significant, `r as.numeric(round(prop.table(table(dat$scoefnd))*100, 1)[which(names(prop.table(table(dat$scoefnd)))=='Positive Insignificant')])`\%
-are positive and statistically insignificant, `r as.numeric(round(prop.table(table(dat$scoefnd))*100, 1)[which(names(prop.table(table(dat$scoefnd)))=='Negative Insignificant')])`\%
-are negative and statistically insignificant, and `r as.numeric(round(prop.table(table(dat$scoefnd))*100, 1)[which(names(prop.table(table(dat$scoefnd)))=='Negative Significant')])`\% are
-negative and statistically significant. Given the volume and the disparity of
-the studies, we employ meta-analysis to summarise the results. Meta-analysis
-provides a rigorous approach to combine heterogeneous outcomes into a single
-estimation, and it allows scholars to gain valuable insights from the
-aggregated data [@cooper2019handbook; @hedges1985statistical]. Meta-analysis
-can also identify potential sources of study variability, enabling researchers
-to assess threats to external validity and direct future efforts into more
-promising areas of academic inquiry [@doucouliagos2008democracy]. Research
-synthesis methods have been successfully applied in medicine and psychology
-since the 1970s [@glass2015meta], and our work contributes to the burgeoning
-literature that uses meta-analytic methods to understand challenging questions
-in political science [@costa2017responsive; @doucouliagos2008democracy;
-@green2013field; @lau2007effects; @schwarz2020supporting].
+XXXX Umberto: Parei aqui.
 
-We run binomial tests and meta-regressions to further evaluate the relationship
-between legislature size and government expenditures. We use binomial tests
-to assess whether the proportions of positive and negative coefficients in our
-sample are statistically different from each other. In the meta-regressions, we
-measure the effect of five moderators that capture different sources of
-heterogeneity in the literature. As our sample includes both published and
-unpublished articles, we also construct a series of funnel plots to test for
-publication bias in existing research on the "law of $1/n$"
-[@easterbrook1991publication; @gerber2001testing].
+This paper fills this gap by studying the effects of legislature size on service provision. Assuming that politicians want to further their careers, we argue that two variables determine service provision: the perceived importance of the service by voters and the politician's capacity to claim credit for its provision. Politicians perform a simple cost-benefit analysis: if providing a service results in high electoral yield, and it is easy to claim credit for, politicians will produce this service abundantly. When a service is hard to claim credit for, politicians only invest their time if it is highly preferred by voters. Finally, when services are both hard to claim credit for and of low importance to voters, they are placed at the bottom of the politicians' priorities.
 
-Aggregate results indicate that legislature size has no significant impact on
-public spending. All of our main meta-analysis estimates show that the overall
-effect is not statistically different from zero, thus confirming the
-conflicting findings reported by the literature. However, when we look only at
-articles that employ regression discontinuity designs, we see that all three
-papers included in our sample suggest that a higher number of legislators leads
-to lower public spending [@debenedetto2018effect; @hohmann2017effect;
-@lewis2019legislature]. In this regard, it is possible that methodological
-choices partially explain the divergent results observed in the literature, as
-studies that use causal inference methods consistently point to the same
-direction. One limitation of this finding is that these studies only test the
-impact of lower house size on the natural logarithm of expenditure per capita,
-thus it remains unclear whether the results hold with other variables.
+To test this theory, we exploit an exogenous variation in Brazilian city council sizes. In 2004, the judiciary reinterpreted the constitution, unexpectedly changing the number of city councilors in Brazilian municipalities. Before the decision, towns could freely choose their legislature size, but in March 2004, the Superior Electoral Court created population thresholds, adding one councilor for each set of 47,619 inhabitants. Around the cutoffs, this decision represents an exogenous change in city council size, allowing us to investigate the welfare effects of increasing the legislatures in Brazil.
 
-The meta-regressions provide additional evidence that our study sample is
-highly heterogeneous and that effect sizes differ substantially according to
-study specifications. When using our extended sample of `r dim(fulldat)[1]`
-coefficients, we find that unicameralism is associated with higher public
-spending, as predicted by the "law of $1/n$". Since most unicameral
-legislatures are located in local governments (municipalities or districts),
-this result supports the theory strictly in its first formulation. Moreover,
-our meta-regressions indicate that larger upper chambers spend more in terms of
-per capita expenditure than lower chambers, a result that also appears in the
-binomial tests. Non-majoritarian voting systems decrease government spending as
-a percentage of GDP, but they do not have a relevant impact on the other
-measures of public expenditure, following the idea that the $1/n$ effect grows
-weaker as the empirical cases distance from the original definition of the law.
-Finally, meta-regression results confirm that regression discontinuity models
-reduce public spending estimates.
+Studying the 2005 to 2008 Brazilian mayoral term, when the ruling was in effect, we find improvements in health care and education. Increasing the council size by one legislator lowers infant mortality by 1.99 per one thousand infants born and increases elementary school enrollment by 2.58 children in kindergarten classrooms. However, the additional legislator had no influence on preventive health care and education quality. [] Voters place a high electoral premium on hospital care and mediating school enrollment is relatively easy to claim credit for. In line with our theoretical model, these services should improve with legislative size. On the other hand, preventive health care is harder to claim credit for, and school quality improvements are expensive and pay off only in the long-run. Thus, these services remain unchanged with larger legislatures.
 
-In summary, our results are in line with previous findings that lend partial
-support to the law of $1/n$ [@chen2007law; @crowley2015local; @primo2006stop].
-An assessment of the effects of collective action costs in these analyses is
-crucial to determine the full mechanism operating behind these results.
-Overall, our analysis does not provide robust support for the theory as
-originally conceived. 
+Finally, we present three sets of evidence that the results are consistent with the micro-level representation practices of city councilors. First, we show that the new councilor has access to government resources and uses public office appointments to mediate service provision. They have a 91\% chance of belonging to the mayoral coalition, and they appoint an average of 105 extra bureaucrats for many positions at the mayor's office, having loyal workers inside the municipal bureaucracy. Second, we analyzed 346,553 bills approved by city councilors in municipalities close to the council size thresholds. In line with our theory, we find that councilors prefer to provide targeted goods (72.9\% of all bills), as they satisfy the populations' needs and are easier to credit claim. Finally, we ran an online survey among the councilors during the period, showing that most councilors believe that voters prefer targeted services (68.8\%) to lawmaking (24.6\%) and oversight (30\%).\footnote{Councilors were able to select multiple categories, so the sum can be over 100\%.} We also refute three alternative explanations: increased representation of women and non-white legislators, change in electoral competitiveness, and a larger average of approved legislation by each councilor.
 
-# Data and Methods
+# Legislature Size, Legislative Support, and Welfare
+\label{sec:theory}
 
-We compiled our study sample in three search rounds. In the first round, we
-gathered data from three large academic databases (Scopus, Microsoft Academic,
-and Google Scholar) and looked for studies that were published in English and
-cited \citet{weingast1981political}, as it is the foundational work in the
-literature on the "law of $1/n$". To ensure that our sample was comparable, we
-only selected papers that used quantitative methods to analyse
-data\footnote{Since meta-analysis requires a single estimate per observation,
-we excluded articles that use interaction terms or quadratic specifications of
-our selected variables. Please refer to Section C in the Supplementary Material
-for a detailed description of the selection procedure. We also included two
-PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses)
-flow diagrammes \citep{liberati2009prisma} showing the number of resulting
-papers after each review step.}. After this stage, we identified six
-measurements that the literature often employs to quantify government
-expenditure and legislature size. For government expenditure, our study sample
-uses (i) public expenditure as a share of GDP; (ii) public expenditure per
-capita; and (iii) the natural logarithm of public expenditure per capita as its
-main variables of interest. In regards to legislature size, the variables are
-(i) lower chamber size; (ii) natural logarithm of lower chamber size; and (iii)
-upper house size\footnote{There are a few important nuances concerning coding
-of these variables. Unicameralism, for example, is captured both by lower
-chamber size ($n = 7$) and by log lower chamber size ($n = 5$). Since much of
-the literature estimates how institutional designs affect this relationship,
-ours and many other articles use both lower and upper chamber sizes as main
-explanatory variables. We did not find any article that used the natural
-logarithm of upper chamber size in their models.}. 
 
-In the second round, we did not require articles to cite @weingast1981political
-and used a keyword-based query on Google Scholar to broaden the scope of the
-first search. The search string contained terms strongly associated with the
-literature on the "law of $1/n$" and was as follows: `("upper chamber size" OR
-"lower chamber size" OR "council size" OR "parliament size" OR "legislature
-size" OR "number of legislators" OR "legislative size") AND ("spending" OR
-"expenditure" OR "government size")`. We again restricted the search to
-articles written in English which employed quantitative methods. This search
-added two new results to our sample [@coate2011government;
-@debenedetto2018effect], but neither of them included variables beyond the six
-measures we had previously identified. In the third search round, we looked
-into the personal webpages of every author whom we had already included in our
-sample. The purpose of this manual search was to assess whether there was any
-working paper or unpublished manuscript that we had missed in the two former
-queries. All papers we found in the last search had already been included in
-our sample. Combined, the three searches produced a dataset of 
-`r length(unique(dat$id))` studies as of the 10\textsuperscript{th} of March 2021.
-Table \ref{tab:papers} contains the full list of articles we analyse in this
-paper.
+What is the effect of larger legislatures on public service provision? The most striking feature of a legislature is the fact that decisions are undertaken collectively. Legislators have to propose changes in the status-quo, agree upon what they want to decide, evaluate proposals put forward by mayors, discuss and improve the proposals, and decide which changes they will carry on.
 
-\footnotesize
-\begin{longtable}{>{\raggedright\arraybackslash}p{3.9cm}>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2.3cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{1.1cm}}
-\caption{Papers included in the meta-analysis, ordered by year of appearance}\\
+In this sense, legislature size is critical in determining the efficiency of the decision-making process. Upon adding a new city councilor, the most simple change is the increased production capability. Legislative production, analogous to what happens in firms, may increase when adding an extra legislator \citep{crain1979cost, crain1982team, rogers2002free}. For instance, suppose that working full time, politicians can approve five bills a month. Ten politicians can together approve 50 bills, while 11 can pass 55. This increases the number of measures adopted, and if laws enact services to constituencies, then we shall witness an increase in service provision.\footnote{An alternative explanation relates to the Condorcet Jury Theorem. In these models, there is a binary choice, with one of them being ex-ante the best. If legislators access the best choice with a probability higher than 0.5, more legislators will increase the change of selecting the best choice \citep{myerson1998extended}. However, this logic assumes that politicians choose among exogenously provided proposals, which makes sense in the case of a jury, but is somewhat uncommon for legislatures. \citet{auriol2012optimal} compute the optimal size of chambers considering that this is the solution to the interplay between specialization costs and citizens' preferences.}
+
+However, increasing the size of legislatures also carries considerable costs. Larger legislatures can raise the transaction costs \citep{weingast1988industrial}, increase collective action problems \citep{crain1979cost}, and make  forming majorities more costly \citep{crain1982team}. These negative features, together with the fact that legislators may free-ride on each others' proposals, may decrease legislative productivity. For instance, if decisions need a majority or qualified majority to be approved, more legislators create a perverse incentive, increasing the difficulty of approval. Moreover, legislators are pressured to provide targeted services for their constituencies at the expense of the entire polity \citep{Weingastetal1981, PrimoSnyder2008}, and this can raise inefficiencies in expenditure allocation. Additionally, transaction costs within legislatures may increase the difficulty of passing bills \citep{weingast1988industrial, baron1989bargaining}. Therefore, it is unclear whether and how larger legislatures impact lawmaking and service provision.
+
+In our view, to understand the effects of larger legislatures, we need to consider the political motivations behind the legislator's work. While an extra politician may increase the productivity frontier of a legislature, the types of services that will be favored remain unclear. To understand the political motivations, we need a theory that accounts for the cost-benefit calculations performed by politicians.
+
+When deciding which service to prioritize, politicians look into two dimensions of the service provision. First, the competition with other legislators motivates politicians to provide services that they believe voters want, regardless of whether these policies improve long-term welfare. For instance, suppose that there are three services, organized hypothetically based on beliefs about which of these three voters are more likely to reward:\footnote{Note that there is a difference between \textit{what voters want} and what \textit{politicians believe voters want}. Although politicians and brokers mostly access voter's beliefs accurately \citep{FinanSchechter2012, Stokesetal2013}, the crucial signal that a politician gets is vote shares, which are aggregated. It is hard to disentangle which service generated the highest electoral yield for the politician. Therefore, the politician's beliefs play an essential role in the services that they prioritize.} improving a local health clinic (most preferred), building a playground (second most preferred), or increasing the quality of education (least preferable). Politicians seeking recognition will mostly want to improve the health care system, which they believe will most benefit their electoral yields. After getting this done, they will shift efforts toward the playground construction and finally to education quality. Therefore, increasing legislature size will disproportionately increase the provision of services that the politicians believe voters prefer and will reward the most in the polls.
+
+Second, to get reelected, besides providing the services that voters prefer, politicians have to take credit for facilitating provision \citep{fiorina1987personal, gulzar2017politicians, nielsen2017politicians, silva2017clarity}. Typically, the services that are easiest in terms of credit claiming are either providing local public goods, such as improving a neighborhood health clinic, or purely clientelistic and personalistic services \citep{Weingastetal1981, kuschnir2000cotidiano, Stokes2005, nichter2011electoral, Stokesetal2013, luna2014segmented, vieira2015clientelismo, bertholini2018pork}. This explains why clientelism and pork-barrel are persistent in democratic polities. Table \ref{tabcli} summarizes the incentives.
+
+\begin{table}[htp!]
+\centering
+\caption{Effects of Legislature Size on Service Provision}
+\label{tabcli}
+\scalebox{1}{%
+\begin{tabular}{@{}lcc@{}}
 \toprule
-\raggedright Author(s) & \centering Journal & \centering Country & \centering Dependent Variable & \centering Method & \centering Institutional Design & \centering Electoral System
-\tabularnewline
+& \textbf{Hard for Credit Claim} & \textbf{Easy for Credit Claim} \\ 
 \midrule
-\endhead
-```{r papers, echo = FALSE, results = 'asis', cache = T}
-build_nams <- function(x) {
-  x_ <- unlist(strsplit(as.character(x), ' & ', fixed = T, useBytes = T))
-  if(length(x_) == 1) return(x_)
-  else {
-    aux <- x_[1]
-      for (i in 2:length(x_))
-        if (i == length(x_)){
-          aux <- paste(aux, ' \\& \\\\ ', x_[i], sep = '')
-        } else {
-          aux <- paste(aux, ',\\\\ ', x_[i], sep = '')
-        }
-  }
-  return(paste('\\begin{tabular}[t]{@{}l@{}}', aux,'\\end{tabular}', 
-                   sep = ''))
-}
-aux <- dat %>%
-  select(authoryear, journalCode, locationISO, depvar2, method, instdesign, elecsys3, year) %>%
-  unique() %>%
-  arrange(year, depvar2)
-aux2 <- aux %>%
-  mutate(depvar2 = 'aux') %>%
-  unique()
-for(i in 1:dim(aux)[1]) {
-  if(aux2$depvar2[aux2$authoryear == aux$authoryear[i]] == 'aux') {
-    aux2$depvar2[aux2$authoryear == aux$authoryear[i]] = aux$depvar2[i]
-  } else {
-    aux2$depvar2[aux2$authoryear == aux$authoryear[i]] = paste(
-      aux2$depvar2[aux2$authoryear == aux$authoryear[i]],
-      aux$depvar2[i], sep = ', ')
-  }
-}
-aux <- aux2
-for (i in 1:dim(aux)[1]) {
-  cat(paste(build_nams(aux$authoryear[i]), ' & ', aux$journalCode[i], ' & ',
-      aux$locationISO[i], ' & ', aux$depvar2[i], ' & ', 
-      aux$method[i], ' & ', aux$instdesign[i], ' & ', 
-      aux$elecsys3[i], ' \\\\ [0.5ex]', sep = ''), '\n')
-}
-```
+\multirow{3}{*}{\textbf{Low ranked by voters}} & No changes & None or mild \\
+& or deterioration & improvements \\
+& (Preventive Health)  & (Honors bills) \\[0.5em]
+\multirow{3}{*}{\textbf{High ranked by Voters}} & Mild to low & Mild to strong \\ 
+& improvement & improvement \\
+& (Infant Mortality)  & (School Enrollment) \\
 \bottomrule
-\label{tab:papers}
-\begin{minipage}{\textwidth}
-\renewcommand{\footnoterule}{}
-\vspace{-0.5cm}
-\footnotetext{\textbf{Journal:} Unpub$=$Unpublished, JPE$=$Journal of Political
-Economy, EJPE$=$European Journal of Political Economy, PC$=$Public Choice,
-JPubE$=$Journal of Public Economics, JPriE$=$Journal of Private Enterprise,
-APSR$=$American Political Science Review, SEJ$=$Southern Economic Journal,
-UAR$=$Urban Affairs Review, SCID$=$Studies in Comparative International
-Development, SSQ$=$Social Science Quarterly, SPPQ$=$State Politics and Policy
-Quarterly, CPS$=$Comparative Political Studies, RivPE$=$Rivista di Politica
-Economica, E\&P$=$Economics and Politics, NTJ$=$National Tax Journal.}
-\footnotetext{\textbf{Country:} Country codes follow the ISO 3166-1 alpha-3
-international standard.} 
-\footnotetext{\textbf{Dependent Variable:} ExpPC$=$Per capita expenditure,
-logExpPC$=$Natural logarithm of per capita expenditure, PCTGDP$=$Expenditure as
-a percentage of GDP.}
-\footnotetext{\textbf{Method:} OLS$=$Ordinary least squares, IV$=$Instrumental
-variables, Panel$=$Panel data/fixed effects, RDD$=$Regression discontinuity
-design.}
-\footnotetext{\textbf{Electoral System:} M$=$Majoritarian, NM$=$Non-majoritarian (mixed or proportional
-representation).} 
-\end{minipage} 
-\end{longtable}
-\normalsize
+\end{tabular}
+}
+\end{table}
 
-Our study sample reflects the development of the literature. Although the "law
-of $1/n$" was first formulated in 1981, the empirical assessment of the theory
-only started a few years later, as dates of publishing range from `r min(dat$year)`
-to `r max(dat$year)`. Most studies focus on the United States (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='USA')])`), but our sample also contains
-papers on Australia (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='AUS')])`), Brazil (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='BRA')])`), Germany (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='DEU')])`), Indonesia (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='IDN')])`), Italy (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='ITA')])`), and
-Switzerland (`r as.numeric(table(unique(dat[,c('id','locationISO')])$locationISO)[which(names(table(unique(dat[,c('id','locationISO')])$locationISO))=='CHE')])`). Eight articles use cross-national data and analyse from 2 to 110
-countries. Early studies used OLS and panel data methods to estimate the
-results, while studies from 2012 onward have also applied causal inference
-designs such as instrumental variables and regression discontinuity models to
-test the relationship between house size and public spending.
+These two dimensions provide a simple yet powerful guide of the politicians' incentives. When voter places a high premium on the provision of a given service, and it is easy to claim credit for the provision, politicians will concentrate their efforts in providing it. The more politicians, the higher the provision of the service. Consider, for instance, constituency service, such as getting a child enrolled at a public school. The voters highly rank service such as this, and the politicians can break the school access directly, getting all the credit for the provision. Therefore, these services tend to increase, up to the point of being over provided.
 
-Regarding the dependent variables included in the sample, `r as.numeric(table(unique(dat[,c('id','depvar2')])$depvar2)[which(names(table(unique(dat[,c('id','depvar2')])$depvar2))=='ExpPC')])` studies employ
-public expenditure per capita, `r as.numeric(table(unique(dat[,c('id','depvar2')])$depvar2)[which(names(table(unique(dat[,c('id','depvar2')])$depvar2))=='logExpPC')])` papers use its natural logarithm, and `r as.numeric(table(unique(dat[,c('id','depvar2')])$depvar2)[which(names(table(unique(dat[,c('id','depvar2')])$depvar2))=='PCTGDP')])` of them
-analyse the impact of legislature size on public expenditures as a percentage of
-GDP. This indicates that the area has refined the original definition of the "law of $1/n$"
-and tested the impact of larger legislatures on different measures of government
-spending. Our independent variables are lower chamber size 
-(`r as.numeric(table(dat$indepvar2)[which(names(table(dat$indepvar2))=='N')])`), the natural
-logarithm of lower chamber size (`r as.numeric(table(dat$indepvar2)[which(names(table(dat$indepvar2))=='logN')])`), and upper chamber size (`r as.numeric(table(dat$indepvar2)[which(names(table(dat$indepvar2))=='K')])`). 
-These six variables formed a $3 \times 3$ table, yet not all combinations were
-available in the data. We found no studies that correlate public expenditure
-per capita with either upper chamber size or the natural logarithm of lower
-house size. Thus, our meta-analysis contains seven of the nine possible
-variable combinations.
+When a service is hard to credit claim, to be provided, it has to be highly ranked by the voters. Consider services that decrease infant mortality. Although policies in this direction might be harder to be directly associated with one given politician, every politician wants to be known as the ones that diminished infant mortality. The death of a child has devastating effects over a polity, and no politician wants to be associated with it. On the other hand, every parent would be extremely thankful for the politicians that improved health care and saved their child. Moreover, politicians might facilitate access to medication and hospitals, which in turn is easier for credit claiming. Therefore, these services will have anywhere from modest to substantial improvements.
 
-We also coded five moderators that may help us understand the heterogeneity in
-the reported results. We included them in our meta-regressions alongside an
-indicator for the type of independent variable used in the original study. The
-additional moderators are: 1) publication year; 2) paper publication in an
-academic journal; 3) estimation method; 4) institutional design; 5) electoral
-system. Since the literature on the "law of $1/n$" is notably diverse, we
-added only moderators that either refer to important theoretical questions,
-such as the effect of the electoral system on public spending, or to essential
-characteristics of the publications themselves. Although more moderators exist
-in the literature (e.g., data aggregation level), they do not appear as often
-as necessary for their inclusion in the meta-regressions. Table
-\ref{tab:descriptive} shows the descriptive statistics of the moderator
-variables. 
+Suppose now that service is secure to credit claim for, but gives low electoral yield. In this case, although the provision can be unquestionably traced back to the legislator, voters care little about the provision. For instance, honors and appraisal legislation are very common in Brazilian municipalities. However, they are perceived by politicians as low electoral yield, but the legislator that proposed the homage usually gets associated with it. These types of legislation increase with legislature size, but their effect on welfare is negligible.
+
+Finally, services that are difficult to credit-claim, or that politicians believe that voters care very little about, are expected to receive little invested effort from politicians. For instance, consider preventive health care. Preventive care refers to health measures, such as prenatal care or vaccination, undertaken to lower the chances or the severity of a disease(s) in the future. However, it is a compounded chance: the voter has to consume the service, but its effectiveness depends on voters getting sick. Nowadays, we are witnessing how hard it is to vaccinate children, despite all the scientific evidence demonstrating its effectiveness. Moreover, rational voters may fail to punish politicians for low investments in preventive public policies, such as natural disasters or climate change mitigation \citep{gailmard2019preventing}. Hence, voters might also not punish politicians for low investments in preventive health care because they might only observe whether a politician properly invested in preventive public policies in cases of emergency. Therefore, we shall expect little to no improvement in these types of services with larger legislatures.
+
+In sum, these considerations suggest that instead of looking for overall positive or negative effects, the effects of legislature size should manifest diversely, conditional on the type of service studied. The most significant changes should be expected in services that voters want and that are easier to claim credit for. Services with only one of these characteristics will be intermediate in terms of their priority and efforts exerted by politicians in their provision and will improve with less intensity. Services hard to credit claim and low ranked by voters will tend to be unaffected or under-provided by lawmakers.
+
+
+# Background on the Brazilian Case
+\label{sec:background}
+
+In 2004, Brazil comprised 5,560 municipalities. According to the Brazilian Constitution, each city must provide healthcare, primary education, transportation, and infrastructure to its citizens. Municipalities have the authority to enact local laws and collect taxes on housing and services. However, their room for fiscal manipulation is limited. On average, municipal taxes account for only 5\% of the local budgets, while mandatory transfers from state and federal governments correspond to the remaining 95\%. This reduces the ability of municipal legislators to effectively influence local spending, what makes improvements in local services dependent only on the efforts of city-level politicians. XXXX
+
+With regards to their political organisation, municipalities have one mayor and one city council. Citizens choose their representatives by direct vote in the same election. Mayors are in charge of organising the provision of public services, as well as proposing laws and amendments to the tax code. Proposals submitted by the mayor are subject to the approval of the city council. Councillors, in turn, have two primary duties. First, they should discuss and vote legislation put forward by the mayors or by their peers. Second, they oversee the public budget and sanction mayors who do not comply with fiscal legislation. Councillors also provide an array of public and personal services for their constituents, such as helping voters access public hospitals, facilitating school enrolment, and even paying their voters' utility bills \citep{nichter2011electoral, AlmeidaFelix2012}.
+
+Until 2004, there was no specific regulation on the size of city councils. The 1988 Brazilian Constitution set only broad guidelines about the number of council seats in each municipality, which allowed cities to determine how many legislators they should have in their local chambers. This led to severe imbalances in the proportion of representatives per citizen across the country. For instance, the Nova Russas municipality had 30,009 inhabitants and 21 councillors, which accounts for one legislator per 1,429 citizens. In contrast, the city of Sorocaba had only 15 councillors for 528,735 inhabitants, that is, one legislator per 35,249 citizens. In 2003, this malapportionment problem gained national visibility when Mira Estrela, a small municipality with only 2,651 residents, reduced its city council from 11 to 9 seats because of fiscal considerations. The change motivated a legal dispute that reached the Brazilian Supreme Court. The Court favoured the city's decision and ruled that the size of every local council should correspond to precise population thresholds.
+
+Following the ruling of the Supreme Court, in March 2004 the Brazilian Electoral Court established a series of population cutoffs for all municipal legislatures. The Court specified that, following the Brazilian Constitution, cities with up to one million residents should have between 9 and 21 legislators. The number of seats was allocated as follows. Each city starts with 9 councillors, then adds one legislator for every 47,619 inhabitants until their councils reach 21 members. This threshold implies that cities with a population between 571,428 and one million should all the same number of legislators, that is, 21 of them. Conversely, cities between one and four million inhabitants should have at least 33 councillors, and this number increases up to 41 members following the previous formula of one additional legislator per 47,619 inhabitants. 
+
+This decision makes Brazil the ideal testing ground for our theory. Although an endogenous decision motivated the Electoral Court ruling, the population cutoffs created sharp discontinuities in the distribution of local council seats. That is, cities close to the cutoffs had very similar characteristics, but those which were just above the threshold gained a new legislator. Moreover, cities could not self-select into any group, as their population estimates were calculated using the 2003 projections by the Brazilian Census Bureau (IBGE). This change in council size also happened only seven months before the election, making it impossible for candidates to adjust their service provision strategies for the 2004 election. Therefore, the ruling allows us to study the effect of larger legislatures on public service provision during the 2005-2008 term while holding all else constant.
+
+\section{Empirical Strategy}
+\label{sec:empstrat}
+
+\subsection{Methodology}
+\label{sub:methods}
+
+We employ a regression discontinuity design (RDD) using the population thresholds established by the 2004 Superior Electoral Court resolution as treatment indicators. Figure \ref{fig:runningvarplot} displays the distribution of municipalities within each city council size. These population thresholds remained in effect until 2009, when Congress amended the Brazilian Constitution. This study covers the period between 2005 and 2008, which constitutes the full mayoral and city-council term following the 2004 Brazilian elections.
 
 \vspace{.5cm}
 
-\footnotesize
-```{r descriptive, warning=F, message=F, echo = FALSE, cache=TRUE, results='asis'}
-fulldat$usemeta2 <- factor(fulldat$usemeta)
-levels(fulldat$usemeta2) <- c("Other coefficients", "Main sample")
-aux <- select(fulldat, usemeta2, indepvar2, elecsys2, method,
-              year, published, instdesign) %>%
-  rename(`Independent Variables` = indepvar2,
-         `Year`                  = year,
-         `Published work`        = published,
-         `Estimation method`     = method,
-         `Institutional Design`  = instdesign,
-         `Electoral system`      = elecsys2)
-aux$`Independent Variables` <- recode(aux$`Independent Variables`,
-                                      `N` = "Lower Chamber Size",
-                                      `K` = "Upper Chamber Size",
-                                      `logN` = "Log of Lower Chamber Size")
-aux$`Electoral system` <- recode(aux$`Electoral system`,
-                                 `Non-Maj` = "Non-Majoritarian",
-                                 `Maj` = "Majoritarian")
-aux <- select(aux, usemeta2, `Independent Variables`, Year, `Published work`, `Estimation method`, `Institutional Design`, `Electoral system`)
+\begin{figure}[htb!]
+  \begin{center}
+    \begin{minipage}{1 \linewidth}
+      \centerline{\includegraphics[width=6in,angle=0]{figs/distrseats2019.pdf}}
+      \caption{Distribution of Municipalities by Population and City Council Size XXXX CHANGE HERE}
+      \bigskip
+      \label{fig:runningvarplot}
+    \end{minipage}
+  \end{center}
+\end{figure}
 
-export2md(descrTable(~.-usemeta2, aux, y = aux$usemeta2,
-                        show.p.overall = F, show.all = T),
-          caption = "Descriptive statistics of moderators",
-          format  = "latex")
-```
-\normalsize
+Our identification strategy relies on three assumptions. First, we assume that no municipality self-selected into each side of the discontinuity. Second, as we run a sharp RDD, we also assume that council size increases precisely as the law mandates. Third, our design assumes that the pre-treatment variables, collected before the 2003 Supreme Court decision, were not affected by the 2004 ruling on council size. In the online appendix, we test these assumptions by building an estimator that balances the local average treatment effects (LATE). Our estimate is an extension of RDD and uses covariates to balance the multiple cutoff differences. Additionally, we propose a placebo test in which we run the same models with fake cutoffs around the original thresholds. Our balance and placebo tests indicate that the assumptions underlying the analyses are indeed met.
 
-A key methodological issue we had to address concerns the potential violation
-of an important assumption in a meta-analysis, that of effect size independence
-[@cheung2014modeling; @cheung2019guide; @veroniki2016methods]. In our study
-sample, authors frequently use similar datasets in their models,
-and almost all papers fit more than one regression with similar variables, what
-suggests that the assumption above does not hold. We use two procedures to tackle this
-problem. First, we created two sets of study coefficients to reduce the impact
-of multicollinearity in our estimations. The first group includes only the most
-rigorous models from each paper, that is, those estimated with the largest $n$,
-most control variables, and fixed effects if the authors added them. If the
-article employed a regression discontinuity design, we chose the coefficient
-from the optimal bandwidth or from the intermediate one. This sample
-encompasses `r dim(dat)[1]` estimates, as `r as.numeric(sum(table(table(dat$id))[-1]))`
-articles analysed two dependent or independent variables of
-interest\footnote{The papers that used more than one dependent or independent
-variable of interest are \citet{baqir1999districts, bjedov2014impact,
-bradbury2001legislative, chen2007law, crowley2019law, erler2007termlimits,
-gilligan2001fiscal, lee2016supermajority, lee2018court,
-maldonado2013legislatures, primo2006stop, ricciuti2003trading,
-ricciuti2004legislatures}.}. Our second sample, in contrast, contains all the
-`r dim(fulldat)[1]` effect sizes reported in the `r length(unique(dat$id))`
-papers. Here we focus on the results for our restricted sample as we consider
-them more robust, but the findings are very similar when we use the extended
-set.
+% Subsection: Variables
+\subsection{Variables and Data Sources}
+\label{sub:sources}
 
-Our second procedure consists of employing multilevel random effect models
-[@cheung2014modeling; @matthes2019meta] in all of our estimations. We add two
-extra levels to the regular meta-analysis, one including a unique publication
-ID for each paper, and another indicating the data source used in the original
-study. By adding these two levels, we account for within- and between-study
-variation, thus removing these sources of effect size dependency and improving
-the accuracy of the results. More information about the multilevel models can
-be found in Section H of the Supplementary Material. 
+We use four groups of city-level variables in our models. The first group includes pre-treatment control variables that were not affected by the 2004 council size resolution. We add them to the models to improve the balance between treated and non-treated units. The covariates are: 1) the number of council seats in the previous term; 2) city population; 3) city GDP; 4) the proportion of low-income families in each municipality. The data come from the Superior Electoral Court (Tribunal Superior Eleitoral--TSE) and the 2000 Brazilian census.
 
-We use Hedges' $g$ to calculate effect sizes in our meta-analysis
-[@hedges1981distribution]. While there are other methods to standardise
-coefficients in meta-analytic studies, Hedges' $g$ corrects for upward bias in
-small sample sizes and is considered more robust than measures such as Cohen's
-$d$ [@lakens2013calculating]. We estimate the Standardised Mean Difference
-(SMD), which represents the effect size in each study relative to the
-variability observed in that study, by extracting the coefficients and the
-standard errors from all articles included in our sample and converting them to
-Hedges' $g$. In cases where authors did not report the standard errors for
-their estimates, we computed them using the t-statistic presented in the
-original tables. 
+We employ a second set of variables to quantify social welfare. They are our outcomes of interest. Our main focus here is on the impact of legislature size on education and healthcare, which are the two most important public services the municipal government should provide to citizens. We measure access to education with the average enrolment in primary (K--4) and secondary (5--8) public schools. We assess education quality with the Education Development Index (\'Indice de Desenvolvimento da Educa\c{c}\~{a}o B\'asica--IDEB), which the Ministry of Education has issued biannually since 2007. The index is a weighted average of student scores in Portuguese and Mathematics (0--10) multiplied by the harmonic mean of public school promotion rates in a given year (0--100). To test the effect of the 2004 ruling on healthcare, we mapped the coverage of the Family Health Programme, a local-level primary care policy, and the proportion of pregnant women who attended more than six pre-natal consultations. We also gather data on post-neonatal mortality\footnote{Post-neonatal mortality rate is the probability of dying between 28 days and one year of life, expressed per 1,000 live births.} to assess healthcare quality. The source of all variables is the Brazilian Ministry of Health Data Centre (DataSUS).
+
+Next, we look into municipal data, city councillors' characteristics, approved legislation, and an online survey with 174 former city councillors that served during the 2005--2008 term to test our proposed micro-level mechanisms\footnote{We also analysed 108 structured interviews conducted by \citet{lopez2017legisladores} at the Brazilian Economics Planning Institute (IPEA) in 2009. The authors asked councillors about their daily work. The interviews reinforced the idea that councillors see private goods provision as more electorally profitable than formal lawmaking or executive policy oversight.}. The municipal data contains: 1) the number of councillors belonging to the pre-electoral mayoral coalition; 2) the councillor's gender and race; 3) the number of mayor-appointed, councillor-appointed, and career civil servants. All variables come from the Superior Electoral Court and the Brazilian Institute for Geography and Statistics. 
+
+Lastly, we also collect 346,553 bills from cities whose populations lie within 10 thousand inhabitants from the 2004 population thresholds. We selected 64 out of 202 municipalities whose voting records were available online. We evaluate information regarding proposal types, discriminating between local and municipal public goods, oversight, and other legislative activity. While local public goods consist of services targeting personal, group, or neighbourhood levels, municipal public goods comprise laws and policies covering the entire municipality. Examples of the first are investing in a given public health clinic, requesting school bureaucracy to accommodate an extra child, and renovating sewage and fixing potholes on a given street\footnote{Our theory does not differentiate between clientelism and service provision, as it is hard to disentangle legislator's intentions. On the one hand, a voter may request a particular service, such as fixing a pothole. Attending this request can be interpreted as a clientelistic practice, despite their non-excludable benefits to the adjoining neighborhood. On the other hand, upon request, facilitating hospital admission is a very particularized service, thus likely to fall under clientelistic logic. Saying this is vote-buying can be imprecise, as service provision might simply be a way of signaling responsiveness to the electorate's demands and efficacy. \citet{kuschnir2000cotidiano}'s qualitative work shows the Silveira Family in Rio de Janeiro aided the community they represented regardless of political preference. As a result, when one of the family members ran in an election, he had the highest vote share ever seen in Rio de Janeiro.}. As for the latter, examples are to ameliorate education by capacitating public teachers, and to raise public health care standards through city-wide vaccination campaigns. Oversight bills are accountability and transparency mechanisms meant to keep public services undertaken by the bureaucracy in check. Other legislation comprises bills that do not fit in the previous categories. Examples are changes in street names, motions to honour citizens or groups, and legislative and internal city council procedures. 
+
+Together, this evidence provides a clear picture of representation patterns in Brazil, from municipal welfare consequences to their micro-level mechanisms. Summary statistics follow in the online supplemental materials.
 
 # Results
 
-The "law of $1/n$" states that more legislators increase government
-expenditure. In this paper, we employ three methods to test the empirical
-validity of that relationship. First, we run binomial z-tests to assess the
-frequency of positive and negative coefficients in our sample. Then, we fit 9
-multilevel meta-analyses using the `meta` [@balduzzi2019perform] and the
-`dmetar` [@dmetar2019] packages for the `R` statistical language [@rstats2019].
-Lastly, we run two sets of meta-regressions to measure the effects of a group
-of moderators on the effect sizes of our study sample. To recapitulate, our
-independent variables of interest are lower chamber size, the natural logarithm
-of lower chamber size, and upper chamber size. The dependent variables are
-public expenditure per capita, the natural logarithm of public expenditure per
-capita, and government expenditure as a percentage of GDP. Since the outcomes
-have different scales, we treat them separately in our models.
+% Session: Results
+\section{Results}
+\label{sec:outcomes}
 
-```{r, cache=TRUE, echo = FALSE}
-aux <- filter(dat, indepvar2 == "N")
-binN <- binom.test(table(aux$scoef)[2], sum(table(aux$scoef)), p = 0.5)
-aux <- filter(dat, indepvar2=='K')
-binK <- binom.test(table(aux$scoef)[2], sum(table(aux$scoef)), p=0.5)
-aux <- filter(dat, indepvar2 == "logN")
-binlogN <- binom.test(table(aux$scoef)[2], sum(table(aux$scoef)), p = 0.5)
-```
+\subsection{The Effect of Legislature Size on Service Provision}
+\label{sub:effects}
 
-## Binomial Z-Tests
-\label{sub:binomial}
+We study the impact of legislatures on two services: education and health care. We collect eight indicators: four in education, and four in health care.
 
-The binomial z-test evaluates whether the majority of the coefficients of our
-independent variables are positive or negative[^binomial]. If increasing the
-number of legislators leads to higher public expending, we should expect most
-coefficients to be positive. Conversely, if the "reverse law of $1/n" is true,
-our results should indicate that $p < 0.5$, that is, the proportion of positive
-coefficients is lower than 0.5. The null hypothesis here states that the sign
-of the coefficient is equally likely to be positive or negative.  
-
-[^binomial]: Since coefficients are either positive or negative, each of them
-can be considered a Bernoulli trial. Thus, the aggregate results for all papers
-follow a Binomial distribution where parameters $n$ equals the number of papers
-and $p$ is the chance of a positive coefficient. The "law of $1/n$" can be
-reformulated as the chance of $p > 0.5$, which facilitates the testing of the
-theory.
-
-We start with lower house size. Our results indicate that there is no
-correlation between the number of legislators in the lower house and public
-expenditure (successes = `r as.numeric(binN$statistic)`, trials = `r as.numeric(binN$parameter)`, p~success~ = `r round(as.numeric(binN$estimate), 3)`, 95\% CI = [`r round(as.numeric(binN$conf.int[1]), 3)`; `r round(as.numeric(binN$conf.int[2]), 3)`], $p$-value = `r round(as.numeric(binN$p.value), 3)`). Note that the "law of $1/n$" suggests that there is a positive
-association between both. The binomial test for the natural logarithm of lower
-chamber size also shows a
-non-statistically significant result (successes = `r as.numeric(binlogN$statistic)`, trials = `r as.numeric(binlogN$parameter)`, p~success~ = `r round(as.numeric(binlogN$estimate), 3)`, 95\% CI = [`r round(as.numeric(binlogN$conf.int[1]), 3)`; `r round(as.numeric(binlogN$conf.int[2]), 3)`],
-$p$-value = `r round(as.numeric(binlogN$p.value), 3)`). In contrast, we find a
-positive result for the number of legislators in the upper house, which is
-in line with the mainstream literature (successes = `r as.numeric(binK$statistic)`, trials = `r as.numeric(binK$parameter)`, p~success~ = `r round(as.numeric(binK$estimate), 3)`, 95\% CI = [`r round(as.numeric(binK$conf.int[1]), 3)`; `r round(as.numeric(binK$conf.int[2]), 3)`],
-$p$-value = `r round(as.numeric(binK$p.value), 3)`).
-
-## Meta-Analysis
-\label{sub:Meta-Analysis}
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE, cache=TRUE}
-mod <- list()
-# Pooling effects analysis -- ExpPC x N
-aux <- dat %>%
-  filter(indepvar2 == 'N',
-         depvar2 == 'ExpPC')
-
-mod[[1]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-
-# Pooling effects analysis -- ExpPC x K
-aux <- dat %>%
-  filter(indepvar2 == 'K',
-         depvar2 == 'ExpPC')
-
-mod[[2]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-# Pooling effects analysis -- logExpPC x N
-aux <- dat %>%
-  filter(indepvar2 == 'N',
-         depvar2 == 'logExpPC')
-
-mod[[3]] <- metagen(
-  coef, SE, data=aux,
-  studlab=paste(authoryear),
-  comb.fixed = FALSE,
-  comb.random = TRUE,
-  method.tau = "REML",
-  hakn = TRUE,
-  prediction = TRUE,
-  sm="SMD"
-  )
-
-# Pooling effects analysis -- logExpPC x logN
-aux <- dat %>%
-  filter(indepvar2 == 'logN',
-         depvar2 == 'logExpPC')
-
-mod[[4]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-
-# Pooling effects analysis -- PCTGDP x N
-aux <- dat %>%
-  filter(indepvar2 == 'N',
-         depvar2 == 'PCTGDP')
-
-mod[[5]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-
-# Pooling effects analysis -- PCTGDP x logN
-aux <- dat %>%
-  filter(indepvar2 == 'logN',
-         depvar2 == 'PCTGDP')
-
-mod[[6]] <- metagen(
-  coef, SE, data=aux,
-  studlab=paste(authoryear),
-  comb.fixed = FALSE,
-  comb.random = TRUE,
-  method.tau = "REML",
-  hakn = TRUE,
-  prediction=TRUE,
-  sm="SMD"
-  )
-
-# Pooling effects analysis -- PCTGDP x K
-aux <- dat %>%
-  filter(indepvar2 == 'K',
-         depvar2 == 'PCTGDP')
-
-mod[[7]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-
-# Full model - Pooling effects analysis -- PCTGDP x N
-aux <- fulldat %>%
-  filter(indepvar2 == 'N',
-         depvar2 == 'PCTGDP')
-
-mod[[8]] <- metagen(coef, SE, data = aux,
-          studlab = paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm = "SMD")
-
-
-# Full data - Pooling effects analysis -- ExpPC x K
-aux <- fulldat %>%
-  filter(indepvar2 == 'K',
-         depvar2 == 'ExpPC')
-
-mod[[9]] <- metagen(coef, SE, data=aux,
-          studlab=paste(authoryear),
-          comb.fixed = FALSE,
-          comb.random = TRUE,
-          method.tau = "REML",
-          hakn = TRUE,
-          prediction=TRUE,
-          sm="SMD")
-```
-
-We then proceed to the meta-analysis. We matched the house size variables with
-our measures of government spending and created a theoretical $3 \times 3$
-matrix. Out of the 9 possible variable combinations, we found only 7 in the
-article pool. Our sample does not contain any papers that analyse the
-relationships between the log lower chamber size and public expenditure per
-capita, or between upper chamber size and the logarithm of public expenditure
-per capita. We calculated the effect sizes by drawing the coefficients and
-standard errors from the articles and computing Hedges' $g$, which is a widely
-used measure of standardised difference between means. When standard errors
-were not directly available in the texts, we used t-statistics to retrieve
-them. 
-
-Figure \ref{fig:plots} shows the forest plots for our restricted sample, which
-includes the `r dim(dat)[1]` main coefficients of the `r length(unique(dat$id))`
-selected papers.\footnote{Please refer to Sections H and I in the Supplementary
-Material for full results regarding both samples.} On the left side of the
-plots are the names of the study authors and paper publication year. For
-unpublished studies, we included the first year the paper was available online.
-The bars in the middle show the reported effect sizes and the vertical lines
-indicate their average, weighted by standard errors. The length of the lines
-represent the precision of the estimates. The red line at the bottom of the
-figures displays the overall effects plus their respective confidence
-intervals.
-
-\begin{landscape}
-\begin{figure}[!ht]
-\centering
-\caption{Forest plots of the relationship between legislature size and government spending (reduced sample)}
-\vspace{0.3cm}
-\includegraphics[width=25cm,height=17cm]{../graphs/graph1.pdf}
-\label{fig:plots}
-\end{figure}
-\end{landscape}
-
-The uppermost row shows the results for lower chamber size in our restricted
-sample. In the first model, which correlates lower house and expenditure per
-capita, we find a standardised mean difference (SMD) of 0.022 and a standard
-error of 0.131 (studies = `r mod[[1]]$k`, 95\% CI = [-0.256; 0.299], $p$-value
-= 0.87), so we cannot rule that the effect is different from zero. Indeed, the
-effect of lower chamber size on the other two dependent variables is also null
-in statistical terms. When we compare lower chamber size with log expenditure
-per capita, the overall effect size is -0.031 and the standard error is 0.049
-(studies = `r mod[[3]]$k`, 95\% CI = [-0.188; 0.127], $p$-value = 0.58), and
-the impact of larger lower houses on government spending as a percentage of GDP
-is also negligible (studies = `r mod[[5]]$k`, SMD = - 0.006, 95\% CI =
-[-0.0334; 0.021], $p$-value = 0.563). The results are virtually identical when
-we estimate the meta-analyses using our extended sample, and the all three
-coefficients are again statistically indistinguishable from zero. 
-
-Next, we present the meta-analyses using the logarithm of lower house size as
-an independent variable. The relationship between this variable and the log of
-per capita expenditure is positive, but the coefficient is not significant
-(studies = `r mod[[4]]$k`, SMD = 0.078, SE = 0.109, 95\% CI = [-0.225; 0.381],
-$p$-value = 0.515. The effect of log lower house size on expenditure as a
-percentage of the GDP is very similar, although the SMD is negative (studies =
-`r mod[[6]]$k`, SMD = `r round(mod[[6]]$TE.random,3)`, SE = 
-`r round(mod[[6]]$seTE.random,3)`, 95\% CI = [`r round(mod[[6]]$lower.random,3)`;
-`r round(mod[[6]]$upper.random,3)`], $p$-value = 
-`r round(mod[[6]]$pval.random,3)`). Results in the full sample are also null, and
-the coefficients for each dependent variable have the same sign as the
-restricted sample -- positive and negative, respectively.
-
-The third set of models uses upper house size as the main independent variable.
-We find a positive correlation between this variable and expenditure per capita
-(studies = `r mod[[2]]$k`, SMD = 3.658, SE = 4.299, 95\% CI = [-6.255; 13.572],
-$p$-value = 0.419), and a negative relationship with government spending as a
-percentage of GDP (studies = `r mod[[7]]$k`, SMD = 
-`r round(mod[[7]]$TE.random,3)`, SE = `r round(mod[[7]]$seTE.random,3)`, 95\% CI =
-[`r round(mod[[7]]$lower.random,3)`; `r round(mod[[7]]$upper.random,3)`],
-$p$-value = `r round(mod[[7]]$pval.random,3)`), yet neither coefficient is
-statistically significant. Results are the same in our extended sample.
-
-Taken together, these results yield conservative interpretations. Besides all
-average effect sizes not reaching conventional levels of statistical
-significance, the studies are also notably heterogeneous. The $I^2$ statistic
-quantifies the degree of heterogeneity among studies. @higgins2019cochrane
-consider any $I^2$ value above 75\% to indicate high heterogeneity, and the
-lowest $I^2$ we find in the restricted sample is `r round(mod[[2]]$I2*100,
-2)`\% (for the subset of upper chamber size and per capita expenditure).
-Additionally, all prediction intervals encompass zero. Therefore, we cannot
-reject the null hypothesis that the effect size is zero in any variable
-combination.
-
-In a nutshell, we do not find evidence in favour of the "law of $1/n$".
-One reason for this may be the identification strategy authors use in their
-models. On the one hand, OLS and panel data models require too many controls to
-make units comparable, and they are vulnerable to omitted variable bias or
-post-treatment bias [@cinelli2020making; @pearl2015conditioning]. On the other
-hand, estimation methods such as instrumental variables (IV) and regression
-discontinuity designs (RDD) have become popular because of their high internal
-validity [@angrist2008mostly]. Figure \ref{fig:plots2} shows the disaggregated
-effects for two sets of models that employ causal estimation techniques. They
-measure the impact of lower house size on expenditure per capita (left) and on
-the natural logarithm of expenditure per capita (right).
-
-\vspace{.5cm}
-
-\begin{figure}[htb]
-\begin{center}
-\caption{Forest plots of the relationship between legislature size and government spending with regression method heterogeneity (restricted sample)}
-\vspace{.3cm}
-\includegraphics[width=1\linewidth, height=7.5cm]{../graphs/graph2.pdf}
-\label{fig:plots2}
-\end{center}
-\end{figure}
-
-Papers that employ instrumental variables and panel/fixed-effects models show
-somewhat symmetrical distributions. Out of the five papers listed under IV, two
-are positive, two are negative, and one is null. In the plot for panel data,
-although more studies accumulate negative coefficients, the positive shifts are
-more pronounced, so the overall effect is also null. In contrast, all papers
-that use regression discontinuity designs show negative and statistically
-significant results. Since only three papers in our sample use RDDs, we are
-cautious about predicting an overall negative relationship, but they do
-indicate that better identification strategies yield a zero-to-negative impact
-of legislature size on expenditure, in support of the "reverse law of $1/n$".
-
-## Meta-Regressions
-\label{sub:regressions}
-
-In this section, we run a series of meta-regressions with six moderators to
-account for the heterogeneity across the selected papers. The first variable
-indicates whether the study uses lower chamber size, log lower chamber size, or
-upper chamber size as a main explanatory variable. We include separate effect
-sizes for upper and lower chamber sizes when papers analysed both. The second
-variable shows the study publication year, which we included to capture
-temporal variation in the study coefficients. We also add a dummy variable to
-assess whether published articles report effect sizes that are higher or lower
-than those from working papers. The fourth variable measures whether studies
-focusing on non-majoritarian electoral systems report coefficients that are
-smaller or larger than those from majoritarian countries. The fifth covariate
-is a categorical variable indicating the statistical procedure used in the
-original models (panel data, instrumental variables, OLS, or regression
-discontinuity design). In our last variable, we separate coefficients produced
-from samples of unicameral or bicameral systems, and code papers that analyse
-multiple polities with different institutional designs as "mixed".
-
-Table {tab:regressions} presents the meta-regression results for our restricted
-and extended samples. Each column represents one of the three measures of
-public spending we discuss in this paper, and the last one uses all
-coefficients. To reduce the risk of false positives in our analyses, we use
-permutation tests to calculate significance levels for the meta-regressions
-\citep{higgins2004controlling}. To interpret these results, the sign of
-coefficients matters the most. These meta-regression coefficients can be viewed
-as representing "the effect of the moderator on the $1/n$ effect". This means
-positive coefficients predict a strengthening of the $1/n$ effect, and negative
-ones predict it will get weaker under that moderator category, when compared to
-its reference category. Since we aggregate different types of independent
-variables under the same models, the size of the effects does not accurately
-translate the scale of variations.
-
-```{r, echo = FALSE, warning = FALSE, message = FALSE, results = 'hide', cache = TRUE}
-res <- list()
-
-# Aux fctns
-strep <- function (x) {
-  if(!is.na(x)) {
-    return(ifelse(x<0.01, '***',ifelse(x<0.05,'**', ifelse(x<0.1,'*',''))))
-  } else {
-    return('')
-  }
-}
-
-extract_coefs <- function(mod, modnam) {
-  dfr <- data.frame(
-     nams2 = row.names(mod[["beta"]]),
-     est = mod[["beta"]],
-     se = mod[["se"]],
-     pval = mod[["pval"]],
-     model = modnam
-  )
-  aux <- data.frame(nams = c("Intercept",
-             "Indepvar: logN",
-             "Indepvar: N",
-             "Year",
-             "Published",
-             "Elecsys: Non-Majoritarian",
-             "Method: Panel",
-             "Method: IV",
-             "Method: RDD",
-             "Legislature: Mixed",
-             "Legislature: Unicameral"), 
-             nams2 = c("intrcpt", 
-                       "indepvar2logN", 
-                       "indepvar2N", 
-                       "year", 
-                       "publishedYes", 
-                       "elecsys2Non-Maj", 
-                       "methodPANEL", 
-                       "methodIV", 
-                       "methodRDD",
-                       "instdesignMixed",
-                       "instdesignUnicameral"))
-  dfr <- left_join(aux, dfr) %>%
-    mutate_if(is.numeric, list(~round(., digits = 4)))
-  dfr$nams2 <- NULL
-  return(dfr)
-}
-
-gcf <- function(mod, pos) {
-  x <- mod$est[pos]
-  y <- mod$pval[pos]
-  if(!is.na(x)) {
-    return(paste0(format(round(x, digits = 3), nsmall = 3), strep(y)))
-  } else {
-    return('')
-  }
-}
-gcf2 <- function(mod, pos) {
-  x <- mod$se[pos]
-  if(!is.na(x)) {
-    return(paste0('(', format(round(x, digits = 3), nsmall = 3), ')'))
-  } else {
-    return('')
-  }
-}
-
-# Expenditure per capita - Restricted
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = dat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              sparse = TRUE,
-              tdist = TRUE,
-              subset = dat$depvar2=='ExpPC',
-              slab = dat$authoryear)
-
-res[[1]] <- extract_coefs(mod, "ExpPC")
-
-# Expenditure per capita - Extended
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = fulldat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              subset = fulldat$depvar2=='ExpPC',
-              slab = fulldat$authoryear)
-
-res[[2]] <- extract_coefs(mod, "ExpPC - All coefs")
-
-# Log of Expenditure per capita - Restricted
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = dat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              subset = dat$depvar2=='logExpPC',
-              slab = dat$authoryear)
-
-res[[3]] <- extract_coefs(mod, "logExpPC")
-
-# Log of Expenditure per capita - Extended
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = fulldat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              subset = fulldat$depvar2=='logExpPC',
-              slab = fulldat$authoryear)
-
-res[[4]] <- extract_coefs(mod, "logExpPC - All coefs")
-
-## Expenditure as percentage GDP -- Restricted
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = dat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              subset = dat$depvar2=='PCTGDP',
-              slab = dat$authoryear)
-
-res[[5]] <- extract_coefs(mod, "PCTGDP")
-
-## Expenditure as percentage GDP -- Extended
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = fulldat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-            subset = fulldat$depvar2=='PCTGDP',
-            slab = fulldat$authoryear)
-
-res[[6]] <- extract_coefs(mod, "PCTGDP - All coefs")
-
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = dat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~depvar2+indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              slab = dat$authoryear)
-
-res[[7]] <- extract_coefs(mod, "Full Model")
-
-mod <- rma.mv(yi = coef,
-              V = VAR,
-              data = fulldat,
-              method = "REML",
-              random = ~ 1 | id_level1/id_level2, 
-              mods = ~depvar2+indepvar2+year+published+elecsys2+method+instdesign,
-              test = "knha",
-              tdist = TRUE,
-              sparse = TRUE,
-              slab = fulldat$authoryear)
-
-res[[8]] <- extract_coefs(mod, "Full Model - All coefs")
-```
-
-\vspace{0.5cm}
-
-```{=latex}
-\begin{table}[htpb]
-\caption{Meta Regression Results\label{tabregressions}}
-\scriptsize
-\centering
-\begin{tabular}{lcccccccc}
+\begin{sidewaystable}[!htbp] \centering 
+  \caption{Public Service Outcomes} 
+  \label{tab:outcomes} 
+\scalebox{0.9}{
+\begin{threeparttable}
+\begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}l c c c c c c c c }
 \toprule
-\midrule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Expenditure Per Capita} & \multicolumn{2}{c}{Log Expenditure Per Capita} & \multicolumn{2}{c}{Gov. Spending \% GDP} & \multicolumn{2}{c}{All Coefficients} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
-& Restricted & Extended & Restricted & Extended & Restricted & Extended & Restricted & Extended \\
-\midrule
-Log of Lower Chamber Size & 
-`r gcf(res[[1]], 2)` & `r gcf(res[[2]], 2)` & 
-`r gcf(res[[3]], 2)` & `r gcf(res[[4]], 2)` & 
-`r gcf(res[[5]], 2)` & `r gcf(res[[6]], 2)` &
-`r gcf(res[[7]], 2)` & `r gcf(res[[8]], 2)` \\
- & `r gcf2(res[[1]], 2)` & `r gcf2(res[[2]], 2)` & 
-`r gcf2(res[[3]], 2)` & `r gcf2(res[[4]], 2)` & 
-`r gcf2(res[[5]], 2)` & `r gcf2(res[[6]], 2)` & 
-`r gcf2(res[[7]], 2)` & `r gcf2(res[[8]], 2)` \\
-%
-Lower Chamber Size &
-`r gcf(res[[1]], 3)` & `r gcf(res[[2]], 3)` & 
-`r gcf(res[[3]], 3)` & `r gcf(res[[4]], 3)` & 
-`r gcf(res[[5]], 3)` & `r gcf(res[[6]], 3)` &
-`r gcf(res[[7]], 3)` & `r gcf(res[[8]], 3)` \\
- & `r gcf2(res[[1]], 3)` & `r gcf2(res[[2]], 3)` & 
-`r gcf2(res[[3]], 3)` & `r gcf2(res[[4]], 3)` & 
-`r gcf2(res[[5]], 3)` & `r gcf2(res[[6]], 3)` & 
-`r gcf2(res[[7]], 3)` & `r gcf2(res[[8]], 3)` \\
-%
-Year & 
-`r gcf(res[[1]], 4)` & `r gcf(res[[2]], 4)` & 
-`r gcf(res[[3]], 4)` & `r gcf(res[[4]], 4)` & 
-`r gcf(res[[5]], 4)` & `r gcf(res[[6]], 4)` &
-`r gcf(res[[7]], 4)` & `r gcf(res[[8]], 4)` \\
-& `r gcf2(res[[1]], 4)` & `r gcf2(res[[2]], 4)` & 
-`r gcf2(res[[3]], 4)` & `r gcf2(res[[4]], 4)` & 
-`r gcf2(res[[5]], 4)` & `r gcf2(res[[6]], 4)` & 
-`r gcf2(res[[7]], 4)` & `r gcf2(res[[8]], 4)` \\
-%
-Non-Majoritarian & 
-`r gcf(res[[1]], 5)` & `r gcf(res[[2]], 5)` & 
-`r gcf(res[[3]], 5)` & `r gcf(res[[4]], 5)` & 
-`r gcf(res[[5]], 5)` & `r gcf(res[[6]], 5)` &
-`r gcf(res[[7]], 5)` & `r gcf(res[[8]], 5)` \\
-& `r gcf2(res[[1]], 5)` & `r gcf2(res[[2]], 5)` & 
-`r gcf2(res[[3]], 5)` & `r gcf2(res[[4]], 5)` & 
-`r gcf2(res[[5]], 5)` & `r gcf2(res[[6]], 5)` & 
-`r gcf2(res[[7]], 5)` & `r gcf2(res[[8]], 5)` \\
-%
-Published: Yes & 
-`r gcf(res[[1]], 6)` & `r gcf(res[[2]], 6)` & 
-`r gcf(res[[3]], 6)` & `r gcf(res[[4]], 6)` & 
-`r gcf(res[[5]], 6)` & `r gcf(res[[6]], 6)` &
-`r gcf(res[[7]], 6)` & `r gcf(res[[8]], 6)` \\
-& `r gcf2(res[[1]], 6)` & `r gcf2(res[[2]], 6)` & 
-`r gcf2(res[[3]], 6)` & `r gcf2(res[[4]], 6)` & 
-`r gcf2(res[[5]], 6)` & `r gcf2(res[[6]], 6)` & 
-`r gcf2(res[[7]], 6)` & `r gcf2(res[[8]], 6)` \\
-%
-Method: Panel & 
-`r gcf(res[[1]], 7)` & `r gcf(res[[2]], 7)` & 
-`r gcf(res[[3]], 7)` & `r gcf(res[[4]], 7)` & 
-`r gcf(res[[5]], 7)` & `r gcf(res[[6]], 7)` &
-`r gcf(res[[7]], 7)` & `r gcf(res[[8]], 7)` \\
-& `r gcf2(res[[1]], 7)` & `r gcf2(res[[2]], 7)` & 
-`r gcf2(res[[3]], 7)` & `r gcf2(res[[4]], 7)` & 
-`r gcf2(res[[5]], 7)` & `r gcf2(res[[6]], 7)` & 
-`r gcf2(res[[7]], 7)` & `r gcf2(res[[8]], 7)` \\
-%
-Method: IV & 
-`r gcf(res[[1]], 8)` & `r gcf(res[[2]], 8)` & 
-`r gcf(res[[3]], 8)` & `r gcf(res[[4]], 8)` & 
-`r gcf(res[[5]], 8)` & `r gcf(res[[6]], 8)` &
-`r gcf(res[[7]], 8)` & `r gcf(res[[8]], 8)` \\
-& `r gcf2(res[[1]], 8)` & `r gcf2(res[[2]], 8)` & 
-`r gcf2(res[[3]], 8)` & `r gcf2(res[[4]], 8)` & 
-`r gcf2(res[[5]], 8)` & `r gcf2(res[[6]], 8)` & 
-`r gcf2(res[[7]], 8)` & `r gcf2(res[[8]], 8)` \\
-%
-Method: RDD &
-`r gcf(res[[1]], 9)` & `r gcf(res[[2]], 9)` & 
-`r gcf(res[[3]], 9)` & `r gcf(res[[4]], 9)` & 
-`r gcf(res[[5]], 9)` & `r gcf(res[[6]], 9)` &
-`r gcf(res[[7]], 9)` & `r gcf(res[[8]], 9)` \\
-& `r gcf2(res[[1]], 9)` & `r gcf2(res[[2]], 9)` & 
-`r gcf2(res[[3]], 9)` & `r gcf2(res[[4]], 9)` & 
-`r gcf2(res[[5]], 9)` & `r gcf2(res[[6]], 9)` & 
-`r gcf2(res[[7]], 9)` & `r gcf2(res[[8]], 9)` \\
-% 
-Inst. Design: Mixed & 
-`r gcf(res[[1]], 10)` & `r gcf(res[[2]], 10)` & 
-`r gcf(res[[3]], 10)` & `r gcf(res[[4]], 10)` & 
-`r gcf(res[[5]], 10)` & `r gcf(res[[6]], 10)` &
-`r gcf(res[[7]], 10)` & `r gcf(res[[8]], 10)` \\
-& `r gcf2(res[[1]], 10)` & `r gcf2(res[[2]], 10)` & 
-`r gcf2(res[[3]], 10)` & `r gcf2(res[[4]], 10)` & 
-`r gcf2(res[[5]], 10)` & `r gcf2(res[[6]], 10)` & 
-`r gcf2(res[[7]], 10)` & `r gcf2(res[[8]], 10)` \\
-% 
-Inst. Design: Unicameral & 
-`r gcf(res[[1]], 11)` & `r gcf(res[[2]], 11)` & 
-`r gcf(res[[3]], 11)` & `r gcf(res[[4]], 11)` & 
-`r gcf(res[[5]], 11)` & `r gcf(res[[6]], 11)` &
-`r gcf(res[[7]], 11)` & `r gcf(res[[8]], 11)` \\
-& `r gcf2(res[[1]], 11)` & `r gcf2(res[[2]], 11)` & 
-`r gcf2(res[[3]], 11)` & `r gcf2(res[[4]], 11)` & 
-`r gcf2(res[[5]], 11)` & `r gcf2(res[[6]], 11)` & 
-`r gcf2(res[[7]], 11)` & `r gcf2(res[[8]], 11)` \\
-% 
-Intercept & 
-`r gcf(res[[1]], 1)` & `r gcf(res[[2]], 1)` & 
-`r gcf(res[[3]], 1)` & `r gcf(res[[4]], 1)` & 
-`r gcf(res[[5]], 1)` & `r gcf(res[[6]], 1)` &
-`r gcf(res[[7]], 1)` & `r gcf(res[[8]], 1)` \\
-& `r gcf2(res[[1]], 1)` & `r gcf2(res[[2]], 1)` & 
-`r gcf2(res[[3]], 1)` & `r gcf2(res[[4]], 1)` & 
-`r gcf2(res[[5]], 1)` & `r gcf2(res[[6]], 1)` & 
-`r gcf2(res[[7]], 1)` & `r gcf2(res[[8]], 1)` \\
+& \multicolumn{4}{c}{\textbf{Education Outcomes}} & \multicolumn{4}{c}{\textbf{Health Care Outcomes}}  \\ \cline{2-5} \cline{6-9}
+  & \multicolumn{1}{c}{\small{(1)}} & 
+ \multicolumn{1}{c}{\small{(2)}} & 
+ \multicolumn{1}{c}{\small{(3)}} & 
+ \multicolumn{1}{c}{\small{(4)}} & 
+ \multicolumn{1}{c}{\small{(5)}} & 
+ \multicolumn{1}{c}{\small{(6)}} & 
+ \multicolumn{1}{c}{\small{(7)}} & 
+ \multicolumn{1}{c}{\small{(8)}} \\
+ & \multicolumn{1}{c}{\small{Average}} & 
+ \multicolumn{1}{c}{\small{Average}} & 
+ \multicolumn{1}{c}{\small{Elem. School}} & 
+ \multicolumn{1}{c}{\small{Middle School}} &
+\multicolumn{1}{c}{\small{Infant}} & 
+ \multicolumn{1}{c}{\small{Post-Natal}} & 
+ \multicolumn{1}{c}{\small{Cov. Family}} & 
+ \multicolumn{1}{c}{\small{Pr. Born w. 6+}} \\ 
+ & \multicolumn{1}{c}{\small{Enroll. K-4}} & 
+ \multicolumn{1}{c}{\small{Enroll. 5-8}} & 
+ \multicolumn{1}{c}{\small{Quality Index}} & 
+ \multicolumn{1}{c}{\small{Quality Index}} &
+ \multicolumn{1}{c}{\small{Mortality}} & 
+ \multicolumn{1}{c}{\small{Mort. Rate}} & 
+ \multicolumn{1}{c}{\small{Health Program}} & 
+ \multicolumn{1}{c}{\small{Pre-Natal Consult.}}\\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5} \cline{6-6} \cline{7-7} \cline{8-8} \cline{9-9}
+ LATE & 2.58$^{***}$ & -0.01 & -0.04 & -0.11 & -1.99$^{**}$ & -0.90$^{*}$ & -1.67 & -4.23 \\ 
+    & (0.81) & (1.07) & (0.13) & (0.11) & (0.78) & (0.48) & (2.09) & (4.01) \\
+  \hdashline \\[-1.8ex] 
+ N Left & \multicolumn{1}{c}{10156} & \multicolumn{1}{c}{7306} & \multicolumn{1}{c}{8597} & \multicolumn{1}{c}{5037} &
+ \multicolumn{1}{c}{12299} & \multicolumn{1}{c}{5441} & \multicolumn{1}{c}{19280} & \multicolumn{1}{c}{15548} \\ 
+ N Right & \multicolumn{1}{c}{686} & \multicolumn{1}{c}{581} & \multicolumn{1}{c}{670} & \multicolumn{1}{c}{529} & \multicolumn{1}{c}{1030} & \multicolumn{1}{c}{672} & \multicolumn{1}{c}{1297} & \multicolumn{1}{c}{1030} \\ 
+ Eff N Left & \multicolumn{1}{c}{196} & \multicolumn{1}{c}{475} & \multicolumn{1}{c}{387} & \multicolumn{1}{c}{279} & \multicolumn{1}{c}{513} & \multicolumn{1}{c}{314} & \multicolumn{1}{c}{281} & \multicolumn{1}{c}{615} \\ 
+ Eff N Right & \multicolumn{1}{c}{202} & \multicolumn{1}{c}{312} & \multicolumn{1}{c}{283} & \multicolumn{1}{c}{195} & \multicolumn{1}{c}{390} & \multicolumn{1}{c}{242} & \multicolumn{1}{c}{301} & \multicolumn{1}{c}{438} \\ 
+ BW Loc Poly & 5.132 & 11.208 & 8.724 & 7.824 
+ 7.720 & 7.183 & 4.185 & 8.891 \\ 
+ BW Bias & 10.615 & 16.694 & 15.186 & 13.714 
+ 12.289 & 10.726 & 8.310 & 15.007 \\ 
+\midrule 
+ & \multicolumn{4}{c}{\textbf{Education Outcomes -- Placebo Cutoffs}} & \multicolumn{4}{c}{\textbf{Health Care Outcomes -- Placebo Cutoffs}}\\ \cline{2-5} \cline{6-9}
+  & \multicolumn{1}{c}{\small{(9)}} & 
+ \multicolumn{1}{c}{\small{(10)}} & 
+ \multicolumn{1}{c}{\small{(11)}} & 
+ \multicolumn{1}{c}{\small{(12)}} & 
+ \multicolumn{1}{c}{\small{(13)}} & 
+ \multicolumn{1}{c}{\small{(14)}} & 
+ \multicolumn{1}{c}{\small{(15)}} & 
+ \multicolumn{1}{c}{\small{(16)}} \\
+ & \multicolumn{1}{c}{\small{Average}} & 
+ \multicolumn{1}{c}{\small{Average}} & 
+ \multicolumn{1}{c}{\small{Elem. School}} & 
+ \multicolumn{1}{c}{\small{Middle School}}&
+ \multicolumn{1}{c}{\small{Infant}} & 
+ \multicolumn{1}{c}{\small{Post-Natal}} & 
+ \multicolumn{1}{c}{\small{Cov. Family}} & 
+ \multicolumn{1}{c}{\small{Pr. Born w. 6+}}\\ 
+ & \multicolumn{1}{c}{\small{Enroll. K-4}} & 
+ \multicolumn{1}{c}{\small{Enroll. 5-8}} & 
+ \multicolumn{1}{c}{\small{Quality Index}} & 
+ \multicolumn{1}{c}{\small{Quality Index}} &
+ \multicolumn{1}{c}{\small{Mortality}} & 
+ \multicolumn{1}{c}{\small{Mort. Rate}} & 
+ \multicolumn{1}{c}{\small{Health Program}} & 
+ \multicolumn{1}{c}{\small{Pre-Natal Consult.}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5} \cline{6-6} \cline{7-7} \cline{8-8} \cline{9-9}
+  LATE & 0.45 & 0.97 & -0.10 & -0.12
+  & -1.14 & -0.25 & 1.85 & -2.22 \\ 
+  & (0.61) & (0.98) & (0.11) & (0.09)
+  & (1.05) & (0.65) & (1.25) & (2.92) \\ 
+  \hdashline \\[-1.8ex]   
+ N Left & \multicolumn{1}{c}{9040} & \multicolumn{1}{c}{6350} & \multicolumn{1}{c}{7529} & \multicolumn{1}{c}{4243} & \multicolumn{1}{c}{10614} & \multicolumn{1}{c}{4449} & \multicolumn{1}{c}{17198} & \multicolumn{1}{c}{13861} \\ 
+ N Right & \multicolumn{1}{c}{1802} & \multicolumn{1}{c}{1537} & \multicolumn{1}{c}{1738} & \multicolumn{1}{c}{1323} & \multicolumn{1}{c}{2715} & \multicolumn{1}{c}{1664} & \multicolumn{1}{c}{3379} & \multicolumn{1}{c}{2717} \\ 
+ Eff N Left & \multicolumn{1}{c}{1186} & \multicolumn{1}{c}{1138} & \multicolumn{1}{c}{1202} & \multicolumn{1}{c}{931} & \multicolumn{1}{c}{1213} & \multicolumn{1}{c}{775} & \multicolumn{1}{c}{2575} & \multicolumn{1}{c}{1575} \\ 
+ Eff N Right & \multicolumn{1}{c}{724} & \multicolumn{1}{c}{672} & \multicolumn{1}{c}{734} & \multicolumn{1}{c}{580} & \multicolumn{1}{c}{890} & \multicolumn{1}{c}{557} & \multicolumn{1}{c}{1483} & \multicolumn{1}{c}{1004} \\ 
+ BW Loc Poly & 6.325 & 6.975 & 6.686 & 7.198 
+ & 4.840 & 5.360 & 6.999 & 5.796 \\ 
+ BW Bias & 9.860 & 12.598 & 10.029 & 11.004 
+ & 7.268 & 7.943 & 11.213 & 9.559 \\ 
 \bottomrule
-\end{tabular}
-\begin{minipage}{\textwidth}
-\renewcommand{\footnoterule}{}
-\footnotetext{\textbf{Note:} {The restricted and extended samples include `r length(dat$id)` and `r length(fulldat$id)` study coefficients, respectively. We report the results from the permutation tests. Reference categories: Independent Variable: Upper House Size; Published $= No$; Non-Majoritarian; Method $= OLS$, Inst. Design $= Bicameral$. Significance codes: *** $p < 0.01$; ** $p < 0.05$; * $p < 0.10$. Blank cells mean that there is no sufficient data to estimate the paramater.}}
-\end{minipage}
-\end{table}
-```
+\end{tabularx}
+\begin{tablenotes}
+\small
+\item \textbf{Note:} $^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1. RD local linear estimates using \citet{CCT2014} optimal bandwidth quadratic selection and triangular kernel. Robust standard errors, clustered at the municipal level, are in parentheses. The control variables are: population, GDP per capita, number of seats in 2000, year, and a dummy for the northeast region. \textit{N Left} and \textit{N Right} represent the total number of observations on the left and right sides of the thresholds (untreated). \textit{Eff N Left} and \textit{Eff N Right} are the number of cases within the bandwidth. \textit{BW Loc Poly} is the Bandwidth used to compute the Local Average Treatment Effect (LATE). \textit{BW Bias} is the bandwidth used to compute the standard errors.
+\end{tablenotes}
+\end{threeparttable}}
+\end{sidewaystable}
 
-\vspace{0.5cm}
+XXXX Rewrite all this!
 
-The first two models show the results for public expenditure per capita. No
-variable reaches conventional levels of statistical significance in the
-restricted sample. In the extended sample, we find that models that use lower
-chamber size as an independent variable have lower effects when compared to
-upper chamber size. This suggests that an additional member in the lower house
-has a smaller impact on public spending than a member in the upper house.
-Moreover, the results for the extended sample point out that recent studies
-find larger effects than older ones.
+Each of the outcomes is further divided into two groups. In the first group, we include services that are easier to provide or credit claim, or both. These services are preferred by the electorate and have an intensive advertising effect for the councillor. In this category, we have school enrollment and infant mortality. In the second group are services either considered less critical by voters or harder to credit claim. They are harder to translate into votes or to target and advertise. In our models, we use preventive health care and quality of education to illustrate. According to our theory, we expect that increasing legislature size has a positive effect on desirable services that are easy to target.
 
-The third and fourth columns use the natural logarithm of expenditure per
-capita as the dependent variable. Among the coefficients in the restricted
-sample, those in published studies are significantly smaller than those in
-working papers. Another two moderators are negatively associated with the
-outcome in our larger study pool. They both refer to estimation methods.
-Studies that employ panel/fixed effects or regression discontinuity designs
-(RDDs) have lower coefficients for log expenditure per capita if we take OLS as
-the reference category. 
+Table \ref{tab:outcomes} presents the results for education and health care outcomes. The data shows that, with the addition of a city councillor, enrollment in elementary schools increased by 2.58 children on average per school. This represents a change of around 0.20 standard deviations. From 5th to 8th grades, council size has no effect on school enrollment. Due to high dropout rates at this stage, spots for extra students remain vacant. Results are insignificant for quality indicators.\footnote{As education quality improves in the medium to long term, we look into the 2015 education quality index in the Online Supplemental Materials. Effects are null, pointing to no delayed benefits.} As expected, the placebo regressions are also insignificant.
 
-Three variables are statistically significant in the third set of
-meta-regressions, which include public expenditure as a percentage of GDP as
-the dependent variable. Both in our restricted and in our extended samples,
-recent studies have smaller coefficients than older papers, which stands in
-contrast with our previous models. Moreover, institutional design also affects
-outcomes. Papers that use mixed samples of bicameral and unicameral systems
-report significantly lower coefficients than those that analyse bicameral
-legislatures exclusively. Non-majoritarian electoral systems are also
-associated with lower levels of public spending, which may be justified since
-the "law of $1/n$" was conceived for majoritarian voting. These latter results,
-however, do not replicate in the first set of estimations.
+Although Brazil achieved universal elementary school enrolment, enrolling a child in public school is particularly difficult in the early years. At the same time, taking care of small children is a considerable burden for poor households. Citizens thus reach out to councillors who can pressure school's bureaucracy to accommodate an extra child. Such an effort has virtually no cost to the politician, and grants her direct recognition, benefiting her electorally. 
 
-The last two columns report meta-regressions that aggregate all selected
-studies. In the restricted sample of coefficients, unicameralism has a
-pro-$1/n$ effect. This strongly supports the theory's original formulation, as
-most unicameral occurrences are local governments, for which the "law" was
-originally conceived. This result holds for the extended sample as well. When
-we regress all `r dim(fulldat)[1]` coefficients, the effects of estimation
-methods become stronger once again. Panel/fixed-effects models and regression
-discontinuity designs both decrease the $1/n$ effect at the .1\% significance
-level. Instrumental variable models follow along these lines. Additionally,
-non-majoritarian voting constituencies appear once again as settings where the
-law of $1/n$ becomes weaker.
+Consequences for infant mortality rates are also substantial. 1.99 deaths per 1,000 children born are prevented with every extra legislator. This impact is significant in absolute terms and represents an effect of 0.14 in standard deviations. Moreover, post-neonatal mortality decreases by 0.90 casualties per 1,000 births, which improves health care by 0.14 standard deviations. As expected, placebo regressions were statistically insignificant. However, the Family Health Program coverage and the proportion of children born with more than six prenatal consultations seems to decrease. This apparent inconsistency with the other indicators will be discussed further in the text.
 
-The evidence seems to be sensitive to the methodological design. Our results
-suggest that the same study samples may produce different outcomes depending on
-the response variables scholars decide to analyse. The broadest aggregation
-level presented the most insightful results in dialogue with the literature.
-The additional legislator in non-majoritarian legislatures does not increase
-expenditure as much as she would if the system were majoritarian. We are also
-more likely to witness legislative expenditure growing along with the amount of
-representatives in unicameral legislatures rather than in bicameral systems.
-This indicates that while the law of $1/n$ is not generalisable, its predicted
-effects are stronger when the institutional features of a polity come closer to
-its original theoretical framework.
+% Sub-Section: Mechanisms
+\subsection{Applying the Mechanism and Testing Hypotheses}
+\label{sub:mechanism}
 
-# Discussion
-\label{sec:discussion}
+We test our hypotheses in Table \ref{tab:mechanism-reg} dividing the municipal outcome data in two panels. In Panel A, we counter alternative explanations for our mechanism. In Panel B, we present evidence that corroborates our arguments.  
+\begin{table}[!htbp] \centering 
+  \caption{Mechanism Regressions -- Aggregated Municipal Level Outcomes} 
+  \label{tab:mechanism-reg} 
+\scalebox{0.9}{
+\begin{threeparttable}
+\begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}l c c c c }
+\toprule
+& \multicolumn{4}{c}{\textbf{Panel A: Representation, Competition, and Legislation Approval}} \\ \cline{2-5}
+ & \multicolumn{1}{c}{\small{(1)}} 
+ & \multicolumn{1}{c}{\small{(2)}} 
+ & \multicolumn{1}{c}{\small{(3)}} 
+ & \multicolumn{1}{c}{\small{(4)}} \\
+ & \multicolumn{1}{c}{\small{Num. Female}} & 
+ \multicolumn{1}{c}{\small{Num. Non-white}} &
+  \multicolumn{1}{c}{\small{Candidates}} & 
+  \multicolumn{1}{c}{\small{Prop. Laws}} \\ 
+   & \multicolumn{1}{c}{\small{councillors}} & 
+ \multicolumn{1}{c}{\small{councillors}} &
+  \multicolumn{1}{c}{\small{Per Seat}} & 
+  \multicolumn{1}{c}{\small{Approved Council}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
+ LATE & 0.22 & 0.60 & -0.19 & -0.02 \\ 
+  & (0.38) & (0.85) & (1.11) & (0.08) \\ 
+  \hdashline \\[-1.8ex] 
+ N Left & \multicolumn{1}{c}{5183} & \multicolumn{1}{c}{239} & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{3424} \\ 
+N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{158} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{270} \\ 
+Eff N Left & \multicolumn{1}{c}{194} & \multicolumn{1}{c}{47} & \multicolumn{1}{c}{179} & \multicolumn{1}{c}{227} \\ 
+Eff N Right & \multicolumn{1}{c}{144} & \multicolumn{1}{c}{47} & \multicolumn{1}{c}{132} & \multicolumn{1}{c}{142} \\ 
+BW Loc Poly & 8.564 & 2.954 & 8.126 & 11.080 \\ 
+BW Bias & 13.569 & 4.917 & 12.049 & 16.921 \\[1.0ex] 
+\midrule 
+& \multicolumn{4}{c}{\textbf{Panel B: Access to Resources and Patronage}} \\ \cline{2-5}
+ & \multicolumn{1}{c}{\small{(5)}} 
+ & \multicolumn{1}{c}{\small{(6)}} 
+ & \multicolumn{1}{c}{\small{(7)}} 
+ & \multicolumn{1}{c}{\small{(8)}} \\
+ & \multicolumn{1}{c}{\small{Mayoral}} & 
+ \multicolumn{1}{c}{\small{Num. Politically}} & 
+ \multicolumn{1}{c}{\small{Num. Career}} & 
+ \multicolumn{1}{c}{\small{Num. councillor}} \\
+ & \multicolumn{1}{c}{\small{Coalition Size}} & 
+ \multicolumn{1}{c}{\small{Appointed Empl.}} & 
+ \multicolumn{1}{c}{\small{Bureaucrats}} & 
+ \multicolumn{1}{c}{\small{Assistants}} \\[1ex]  \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
+ LATE & 0.91$^{*}$ & 105.09$^{*}$ & 71.57 & 2.09 \\ 
+  & (0.50) & (62.12) & (218.12) & (4.37) \\ 
+    \hdashline \\[-1.8ex] 
+ N Left & \multicolumn{1}{c}{5168} & \multicolumn{1}{c}{15536} & \multicolumn{1}{c}{15531} & \multicolumn{1}{c}{5179} \\ 
+N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{1028} & \multicolumn{1}{c}{1027} & \multicolumn{1}{c}{344} \\ 
+Eff N Left & \multicolumn{1}{c}{240} & \multicolumn{1}{c}{351} & \multicolumn{1}{c}{513} & \multicolumn{1}{c}{99} \\ 
+Eff N Right & \multicolumn{1}{c}{161} & \multicolumn{1}{c}{334} & \multicolumn{1}{c}{388} & \multicolumn{1}{c}{101} \\ 
+BW Loc Poly & 9.906 & 6.019 & 7.695 & 5.134 \\ 
+BW Bias & 15.846 & 10.170 & 11.780 & 8.902 \\ 
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}
+\small
+\item \textbf{Note:} $^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1. RD local linear estimates using \citet{CCT2014} optimal bandwidth quadratic selection and triangular kernel. Robust standard errors, clustered at the municipal level, in parentheses. Controls: population; GDP per capita; number of seats in 2000; year; and dummy for northeast region. \textit{N Left} and \textit{N Right} represent the total number of observations on the left and right sides of the thresholds (untreated). \textit{Eff N Left} and \textit{Eff N Right} are the number of cases within the bandwidth. \textit{BW Loc Poly} is the Bandwidth used to compute the Local Average Treatment Effect (LATE). \textit{BW Bias} is the Bandwidth used to compute the standard errors.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table} 
 
-In this letter, we assess the empirical validity of the "law of $1/n$". Based
-on a sample of `r length(unique(dat$id))` publications on the topic, our
-meta-analyses show that there is no strong evidence that an increase in the
-number of legislators has a significant effect on public expenditures. If such
-effect exists, it is likely driven by an increase in $k$, the size of the upper
-legislature, as suggested by several studies in the literature
-[@baqir2002districting; @bradbury2001legislative; @bradbury2003local;
-@chen2007law; @gilligan2001fiscal; @primo2006stop]. Instead, we find
-better evidence for the "reverse law of $1/n$", which posits that larger
-legislatures lead to lower government spending. This is mainly because studies
-using regression discontinuity designs, a method that has robust internal
-validity, consistently indicate a negative relationship between lower house size
-and the logarithm of expenditure per capita [@hohmann2017effect;
-@lewis2019legislature; @petterssonlidbom2012size].
+Panel A (Table \ref{mechreg1}) tests perspectives proposed by the literature. One of them is that better representation of under-served groups could broaden health care and education provision \citep{pande2003can, chattopadhyay2004women, chin2011redistributive, duflo2012women}. However, columns (1) and (2) show that neither gender nor representation of non-white legislators significantly improves public service provision for minorities. Alternatively, enhanced competition is also thought to improve responsiveness, alleviating the principal-agent problem between voters and politicians. Yet, we show that competition (3) or bills approval (4) remain unchanged when we increase council size. 
 
-The meta-regressions show that study characteristics have a considerable
-influence on reported results. Electoral system affects the relationship
-between legislature size and public expenditure, but the results are not
-replicable in all estimations. Publication year generates conflicting findings
-in our models. Nevertheless, the meta-regressions confirm that RDDs produce
-negative effects more frequently than OLS regressions.
+Panel B (Table \ref{mechreg1}) illustrates our mechanism. Column (5) shows that there is a 91\% chance of the extra legislator belonging to the mayoral coalition. This suggests that these additions will likely enhance welfare effects due to increased governability\footnote{It is possible that the new coalition councillor facilitates mayor's lawmaking process. Indeed, we might actually be estimating the effects of mayors on policy-making. Their relationship with the central government is fundamental for service provision \citep{bueno2018bypassing}. In the Online Supplemental Materials, we investigate whether mayoral and council party composition vary across cities, and find that it remains unchanged around the thresholds.}. Column (6) demonstrates that adding one councillor increases the number of appointed employees by 105 with a standard deviation of over 0.30. This attests councillors' strong ties with the administration and facilitates service provision.
 
-Why is there no clear-cut evidence in favour or against the "law of $1/n$"? A
-plausible reason may be that there are few incentives for the pure accumulation
-of knowledge in the social sciences, at least when compared to the benefits
-scholars may accrue when they challenge or add features to existing theories
-[@geddes2003paradigms]. This leads to a reduced number of replication studies in
-the field, although we have seen some positive changes in this respect, such as
-EGAP's _Metaketa Initiative_.\footnote{See
-\url{https://egap.org/our-work/the-metaketa-initiative} for further
-information.} For instance, in our sample, papers added supermajority rules
-[@lee2015supermajority; @lee2016supermajority], redistricting
-[@baqir2002districting; @lee2018court], party ideology [@bjedov2014impact],
-coalition sizes [@baskaran2013coalition], term limits [@erler2007termlimits],
-bicameralism [@ricciuti2004legislature], and the interplay between upper and
-lower houses [@chen2007law] to the main theory, but a comprehensive
-procedural replication of the findings using different samples is yet to be
-written. The addition of new features has the benefit of enriching the original
-theory with useful details, although it has the disadvantage of not providing a
-conclusive test to the "law of $1/n$".
+Additionally, we consider the number of career employees\footnote{Career bureaucrats have to undergo rigorous selection that prevents them from being fired for political reasons.} and find that improvements in state capacity and welfare are not consequences of bureaucratic agency. Column (7) points that the number of career bureaucrats does not significantly explain access to resources. Finally, adding a legislator has a null effect on the average number of appointed cabinet employees (column (8)). 
 
-Our analyses suggest three areas for further research. First, our study
-sample did not include articles that evaluate the association between the
-log($n$) and public expenditure per capita or between $k$ and log expenditure
-per capita. New work on that area might clarify some of the inconsistencies we
-find here. Second, despite the inclusion of several moderators in our models,
-aggregate results still show considerable heterogeneity. Domestic factors such
-as party dynamics or gerrymandering [@lee2015supermajority;
-@mukherjee2003politicalparties; @gilligan2006public] may prove useful in this
-regard. Finally, we highlight the need for more causal inference studies in the
-literature. Whenever possible, authors should leverage natural and
-quasi-experiments to assess whether the current results hold when tested with
-such research designs. These suggestions may help scholars and policy-makers to
-reach an optimal balance between sound fiscal policy and the demands for
-increased political representation.
+\subsection{Disaggregating Data on Approved Legislation and City councillor Survey}
+\label{sub:survey}
+
+To evidence our mechanism's operation in city councillors' ordinary legislative activities, we examine two datasets: one composed by the approved bills, and the other by answers to the online survey. Figure \ref{LEGAPPR} showcases the results of the analysis of approved legislation.
+
+\begin{figure}[htb!]
+  \begin{center}
+  \caption{Legislation Approved in Municipalities Closer to the City Council Thresholds}
+    \begin{minipage}{1 \linewidth}
+      \centerline{\includegraphics[width=6in,angle=0]{figs/laws2019.pdf}}
+      \bigskip
+      \label{LEGAPPR}
+    \end{minipage}
+  \end{center}
+\end{figure}
+
+As previously argued, lawmakers decide on service provision based on the feasibility of credit-claiming. The top-two preferred legislation categories share this feature. In addition,\textit{local public goods} carries high electoral yield, which explains it ranking above \textit{others}. Graph 2A (Figure \ref{LEGAPPR}) presents the frequency of approved proposals. The overwhelming majority belongs to \textit{local public goods} (72.9\%), followed by \textit{others} (17.4\%).\footnote{Note that the sum is below 100\%. This is due to the SVM algorithm classifying around 3.5\% of laws as belonging to none of the categories above. For more information, see \citet{collingwood2013rtexttools}.} Graph 2B (Figure \ref{LEGAPPR}) depicts the average number of bills per legislator and, evidently, reflects the same pattern: \textit{local public goods} also amount to the highest, at 290.7 (S.E. 56.95), and \textit{others} follows with 77.6 (S.E. 15.50). Measuring the production of each representative builds on the idea that adding legislators – who provide more services – generates greater welfare.
+
+Health care and education services, which compose 11.1\% of total approved bills (44.3 per legislator), are mainly addressed through \textit{local public goods}. According to Graph 2C (Figure \ref{LEGAPPR}), they represent 80.6\% of proposals in these sectors, followed by \textit{municipal public goods} (7.8\%). Productivity follows the same pattern (Graph 2D, Figure \ref{LEGAPPR}). Legislators propose 36.4 (in absolute terms) of the first, and 4.2 of the latter. Therefore, not only in general, but also specifically for education and health care, \textit{local public goods} are the preferred choice of councillors in Brazilian municipal chambers.
+
+In our online survey with former city councillors, we asked about their legislative activity, the amount of votes it yielded, and how they negotiated with the mayor. While most results are in the Online Supplemental Materials, Figure \ref{survelec} displays the services councillors believe to generate the highest electoral results.
+
+\begin{figure}[htb!]
+  \begin{center}
+  \caption{Electoral Attractiveness of Councilor's Activities and Practices}
+    \begin{minipage}{1 \linewidth}
+      \centerline{\includegraphics[width=6in,angle=0]{figs/elecYieldJobsCouncilorsJan2019.pdf}}
+      \bigskip
+      \label{survelec}
+    \end{minipage}
+  \end{center}
+\end{figure}
+
+The service that best secures votes, according to 84.3\% of the interviewed, is access to hospital facilities; to 56.0\%, it is school admission; and to 71.0\%, it is access to medication. 82.6\% of respondents confirm that local public goods are electorally beneficial, and 50.2\% indicated that, namely, fixing potholes on public roads resulting in some or many votes. Second in their evaluation is public school quality oversight (34.7\%), followed by  reported public construction oversight (25.3\%). These last two services, despite being preferred by voters and easy to credit-claim, require more investment. Coordination costs related to mayor negotiation and bureaucratic mediation also force them to recur to less demanding options, for instance, honors legislation. This is likely the reason why more approved bills fall under the \textit{others} label than under \textit{oversight}.
+
+\section{Discussion}
+
+%CLIENTELISM
+
+Although city councillors should have governing advantages for being the closest representatives to citizens, the literature often presents them as inefficient and clientelistic \citep{Castroetal2009, AlmeidaFelix2012, leal2012coronelismo}. This proximity to the community results in better informed decision-making and accountability. However, it also creates perverse incentives to corruption, patronage and overprovision of electorally beneficial services. Poor management could be driven by private interests, or by limitations restraining governability. It is unrealistic to think that all politicians have free rein to approve and implement policies at their will. Bureaucracy and strong executives balance the assembly, who, in turn, develops strategies to enforce its will. 
+
+A councillor can only provide services which she can control or influence. In a Brazilian municipality, mayors directly control budget and staff allocation. Consequently, councillors must side with the mayor to participate in policy-making. Efforts towards establishing alliances start in the pre-electoral coalition period. If a candidate is part of the mayoral coalition, she credibly signals being able to deliver her platform promises. As the Electoral Justice allocates seats according to vote shares (D'Hondt method), pre-electoral coalitions have advantages since extremely popular candidates' votes thrust smaller candidates into office. Pre-electoral coalitions become crucial for mayors' governability after the election.
+
+Bureaucrats also mediate most of the access to resources, and may filter councillor's demands, either for or against them. To influence service provision, city councillors sometimes recur to patronage, which is a strategy mobilized to ensure collaborative administrations. It is characterized by the employment of bureaucrats attached to an incumbent's personal figure. These politically-appointed employees have incentives to support the councillor's interests unconditionally \citep{Robinson2013}. Loyalty of the administration – through patronage or not – thus appears as fundamental in the political game. 
+
+Another limitation to representative agency is based on perception, as politicians imperfectly observe voters' preferences. The online survey provides us with clues on how councillor's beliefs could translate into their policy choices. \textit{Local public goods} is the preferred type of legislation across sources. We assembled five specific welfare-improving policies into the \textit{local public goods} category (Figure \ref{survelec}), namely \textit{hospital admission aid} (84.3\% answered it gives some to many votes), \textit{other local public goods} (82.6\%), \textit{access to medication} (71.0\%), \textit{school admission aid} (56.0\%), and \textit{street repairs} (50.2\%). They all pushed down remaining categories. \textit{School quality oversight} places second at overwhelming distance (34.7\%). In the approved legislation dataset (Graph 2A, Figure \ref{LEGAPPR}), \textit{local public goods} is equally favoured (72.9\%), followed by \textit{others} legislation (17.4\%), which we know to represent mostly honors bills.
+
+If councillors aim for reelection, why do approved legislation frequencies not reflect answers to the survey? Comparison points to an inconsistency that circles back to the aforementioned limitations. Since negative exposure of executive and bureaucratic underachievement tensions political coalitions, and is less attractive to voters than policy-making. Logically, councillors will dedicate more to \textit{local public goods} than to \textit{oversight}. This does not attest their lack of competence, efficiency or honesty, but rather evidences the hardship of coordinating efforts and collectively making decisions under diverging goals and interests.
+
+
+# Conclusion
+\label{sec:conclusion}
+
+In this paper, we argue that political motivation determines the services that gain traction with larger legislatures. Councillors, guided by reelection, invest in policies they believe voters want and for which credit-claiming is feasible. Consequently, many essential welfare services are underprovided, giving place to locally-targeted policies. For instance, our theory explains why patterns of poor education persist in developing countries. In 2000, among the 32 countries that participated in the OECD's \textit{Programme for International Student Assessment} (PISA), Brazil ranked last. Between 2006 and 2015, there were virtually no improvements in scores. Counterintuitively, school enrolment was close to 99\% since 2010. Although desired by voters, ameliorating education quality is difficult to trace back to specific politicians. In this logic, they have incentives to target education through tangible yet low-reaching measures, such as raising the amount of children attending schools.
+
+We run a RDD to capture the effect of adding representatives to a municipal council. We focus on the effects of exogenously imposing thresholds to chamber sizes. We compare cities with similar populations, but located on different sides of the cutoff. We also collect data on the approved legislation during the 2005-2008 term, and perform an online survey with former representatives. Empirically, larger municipal chambers prevents death in infancy and stimulate educational enrollment. These changes do not, however, coincide with improvements in education and health care quality. We find that councillors prefer investing in local public goods, and they access resources via attachment to mayors and through bureaucratic mediation.
+ 
+Our study has implications for policy-making and for the literature on distributive politics. First, we provide tools to predict welfare effects of changing the number of seats in municipal councils. We also contribute to comprehend the strategies politicians may use to adapt to these modifications. For example, an extra legislator will hardly add diversity to council activities, since there is a 91\% probability she will integrate the mayoral coalition. As for academia, we offer a simple theory to understand the underprovision of essential public goods as education and health care. We add complexity to the common belief that politicians in developing countries are purely clientelistic, inefficient or dishonest. We conclude that the political architecture of the assembly floor creates perverse incentives.
 
 \newpage
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{5pt}
-
-\nocite{baskaran2013coalition, bradbury2009spatially, drew2017price,
-erler2007termlimits, fiorino2007legislature, hohmann2017effect,
-kessler2014communication, lewis2019legislature, lledo2003electoral,
-mukherjee2003politicalparties, petterssonlidbom2012size, schaltegger2009large,
-stein1998institutional, mukherjee2003politicalparties, macdonald2008impact,
-matsusaka2005endogeneity, ricciuti2004legislatures}
-
-
