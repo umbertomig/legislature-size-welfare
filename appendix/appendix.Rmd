@@ -161,7 +161,7 @@ Note that after some iterations, the budget may shrink enough so that $t^* = \un
 We now have the entire strategy profile for the city councilors, provided that they reject the initial mayor's proposal. Proceeding by backward induction, we need to find the mayor's proposal that will win the support of the majority of the council. As the mayor is the proposer, policy concerns come into play, and the offer for a government aligned councilor will be different from the offer for an opposition councilor. For a government aligned councilor, assuming that the councilor is the pivotal players, the accepted offer has to be better than rejecting the proposal and waiting for the next round:
 
 \[
-p + x_i + B\pi_C(t_i) \ \geq \ \dfrac{1}{N}\left(\right) + \dfrac{1}{2}(x_i + B\pi_C(t_i))
+p + x_i + B\pi_C(t_i) \ \geq \ \dfrac{1}{N}\left(  \right) + \dfrac{1}{2}(x_i + B\pi_C(t_i))
 \]
 
 
