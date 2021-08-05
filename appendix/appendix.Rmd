@@ -158,12 +158,28 @@ The proof is direct, after collecting the terms from the previous discussion.
 Note that after some iterations, the budget may shrink enough so that $t^* = \underline{t}$ is unfeasible. This means that there exists a $k^*$ such that, when $k > k^*$, $t^* = 0$, and the councilors divide the remaining budget as rents. This case is trivial to solve, making $\underline{x}(k) = \dfrac{1}{N}\left(\delta^{k+1}R\right)$ and $x_i = \delta^kR\left(1 - \dfrac{\delta}{2}\right)$.
 \end{proof}
 
-We now have the entire strategy profile for the city councilors, provided that they reject the initial mayor's proposal. Proceeding by backward induction, we need to find the mayor's proposal that will win the support of the majority of the council. As the mayor is the proposer, policy concerns come into play, and the offer for a government aligned councilor will be different from the offer for an opposition councilor. For a government aligned councilor, assuming that the councilor is the pivotal players, the accepted offer has to be better than rejecting the proposal and waiting for the next round:
+We now have the entire strategy profile for the city councilors, provided that they reject the mayor's proposal. Proceeding by backward induction, we solve for the mayor's proposal that wins the support of the majority of the council. In the mayor's proposal policy concerns come into play and the offer for a government an aligned councilor is different than the offer for an opposition councilor. For a government aligned councilor, assuming that the councilor is the pivotal players, the accepted offer $(\underline{x}_m^g, \underline{t}_m^g)$ has to be better than rejecting the proposal and waiting for the next round:
 
 \[
-p + x_i + B\pi_C(t_i) \ \geq \ \dfrac{1}{N}\left(  \right) + \dfrac{1}{2}(x_i + B\pi_C(t_i))
+p + x_m^g + B\pi_C(t_m^g) \ \geq \ \dfrac{1}{N}\left( \delta R -\dfrac{N}{2}(\underline{x}(1) + \underline{t}) + B\pi_C(t_i))  \right) + \left(1 - \dfrac{1}{N}\right)\left(\dfrac{1}{2}\right)(\underline{x}(1) + B\pi_C(t_i))
 \]
 
+Note that $\underline{x}(1)$ is the offer of private goods if the councilor rejects the mayors offer, so that $k = 1$. As the benefit of retention $B$ is higher than the cost of providing the targeted goods $\underline{t}$, the optimal provision of targeted goods satisfy the threshold for reelection: $t^* = t_m^g = t_i = \underline{t}$. Rewriting the equations with this info leads to:
+
+\[
+p + x_m^g + B \ \geq \ \dfrac{1}{N}\left( \delta R -\dfrac{N}{2}(\underline{x}(1) + \underline{t}) + B)  \right) + \left(1 - \dfrac{1}{N}\right)\left(\dfrac{1}{2}\right)(\underline{x}(1) + B)
+\]
+
+Solving for $x_m^g$ leads us to:
+
+\[
+x_m^g \ \geq \ -p +\dfrac{1}{2N+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2N}\right)-N(\underline{t} + B) + B\right] \equiv \underline{x}_m^g
+\]
+
+For the opposition politician, the offer is equal to:
+
+
+, 
 
 .
 
