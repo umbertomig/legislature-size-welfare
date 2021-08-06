@@ -290,7 +290,15 @@ There exists a probability of electing a councilor aligned with the government $
 
 If the proposition is correct, then $C_G(N-1) - C_G(N+1) \geq 0$. Note that the differences for the partial binomial sums are increasing in $\gamma$ [@worsch1994lower]. However, if we open up the difference:
 
+\[
+\dfrac{N}{2}(\underline{t} + \underline{x}_o^g(N-1)) + \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\left( \underline{x}_m^g(N-1) - \underline{x}_m^o(N-1) \right) - \left(\dfrac{N}{2}+1\right)(\underline{t} + \underline{x}_o^g(N+1)) - \sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\left( \underline{x}_m^g(N+1) - \underline{x}_m^o(N+1) \right) \geq 0
+\]
 
+Rearranging the terms:
+
+\[
+- \underline{t} - \underline{x}_o^g(N+1) - \dfrac{N}{2}(\underline{x}_o^g(N+1) - \underline{x}_o^g(N-1)) -2p \left[\sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\eta_g - \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\eta_g\right]
+\]
 
 \end{proof}
 
