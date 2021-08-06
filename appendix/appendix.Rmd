@@ -197,13 +197,13 @@ The offer for a government-aligned councilor is always lower than the offer for 
 \end{lemma}
 
 \begin{proof}
-Note that the $\underline{x}_m^g = 2p + \underline{x}_o^g$. As the political disagreement is higher than zero, $\underline{x}_m^g = - 2p + \underline{x}_o^g < \underline{x}_o^g$. Moreover, note that $\underline{x}_m^g - \underline{x}_o^g = -2p$.
+Note that the $\underline{x}_m^g = 2p + \underline{x}_o^g$. As the political disagreement is higher than zero, $\underline{x}_m^g = - 2p + \underline{x}_m^o < \underline{x}_m^g$. Moreover, note that $\underline{x}_m^g - \underline{x}_m^o = -2p$.
 \end{proof}
 
-This characterizes the offer that the mayor will make to win the support of the council. Now, let the number of government politicians be equal to $\eta_g$, and the ex-ante probability of electing a councilor aligned with the government equal to $\gamma \in (0,1)$. We define the cost to govern $C_g(N)$ as XXXX:
+This characterizes the offer that the mayor will make to win the support of the council. Now, let the number of government politicians be equal to $\eta_g$, and the ex-ante probability of electing a councilor aligned with the government equal to $\gamma \in (0,1)$. We define the cost to govern $C_G(N)$ as XXXX:
 
 \[
-C_g(N) = \dfrac{N}{2}(\underline{t} + \underline{x}_o^g) + \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\left( \underline{x}_m^g - \underline{x}_o^g \right)
+C_G(N) = \dfrac{N}{2}(\underline{t} + \underline{x}_o^g) + \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\left( \underline{x}_m^g - \underline{x}_m^o \right)
 \]
 
 And the probability that $\eta_g$ councilors belong to the mayor's coalition is equal to $\mathbb{P}(\eta_g) = \binom{N}{\eta_g}\gamma^{\eta_g}(1-\gamma)^{N-\eta_g}$, which is the binomial probability given that the ex-ante chance to elect an aligned councilor is equal to $\gamma$.
@@ -213,23 +213,23 @@ We need now to derive the optimal rents and public goods provision that the mayo
 \[
 \begin{aligned}
 \max_{r, g} \quad & u(r) + B_M\pi(g)\\
-\textrm{s.t.} \quad & r + g + C_g(N) \leq R
+\textrm{s.t.} \quad & r + g + C_G(N) \leq R
 \end{aligned}
 \]
 
 And in equilibrium the budget binds, the optimal public goods provision maximizes:
 
 \[
-\max_{g} \{ u(R - g - C_g(N)) + B_M\pi(g) \}
+\max_{g} \{ u(R - g - C_G(N)) + B_M\pi(g) \}
 \]
 
 The first order condition for an optimal public goods provision makes the marginal benefits to increase rents, in this case, marginal costs of providing the public goods, equals to the marginal benefits of reelection:
 
 \[
-u'(R - g - C_g(N)) = B_M\pi'(g)
+u'(R - g - C_G(N)) = B_M\pi'(g)
 \]
 
-This is sufficient for the equilibrium, as the second order condition reassures the concavity of the mayor's expected utility: $u''(R - g^* - C_g(N)) + B_M\pi''(g^*) < 0$.
+This is sufficient for the equilibrium, as the second order condition reassures the concavity of the mayor's expected utility: $u''(R - g^* - C_G(N)) + B_M\pi''(g^*) < 0$.
 
 \begin{proposition}
 The provision of public goods increase with legislature size if the costs of govern decreases in larger legislatures.
@@ -238,7 +238,60 @@ The provision of public goods increase with legislature size if the costs of gov
 \begin{proof}
 In order to prove this result, we need to show that the mayor's expected utility satisfy the increasing differences in $g$ and $N$. This would mean that when increasing the size of the council, the optimal solution $g^*$ would also increase. However, as $N$ increases discretely, we cannot take a derivative on $N$ and use the implicit function theorem. We use Monotone Comparative Statics [@milgromshannonXXXX] to derive these results.
 
-The mayor's expected utility
+The mayor's expected utility satisfy the increasing differences in $g$ and $N$ when, for $g > g'$ and $N+1>N$, we have:
+
+\[
+\mathbb{E}\text{U}(g, N+1) - \mathbb{E}\text{U}(g', N+1) \geq \mathbb{E}\text{U}(g, N) - \mathbb{E}\text{U}(g', N)
+\]
+
+And after substituting, we have:
+
+\[
+u(R - g - C_G(N+1)) + B_M\pi(g) - u(R - g' - C_G(N+1)) - B_M\pi(g')
+\\
+\geq 
+\\
+u(R - g - C_G(N)) + B_M\pi(g) - u(R - g' - C_G(N)) - B_M\pi(g')
+\]
+
+Which is equal to:
+
+\[
+u(R - g - C_G(N+1)) - u(R - g' - C_G(N+1)) \geq 
+u(R - g - C_G(N)) - u(R - g' - C_G(N))
+\]
+
+Multiplying both sides by $\dfrac{1}{g - g'}$ and taking the limit when $g \rightarrow g'$, we have:
+
+\[
+u'(R - g - C_G(N+1)) \geq 
+u'(R - g - C_G(N))
+\]
+
+This is true when the cost of govern with a council size of $N+1$ is lower than the cost of govern when the council size has $N$ councilors:
+
+\[
+C_G(N+1) \leq C_G(N)
+\]
+
+Therefore, to satisfy increasing differences in XXXX, 
+
+\end{proof}
+
+This gives us our first empirical hypothesis to test: if the cost of govern decreases when the legislature increases, then the public goods provision increase when the legislature size increase. Moreover, the rents also increase with the legislature size.
+
+\begin{proposition}
+
+There exists a probability of electing a councilor aligned with the government $\gamma^*$ such that, for all $\gamma > \gamma^*$, the cost of govern decreases as $N$ increases, i.e. $C_G(N+1) \leq C_G(N)$.
+
+\end{proposition}
+
+\begin{proof}
+
+If the proposition is correct, then $C_G(N-1) - C_G(N+1) \geq 0$. Note that the differences for the partial binomial sums are increasing in $\gamma$ [@worsch1994lower]. However, if we open up the difference:
+
+
+
 \end{proof}
 
 \newpage
