@@ -200,15 +200,38 @@ The offer for a government-aligned councilor is always lower than the offer for 
 Note that the $\underline{x}_m^g = 2p + \underline{x}_o^g$. As the political disagreement is higher than zero, $\underline{x}_m^g = - 2p + \underline{x}_m^o < \underline{x}_m^g$. Moreover, note that $\underline{x}_m^g - \underline{x}_m^o = -2p$.
 \end{proof}
 
-This characterizes the offer that the mayor will make to win the support of the council. Now, let the number of government politicians be equal to $\eta_g$, and the ex-ante probability of electing a councilor aligned with the government equal to $\gamma \in (0,1)$. We define the cost to govern $C_G(N)$ as XXXX:
+This characterizes the offer that the mayor will make to win the support of the council. The next Definition helps to decompose the politician's offer into two components: rents and policy compensation.
+
+\begin{definition}
+Define the rents offered from the bargaining process as
 
 \[
-C_G(N) = \dfrac{N}{2}(\underline{t} + \underline{x}_o^g) + \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\left( \underline{x}_m^g - \underline{x}_m^o \right)
+b(N) \ = \ \dfrac{1}{2N+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2N}\right)-N(\underline{t} + B) + B\right]
+\]
+
+When the legislature size is $N$, the optimal offers for an opposition member is:
+
+\[
+\underline{x}_m^o(N) = b(N) + p
+\]
+
+And the optimal offer for a government member is:
+
+\[
+\underline{x}_m^g(N) = b(N) - p
+\]
+
+\end{definition}
+
+Now, let the number of government politicians be equal to $\eta_g$, and the ex-ante probability of electing a councilor aligned with the government equal to $\gamma \in (0,1)$. We define the cost to govern $C_G(N)$ as three parts equation: first, the costs of making the electoral transfers for at least half of the councilors; second, the rents paid in bargaining; and last, the political costs, that depend on the amount of politicians that are affiliated with the mayor's party. After simplifications, the equation describing the costs of govern is as follows:
+
+\[
+C_G(N) = \dfrac{N}{2}(\underline{t} + b(N) + p) - 2p\sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\eta_g
 \]
 
 And the probability that $\eta_g$ councilors belong to the mayor's coalition is equal to $\mathbb{P}(\eta_g) = \binom{N}{\eta_g}\gamma^{\eta_g}(1-\gamma)^{N-\eta_g}$, which is the binomial probability given that the ex-ante chance to elect an aligned councilor is equal to $\gamma$.
 
-We need now to derive the optimal rents and public goods provision that the mayor proposes. The mayor benefits from public goods provision, as it increases the chances of her reelection. However, she also wants to receive some compensation XXXX
+We need now to derive the optimal rents ($r$) and public goods provision ($g$) proposed by the mayor. The mayor benefits from public goods provision, as it increases the chances of her reelection. However, she prefers to contribute as minimum as possible for the public goods, and extract the remaining resources as political rents. Therefore, her objective is to maximize the expected utility subject to the budget constraint.
 
 \[
 \begin{aligned}
@@ -217,7 +240,7 @@ We need now to derive the optimal rents and public goods provision that the mayo
 \end{aligned}
 \]
 
-And in equilibrium the budget binds, the optimal public goods provision maximizes:
+In equilibrium the budget binds, and the optimal public goods provision maximizes:
 
 \[
 \max_{g} \{ u(R - g - C_G(N)) + B_M\pi(g) \}
@@ -278,17 +301,39 @@ Therefore, to satisfy increasing differences in XXXX,
 
 \end{proof}
 
-This gives us our first empirical hypothesis to test: if the cost of govern decreases when the legislature increases, then the public goods provision increase when the legislature size increase. Moreover, the rents also increase with the legislature size.
+This gives us our first empirical hypothesis to test: if the cost of govern decreases when the legislature increases, then the public goods provision increase when the legislature size increase. But we still need to investigate further how the costs of govern would decrease with legislature size. On the one hand, it seems evident that with the additional legislator, comes also an additional rent and a possible veto player. In the next Lemma we show that the rents always decrease when we increase the number of legislators.
+
+\begin{lemma}
+The amount of rents required to win support from a given legislator decreases when the number of legislators increase.
+\end{lemma}
+
+\begin{proof}
+
+The proof consists in showing that when we increase the size of the legislature from $N$ to $N+1$, the amount of rents decrease.
+
+\[
+\begin{aligned}
+b(N+1) - b(N) \ = \ & \dfrac{1}{2(N+1)+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2(N+1)}\right)-(N+1)(\underline{t} + B) + B\right] \\
+& - \dfrac{1}{2N+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2N}\right)-N(\underline{t} + B) + B\right] \\
+= \ & XXXX \\
+= \ & XXXX \\
+< \ &0
+\end{aligned}
+\]
+
+\end{proof}
+
+However, the decrease in rents is not sufficient to have lower rent extraction. The political costs, if high enough, can offset the gains with lower rents. Higher political costs result from having more members of the opposition in the legislature. The next proposition shows the sufficient condition for having a lower cost of govern when we increase the number of legislators.
 
 \begin{proposition}
 
-There exists a probability of electing a councilor aligned with the government $\gamma^*$ such that, for all $\gamma > \gamma^*$, the cost of govern decreases as $N$ increases, i.e. $C_G(N+1) \leq C_G(N)$.
+There exists an ex-ante probability of electing a councilor aligned with the government $\overline{\gamma}$ such that, for all $\gamma > \overline{\gamma}$, the cost of govern decreases as $N$ increases, i.e. $C_G(N+1) \leq C_G(N)$.
 
 \end{proposition}
 
 \begin{proof}
 
-If the proposition is correct, then $C_G(N-1) - C_G(N+1) \geq 0$. Note that the differences for the partial binomial sums are increasing in $\gamma$ [@worsch1994lower]. However, if we open up the difference:
+If the proposition is correct, then $C_G(N) - C_G(N+1) \geq 0$. Let us rewrite the results as:
 
 \[
 \dfrac{N}{2}(\underline{t} + \underline{x}_o^g(N-1)) + \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\left( \underline{x}_m^g(N-1) - \underline{x}_m^o(N-1) \right) - \left(\dfrac{N}{2}+1\right)(\underline{t} + \underline{x}_o^g(N+1)) - \sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\left( \underline{x}_m^g(N+1) - \underline{x}_m^o(N+1) \right) \geq 0
