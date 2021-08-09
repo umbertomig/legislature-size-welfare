@@ -307,7 +307,7 @@ Therefore, to satisfy increasing differences in XXXX,
 
 This gives us our first empirical hypothesis to test: if the cost of govern decreases when the legislature increases, then the public goods provision increase when the legislature size increase. But we still need to investigate further how the costs of govern would decrease with legislature size. On the one hand, it seems evident that with the additional legislator, comes also an additional rent and a possible veto player. In the next Lemma we show that the rents always decrease when we increase the number of legislators.
 
-\begin{lemma}
+\begin{lemma}\label{lemmabarg}
 The amount of rents required to win support from a given legislator decreases when the number of legislators increase.
 \end{lemma}
 
@@ -319,11 +319,15 @@ The proof consists in showing that when we increase the size of the legislature 
 \begin{aligned}
 b(N+1) - b(N) \ = \ & \dfrac{1}{2(N+1)+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2(N+1)}\right)-(N+1)(\underline{t} + B) + B\right] \\
 & - \dfrac{1}{2N+1}\left[2\delta R \left(1 + \dfrac{1-\delta}{2N}\right)-N(\underline{t} + B) + B\right] \\
-= \ & XXXX \\
-= \ & XXXX \\
+= \ & \dfrac{1}{2N+1}\left[\left(1-\dfrac{2}{2N+3}\right)\left(2\delta R \left(1 + \dfrac{1-\delta}{2(N+1)}\right)-N(\underline{t} + B) + \underline{t}\right) \right. \\
+& - \left. 2\delta R \left(1 + \dfrac{1-\delta}{2N}\right)-N(\underline{t} + B) + B\right] \\
+= \ & -\dfrac{1}{2N+1}\left[\dfrac{2}{2N+3}\left(2\delta R \left(1 + \dfrac{1-\delta}{2(N+1)}\right)-N(\underline{t} + B) + \underline{t}\right) \right. \\
+& + \left. \dfrac{2 R \delta (1-\delta)}{2N} + \underline{t} + B\right] \equiv \Delta b(N) \\
 < \ &0
 \end{aligned}
 \]
+
+Therefore, larger legislature sizes decrease the costs of bargaining. This because of two effects: first, the chance of being the proposer decreases; second, the chance of being selected to receive an offer also decreases.
 
 \end{proof}
 
