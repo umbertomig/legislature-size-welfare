@@ -58,9 +58,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 
 \newpage
 
-# A Model of Legislature Size and Service Provision
+## A Model of Legislature Size and Service Provision
 
-## Full model
+### Full model
 
 Consider an strategic interaction comprised of a mayor ($M$), and $N \geq 3$ of city councilors, indexed in $i \in \{1, 2, \cdots, N \}$. The mayor is head of the local Executive, and has the prerogative of proposing a vector of policies, that is voted by the city councilors. The policy proposal, if accepted, is implemented.
 
@@ -301,7 +301,7 @@ This is true when the cost of govern with a council size of $N+1$ is lower than 
 C_G(N+1) \leq C_G(N)
 \]
 
-Therefore, to satisfy increasing differences in XXXX, 
+Therefore, to satisfy increasing differences in XXXX, XXXX.
 
 \end{proof}
 
@@ -331,73 +331,105 @@ Therefore, larger legislature sizes decrease the costs of bargaining. This becau
 
 \end{proof}
 
-However, the decrease in rents is not sufficient to have lower costs to govern when we increase the number of legislators. The political costs, if high enough, can offset the gains with lower rents. Higher political costs result from having more members of the opposition in the legislature. The next proposition shows the sufficient condition for having a lower cost of govern when we increase the number of legislators.
+Decrease in rents is not sufficient to have lower costs to govern when we increase the number of legislators. The political costs, if high enough, can offset the gains with lower rents. Higher political costs result from having more members of the opposition in the legislature. The next proposition shows the next condition we need for having a lower cost of govern when we increase the number of legislators.
 
 \begin{proposition}\label{mainprop}
 
-There exists an ex-ante probability of electing a councilor aligned with the government $\overline{\gamma}$ such that, for all $\gamma > \overline{\gamma}$, the cost of govern decreases as $N$ increases, i.e., $C_G(N+1) \leq C_G(N)$.
+Let $p > \underline{t} + b(N+1) + \dfrac{N}{2}[\Delta b (N) - \Delta b (N-1)]$. There exists an ex-ante probability of electing a councilor aligned with the government $\overline{\gamma}$ such that, for all $\gamma > \overline{\gamma}$, the cost of govern decreases as $N$ increases, i.e., $C_G(N+1) \leq C_G(N)$.
 
 \end{proposition}
 
 \begin{proof}
 
-Let us rewrite the results as:
+To avoid the even legislature sizes, without loss of generality let us study the case $C_G(N+1) - C_G(N-1)$.
 
 \[
-XXXX \geq 0
+\begin{aligned}
+C_G(N+1) - C_G(N-1) \ = \ & \dfrac{N+1}{2}\left(\underline{t} + b(N+1) + p\right) - 2p\sum_{\eta_g = 0}^{\frac{N}{2}+1}\mathbb{P}(\eta_g)\eta_g \\
+& - \dfrac{N}{2}\left(\underline{t} + b(N-1) + p\right) + 2p\sum_{\eta_g = 0}^{\frac{N}{2}}\mathbb{P}(\eta_g)\eta_g \\
+= \ & \underline{t} + b(N+1) + p + \dfrac{N}{2}\left[b(N+1) - b(N-1)\right] \\
+& - 2p\left[\sum_{\eta_g = 0}^{\frac{N}{2}+1}\mathbb{P}(\eta_g)\eta_g - \sum_{\eta_g = 0}^{\frac{N}{2}}\mathbb{P}(\eta_g)\eta_g\right] \\
+= \ & \underline{t} + b(N+1) + p + \dfrac{N}{2}\left[\Delta b(N) - \Delta b(N-1)\right] - 2p\left[\Delta \eta_g(\gamma) \right]
+\end{aligned}
 \]
 
-Rearranging the terms:
+Where $\Delta\eta_n(\gamma) \equiv \left[\sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\eta_g - \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\eta_g\right]$. The condition for this to be negative is:
 
 \[
-- \underline{t} - \underline{x}_o^g(N+1) - \dfrac{N}{2}(\underline{x}_o^g(N+1) - \underline{x}_o^g(N-1)) -2p \left[\sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\eta_g - \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\eta_g\right]
+\begin{aligned}
+\Delta \eta_g(\gamma) \ \geq \ & \dfrac{1}{2p}\left[ \underline{t} + b(N+1) + p + \dfrac{N}{2}\left(\Delta b(N) - \Delta b(N-1)\right) \right] \\
+= \ & \dfrac{1}{2}\left[1 + \dfrac{\underline{t} + b(N+1) + \dfrac{N}{2}\left(\Delta b(N) - \Delta b(N-1)\right)}{p} \right]
+\end{aligned}
 \]
 
-Let $\Delta\eta_n(\gamma) \equiv \left[\sum_{\eta_g = 0}^{N/2+1}\mathbb{P}(\eta_g)\eta_g - \sum_{\eta_g = 0}^{N/2}\mathbb{P}(\eta_g)\eta_g\right]$. There is no closed form solution for this equation. We can approximate the boundaries using @wXXXX but graphically, we can have a good sense of the XXXX:
+There is no closed form solution for $\Delta\eta_n(\gamma)$, but we can approximate the bounds using @worsch1994lower. Moreover, we can simulate the differences for several legislature sizes, showing that as $N$ increases, a smaller $\gamma$ suffices to make the quantity greater than zero.
 
-XXXX GRAPH DELTA GAMMA HERE
+\begin{figure}[htb!]
+\begin{center}
+\begin{minipage}{1 \linewidth}
+\centerline{\includegraphics[width=6.5in,angle=0]{delta_eta_g_gamma.pdf}}
+\caption{Graph for the Binomial Expectation Difference in Support}
+\bigskip
+\label{binomdiff}
+\end{minipage}
+\end{center}
+\end{figure}
 
-And solving for $\Delta\eta_n(\gamma)$ we have that:
+Note that $\Delta\eta_n(\gamma)$ is between minus-one and one, meaning that either all legislators are opposition-aligned or all legislators are government-aligned. Moreover, note that $\Delta b(N) - \Delta b(N-1)$ is negative. As we assume that the political disagreement is large enough to satisfy $p > \underline{t} + b(N+1) + \dfrac{N}{2}[\Delta b (N) - \Delta b (N-1)]$, then:
 
 \[
-XXXX
+-1 \leq \dfrac{1}{2}\left[1 + \dfrac{\underline{t} + b(N+1) + \dfrac{N}{2}\left(\Delta b(N) - \Delta b(N-1)\right)}{p} \right] \leq 1
 \]
 
-The natural boundaries for $\Delta\eta_n(\gamma)$ are minus-one and one. Minus-one means that the additional legislature seat went to the opposition while one means that the additional legislature seat went to the government. XXXX 
+And thus, there exists an $\overline{\gamma}$ such that:
+
+\[
+\Delta \eta_g(\overline{\gamma}) \ = \ \dfrac{1}{2}\left[1 + \dfrac{\underline{t} + b(N+1) + \dfrac{N}{2}\left(\Delta b(N) - \Delta b(N-1)\right)}{p} \right]
+\]
 
 \end{proof}
 
-Taking stocks, the model provides two testable hypothesis. Let a legislature that previously had $N$ legislators, and now increased the legislature by $N+1$. Then:
+### Paper Version of the Model
+
+In the main paper, we simplify the analysis by assuming rational expectations regarding the number of opposition and government aligned politicians. If the chance of electing a government aligned politicians is $\gamma$, the expected number of government aligned politicians is $N\gamma$, and the expected number of opposition-aligned politicians is $(1-\gamma)N$. The differences in cost of govern, in this situation, becomes simpler to infer.
+
+\begin{proposition}
+
+Let the political disagreement $p > \underline{t} + b(N+1) + N\Delta b(N)$. If the chance of electing a government-aligned politician $\gamma \ \geq \ \dfrac{1}{2}\left[1 + \dfrac{\underline{t} + b(N+1) + N\Delta b(N)}{p}\right]$, then the costs of govern decrease as the legislature size increases.
+
+\end{proposition}
+
+\begin{proof}
+
+The differential cost of govern when increasing the 
+
+\[
+\begin{aligned}
+C_G(N+1) - C_G(N) \ = \ & \dfrac{N+1}{2}\left(\underline{t} + b(N+1) + p (1-2\gamma)\right) \\
+& - \dfrac{N}{2}\left(\underline{t} + b(N) + p(1-2\gamma)\right) \\
+= \ & \dfrac{1}{2}\underline{t} + \dfrac{1}{2}b(N+1) + p - 2\gamma p + \dfrac{N}{2}\Delta b(N)
+\end{aligned}
+\]
+
+To the cost of govern decrease with $N$, the probability of electing a government aligned politicians has to be greater than or equal to:
+
+\[
+\gamma \ \geq \ \dfrac{1}{2}\left[1 + \dfrac{\underline{t} + b(N+1) + N\Delta b(N)}{p}\right] \ \equiv \ \overline{\gamma}
+\]
+
+Note that this formulation is similar to the one derived in Proposition \ref{mainprop}.
+
+\end{proof}
+
+All the dynamics remain the same but the second hypothesis becomes clearer, with a simplified quantity for the probability of electing a government-aligned politician, $\overline{\gamma}$. The simplified $\overline{\gamma}$ is helpful because it shows that the political disagreement has to be high enough to compensate the XXXX.
+
+### Main Hypotheses
+
+Taking stocks, the models provide two empirically testable hypotheses. Consider a legislature that previously had $N$ legislators, but now needs to increase its legislature by $N+1$. Then:
 
 \begin{enumerate}
   \item[H1. ] The provision of public goods increase when the costs to govern decrease with legislature size.
   \item[H2. ] The costs to govern decrease with legislature size when the chance of electing a government aligned legislator is sufficiently high.
 \end{enumerate}
-
-## Paper Version of the Model
-
-In the main paper, we simplify the analysis with two assumptions regarding the costs of govern. First, we assume a simpler reversal where there is only one reversal stage and after that a reversal policy of zero in all policy components take place. Second, we assume that the cost for govern will depend on the ex-ante expected number of legislator belonging to the government and the opposition. In this case, the rents $b(N)$ become:
-
-\[
-XXXX
-\]
-
-And Proposition \ref{mainprop} becomes:
-
-\begin{proposition}
-
-XXXX
-
-\[
-XXXX
-\]
-
-\end{proposition}
-
-\begin{proof}
-XXXX
-\end{proof}
-
-All the dynamics remain the same but the second hypothesis becomes clearer, with a simplified quantity for the probability of electing a government-aligned politician, $\overline{\gamma}$. The simplified $\overline{\gamma}$ is helpful because it shows that the political concerns require a probability larger than one-half, with a precise amount depending on the XXXX.
 
 \newpage
