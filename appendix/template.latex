@@ -20,19 +20,19 @@ $endif$
 
 % Add the following packages to support kableExtra
 \usepackage{booktabs}
-\usepackage{longtable}
+\usepackage{longtable, subcaption}
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{wrapfig}
 \usepackage{colortbl}
-\usepackage{pdflscape}
+\usepackage{pdflscape, lscape}
 \usepackage{tabu}
 \usepackage{threeparttable}
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{etoolbox}
-\usepackage{tocloft}
+\usepackage{tocloft, rotating}
 
 % Dots in toc
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
