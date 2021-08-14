@@ -134,6 +134,7 @@ $endif$
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
 \newtheorem{axiom}[theorem]{Axiom}
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
