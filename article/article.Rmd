@@ -143,8 +143,8 @@ We employ a regression discontinuity design (RDD) using the population threshold
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/distrseats2019.pdf}}
-      \caption{Distribution of Municipalities by Population and City Council Size XXXX CHANGE HERE}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/distrSeats.pdf}}
+      \caption{Distribution of Municipalities by Population and City Council Size}
       \bigskip
       \label{fig:runningvarplot}
     \end{minipage}
