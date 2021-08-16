@@ -20,6 +20,7 @@ $endif$
 
 % Add the following packages to support kableExtra
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{longtable, subcaption}
 \usepackage{array}
 \usepackage{multirow}
@@ -27,12 +28,15 @@ $endif$
 \usepackage{colortbl}
 \usepackage{pdflscape, lscape}
 \usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{etoolbox}
-\usepackage{tocloft, rotating}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{tocloft, rotating, graphicx, arydshln}
+
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 % Dots in toc
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -66,14 +70,14 @@ $endif$
 \usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
 \usepackage{mathtools}
-\usepackage{caption}
+\usepackage{caption, xltabular}
 
 % UK English
 \usepackage[UKenglish]{babel}
 \usepackage[UKenglish]{isodate}
 \cleanlookdateon
 
-% Mignozzetti-Supercharge
+% Supercharge
 \newenvironment{quotemig}{\singlespacing \begin{quote} \begin{small}\it}{\end{small}\end{quote}}
 
 \newcommand{\wh}[1] {\widehat { #1 }}
@@ -309,7 +313,7 @@ $endif$
 
 % Graphics
 $if(graphics)$
-\usepackage{graphicx,grffile}
+\usepackage{grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
