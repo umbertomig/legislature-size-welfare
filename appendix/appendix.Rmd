@@ -506,7 +506,7 @@ We also graph the \citet{McCrary2008} test, pooling all the discontinuities. The
 \begin{figure}[htb!]
   \begin{center}
   \begin{minipage}{1 \linewidth}
-  \centerline{\includegraphics[width=5in,angle=0]{figs/McCrary.pdf}}
+  \centerline{\includegraphics[width=5in,angle=0]{../figures/McCrary.pdf}}
   \caption{\citet{McCrary2008} manipulation test}
   \bigskip
   \label{manipulationplot}
@@ -704,14 +704,14 @@ As there are few municipalities above one million inhabitants, we decided to res
 
 The Supreme Court ruled that the electoral courts should use the 2003 population projection to assign municipalities to cutoffs. In Brazil, the Brazilian Institute of Geography and Statistics (IBGE) propose the official population projections. Sorting is not an issue for our identification strategy, as IBGE is an insulated bureaucracy, insulated from local influences (see also the McCrary test above).
 
-To provide an overview of the data dispersion, Figure \ref{sample_plot} plots the municipalities by their proximity from the cutoffs. In the map we provide the contour of every Brazilian municipality, coloring it by the proximity to the council size thresholds. The darker the color, the closer to the population thresholds. In regression discontinuity, the closer a municipality is to the cutoff, the more influential it is in the estimation. Figure \ref{sampleplot} also shows that our municipalities are reasonably distributed around the whole country.
+To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the municipalities by their proximity from the cutoffs. In the map we provide the contour of every Brazilian municipality, coloring it by the proximity to the council size thresholds. The darker the color, the closer to the population thresholds. In regression discontinuity, the closer a municipality is to the cutoff, the more influential it is in the estimation. Figure \ref{sampleplot} also shows that our municipalities are reasonably distributed around the whole country.
 
 XXXX CHANGE
 
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=7in,angle=0]{figs/samplePlot.pdf}}
+      \centerline{\includegraphics[width=7in,angle=0]{../figures/samplePlot.pdf}}
       \caption{Municipalities by their Selection Status}
       \bigskip
       \label{sampleplot}
@@ -751,7 +751,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{0.9\linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/simdistrRDD.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/simdistrRDD.pdf}}
       \caption{Simulation RD with Multiple Thresholds -- Data Distribution}
       \bigskip
       \label{simRDdd}
@@ -768,7 +768,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=4.5in,angle=0]{figs/estimsRDD.pdf}}
+      \centerline{\includegraphics[width=4.5in,angle=0]{../figures/estimsRDD.pdf}}
       \caption{Estimations for the Different Data Generating Processes}
       \bigskip
       \label{estimDGP}
@@ -850,7 +850,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=5in,angle=0]{figs/bwSens.pdf}}
+      \centerline{\includegraphics[width=5in,angle=0]{../figures/bwSens.pdf}}
       \caption{Bandwidth Sensitivity -- Main Models}
       \bigskip
       \label{graphbw}
@@ -867,7 +867,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[width=5in,angle=0]{figs/placBwSens.pdf}}
+      \centerline{\includegraphics[width=5in,angle=0]{../figures/placBwSens.pdf}}
       \caption{Placebo Regressions -- Bandwidth Sensitivity}
       \bigskip
       \label{placgraphbw}
@@ -891,7 +891,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{figs/dropStateSens1.pdf}}
+      \centerline{\includegraphics[height=8in,angle=0]{../figures/dropStateSens1.pdf}}
       \caption{Sensitivity Analysis for the States in the Sample -- Welfare Outcomes}
       \bigskip
       \label{graphsensstatedrop1}
@@ -906,7 +906,7 @@ XXXX CHANGE
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{figs/dropStateSens2.pdf}}
+      \centerline{\includegraphics[height=8in,angle=0]{../figures/dropStateSens2.pdf}}
       \caption{Sensitivity Analysis for the States in the Sample -- Mechanism Outcomes}
       \bigskip
       \label{graphsensstatedrop2}
@@ -920,7 +920,7 @@ XXXX CHANGE
 
 \begin{figure}[htb!]
   \begin{center}
-      \centerline{\includegraphics[width=5in,angle=0]{figs/placDropStateSens1.pdf}}
+      \centerline{\includegraphics[width=5in,angle=0]{../figures/placDropStateSens1.pdf}}
       \caption{Sensitivity Analysis for the States in the Placebo Cutoffs -- Welfare Outcomes}
       \bigskip
       \label{placgraphsensstatedrop1}
@@ -933,7 +933,7 @@ XXXX CHANGE
 
 \begin{figure}[htb!]
   \begin{center}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/placDropStateSens2.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/placDropStateSens2.pdf}}
       \caption{Sensitivity Analysis for the States in the Placebo Cutoffs -- Mechanism Outcomes}
       \bigskip
       \label{placgraphsensstatedrop2}
@@ -954,7 +954,7 @@ However, we run here all the models using polynomials from local linear to a qua
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{figs/ffSens.pdf}}
+      \centerline{\includegraphics[height=8in,angle=0]{../figures/ffSens.pdf}}
       \caption{Sensitivity Analysis for the Functional Form}
       \bigskip
       \label{graphsensff}
@@ -966,7 +966,7 @@ However, we run here all the models using polynomials from local linear to a qua
 
 \begin{figure}[htb!]
   \begin{center}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/placFfSens.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/placFfSens.pdf}}
       \caption{Sensitivity Analysis for the Functional Form -- Placebo Cutoffs}
       \bigskip
       \label{placgraphsensff}
@@ -986,7 +986,7 @@ However, if the selection of controls makes the models overestimate quantities i
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=6in,angle=0]{figs/sensCov.pdf}}
+      \centerline{\includegraphics[height=6in,angle=0]{../figures/sensCov.pdf}}
       \caption{Sensitivity Analysis for the Control Variable's Choices}
 \bigskip
 \label{graphsenscontrol}
@@ -1005,7 +1005,7 @@ We also plot sensitivity tests to covariates in the placebo regressions in Figur
 
 \begin{figure}[htb!]
 \begin{center}
-\centerline{\includegraphics[width=5in,angle=0]{figs/placSens1Cov.pdf}}
+\centerline{\includegraphics[width=5in,angle=0]{../figures/placSens1Cov.pdf}}
 \caption{Placebo Regressions Outcomes -- Sensitivity to Covariates}
 \bigskip
 \label{placsenscov1}
@@ -1016,7 +1016,7 @@ We also plot sensitivity tests to covariates in the placebo regressions in Figur
 
 \begin{figure}[htb!]
 \begin{center}
-\centerline{\includegraphics[width=5in,angle=0]{figs/placSens2Cov.pdf}}
+\centerline{\includegraphics[width=5in,angle=0]{../figures/placSens2Cov.pdf}}
 \caption{Placebo Regressions Mechanisms -- Sensitivity to Covariates}
 \bigskip
 \label{placsenscov2}
@@ -1033,7 +1033,7 @@ To study the sensitivity to the number of cutoffs, as well as a possibility of d
 
 \begin{figure}[htb!]
 \begin{center}
-\centerline{\includegraphics[width=6in,angle=0]{figs/rdAddCuts1.pdf}}
+\centerline{\includegraphics[width=6in,angle=0]{../figures/rdAddCuts1.pdf}}
 \caption{Sensitivity to Addition of Cutoffs -- Welfare Outcomes}
 \bigskip
 \label{senscut1}
@@ -1044,7 +1044,7 @@ To study the sensitivity to the number of cutoffs, as well as a possibility of d
 
 \begin{figure}[htb!]
 \begin{center}
-\centerline{\includegraphics[width=6in,angle=0]{figs/rdAddCuts2.pdf}}
+\centerline{\includegraphics[width=6in,angle=0]{../figures/rdAddCuts2.pdf}}
 \caption{Sensitivity to Addition of Cutoffs -- Mechanism Outcomes}
 \bigskip
 \label{senscut2}
@@ -1056,7 +1056,7 @@ To study the sensitivity to the number of cutoffs, as well as a possibility of d
 \begin{figure}[htb!]
 \begin{center}
 \begin{minipage}{0.8 \linewidth}
-\centerline{\includegraphics[width=5.5in,angle=0]{figs/placRDAddCuts1.pdf}}
+\centerline{\includegraphics[width=5.5in,angle=0]{../figures/placRDAddCuts1.pdf}}
 \caption{Sensitivity to Addition of Cutoffs -- Placebo Welfare Outcomes}
 \bigskip
 \label{placsenscut1}
@@ -1069,7 +1069,7 @@ To study the sensitivity to the number of cutoffs, as well as a possibility of d
 \begin{figure}[htb!]
 \begin{center}
 \begin{minipage}{0.8 \linewidth}
-\centerline{\includegraphics[width=5.5in,angle=0]{figs/placRDAddCuts2.pdf}}
+\centerline{\includegraphics[width=5.5in,angle=0]{../figures/placRDAddCuts2.pdf}}
 \caption{Sensitivity to Addition of Cutoffs -- Placebo Mechanism Outcomes}
 \bigskip
 \label{placsenscut2}
@@ -1237,7 +1237,7 @@ We used 3,240 emails from politicians that ran in the 2016 election, filtering t
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/distrRespSurvey.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/distrRespSurvey.pdf}}
       \caption{Geographical Distribution of Survey Responses}
       \bigskip
       \label{geodistrsurv}
@@ -1298,7 +1298,7 @@ The second question is essential, as it reports whether councilors do the activi
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6.5in,angle=0]{figs/commonJobsCouncilors.pdf}}
+      \centerline{\includegraphics[width=6.5in,angle=0]{../figures/commonJobsCouncilors.pdf}}
       \caption{City Councilor's Common Activities}
 \bigskip
 \label{commonservice}
@@ -1311,7 +1311,7 @@ The last question measures the willingness of mayors to give services to city co
 \begin{figure}[htb!]
 \begin{center}
 \begin{minipage}{1 \linewidth}
-\centerline{\includegraphics[width=6.5in,angle=0]{figs/strategySupportMayors.pdf}}
+\centerline{\includegraphics[width=6.5in,angle=0]{../figures/strategySupportMayors.pdf}}
 \caption{Mayor negotiated services in exchange of support}
 \bigskip
 \label{mayorneg}
