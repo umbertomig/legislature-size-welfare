@@ -332,7 +332,7 @@ Our model provides two empirically testable hypotheses. Consider a city council 
   \item[H2. ] The governing decrease with legislature size when the chance of electing a government aligned legislator is sufficiently high.
 \end{enumerate}
 
-In the paper, we show that the provision of education and healthcare improves in Brazil, and this results from the fact that the chances of electing a city councilor aligned with the mayor is of 91%.
+In the paper, we show that the provision of education and healthcare improves in Brazil, and this results from the fact that the chances of electing a city councilor aligned with the mayor is of 91%, thanks to the rule of distributing seats adopted in the country.
 
 \newpage
 
@@ -1024,3 +1024,168 @@ We also plot sensitivity tests to covariates in the placebo regressions in Figur
 \end{figure}
 
 \newpage
+
+\subsection{Sensitivity to Additional Cutoffs\label{senscutapp}}
+
+To study the sensitivity to the number of cutoffs, as well as a possibility of diminishing returns from the additional legislator, we run regressions limiting the population sizes to half the cutoffs, from the second cutoff to the last. This strategy is similar to adding one cutoff at a time. The results are stable and do not change our main conclusions. Moreover, there is no increasing or decreasing pattern, which would indicate that differential returns are occurring. Figures \ref{senscut1} and \ref{senscut2} display the results for the main cutoffs, while Figures \ref{placsenscut1} and \ref{placsenscut2} present the same results for the placebo cutoffs.
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\centerline{\includegraphics[width=6in,angle=0]{figs/rdAddCuts1.pdf}}
+\caption{Sensitivity to Addition of Cutoffs -- Welfare Outcomes}
+\bigskip
+\label{senscut1}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\centerline{\includegraphics[width=6in,angle=0]{figs/rdAddCuts2.pdf}}
+\caption{Sensitivity to Addition of Cutoffs -- Mechanism Outcomes}
+\bigskip
+\label{senscut2}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\begin{minipage}{0.8 \linewidth}
+\centerline{\includegraphics[width=5.5in,angle=0]{figs/placRDAddCuts1.pdf}}
+\caption{Sensitivity to Addition of Cutoffs -- Placebo Welfare Outcomes}
+\bigskip
+\label{placsenscut1}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\begin{minipage}{0.8 \linewidth}
+\centerline{\includegraphics[width=5.5in,angle=0]{figs/placRDAddCuts2.pdf}}
+\caption{Sensitivity to Addition of Cutoffs -- Placebo Mechanism Outcomes}
+\bigskip
+\label{placsenscut2}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\newpage
+
+## Mayor's Characteristics, Revenues, and Transfers from the Central Government
+
+Two alternative explanations could confound our results. First, the selection of the mayor could be affected by the city council size, and then the welfare improve by the quality of the mayor, and not by the partisan mechanism described. Second, the partisan mechanism could be confounded by an argument similar to the @Weingastetal1981 ``law of 1/n'', and the improvements in welfare could have been a result of higher revenues. This section shows that none of these concerns are true in our case.
+
+\subsubsection{Mayoral characteristics}
+
+We select four characteristics: gender, schooling, whether the mayor was reelected in 2004, and whether the mayor was reelected in 2008. The results show no variation on council size and mayoral characteristics.
+
+\begin{table}[!htbp] \centering 
+\caption{Mayoral Characteristics} 
+\label{appmaychar} 
+\resizebox{\textwidth}{!}{
+  \begin{tabular}{@{\extracolsep{\fill}}l c c c c} 
+  \\[-1.8ex]\hline \\[-1.8ex] 
+  & \multicolumn{1}{c}{\textbf{Female Mayor}} & \multicolumn{1}{c}{\textbf{Mayor w. College Degree}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2004}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2008}} \\ 
+  \hline \\[-1.8ex] 
+  LATE & 0.07 & -0.06 & -0.09 & 0.06 \\ 
+  & (0.08) & (0.13) & (0.10) & (0.14) \\ 
+  N Left & 5069 & 5069 & 5184 & 5183 \\ 
+  N Right & 335 & 335 & 343 & 343 \\ 
+  Eff N Left & 299 & 226 & 192 & 231 \\ 
+  Eff N Right & 184 & 154 & 141 & 159 \\ 
+  BW Loc Poly & 11.738 & 9.655 & 8.508 & 9.596 \\ 
+  BW Bias & 17.104 & 15.762 & 13.338 & 14.741 \\ 
+  \hline \\[-1.8ex] 
+  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\ 
+  \multicolumn{5}{l}{\footnotesize{Local linear RD Estimates using CCT Optimal Bandwidth Selection and Triangular Kernel.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Quadratic Robust Standard Errors in Parentheses.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\ 
+  \end{tabular} }
+\end{table} 
+
+\begin{table}[!htbp] \centering 
+\caption{Mayoral characteristics -- Placebo} 
+\label{placappmaychar} 
+\resizebox{\textwidth}{!}{
+  \begin{tabular}{@{\extracolsep{\fill}}l c c c c} 
+  \\[-1.8ex]\hline \\[-1.8ex] 
+  & \multicolumn{1}{c}{\textbf{Female Mayor}} & \multicolumn{1}{c}{\textbf{Mayor w. College Degree}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2004}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2008}} \\ 
+  \hline \\[-1.8ex] 
+  LATE & 0.03 & 0.04 & 0.08 & -0.07 \\ 
+  & (0.05) & (0.08) & (0.07) & (0.08) \\ 
+  N Left & 4526 & 4526 & 4621 & 4620 \\ 
+  N Right & 878 & 878 & 906 & 906 \\ 
+  Eff N Left & 567 & 707 & 683 & 759 \\ 
+  Eff N Right & 342 & 406 & 397 & 427 \\ 
+  BW Loc Poly & 6.197 & 7.413 & 7.006 & 7.71 \\ 
+  BW Bias & 10.241 & 12.64 & 13.536 & 12.648 \\ 
+  \hline \\[-1.8ex] 
+  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\ 
+  \multicolumn{5}{l}{\footnotesize{Local linear RD Estimates using CCT Optimal Bandwidth Selection and Triangular Kernel.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Quadratic Robust Standard Errors in Parentheses.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\ 
+  \end{tabular} }
+\end{table} 
+
+\subsubsection{Revenues and Transfers}
+
+We run the regressions on federal transfers and revenue raised within the municipalities. There is only a small effect on education transfer, barely significant at 10%. The other indicators remain insignificant. Note that the placebo are significant, and this actually reinforce the claim that the education effect may be spurious.
+
+\begin{table}[!htbp] \centering 
+\caption{Transfers and Revenue} 
+\label{apptrev} 
+\resizebox{\textwidth}{!}{
+  \begin{tabular}{@{\extracolsep{\fill}}l c c c c} 
+  \\[-1.8ex]\hline \\[-1.8ex] 
+  & \multicolumn{1}{c}{\textbf{Total Transfers}} & \multicolumn{1}{c}{\textbf{FPM Transfers}} & \multicolumn{1}{c}{\textbf{Education Transfers}} & \multicolumn{1}{c}{\textbf{Total Revenue}} \\ 
+  \hline \\[-1.8ex] 
+  LATE & 0.03 & -0.03 & 0.18$^{*}$ & 0.06 \\ 
+  & (0.04) & (0.03) & (0.10) & (0.04) \\ 
+  N Left & 15555 & 15555 & 15460 & 14668 \\ 
+  N Right & 1029 & 1029 & 1028 & 998 \\ 
+  Eff N Left & 804 & 258 & 349 & 626 \\ 
+  Eff N Right & 516 & 273 & 333 & 442 \\ 
+  BW Loc Poly & 10.617 & 4.568 & 6.005 & 9.253 \\ 
+  BW Bias & 16.447 & 8.243 & 11.412 & 15.092 \\ 
+  \hline \\[-1.8ex] 
+  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\ 
+  \multicolumn{5}{l}{\footnotesize{Local linear RD Estimates using CCT Optimal Bandwidth Selection and Triangular Kernel.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Quadratic Robust Standard Errors in Parentheses.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\ 
+  \end{tabular} }
+\end{table}
+
+\begin{table}[!htbp] \centering 
+\caption{Transfers and Revenue -- Placebo} 
+\label{plactrev} 
+\resizebox{\textwidth}{!}{
+  \begin{tabular}{@{\extracolsep{\fill}}l c c c c} 
+  \\[-1.8ex]\hline \\[-1.8ex] 
+  & \multicolumn{1}{c}{\textbf{Total Transfers}} & \multicolumn{1}{c}{\textbf{FPM Transfers}} & \multicolumn{1}{c}{\textbf{Education Transfers}} & \multicolumn{1}{c}{\textbf{Total Revenue}} \\ 
+  \hline \\[-1.8ex] 
+  LATE & 0.07$^{**}$ & 0.04 & 0.03 & 0.07$^{**}$ \\ 
+  & (0.03) & (0.03) & (0.06) & (0.03) \\ 
+  N Left & 13865 & 13865 & 13776 & 13103 \\ 
+  N Right & 2719 & 2719 & 2712 & 2563 \\ 
+  Eff N Left & 807 & 636 & 1928 & 848 \\ 
+  Eff N Right & 619 & 544 & 1163 & 611 \\ 
+  BW Loc Poly & 3.418 & 3.028 & 6.738 & 3.67 \\ 
+  BW Bias & 6.021 & 5.36 & 10.871 & 6.222 \\ 
+  \hline \\[-1.8ex] 
+  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\ 
+  \multicolumn{5}{l}{\footnotesize{Local linear RD Estimates using CCT Optimal Bandwidth Selection and Triangular Kernel.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Quadratic Robust Standard Errors in Parentheses.}} \\ 
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\ 
+  \end{tabular} }
+\end{table}
+
+\newpage
+
