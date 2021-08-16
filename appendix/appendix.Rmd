@@ -1189,3 +1189,41 @@ We run the regressions on federal transfers and revenue raised within the munici
 
 \newpage
 
+\subsection{Legislation Dataset\label{legdfr}}
+
+In the Fall of 2018, we collected the data on the legislation approved by the city council of 64 municipalities 10 thousand inhabitants away from the thresholds. There are 202 municipalities at a 10 thousand inhabitants distance from the cutoff, but only 64 had information on the legislation for the period between 2005 to 2008.
+
+To classify the legislation, we hand-coded 1\% of the dataset (3,466 cases) and applied a Supporting Vector Machines algorithm to the remaining 99\% cases. First, we train and test the accuracy of the SVM classifier on 80\% of the dataset. Then, we ran the training on the full hand-coded data and predicted the remaining.\footnote{We tested SVM, Naive-Bayes, Random Forests, and Neural Networks. We choose SVM as it gives the highest prediction rate. We are using a simple bag-of-words classifier, with the R package RTextTools \citep{collingwood2013rtexttools}.} 
+
+We hand-coded using five characteristics:
+  
+\begin{enumerate}
+\item \textbf{Local Public Goods}: Whether the bills provided a local public good or service. Bills here are, for example, proposals to fix street potholes, staff a given health clinic, purchase equipment to a given school. To lay on this category, the service should have been targeted for a fraction of the population.
+\item \textbf{Public Goods and Legislation}: Whether a bill is about a municipal public good (e.g., improving education), or about legislation that does not discriminate against any citizen within the polity (general law). 
+\item \textbf{Oversight}: Legislation requesting information on the status of service provision.
+\item \textbf{Others}: Legislation that is not categorized as any of the previous three listed. Legislation here includes honors to notable citizens and procedure legislation, among others.
+\item \textbf{Health Care and Education}: Bills on education and health care, broadly defined.
+\end{enumerate}
+
+We run the SVM on the hand-coded data. Table \ref{accurClassif} shows the classification accuracy for each of the variables that we hand-coded. In all models, we set cost equals 10 to avoid overfitting.
+
+\begin{table}
+\centering
+\caption{Accuracy SVM Classifier (tested in 20\% of the data)}
+\label{accurClassif}
+\begin{tabular}{lc} 
+\hline
+\textbf{Variable}            & \textbf{Accuracy}  \\ 
+\hline
+Local Public Goods           & 93.8               \\
+Public Goods and Legislation & 94.2               \\
+Oversight                    & 94.9               \\
+Others                       & 93.5               \\
+Education and Health Care    & 92.5               \\
+\hline
+\end{tabular}
+\end{table}
+
+After we classify all the bills, the frequency in each category was added to the main paper. We also add the productivity per legislator, consisting of a ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little from when we considered the absolute values.
+
+\newpage
