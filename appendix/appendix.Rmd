@@ -64,11 +64,11 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 
 Consider an strategic interaction between a mayor ($M$) and $N \geq 3$ city councilors, indexed in $i \in \{1, 2, \cdots, N \}$. The mayor is the head of the local executive branch, and has the prerogative of proposing a vector of policies, that is voted by the city councilors. Policy proposals are a combination of public goods provision $g$, rents for the mayor $r$, and a vector of transfer for city councilors \textbf{x}. 
 
-The city council votes the mayor's proposal and if they accept it, it is implemented. Otherwise, a reversal policy takes place, where the decision leaves the mayor's hands and either immediately stops or transfers to the council. The types of reversal policies are crucial for our argument, as it changes the relative strength of the councilors in their bargaining with the mayor. We investigate three types of reversal policies: a \textit{non-partisan} reversal mechanism, where city councilors have no partisan concerns; a \textit{partisan} reversal mechanism, where the council is divided in supporters and non-supporters of the mayor; and finally a \textit{hybrid} reversal mechanism, that combines partisan concerns with non-partisan rent extraction. In the main paper, we report only the hybrid model, as it is the more realistic scenario. Despite that, comparing the partisan and non-partisan reversal mechanisms illustrate clearly our argument that the partisan a mechanism is what drives our results.
+The city council votes the mayor's proposal and if they accept it, it is implemented. Otherwise, a reversal policy takes place. Reversal policy in this context means that the mayor's proposal failed to secure majority of council votes. The decision leaves the mayor's hands, and either immediately stops or it is transferred to the council. The types of reversal policies are crucial for our argument, as it changes the relative strength of the councilors in their bargaining with the mayor. We investigate three types of reversal policies: a \textit{non-partisan} reversal mechanism, where city councilors have no partisan concerns; a \textit{partisan} reversal mechanism, where the council is divided in supporters and non-supporters of the mayor; and finally a \textit{hybrid} reversal mechanism, that combines partisan concerns with non-partisan rent extraction. In the main paper, we focus on the hybrid model, as it is the more realistic scenario. Despite that, comparing the partisan and non-partisan reversal mechanisms illustrate clearly our argument that the partisan a mechanism is what drives our results.
 
 To govern, the mayor has to convince at least half of the city councilors to support her policy proposals. Similar to selectorate models \citep{buenodemesquita2005logic}, we assume that the selectorate, i.e. the individuals that have a say in the mayor's policy proposals, are the $N$ city councilors. The winning coalition, which is the minimum number of members that have to be convinced to implement the policy, is equal to half of the selectorate $N/2$. City councilors are moved by policy concerns $p$ and transfers received from the mayor \textbf{x}. The use of transfers to affect the councilors' choices generate a cost of govern, $C_G$, that vary with the reversal mechanism and the legislature size.
 
-Finally, after paying the costs of govern, the mayor proposes a level of public goods provision ($g$) and rents ($r$). Public goods provision help the mayor to get reelected. Rents are for direct mayor's consumption, and does not contribute to the mayor's electoral success. This makes the mayor's expected utility a sum of the gains from rents and the benefits from reelection. Both the utilities from rents ($u(r)$) and the probability of reelection $\pi(g)$ are concave functions, meaning that more rents or public goods increase the utility at a decreasing rate. The probability of reelection is multiplied by the benefit from holding office $B_M > 0$. This benefit captures the tangible and intangible gains that the mayor perceives from holding the public office, and we assume that they are high enough to rule out an equilibrium with only rents and transfers. If the mayor's policy proposal is approved, then the expected utility for the mayor is:
+Finally, after paying the costs of govern, the mayor proposes a level of public goods provision ($g$) and rents ($r$). Public goods provision help the mayor to get reelected. Rents are for direct mayor's consumption, and does not contribute to the mayor's electoral success. This makes the mayor's expected utility a sum of the gains from rents and the benefits from reelection. Both the utilities from rents $u(r)$ and the probability of reelection $\pi(g)$ are concave functions, meaning that more rents or public goods increase the utility at a decreasing rate.\footnote{In technical terms, $u'>0$ and $\pi'>0$; and $u''<0$ and $\pi''<0$.} The probability of reelection is multiplied by the benefit from holding office $B_M > 0$. This benefit captures the tangible and intangible gains that the mayor perceives from holding the public office. We assume that the benefits are high enough to rule out an equilibrium with only rents and transfers. If the mayor's policy proposal is approved, then the expected utility for the mayor is:
 
 \[
 \mathbb{E}U(r, g) \ = \ u(r) + B_M\pi(g)
@@ -76,15 +76,15 @@ Finally, after paying the costs of govern, the mayor proposes a level of public 
 
 The policy choices of the mayor are subject to the municipal budget constraint. The municipality has $R > 0$ resources, and cannot run debts, meaning that the budget has to be balanced. We also assume that there are enough resources for the mayor to govern.
 
-Let $C_G$ the costs of govern. The budget balance constraint requires the offers that the mayor makes to the city councilors satisfy the following inequality:
+Let $C_G$ be the costs of govern. The budget balance constraint requires the offers that the mayor makes to the city councilors satisfy the following inequality:
 
 \[
 r + g + C_G \ \leq \ R
 \]
 
-The expected utility for the city councilors depend on the mechanism that will determine the reversal policy. As discussed, we explore three different mechanisms. First, in \textit{non-partisan} reversal mechanism, when the council rejects the mayor's proposal, a reversal stage starts with resources diminish by a factor of $\delta \in (0,1)$ and the selection of one councilor randomly. The randomly selected councilor becomes now the proposer. If her proposal is accepted, it is implemented. If it is rejected, the budget shrinks again by a factor $\delta$, and another city councilor is recognized to make the proposal. The process repeats, until one proposal is finally accepted. 
+The expected utility for the city councilors depend on the reversal policy. As discussed, we explore three different mechanisms. First, in \textit{non-partisan} reversal mechanism, when the council rejects the mayor's proposal, a reversal stage starts with resources diminish by a factor of $\delta \in (0,1)$ and the selection of one councilor randomly. The randomly selected councilor becomes now the proposer. If her proposal is accepted, it is implemented. If it is rejected, the budget shrinks again by a factor $\delta$, and another city councilor is recognized to make the proposal. The process repeats, until one proposal is finally accepted. 
 
-In the second reversal mode, the \textit{partisan} reversal mechanism, we assume that each councilor has a party affiliation. Party affiliations are mutually exclusive (a councilor cannot belong to two parties at once). If a city councilor is affiliated to a party aligned with the mayor, we say that she belongs to the government coalition ($G \subset \{1, 2, \cdots, N \}$). Otherwise, the city councilor belongs to the opposition $O \not\subset G$. The mayor's policy generate a political value of $p > 0$ for the councilors, and whether it adds or subtracts from the councilor's utility depends of the party affiliation of the councilor. If the mayor's proposal is rejected, a city councilor aligned with the mayor, that would receive $p$ from the policy, now receives zero. On the other hand, a city councilor that belongs to the opposition would receive $-p$ from the mayor's policy, and now receives zero. Although these assumptions are strong, they capture the underlying political dynamics of partisanship: the political preferences in terms of public goods provision are shared by councilors aligned with the mayor. Voting against the mayor's proposals would represent to defy the partisan brand.
+In the second reversal mode, the \textit{partisan} reversal mechanism, we assume that each councilor has a party affiliation. Party affiliations are mutually exclusive (a councilor cannot belong to two parties at once). If a city councilor is affiliated to a party aligned with the mayor, we say that she belongs to the government coalition $G \subset \{1, 2, \cdots, N \}$. Otherwise, the city councilor belongs to the opposition $O \not\subset G$. The mayor's policy generate a political value of $p > 0$ for the councilors, and whether it adds or subtracts from the councilor's utility depends of the party affiliation of the councilor. If the mayor's proposal is rejected, a city councilor aligned with the mayor, that would receive $p$ from the policy, now receives zero. On the other hand, a city councilor that belongs to the opposition would receive $-p$ from the mayor's policy, and now receives zero. Although these assumptions are strong, they capture the underlying political dynamics of partisanship: the political preferences in terms of public goods provision are shared by councilors aligned with the mayor. Voting against the mayor's proposals would represent to defy the partisan brand.
 
 In the last reversal mechanism, the \textit{hybrid} reversal mechanism, we combine partisanship with legislature bargaining rents. Councilors in this mechanism receive a partisan utility from the mayor's policy, but if they reject the policy, a reversal policy similar to the non-partisan reversal mechanism takes place. In the mayor's proposal stage, city councilors that belong to the mayor's coalition receive a gain of $p > 0$ when the mayor's policy is implemented. Opposition members, on the other hand, receive $-p$ when the mayor's proposal is implemented. If the mayor's proposal is rejected, as city councilors do not control the Executive when the two branches are separated, no public goods are provided ($p=0$). Moreover, in equilibrium, we assume that city councilors would prefer to receive rents instead of providing public goods. This aligns with the empirical evidence in most developing economies.
 
@@ -98,24 +98,24 @@ The timeline of the game is as follows:
     \item If the council accepts, the policy is implemented and the game ends. 
     \item Otherwise, the reversal policy is implemented.
   \end{itemize}
-  \item (Reversal Policy) Depends on which mechanism, we will have three different reversal policies. We will detail them below.
+  \item (Reversal Policy) Depends on which mechanism, we have three different reversal policies. The details are in the following sections.
 \end{enumerate}
 
 This is a bargaining game, along the lines of \citet{rubinstein1982perfect}. For a political science models similar to this model, see \citet{baron1989bargaining} and, to some extent, \citet{buenodemesquita2005logic}.
 
-The solution concept we use in this model is the Sub-game Perfect Nash Equilibrium. A Sub-game Perfect Nash Equilibrium requires that the strategies played are a Nash Equilibrium in each of the subgames of the game. The solution is found using backward induction. In the model with infinitely repeated proposals, we extend the equilibrium concept to require that the equilibrium is Stationary. A Stationary Sub-game Perfect Equilibrium is based on the assumption that, at each given point of the game, if a politician accepts an offer at time $k+1$, she should accept the same offer at time $k$. This gives us an objective of finding the offer that will be accepted at any point in the game. Applying this reasoning, we can find the optimal offer at $k=0$, which represents no delay in policy implementation.
+The solution concept we use in this model is the Sub-game Perfect Nash Equilibrium. A Sub-game Perfect Nash Equilibrium requires that the strategies played are a Nash Equilibrium in each of the subgames of the game. The solution is found using backward induction. In the model with infinitely repeated proposals, we extend the equilibrium concept to require that the equilibrium is Stationary. A Stationary Sub-game Perfect Equilibrium is based on the assumption that, at each given point of the game, if a politician accepts an offer at time $k+1$, she should accept the same offer at time $k$. Stationarity gives us an objective of finding an offer that would be accepted at any stage in the game. Applying this reasoning, we can find a sequence of offers for each point $k$ in time. For the mayor the optimal offer is at $k=0$, and this represents a no delay in policy implementation.
 
 \begin{definition}
-The solution for the game consists in a pair of strategic policy vectors $(g^*, r^*, x^*)_k$, for $k \in \{0, 1, \cdots, \infty\}$, such that, for the mayor and the councilors, there are no profitable deviations from the equilibrium.
+The equilibrium for the game consists in a sequence of strategic policy vectors $(g^*, r^*, x^*)_k$, indexed in $k \in \{0, 1, \cdots, \infty\}$, such that, at every stage of the game, the mayor and the councilors have no profitable deviations from the equilibrium.
 \end{definition}
 
-Moreover, we assume that the players will play no dominated strategies, even when there is less than sufficient support for implement the policy.
+Moreover, we assume that the players play no dominated strategies, even when there is less than sufficient support for implement the policy.
 
 ### The Mayor's Decision Stage
 
-Solving the game by backward induction would require us to start with the councilor's strategies. However, for simplicity, we will assume at this point that we solved the the game for the councilors, and found the equilibrium cost of govern $C_G(N)$ when there are $N$ city councilors. As we will show in a few paragraphs, this is without loss of generality as we will drop the assumption. We use it to simplify the exposition.
+Solving the game by backward induction would require us to start with the councilor's strategies. However, for simplicity, assume at this point that we solved the the game for the councilors, and found the equilibrium cost of govern $C_G(N)$ when there are $N$ city councilors. Below we define $C_G(N)$ for each of the mechanisms, but for now we use this assumption to simplify the exposition.
 
-We now derive the optimal rents ($r$) and public goods provision ($g$) proposed by the mayor. The mayor benefits from public goods provision, as it increases the chances of her reelection. However, she prefers to contribute as minimum as necessary for the public goods, and extract the remaining resources as political rents. Her objective is to maximize the following expected utility, subject to the municipal budget constraint.
+We now derive the optimal rents ($r$) and public goods provision ($g$) proposed by the mayor. The mayor benefits from public goods provision, as it increases the chances of her reelection. However, she prefers to contribute as minimum as necessary for the public goods, and extract the remaining resources as political rents. The mayor's objective is to maximize the following expected utility, subject to the municipal budget constraint.
 
 \[
 \begin{aligned}
@@ -145,7 +145,7 @@ The provision of public goods increase with legislature size when the costs of g
 \begin{proof}
 To prove this result we need to show that the mayor's expected utility satisfy the increasing differences in $g$ and $N$. This would mean that when increasing the size of the council, the optimal solution $g^*$ would also increase. However, as $N$ increases discretely, we cannot take a the cross-partial derivative on $N$ or even use the implicit function theorem. Instead, we use monotone comparative statics to derive these results \citep{milgrom1994monotone}.
 
-To start, note that $\mathbb{R} \times \mathbb{N}$ is a complete lattice. In this case, mayor's expected utility satisfy the increasing differences in $g$ and $N$ when, for $g > g'$ and $N+1 > N$, we have:
+The mayor's expected utility satisfy the increasing differences in $g$ and $N$ when, for $g > g'$ and $N+1 > N$,\footnote{Moreover, the requirement that the decision and type space is a complete lattice, is satisfied for $\mathbb{R} \times \mathbb{N}$.} we have:
 
 \[
 \mathbb{E}\text{U}(g, N+1) - \mathbb{E}\text{U}(g', N+1) \geq \mathbb{E}\text{U}(g, N) - \mathbb{E}\text{U}(g', N)
@@ -186,13 +186,13 @@ At this stage, we need to solve for the costs of govern to determine whether thi
 
 ### Non-Partisan Reversal Mechanism
 
-In the \textit{non-partisan reversal} mechanism, we assume that when the council rejects the mayor's office, a reversal stage starts with the selection of one councilor randomly. To find the stationary sub-game perfect Nash equilibrium, suppose that there were $k-1$ rejections, and we are at the $k$-th stage in the game. A councilor will accept the proposer's offer if, and only if, to accept the offer is better than to wait until the next stage. If the offer is $x_i$, then:
+In the \textit{non-partisan reversal} mechanism, we assume that when the council rejects the mayor's office, a reversal stage starts with the selection of one councilor randomly. To find the stationary sub-game perfect Nash equilibrium, suppose that there were $k-1$ rejections, and we are at the $k$-th stage in the game. A councilor accepts the proposer's offer if, and only if, to accept the offer is better than to wait until the next stage. If the offer is $x_i$, then:
 
 \[
 x_i \geq \dfrac{1}{N}\left[ \delta^{k+1}R - \dfrac{N}{2}x_i \right] + \left( 1 - \dfrac{1}{N} \right)\left( \dfrac{1}{2} \right)\left[ x_i \right]
 \]
 
-In the left-hand side, we place the offer. In the right-hand side, there are two components. The first is the amount that the councilor $i$ gets when she is the proposer. It is equal to the budget in the next round minus the offers that she has to make to convince half of the councilors. The second part is the gains if she happens to reject but still receive an offer in the following round. Note that the offer she makes when she is the proposer is the same as the offer she wants to receive. This because the city councilors are exchangeable, and the solution is symmetric for all councilors receiving an offer (this means that we could have dropped the $i$ in the solution). After some algebra, the offer $x_i$ has to be greater than or equal to:
+In the left-hand side, we place the offer. In the right-hand side, there are two components. The first is the amount that the councilor $i$ gets when she is the proposer. It is equal to the budget in the next round minus the offers that she has to make to convince half of the councilors. The second part is the gains if when the councilor happens to reject the current received offer, but still receives an offer in the following round. Note that the offer the councilor makes as the proposer is the same as the offer that she wants to receive. This because the city councilors are exchangeable, and the solution is symmetric for all councilors receiving an offer (this means that we could have dropped the $i$ in the solution). After some algebra, the offer $x_i$ has to be greater than or equal to:
 
 \[
 x_i \geq \dfrac{2 \delta^{k+1}R}{2N + 1} \equiv \underline{x}(k)
@@ -203,7 +203,7 @@ The proposer always offer the minimum possible to get the proposal approved. In 
 Proceeding backwards, at the mayor's proposal stage $k=0$ and the mayor is going to offer $\underline{x}(0, N) = \dfrac{2 \delta R}{2N + 1}$ to half of the councilors. In this context, the costs of govern are equal to:
 
 \[
-C_G(N) \ = \ \dfrac{N}{2N + 1}(\delta R)
+C_G(N) \ = \ \dfrac{\delta R N}{2N + 1}
 \]
 
 \begin{proposition}
@@ -216,7 +216,7 @@ The difference in costs when there are $N+1$ city councilors versus when there a
 
 \[
 \begin{aligned}
-C_G(N+1) - C_G(N) \ = \ & \dfrac{N+1}{2(N+1) + 1}(\delta R) - \dfrac{N}{2N + 1}(\delta R) \\
+C_G(N+1) - C_G(N) \ = \ & \dfrac{(N+1)\delta R}{2(N+1) + 1} - \dfrac{N \delta R}{2N + 1}\\
  = \ & \dfrac{\delta R}{(2N+3)(2N+1)}  \\
 > \ &0
 \end{aligned}
@@ -236,13 +236,13 @@ This result is crucial to understand the role of the politics in our model. If t
 
 We now look into the other extreme, which is a fully politicized legislature. In this case, when the mayor implements the policy, it generates a value of $p > 0$. A legislator aligned with the mayor receives a benefit $p$ while an opposition legislator receives a cost of $-p$. Moreover, as in the case of the non-partisan reversal, the mayor can choose to distribute $x_i$ private goods for a legislator $i$. In this case, when the policy is implemented, the utility of an aligned legislator is equals to $x_i + p$. When the legislator is not aligned with the mayor, her utility is equals to $x_i - p$. If the policy is not implemented, then we assume a reversal policy of zero in all choice vectors $g = x_i = p = 0$.
 
-A legislator aligned with the mayor will always support the mayor's policy, regardless of receiving or not private goods. This because as $p > 0$, the councilor always receive positive benefits from the policy.\footnote{In reality, if it was possible, the mayor could even impose a cost to the city councilors aligned with the government. Although this seem unrealistic, it is mostly the case when government-aligned legislators are recognized to draft legislation for the mayor's office.} However, a politician not aligned with the mayor will require a compensation if her vote is needed. In this case, if the mayor needs the support of an opposition politician to pass her policy proposal, then she will need to compensate her for the policy costs. In this case:
+A legislator aligned with the mayor always support the mayor's policy, regardless of receiving or not private goods. This because as $p > 0$, the councilor always receive positive benefits from the policy.\footnote{The mayor could even impose a cost to the city councilors aligned with the government. Although this seem unrealistic, it is mostly the case when government-aligned legislators are recognized to draft legislation for the mayor's office, or even take the popular fallout from a failed policy.} However, politicians not aligned with the mayor require a compensation when their votes are needed. In this case, if the mayor's proposal requires the support of an opposition politician, then the mayor compensates the councilor for the policy costs. In such case:
 
 \[
 x_i \geq p
 \]
 
-Optimality dictates that the mayor will offer $x_i = p$ to the opposition legislator. Let $\gamma$ be the ex-ante probability of electing a politician aligned with the mayor. Then, the costs of govern when the legislature size is $N$ is equal to the expected number of politicians in the opposition that the mayor will have to compensate minus the amount needed to implement the policy, in this case, half of them:
+Optimality dictates that the mayor offers $x_i = p$ to the opposition legislator. Let $\gamma$ be the ex-ante probability of electing a politician aligned with the mayor. Then, the costs of govern when the legislature size is $N$ is equal to the expected number of politicians in the opposition that the mayor has to compensate minus the amount needed to implement the policy, in this case, half of them:
 
 \[
 C_G(N) \ = \ p\left(\dfrac{N}{2} - \gamma N\right)
@@ -271,7 +271,7 @@ Therefore, when $\gamma < \dfrac{1}{2}$, the costs of govern increase. Otherwise
 In the \textit{partisan reversal} mechanism, if the chance of electing a mayor-aligned politician is greater than $1/2$, then public goods provision increase as the legislature size increases.
 \end{corollary}
 
-This result shows that when the chances of electing an aligned politician is sufficiently high, then the costs of govern decrease. As a response, the public goods provision (and also rents), increase. The rate distribution between these two vectors will be determined by the marginal change in the utility from rents and the utility from reelection. In any case, the amount allocated for both increase.
+This result shows that when the chances of electing an aligned politician is sufficiently high, then the costs of govern decrease. As a response, the public goods provision (and also rents), increase. The rate distribution between these two vectors is determined by the marginal change in the utility from rents and the utility from reelection. In any case, the amount allocated for both increase.
 
 ### Hybrid Partisan and Non-partisan Reversal Mechanism
 
@@ -287,7 +287,7 @@ An opposition politician, on the other hand, favors the mayor's offer if, and on
 x_i \geq \dfrac{2\delta R}{2N+1} + p
 \]
 
-Inspecting these equations, we can decompose these costs into costs in terms of rents and costs (or benefits) from political alignment. In this context, the cost of govern will be depend on the expected payments for councilors in the mayor's coalition, versus the expected payments for the councilors that belongs to the opposition. The chance of a opposition member be elected is equal to $\gamma$, and taking the weighted averages, these costs become:
+We can decompose these costs in two components. First, the costs in terms of rents. Second, the costs (or benefits) from political alignment. In this context, the governing costs depend on the mayor's offers for councilors in the mayor's coalition versus the mayor's offers for councilors in the opposition. The ex-ante chance of a opposition member be elected is equal to $1-\gamma$, and taking the weighted averages, these costs become:
 
 \[
 C_G(N) \ = \ \dfrac{N}{2}\left( \dfrac{2\delta R}{2N+1} - p \right) + \left(\dfrac{N}{2} - \gamma N \right)p
@@ -321,15 +321,15 @@ The conditions for the differences in governing costs be decrease when the  legi
 In the \textit{hybrid reversal} mechanism, public goods provision decreases as the legislature size increases.
 \end{corollary}
 
-Also, note that the threshold $\gamma$ for the probability of electing a politician aligned with the government is decreasing in both the political value of the mayors policy $p$ and the size of the legislature $N$. This means that higher political values and larger legislatures makes it easier to satisfy the electoral threshold.
+Also, the threshold $\underline{\gamma}$ for the probability of electing a politician aligned with the government is decreasing in both the political value of the mayors policy $p$ and the size of the legislature $N$. This means that higher political values and larger legislatures makes it easier to satisfy the electoral threshold.
 
 ### Main Hypotheses
 
-Taking stocks, the models provide two empirically testable hypotheses. Consider a city council comprised of $N$ legislators, that increase the council size to $N+1$. Then:
+Our model provides two empirically testable hypotheses. Consider a city council comprised of $N$ legislators, that increase its council size to $N+1$. Then:
 
 \begin{enumerate}
-  \item[H1. ] The provision of public goods increase when the costs to govern decrease with legislature size.
-  \item[H2. ] The costs to govern decrease with legislature size when the chance of electing a government aligned legislator is sufficiently high.
+  \item[H1. ] The provision of public goods increase when the governing costs decrease with legislature size.
+  \item[H2. ] The governing decrease with legislature size when the chance of electing a government aligned legislator is sufficiently high.
 \end{enumerate}
 
 In the paper, we show that the provision of education and healthcare improves in Brazil, and this results from the fact that the chances of electing a city councilor aligned with the mayor is of 91%.
@@ -942,3 +942,85 @@ XXXX CHANGE
 
 \newpage
 
+## Sensitivity to the Functional Form Analysis
+\label{sensfuncform}
+
+In the paper, we run all the regressions using local linear polynomials. \citet{GelmanImbens2014} show that local linear and quadratic polynomials are better in terms of consistency than cubic and quartic.
+
+However, we run here all the models using polynomials from local linear to a quartic, showing that our results are robust to different regression functional forms. With two exceptions, the results are mostly consistent. First, quadratic and cubic polynomials make the significance go away in some models. Second, quartic polynomials seem to make the Family Health Program (FHP) significant and negative, which goes in line with our theoretical predictions. Figures \ref{graphsensff} and \ref{placgraphsensff} present the results for the real and the placebo cutoffs. 
+
+\pagebreak
+
+\begin{figure}[htb!]
+  \begin{center}
+    \begin{minipage}{\linewidth}
+      \centerline{\includegraphics[height=8in,angle=0]{figs/ffSens.pdf}}
+      \caption{Sensitivity Analysis for the Functional Form}
+      \bigskip
+      \label{graphsensff}
+    \end{minipage}
+  \end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htb!]
+  \begin{center}
+      \centerline{\includegraphics[width=6in,angle=0]{figs/placFfSens.pdf}}
+      \caption{Sensitivity Analysis for the Functional Form -- Placebo Cutoffs}
+      \bigskip
+      \label{placgraphsensff}
+  \end{center}
+\end{figure}
+
+\newpage
+
+## Sensitivity to Covariates
+\label{senstcovapp}
+
+The control variables play an essential role in our model. As we argued before, without controls, the first stage is inconsistent, and we may be capturing differences \textit{between} cutoffs, instead of \textit{within} cutoffs.
+
+However, if the selection of controls makes the models overestimate quantities in the directions our narrative emphasizes, this would pose a considerable credibility issue for our analysis. To study the sensitivity to controls, we run the same regressions for all possible control combinations. Figure \ref{graphsenscontrol} displays the results for this sensitivity test.\footnote{In the Figure, \textit{NC} stands for No Controls. The controls used are \textit{gdp}, the municipal GDP in a given year; \textit{nseats2000}, the number of seats before the 2003 Supreme Court decision; \textit{northeast}, a dummy variable for Northeast Brazil; \textit{pop2003\_2}, population in 2003 (underscore 2 means that is population by thousands); and \textit{year}.}
+
+\begin{landscape}
+\begin{figure}[htb!]
+  \begin{center}
+    \begin{minipage}{\linewidth}
+      \centerline{\includegraphics[height=6in,angle=0]{figs/sensCov.pdf}}
+      \caption{Sensitivity Analysis for the Control Variable's Choices}
+\bigskip
+\label{graphsenscontrol}
+\end{minipage}
+\end{center}
+\end{figure}
+\end{landscape}
+
+For instance, changes in controls have a substantial effect on the detected differences in the Family Health Program coverage, as well as in Elementary Education Quality. 
+
+In our view, our choice was the most conservative, as the Full Model is significant when most of the combinations also are significant. Otherwise, our model is not significant when most combinations are also insignificant. Regarding the point estimates, our analysis chooses the smaller coefficient sizes systematically for the significant variables.
+
+We also plot sensitivity tests to covariates in the placebo regressions in Figures \ref{placsenscov1} and \ref{placsenscov2}. The theoretical expectations here are that most of these outcomes would fail, and the graphs indeed confirm these expectations.
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\centerline{\includegraphics[width=5in,angle=0]{figs/placSens1Cov.pdf}}
+\caption{Placebo Regressions Outcomes -- Sensitivity to Covariates}
+\bigskip
+\label{placsenscov1}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htb!]
+\begin{center}
+\centerline{\includegraphics[width=5in,angle=0]{figs/placSens2Cov.pdf}}
+\caption{Placebo Regressions Mechanisms -- Sensitivity to Covariates}
+\bigskip
+\label{placsenscov2}
+\end{center}
+\end{figure}
+
+\newpage
