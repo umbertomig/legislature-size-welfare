@@ -1227,3 +1227,98 @@ Education and Health Care    & 92.5               \\
 After we classify all the bills, the frequency in each category was added to the main paper. We also add the productivity per legislator, consisting of a ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little from when we considered the absolute values.
 
 \newpage
+
+\subsection{City Councilors Survey\label{appsurv}}
+
+From November 21st to December 1st, 2016, we surveyed former city councilors that served in the 2005 to 2008 period. We asked them questions regarding how mayors secure electoral support, which services are common in the city councilor's practice, and which services give the highest electoral yield.
+
+We used 3,240 emails from politicians that ran in the 2016 election, filtering the politicians that hold public office in 2005. In December 1st we closed the pool, having 174 responses. Figure \ref{geodistrsurv} displays a distribution of responses.
+
+\begin{figure}[htb!]
+  \begin{center}
+    \begin{minipage}{1 \linewidth}
+      \centerline{\includegraphics[width=6in,angle=0]{figs/distrRespSurvey.pdf}}
+      \caption{Geographical Distribution of Survey Responses}
+      \bigskip
+      \label{geodistrsurv}
+    \end{minipage}
+  \end{center}
+\end{figure}
+
+\pagebreak
+
+To weight the survey, we use the Legislative Census, which was conducted ran in 2005 by the Brazilian Senate company \textit{Interlegis} to improve the quality of the legislative. We use the categories of Brazilian region, legislature size (9 to 15 or more), gender, and age less than 39, re-weighting the collected data to match the population proportions. We use the proportions on each bin to weight the graphs and statistics generated after the raking process.\footnote{The R package \textit{survey} describes in detail the raking process \citep{lumley2004analysis}. In summary, it iterates the post-stratification procedure until the sample marginals match the population marginals for all variables.} Table \ref{tabweight} shows the sample, population, and weighted proportions.
+
+\begin{table}[htp!]
+\centering
+\caption{Proportions for each bin used in the weighting process}
+\label{tabweight}
+\begin{tabular}{lccc}
+\hline
+& Sample & Population & Weighted \\
+& Proportions & Proportions. & Proportions \\
+\hline
+\textbf{Age less than 39}         & 0.50         & 0.34       & 0.34           \\
+\textbf{Female}            & 0.18         & 0.12       & 0.12           \\
+\textbf{Number of Seats = 9}            & 0.83         & 0.90       & 0.90           \\
+\textbf{Number of Seats = 10}           & 0.10         & 0.06       & 0.06           \\
+\textbf{Number of Seats = 11}           & 0.01         & 0.02       & 0.01           \\
+\textbf{Number of Seats = 12}           & 0.01         & 0.01       & 0.01           \\
+\textbf{Number of Seats = 13}           & 0.006        & 0.005      & 0.005          \\
+\textbf{Number of Seats = 14}           & 0.01         & 0.004      & 0.005          \\
+\textbf{Number of Seats = 15 or more}          & 0.02         & 0.009      & 0.008          \\
+\textbf{Region = CENTRO-OESTE} & 0.11         & 0.08       & 0.08           \\
+\textbf{Region = NORDESTE}     & 0.33         & 0.32       & 0.32           \\
+\textbf{Region = NORTE}        & 0.05         & 0.08       & 0.08           \\
+\textbf{Region = SUDESTE}      & 0.30         & 0.30       & 0.30           \\
+\textbf{Region = SUL}          & 0.20         & 0.21       & 0.21           \\ \hline
+\end{tabular}
+\end{table}
+
+Note that the algorithm performed well, with minimal differences occurring only after the third decimal place.
+
+The questions of interest for this research, asked in the survey were:
+
+\begin{enumerate}
+    \item No Brasil é comum que o prefeito tenha de negociar para ter maioria na Câmara de Vereadores. Com que frequência, o(a) Sr(a) acha que o prefeito usa os seguintes dispositivos para conseguir apoio?
+    \item Quais dessas atividades o(a) Sr(a) acredita serem mais comuns no trabalho da maioria dos vereadores?
+    \item Quais dessas atividades o(a) Sr(a) acredita que ajudam mais um vereador durante a eleição?
+\end{enumerate}
+
+A free translation to English would be:
+
+\begin{enumerate}
+    \item In Brazil, it is common that mayors negotiate the majority within the city council. What is the frequency that mayors use the following services in exchange for support?
+    \item Which of those activities do city councilors perform the most in their representation practices?
+    \item Which of the following activities do you believe helps city councilors the most in elections?
+\end{enumerate}
+
+The second question is essential, as it reports whether councilors do the activities that give more electoral yield. Figure \ref{commonservice} shows the results for each of the activities we studied the electoral yield.
+
+\begin{figure}[htb!]
+  \begin{center}
+    \begin{minipage}{1 \linewidth}
+      \centerline{\includegraphics[width=6.5in,angle=0]{figs/commonJobsCouncilors.pdf}}
+      \caption{City Councilor's Common Activities}
+\bigskip
+\label{commonservice}
+\end{minipage}
+\end{center}
+\end{figure}
+
+The last question measures the willingness of mayors to give services to city councilors. This question is relevant, as mayors control most of the bureaucracy and the mediation of services requires a good relationship with mayors. Figure \ref{mayorneg} shows the results for the mayoral activities.
+
+\begin{figure}[htb!]
+\begin{center}
+\begin{minipage}{1 \linewidth}
+\centerline{\includegraphics[width=6.5in,angle=0]{figs/strategySupportMayors.pdf}}
+\caption{Mayor negotiated services in exchange of support}
+\bigskip
+\label{mayorneg}
+\end{minipage}
+\end{center}
+\end{figure}
+
+Therefore, both Figures show that councilors do perform the tasks that give the most electoral yield. The exception is the category of honor legislation, which most legislators seem to perform, even though they acknowledge that it provides little electoral returns.
+
+Regarding the services that mayors use to negotiate with the coalition, note that jobs in exchange of support are the highest ranked strategy by councilors. Our results capture that, as an increase in city council size has a positive effect on the number of appointed employees in the municipality.
