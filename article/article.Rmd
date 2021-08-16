@@ -361,7 +361,7 @@ To evidence our mechanism's operation in city councillors' ordinary legislative 
   \begin{center}
   \caption{Legislation Approved in Municipalities Closer to the City Council Thresholds}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/laws2019.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/lawsApproved.pdf}}
       \bigskip
       \label{LEGAPPR}
     \end{minipage}
@@ -378,7 +378,7 @@ In our online survey with former city councillors, we asked about their legislat
   \begin{center}
   \caption{Electoral Attractiveness of Councilor's Activities and Practices}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{figs/elecYieldJobsCouncilorsJan2019.pdf}}
+      \centerline{\includegraphics[width=6in,angle=0]{../figures/elecYieldJobsCouncilors.pdf}}
       \bigskip
       \label{survelec}
     \end{minipage}

@@ -1,38 +1,47 @@
 % !TEX program = XeLaTeX
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
 
+\usepackage{amsthm}
+
 % Fonts
 $if(fontfamily)$
 \usepackage[$fontfamilyoptions$]{$fontfamily$}
 $else$
 \usepackage{libertine}
 $endif$
+
 % This is a nice mathfont, it fits well with Libertine
 % Comment the line if you want to use a different one
 \usepackage[libertine]{newtxmath}
+
 % The default monofont 
 % Again, comment the line below if you want to change it
-\usepackage[scaled=.95]{inconsolata}
+\usepackage[scaled=.85]{inconsolata}
 
 % Add the following packages to support kableExtra
-\usepackage{booktabs, longtable, makecell}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable, subcaption}
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{wrapfig}
 \usepackage{colortbl}
-\usepackage{pdflscape}
+\usepackage{pdflscape, lscape}
 \usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
+\usepackage{makecell}
 \usepackage{etoolbox}
-\usepackage{tocloft}
-\usepackage{rotating}
-\usepackage{afterpage}
-\usepackage{adjustbox}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{tocloft, rotating, graphicx, arydshln}
+
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 % Dots in toc
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
 
 % Colours
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -53,18 +62,97 @@ $endif$
 \usepackage{dcolumn}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{caption}  
 \floatplacement{figure}{H}
-\usepackage{pgf}
 \usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{shapes.arrows,arrows.meta,positioning,shapes.geometric}
 \usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
 \usepackage{mathtools}
-\usepackage{caption}
+\usepackage{caption, xltabular}
 
 % UK English
 \usepackage[UKenglish]{babel}
 \usepackage[UKenglish]{isodate}
 \cleanlookdateon
+
+% Supercharge
+\newenvironment{quotemig}{\singlespacing \begin{quote} \begin{small}\it}{\end{small}\end{quote}}
+
+\newcommand{\wh}[1] {\widehat { #1 }}
+
+\newcommand{\twopd}[4]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{if } #4 \end{array} \right.}
+
+\newcommand{\twopdo}[3]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{otherwise} \end{array} \right.}
+
+\newcommand{\threepd}[6]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\ 
+#3 & \text{if } #4 \\ #5 & \text{if } #6 \end{array} \right.}
+
+\newcommand{\threepdo}[5]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\ 
+#3 & \text{if } #4 \\ #5 & \text{otherwise} \end{array} \right.}
+
+% Bold letters
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\F}{\mathbf{F}}
+\renewcommand{\O}{\mathbf{O}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\g}{\mathbf{g}}
+\renewcommand{\r}{\mathbf{r}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\dd}{\mathbf{d}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\Beta}{\boldsymbol{\beta}}
+\newcommand{\bveps}{\boldsymbol{\varepsilon}}
+\newcommand{\bvphi}{\boldsymbol{\varphi}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bups}{\boldsymbol{\upsilon}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\arrowp}{\stackrel{p}{\rightarrow}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\indf}{\mathds{1}}
+
+% Theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+%\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+% Illustration
+\theoremstyle{definition}
+\newtheorem{example}{Example}%[subsection]
+\newtheorem{hypothesis}{Hypothesis}%[subsection]
+
+% Claims in the theorems (without numbering)
+\theoremstyle{remark}
+\newtheorem*{claimnn}{Claim}
 
 % Penalties
 \exhyphenpenalty=1000
@@ -225,7 +313,7 @@ $endif$
 
 % Graphics
 $if(graphics)$
-\usepackage{graphicx,grffile}
+\usepackage{grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
