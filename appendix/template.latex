@@ -72,9 +72,9 @@ $endif$
 \usepackage{mathtools}
 \usepackage{caption, xltabular}
 
-% UK English
-\usepackage[UKenglish]{babel}
-\usepackage[UKenglish]{isodate}
+% English
+\usepackage{babel}
+\usepackage[english]{isodate}
 \cleanlookdateon
 
 % Supercharge
@@ -118,7 +118,7 @@ $endif$
 \newcommand{\uu}{\mathbf{u}}
 \newcommand{\w}{\mathbf{w}}
 \newcommand{\x}{\mathbf{x}}
-\newcommand{\vv}{\mathbf{v}}
+% \newcommand{\vv}{\mathbf{v}}
 \newcommand{\y}{\mathbf{y}}
 \newcommand{\z}{\mathbf{z}}
 \newcommand{\Beta}{\boldsymbol{\beta}}
