@@ -71,7 +71,7 @@ Let $C_G$ be the mayor's governing costs. The budget balance constraints implies
 r + g + C_G \ \leq \ R
 \]
 
-The expected utility for the city councilors depends on which reversal policy takes place. As mentioned above, we explore the implications of three different mechanisms. First, in the \textit{non-partisan} reversal mechanism, when the council rejects the mayor's proposal, a reversal stage starts with resources diminishing by a factor $\delta \in (0,1)$ and with the random selection of one councilor. The randomly selected councilor becomes the new proposer. If her proposal is accepted, it is implemented. If rejected, the budget shrinks again by a factor $\delta$, and another city councilor is chosen to propose the policy. The process continues until one proposal is finally accepted.
+The expected utility for the city councilors depends on which reversal policy takes place. As mentioned above, we explore the implications of three different mechanisms. First, in the \textit{non-partisan} reversal mechanism, when the council rejects the mayor's proposal, a reversal stage starts with resources diminishing by a factor $\delta \in (0,1)$ and the random selection of one councilor. The randomly selected councilor becomes the new proposer. If her proposal is accepted, it is implemented. If rejected, the budget shrinks again by $\delta$ and another city councilor is chosen to propose the policy. The process continues until the proposal is finally accepted.
 
 In the second reversal mode, the \textit{partisan} reversal mechanism, we assume that each councilor has a party affiliation. Party affiliations are mutually exclusive, that is, one councilor cannot belong to two parties at once. If a city councilor is affiliated to a party aligned with the mayor, we say that she belongs to the government coalition $G \subset \{1, 2, \cdots, N \}$. Otherwise, the city councilor belongs to the opposition $O = \{1, 2, \cdots, N \} \setminus G$. The mayor-sponsored policy generates a political value of $p > 0$ for the councilors, and whether this adds or reduces the councilor's utility depends on his or her party affiliation. If the mayor's proposal is rejected, a city councilor aligned with the mayor receives zero instead of $p$. In contrast, a city councilor from the opposition receives zero if the proposal is rejected and $-p$ if is is enacted. Although these assumptions are rather strong, they capture the underlying political dynamics of political partisanship, in which councilors and mayors in the same coalition share similar policy preferences. Voting against the mayor's proposals defies the partisan logic.
 
@@ -102,7 +102,7 @@ Moreover, we assume that players have no dominated strategies, even if the polic
 
 Solving the game by backward induction requires us to know which strategies councilors may adopt. However, assume for now that we have solved the game for the councilors and found the equilibrium cost of governing $C_G(N)$ when there are $N$ city councilors. In the next section, we define $C_G(N)$ for each mechanism using backward induction and show that the definitions are well-behaved. Here we start from this assumption just to simplify our exposition.
 
-We derive the optimal rents ($r$) and public goods provision ($g$) a mayor should propose. Mayors benefits from public goods provision, as it increases their chances of reelection. However, they would rather provide the lowest necessary amount of public goods and extract the remaining resources as political rents. As we noted previously, their objective is to maximize their expected utility, subject to the municipal budget constraint.
+We derive the optimal rents ($r$) and public goods provision ($g$) a mayor should propose. Mayors benefit from public goods provision, as it increases their chances of reelection. However, they would rather provide the lowest necessary amount of public goods and extract the remaining resources as political rents. As we noted previously, their objective is to maximize their expected utility, subject to the municipal budget constraint.
 
 \[
 \begin{aligned}
@@ -126,7 +126,7 @@ u'(R - g - C_G(N)) = B_M\pi'(g)
 This is sufficient for the equilibrium, as the second order condition reassures the concavity of the mayor's expected utility: $u''(R - g^* - C_G(N)) + B_M\pi''(g^*) < 0$.
 
 \begin{proposition}
-Public goods provision increases with legislature size if governing costs decrease with legislature size.
+Public goods provision increases with larger legislatures if governing costs decrease in larger legislatures.
 \end{proposition}
 
 \begin{proof}
@@ -179,7 +179,7 @@ In the \textit{non-partisan reversal} mechanism, we assume that if the council r
 x_i \geq \dfrac{1}{N}\left[ \delta^{k+1}R - \dfrac{N}{2}x_i \right] + \left( 1 - \dfrac{1}{N} \right)\left[\dfrac{1}{2} x_i \right]
 \]
 
-We place the offer on the left-hand side. There are two components on the right-hand side. The first is the amount that the councilor $i$ receives when he/she is the proposer. The amount is equal to the chance that they are recognized as the proposer, times the budget in the next round, minus the offers they have to make to convince half of the councilors. The second part denotes the gains obtained by the councilor if he/she rejects the current offer but still receives an offer in the following round. This is equal to the chance that they are not recognized as the proposer, times the chance that they receive a transfer, times the transfer amount. Note that the councilor's offer as the proposer is the same as the offer they want to receive, as city councilors are exchangeable. The solution is symmetric for all councilors receiving an offer (this means that, without loss of generality, we could have dropped the $i$ in the solution). After some calculations, the offer $x_i$ has to be greater than or equal to:
+We place the offer on the left-hand side. There are two components on the right-hand side. The first is the amount that councilor $i$ receives when he/she is the proposer. The amount is equal to the chance that they are recognized as the proposer, times the budget in the next round, minus the offers they have to make to convince half of the councilors. The second part denotes the gains obtained by the councilor if he/she rejects the current offer but still receives an offer in the following round. This is equal to the chance that they are not recognized as the proposer, times the chance that they receive a transfer, times the transfer amount. Note that the councilor's offer as the proposer is the same as the offer they want to receive, as city councilors are exchangeable. The solution is symmetric for all councilors receiving an offer (this means that, without loss of generality, we could have dropped the $i$ in the solution). After some calculations, the offer $x_i$ has to be greater than or equal to:
 
 \[
 x_i \geq \dfrac{2 \delta^{k+1}R}{2N + 1} \equiv \underline{x}(k, N)
@@ -326,7 +326,7 @@ In the main paper, we show that larger legislatures improve the provision of pub
 ## Variable Sources and Descriptive Statistics
 \label{appsources}
 
-We use three data sources in our work, mainly from Brazilian governmental agencies. Table \ref{tab:varsources} displays the primary sources we use here and their respective URLs.
+We use three data sources in our work, mainly from Brazilian governmental agencies. Table \ref{tab:varsources} presents the variables we use here and their respective URLs.
 
 \begin{table}[!htbp] \centering
 \small
@@ -363,7 +363,7 @@ We use three data sources in our work, mainly from Brazilian governmental agenci
 \begin{itemize}
 \item \textbf{Number of Seats 2000}: Number of city councilors in 2000 (source: TSE).
 \item \textbf{Population 2000}: City population according to the 2000 Brazilian Census (source: IBGE).
-\item \textbf{Per-Capita GDP 2000 (in millions)}: Municipal per capita GDP measured by the Brazilian Census (source: IPEA).
+\item \textbf{Per Capita GDP 2000 (Millions)}: Municipal per capita GDP measured by the Brazilian Census (source: IPEA).
 \item \textbf{Proportion of Poverty 2000}: Percentage of citizens earning less than R\$ 70.00 per month (source: Social Development Ministry [MDS]).
 \item \textbf{Number of Seats 2004}: Number of city councilors in 2004 according to the Electoral Court (source: TSE).
 \item \textbf{Infant Mortality 2005--2008}: Number of children who died before reaching one year of age, divided by the number of children born alive, multiplied by 1,000 (source: DataSUS)
@@ -394,14 +394,14 @@ We code the legislation approved by the councilors of 63 municipalities around a
 We ran an online survey asking 174 councilors about their representation duties and how mayors allocate public services to expand his or her government coalition. The services we include are:
 
 \begin{itemize}
-\item \textbf{Councilors Job Appointments}: How often mayors appoint people allied to city councilors to bureaucratic jobs (source: survey).
-\item \textbf{Councilors Demands}: How often mayors satisfy an allied councilors' demand (e.g., build a health clinic in a councilor's neighborhood) (source: survey).
-\item \textbf{Councilors Personal Requests}: How often mayors satisfy an allied councilors' requests (e.g., hire an ally in the bureaucracy) (source: survey).
-\item \textbf{Councilors Legislation}: How often that mayors support the councilors' legislative agenda (source: survey).
-\item \textbf{Councilors Constructions}: How often mayors support councilors' requests for constructions (e.g., fix potholes in the councilor's neighborhoods) (source: survey).
+\item \textbf{Councilors Job Appointments}: Whether mayors appoint supporters of the city councilors to bureaucratic jobs (source: survey).
+\item \textbf{Councilors Demands}: Whether mayors satisfy the public service demands of an allied councilor (e.g., build a health clinic in a councilor's neighborhood) (source: survey).
+\item \textbf{Councilors Personal Requests}: Whether mayors satisfy the private requests of an allied councilor (e.g., hire an ally in the bureaucracy) (source: survey).
+\item \textbf{Councilors Legislation}: Whether mayors support the councilors' legislative agenda (source: survey).
+\item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (e.g. fix potholes in the councilor's neighborhoods) (source: survey).
 \end{itemize}
 
-This Appendix contains other questions that we asked in the survey. They are meant to improve our knowledge about the city councilors' perceptions of the roles the municipality and themselves play in the government. We omitted these questions in the main paper because they are not of general interest to our argument. The descriptive statistics of the variables used in the main article follow in Table \ref{tab:descrvarspaper}.
+This Appendix contains other questions we asked in the survey. We collected them to improve our knowledge about the perceptions city councilors have about the roles the municipality and themselves play in the government. We omitted these questions in the main paper because they are not of general interest to our argument. The descriptive statistics of the variables used in the main article follow in Table \ref{tab:descrvarspaper}.
 
 \begin{table}[htb!]
 \centering
@@ -466,9 +466,9 @@ The validity of our causal claim relies on three assumptions:
   \item There are no pre-treatment differences in the sample.
 \end{enumerate}
 
-For the first assumption, \citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
+Regarding the first assumption, \citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
 
-We run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomial orders from one to four. As the null hypothesis is no manipulation, the p-values for each polynomial order are: local linear (p-value $=0.442$); quadratic (p-value $=0.740$); cubic (p-value $=0.998$); and quartic (p-value $=0.620$). Therefore, we also see no evidence of manipulation.
+We run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomials ranging from first to fourth order. As the null hypothesis implies that there is no manipulation, the $p$-values for each polynomial order are: local linear ($p$-value $=0.442$); quadratic ($p$-value $=0.740$); cubic ($p$-value $=0.998$); and quartic ($p$-value $=0.620$). Therefore, we also see no evidence of manipulation.
 
 Lastly, we graph the \citet{McCrary2008} test, pooling all the discontinuities together. The results follow in Figure \ref{manipulationplot} and show no signs of manipulation.
 
@@ -559,7 +559,7 @@ These cutoffs were in place until 2003, when the municipality of Mira Estrela de
 \label{tab:citycouncilsize2004all}
 \end{table}
 
-As Brazil has only a few municipalities with a population higher than one million inhabitants, we focus on cities with less than $571,429 + 47,619 = 619,048$ inhabitants. Table \ref{tab:citycouncilsize2004short} displays the number of municipalities by the thresholds we use in this paper.
+As Brazil has only a few municipalities with more than one million inhabitants, we focus on cities with less than $571,429 + 47,619 = 619,048$ inhabitants. Table \ref{tab:citycouncilsize2004short} displays the number of municipalities by the thresholds we use in this paper.
 
 \begin{table}[htp!]
 \centering
@@ -592,7 +592,7 @@ As Brazil has only a few municipalities with a population higher than one millio
 
 The Supreme Court stated that local electoral courts should use the 2003 population projection to assign municipalities to cutoffs. In Brazil, the Brazilian Institute of Geography and Statistics (IBGE) makes the official population projections. We have strong reason to believe that sorting is not a threat to our identification strategy, as IBGE is notably insulated from local politics (see also the McCrary test above).
 
-To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the municipalities by their proximity to the cutoffs. In the map, we give the contour of every Brazilian city, coloring it by the proximity to the council size thresholds. Darker colors represent municipalities closer to the population thresholds. In regression discontinuity models, the closer a city is to the cutoff, the more influential it is in the estimation. Figure \ref{sampleplot} also shows that the municipalities around the cutoff are reasonably distributed across the country.
+To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the municipalities by their proximity to the cutoffs. In the map, we give the contour of every Brazilian city, coloring it by the proximity to the council size thresholds. Darker colors represent municipalities closer to the population thresholds. In regression discontinuity models, the closer a city is to the cutoff, the more influential it is in the estimation. Figure \ref{sampleplot} also shows that the municipalities around the cutoff are reasonably well distributed across the country.
 
 \begin{figure}[htb!]
   \begin{center}
@@ -610,13 +610,13 @@ To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the
 ## Identification Strategy in Regression Discontinuity Designs with Multiple Thresholds
 \label{ISMT}
 
-When estimating regression discontinuities with multiple cutoffs, authors pool all the discontinuities together and estimate the effect of council size on outcomes \citep{cattaneo2016interpreting}. Let $C = \{c_0, c_1, \cdots, c_n, c_{n+1}\}$ be the set of cutoffs thresholds associated with the running variable $X$. The outcome variable is assumed to be $Y$. In the pooled model, the Local Average Treatment Effect (LATE) is:
+When estimating regression discontinuities with multiple cutoffs, authors usually pool all the discontinuities together to estimate the treatment effect on the outcomes of interest \citep{cattaneo2016interpreting}. Let $C = \{c_0, c_1, \cdots, c_n, c_{n+1}\}$ be the set of cutoffs thresholds associated with the running variable $X$. The outcome variable is assumed to be $Y$. In the pooled model, the Local Average Treatment Effect (LATE) is:
 
 \[
 LATE_{no\_controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C \right]
 \]
 
-Nevertheless, this may be problematic as municipal characteristics may vary between cutoffs. For instance, population imbalance is a known source of heterogeneity, as shown by \citet{Cattaneo2016}. To ensure that cases are comparable, we estimate the average LATE for all cutoffs. We add a set of controls $Z_i$ to reduce heterogeneity. For instance, the population that determines the change from one threshold to another also determines all the cutoffs. As the population runs smoothly around each cutoff, it makes this variable an ideal control to add to our models. The new estimator is:
+Nevertheless, this may be problematic in our case as municipal characteristics may vary between cutoffs. For instance, population imbalance is a known source of heterogeneity, as shown by \citet{Cattaneo2016}. To ensure that cases are comparable, we estimate the average LATE for all cutoffs. We add a set of controls $Z_i$ to reduce heterogeneity. For instance, the population that determines the change from one threshold to another also determines all the cutoffs. As the population runs smoothly around each cutoff, it makes this variable an ideal control to add to our models. The new estimator is:
 
 \[
 LATE_{controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C, Z_i \right]
@@ -717,7 +717,7 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=5in,angle=0]{../figures/bwSens.pdf}}
+      \centerline{\includegraphics[width=5in,height=4in,angle=0]{../figures/bwSens.pdf}}
       \caption{Bandwidth Sensitivity -- Main Models}
       \bigskip
       \label{graphbw}
@@ -727,12 +727,10 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
 
 In Figure \ref{placgraphbw}, we run the same bandwidth analysis for the placebo outcomes. The results, as expected, are mostly statistically insignificant.
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[width=5in,angle=0]{../figures/placBwSens.pdf}}
+      \centerline{\includegraphics[width=5in,height=4in,angle=0]{../figures/placBwSens.pdf}}
       \caption{Bandwidth Sensitivity -- Placebo Regressions}
       \bigskip
       \label{placgraphbw}
@@ -749,12 +747,10 @@ Given its massive size and large social inequalities, Brazil presents considerab
 
 First, note that for infant mortality and education enrollment, all coefficients remain significant even after removing some states from our sample. For postneonatal mortality, the coefficient loses significance when we remove the states of Bahia, Pernambuco, Rio Grande do Norte, and Rio Grande do Sul. The mayoral coalition size remains significant in most models, losing significance when we remove Rio Grande do Norte and São Paulo. The number of appointed employees loses significance after removing Espirito Santo and São Paulo. All the alternative mechanism models are insignificant, regardless of the state removed.
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{../figures/dropStateSens1.pdf}}
+      \centerline{\includegraphics[height=5.9in,width=0.9\linewidth,angle=0]{../figures/dropStateSens1.pdf}}
       \caption{Sensitivity Analysis for the States in the Sample -- Welfare Outcomes}
       \bigskip
       \label{graphsensstatedrop1}
@@ -762,12 +758,10 @@ First, note that for infant mortality and education enrollment, all coefficients
   \end{center}
 \end{figure}
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{../figures/dropStateSens2.pdf}}
+      \centerline{\includegraphics[height=8in,width=0.9\linewidth,angle=0]{../figures/dropStateSens2.pdf}}
       \caption{Sensitivity Analysis of State Characteristics -- Mechanism Outcomes}
       \bigskip
       \label{graphsensstatedrop2}
@@ -775,11 +769,9 @@ First, note that for infant mortality and education enrollment, all coefficients
   \end{center}
 \end{figure}
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
-      \centerline{\includegraphics[width=5in,angle=0]{../figures/placDropStateSens1.pdf}}
+      \centerline{\includegraphics[width=0.9\linewidth,angle=0]{../figures/placDropStateSens1.pdf}}
       \caption{Sensitivity Analysis of State Characteristics with Placebo Cutoffs -- Welfare Outcomes}
       \bigskip
       \label{placgraphsensstatedrop1}
@@ -790,7 +782,7 @@ First, note that for infant mortality and education enrollment, all coefficients
 
 \begin{figure}[htb!]
   \begin{center}
-      \centerline{\includegraphics[width=6in,angle=0]{../figures/placDropStateSens2.pdf}}
+      \centerline{\includegraphics[width=0.9\linewidth,angle=0]{../figures/placDropStateSens2.pdf}}
       \caption{Sensitivity Analysis of State Characteristics with Placebo Cutoffs -- Mechanism Outcomes}
       \bigskip
       \label{placgraphsensstatedrop2}
@@ -806,12 +798,10 @@ In the paper, we run all the regressions using local linear polynomials. \citet{
 
 However, to assess the robustness of our results, we also run every model using different polynomials, from local linear to a quartic, to show that our results are robust to different regression functional forms. The results are similar in all models, with significance changing only in the quartic polynomials. Figures \ref{graphsensff} and \ref{placgraphsensff} present the results for the real and the placebo cutoffs.
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=8in,angle=0]{../figures/ffSens.pdf}}
+      \centerline{\includegraphics[height=7in,angle=0]{../figures/ffSens.pdf}}
       \caption{Sensitivity Analysis of Model Functional Form}
       \bigskip
       \label{graphsensff}
@@ -821,7 +811,7 @@ However, to assess the robustness of our results, we also run every model using 
 
 \pagebreak
 
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
       \centerline{\includegraphics[width=6in,angle=0]{../figures/placFfSens.pdf}}
       \caption{Sensitivity Analysis of Model Functional Form -- Placebo Cutoffs}
@@ -895,15 +885,13 @@ We also plot sensitivity tests to covariates in the placebo regressions. They ar
 
 \newpage
 
-\subsection{Sensitivity Analysis of Additional Cutoffs\label{senscutapp}}
+## Sensitivity Analysis of Additional Cutoffs
 
 Here we evaluate the robustness of our results when we change the number of cutoffs. We run a series of regressions limiting the population sizes to half the cutoffs, starting from the second cutoff to the last. This strategy is similar to adding one cutoff at a time. The results are stable and do not change our main conclusions. Moreover, there are no clear increasing or decreasing patterns, which would indicate the existence of differential returns. Figures \ref{senscut1} and \ref{senscut2} display the results for the main cutoffs, while Figures \ref{placsenscut1} and \ref{placsenscut2} present the same results for the placebo cutoffs.
 
-\pagebreak
-
-\begin{figure}[htb!]
+\begin{figure}[H]
 \begin{center}
-\centerline{\includegraphics[width=6in,angle=0]{../figures/rdAddCuts1.pdf}}
+\centerline{\includegraphics[width=6in,height=6.5in,angle=0]{../figures/rdAddCuts1.pdf}}
 \caption{Sensitivity to Additional Cutoffs -- Welfare Outcomes}
 \bigskip
 \label{senscut1}
@@ -912,7 +900,7 @@ Here we evaluate the robustness of our results when we change the number of cuto
 
 \pagebreak
 
-\begin{figure}[htb!]
+\begin{figure}[H]
 \begin{center}
 \centerline{\includegraphics[width=6in,angle=0]{../figures/rdAddCuts2.pdf}}
 \caption{Sensitivity to Additional Cutoffs -- Mechanism Outcomes}
