@@ -72,10 +72,8 @@ $endif$
 \usepackage{mathtools}
 \usepackage{caption, xltabular}
 
-% UK English
-\usepackage[UKenglish]{babel}
-\usepackage[UKenglish]{isodate}
-\cleanlookdateon
+% American English
+\usepackage[english]{babel}
 
 % Supercharge
 \newenvironment{quotemig}{\singlespacing \begin{quote} \begin{small}\it}{\end{small}\end{quote}}
@@ -118,7 +116,7 @@ $endif$
 \newcommand{\uu}{\mathbf{u}}
 \newcommand{\w}{\mathbf{w}}
 \newcommand{\x}{\mathbf{x}}
-\newcommand{\vv}{\mathbf{v}}
+% \newcommand{\vv}{\mathbf{v}}
 \newcommand{\y}{\mathbf{y}}
 \newcommand{\z}{\mathbf{z}}
 \newcommand{\Beta}{\boldsymbol{\beta}}
