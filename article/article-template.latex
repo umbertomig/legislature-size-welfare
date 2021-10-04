@@ -471,11 +471,11 @@ $endfor$
 \appendix
 
 % Variable sources
-\section{Appendix (print)}
+\section*{Appendix (print)}
 
-\subsection*{Online Supplemental Materials Content}
+\subsection*{Online Supplementary Materials Content}
 
-In the online appendix we present the following complementary information:
+In the online Supplementary Materials we present the following complementary information:
 
 \begin{enumerate}
     \setlength\itemsep{0em}
@@ -496,9 +496,9 @@ In the online appendix we present the following complementary information:
     \item A description of the city councilors' survey.
 \end{enumerate}
 
-The Online Appendix can be found here: \url{XXXX}.
+The Supplementary Materials can be found at \url{https://github.com/umbertomig/legislature-size-welfare/tree/master/appendix}.
 
 \subsection*{Replication Materials}
 
-The replication materials can be found here: \url{XXXX}.
+The replication materials are available at \url{https://github.com/umbertomig/legislature-size-welfare}.
 \end{document}
