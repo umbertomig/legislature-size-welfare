@@ -47,9 +47,10 @@ Should you select our manuscript for peer review, we would like to kindly sugges
     \item Thomas Fujiwara. Associate Professor of Economics and International Affairs, Princeton University. Email: \url{fujiwara@princeton.edu}
     \item F. Daniel Hidalgo. Cecil and Ida Green Associate Professor of Political Science, Massachusetts Institute of Technology. Email: \url{dhidalgo@mit.edu}.
     \item Guillermo Toral. Assistant Professor of Political Science, Vanderbilt University. Email: \url{guillermo.toral@vanderbilt.edu}.
+    \item Ryan Hübert. Assistant Professor of Political Science, University of California, Davis. Email: \url{rhubert@ucdavis.edu}.
 \end{itemize}
 
-To the best of our knowledge, none of the above-suggested persons have any conflict of interest, financial or otherwise. All of them have written extensively about public service provision and government accountability in Brazil using modern causal inference methods. 
+To the best of our knowledge, none of the above-suggested persons have any conflict of interest, financial or otherwise. All of them have written extensively about public service delivery, government accountability, and economic policy analysis using modern causal inference methods. 
 
 Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise.
 
