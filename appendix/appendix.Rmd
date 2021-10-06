@@ -2,10 +2,6 @@
 title: |
        | Supplementary Materials for "Legislature Size and Welfare: Evidence from Brazil"
 author:
-  - Gabriel Cepaluni[^gabriel]
-  - Danilo Freire[^danilo]
-  - Umberto Mignozzetti[^umberto]
-date: \today
 fontfamily: libertine
 fontawesome: yes
 fontsize: 11pt
@@ -24,12 +20,6 @@ output:
     keep_tex: no
     template: template.latex
 ---
-
-[^gabriel]: Associate Professor, Department of International Relations, São Paulo State University, <gabi.cepal@gmail.com>.
-
-[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <dfreire@lincoln.ac.uk>, <https://danilofreire.github.io>.
-
-[^umberto]: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>. Corresponding author.
 
 \appendix
 \addtocounter{section}{1}

@@ -2,11 +2,7 @@
 title:  |
         | Legislature Size and Welfare: Evidence from Brazil
 author: 
-  - Gabriel Cepaluni[^gabriel]
-  - Danilo Freire[^danilo]
-  - Umberto Mignozzetti[^umberto]
 date: \today
-thanks: "We thank Cedric Antunes, Victor Araujo, Eric Arias, Taylor Boas, Natalia Bueno, Andrea Freitas, Saad Gulzar, James Mahon, Lucas Novaes, Nelson Ruiz, Catarina Roman, David Skarbek, and Denis Stukal for their valuable comments. We also thank the participants of seminars and conferences at CEPESP, CUNY, INSPER, IPSA, LACEA, LASA, MPSA, Notre Dame, NYU, PUC Chile, SPSA, and Uppsala. We gratefully acknowledge the financial support of the São Paulo Research Foundation (FAPESP), grant number 2017/07290-5. All materials required to replicate this study are available at <https://github.com/umbertomig/legislature-size-welfare>."
 abstract: "How does legislature size impact public service provision? Despite the importance of institutional design for democratic governance, the effect of particular legislative features on citizen welfare remains little understood. In this paper, we use a formal model to show that increasing legislature size improves public goods provision. We argue that changes in bargaining costs depend on whether additional legislators share the Executive's party affiliation: More opposition members reduce the Executive's public goods provision, while more government-aligned members increase it. We test this theory by exploiting sharp discontinuities in city council size in Brazil. We show that an additional city councilor has a 91% chance of belonging to the mayoral coalition, and this significantly improves primary school enrollment and infant mortality measures. To explore possible mechanisms, we surveyed former councilors and analyzed 346,553 bills proposed between 2005 and 2008. This paper has implications for the design of representative institutions."
 abstractspacing: double
 keywords: Legislature Size; Legislative Bargaining; Local Public Goods Provision; Regression Discontinuity Design; Brazil
@@ -37,12 +33,6 @@ output:
 knitr::opts_chunk$set(fig.pos = "H") # holds figure position
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-[^gabriel]: Associate Professor, Department of International Relations, São Paulo State University, <gabi.cepal@gmail.com>.
-
-[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <dfreire@lincoln.ac.uk>, <https://danilofreire.github.io>.
-
-[^umberto]: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>. Corresponding author.
 
 \newpage
 

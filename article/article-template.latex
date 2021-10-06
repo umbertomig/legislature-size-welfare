@@ -471,7 +471,7 @@ $endfor$
 \appendix
 
 % Variable sources
-\section*{Appendix (print)}
+\section*{Appendix (Print)}
 
 \subsection*{Online Supplementary Materials Content}
 
@@ -496,9 +496,9 @@ In the online Supplementary Materials we present the following complementary inf
     \item A description of the city councilors' survey.
 \end{enumerate}
 
-The Supplementary Materials can be found at \url{https://github.com/umbertomig/legislature-size-welfare/tree/master/appendix}.
+The Supplementary Materials can be found at (\textit{edited}).
 
 \subsection*{Replication Materials}
 
-The replication materials are available at \url{https://github.com/umbertomig/legislature-size-welfare}.
+The replication materials are available at (\textit{edited}).
 \end{document}
