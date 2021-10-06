@@ -1,0 +1,65 @@
+---
+author: 
+    - Danilo Freire
+opening: Dear Editors,
+closing: Sincerely Yours,
+address:
+    - The Editors
+    - American Journal of Political Science
+return-address: 
+    - Danilo Freire
+    - School of Social and Political Sciences
+    - University of Lincoln
+    - Brayford Pool, Lincoln LN6 7TS
+    - United Kingdom
+letterhead: 
+signature: 
+urlcolor: darkblue
+linkcolor: Mahogany
+citecolor: Mahogany
+spacing: onehalf
+margin: 2cm
+papersize: a4paper
+fontsize: 12pt
+inline-links: true
+signature-before: -4ex
+signature-after: 0ex
+colorlinks: true
+output: 
+    pdf_document:
+        template: letter-template.latex
+---
+
+I am writing to submit our manuscript entitled "Legislature Size and Welfare: Evidence from Brazil" for consideration as an \textit{American Journal of Political Science} research article. We present a game theory model showing that larger city councils increase local public goods provision. Partisanship is the main mechanism we explore in our article. Our evidence comes from exogenous changes in Brazilian electoral legislation, which granted additional legislators to hundreds of municipalities based on population thresholds. Our regression discontinuity models indicate that increasing local legislatures leads to higher primary school enrollment and lower infant mortality rates without any significant decrease in the quality of public service. We also survey former city councilors and analyze the content of 346,553 bills to provide further evidence for our mechanism.
+
+Our findings contribute to large literatures on multilateral bargaining, citizen welfare, and municipal party politics. We believe our paper appeals especially to researchers in Comparative Politics, particularly those studying legislative activity and representative institutions. We incentivise scholars in these areas to investigate the relationship between fragmented parliaments and strong executives more closely, and also to search for other mechanisms that may link legislature features with public service provision.
+
+We also provide extensive supplementary material with data, code, and additional analyses, for consultation on \href{https://github.com/umbertomig/legislature-size-welfare}{this GitHub repository}. The appendix describes our model and data sources in detail, and it also includes a series of additional tests that show the robustness of our results.  
+
+Each of the authors confirms that this manuscript has not been previously published and is not currently under consideration by any other journal. All of the authors have approved the contents of this paper and have agreed to the \textit{American Journal of Political Science}'s submission policies.
+
+Should you select our manuscript for peer review, we would like to kindly suggest the following potential reviewers/referees because they would have the requisite background to evaluate our findings and interpretation objectively.
+
+\vspace{.5cm}
+
+\begin{itemize}
+    \item John Matsusaka, Charles F. Sexton Chair in American Enterprise, Marshall School of Business, University of Southern California. Professor Matsusaka has written extensively about the ``law of $1/n$'' and is familiar with the literature. Email: \href{mailto:matsusak@usc.edu}{matsusak@usc.edu}.
+    \item Neil Malhotra, Edith M. Cornell Professor of Political Economy, Graduate School of Business, Stanford University. Professor Malhotra has written a fundamental article about the ``law of $1/n$''. Email: \href{mailto:neilm@stanford.edu}{neilm@stanford.edu}.
+    \item David M. Primo, Ani and Mark Gabrellian Professor, Department of Political Science, University of Rochester. Professor Primo has argued about the existence of a ``reverse law of $1/n$'' and has several papers on the topic. Email: \href{mailto:david.primo@rochester.edu}{david.primo@rochester.edu}.
+    \item Mia Costa, Assistant Professor, Department of Government, Dartmouth College. Professor Costa has experience with meta-analysis and research methods. Email: \href{mailto:mia.costa@dartmouth.edu}{mia.costa@dartmouth.edu}.
+\end{itemize}
+
+To the best of our knowledge, none of the above-suggested persons have any conflict of interest, financial or otherwise. 
+
+Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise.
+
+Author names, affiliation and contact details:
+
+\begin{itemize}
+\item Gabriel Cepaluni: Associate Professor, Department of International Relations, São Paulo State University, \url{gabi.cepal@gmail.com}.
+    \item Danilo Freire: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, \url{dfreire@lincoln.ac.uk}. Corresponding author.
+    \item Umberto Mignozzetti: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, \url{umberto.mignozzetti@emory.edu}.
+\end{itemize}
+
+\vspace{1cm}
+
