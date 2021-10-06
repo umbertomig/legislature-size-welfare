@@ -420,6 +420,9 @@ $if(jelcodes)$
 \noindent \textbf{JEL Classification Codes}: $jelcodes$
 $endif$
 $endif$
+
+\vspace{.3cm}
+\noindent \textbf{Word Count}: 9,743.
 \end{abstract}
 $endif$
 
