@@ -43,13 +43,13 @@ Should you select our manuscript for peer review, we would like to kindly sugges
 \vspace{.5cm}
 
 \begin{itemize}
-    \item Claudio Ferraz.  Email: \href{mailto:matsusak@usc.edu}{matsusak@usc.edu}.
-    \item Neil Malhotra, Edith M. Cornell Professor of Political Economy, Graduate School of Business, Stanford University. Professor Malhotra has written a fundamental article about the ``law of $1/n$''. Email: \href{mailto:neilm@stanford.edu}{neilm@stanford.edu}.
-    \item David M. Primo, Ani and Mark Gabrellian Professor, Department of Political Science, University of Rochester. Professor Primo has argued about the existence of a ``reverse law of $1/n$'' and has several papers on the topic. Email: \href{mailto:david.primo@rochester.edu}{david.primo@rochester.edu}.
-    \item Mia Costa, Assistant Professor, Department of Government, Dartmouth College. Professor Costa has experience with meta-analysis and research methods. Email: \href{mailto:mia.costa@dartmouth.edu}{mia.costa@dartmouth.edu}.
+    \item Claudio Ferraz. Professor of Economics at the Vancouver School of Economics, University of British Columbia. Email: \url{claudio.ferraz@ubc.ca}.
+    \item Thomas Fujiwara. Associate Professor of Economics and International Affairs, Princeton University. Email: \url{fujiwara@princeton.edu}
+    \item F. Daniel Hidalgo. Cecil and Ida Green Associate Professor of Political Science, Massachusetts Institute of Technology. Email: \url{dhidalgo@mit.edu}.
+    \item Guillermo Toral. Assistant Professor of Political Science, Vanderbilt University. Email: \url{guillermo.toral@vanderbilt.edu}.
 \end{itemize}
 
-To the best of our knowledge, none of the above-suggested persons have any conflict of interest, financial or otherwise. 
+To the best of our knowledge, none of the above-suggested persons have any conflict of interest, financial or otherwise. All of them have written extensively about public service provision and government accountability in Brazil using modern causal inference methods. 
 
 Each named author has equally contributed to conducting the underlying research and drafting this manuscript. To the best of our knowledge, the authors have no conflict of interest, financial or otherwise.
 
