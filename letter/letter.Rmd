@@ -43,7 +43,7 @@ Should you select our manuscript for peer review, we would like to kindly sugges
 \vspace{.5cm}
 
 \begin{itemize}
-    \item John Matsusaka, Charles F. Sexton Chair in American Enterprise, Marshall School of Business, University of Southern California. Professor Matsusaka has written extensively about the ``law of $1/n$'' and is familiar with the literature. Email: \href{mailto:matsusak@usc.edu}{matsusak@usc.edu}.
+    \item Claudio Ferraz.  Email: \href{mailto:matsusak@usc.edu}{matsusak@usc.edu}.
     \item Neil Malhotra, Edith M. Cornell Professor of Political Economy, Graduate School of Business, Stanford University. Professor Malhotra has written a fundamental article about the ``law of $1/n$''. Email: \href{mailto:neilm@stanford.edu}{neilm@stanford.edu}.
     \item David M. Primo, Ani and Mark Gabrellian Professor, Department of Political Science, University of Rochester. Professor Primo has argued about the existence of a ``reverse law of $1/n$'' and has several papers on the topic. Email: \href{mailto:david.primo@rochester.edu}{david.primo@rochester.edu}.
     \item Mia Costa, Assistant Professor, Department of Government, Dartmouth College. Professor Costa has experience with meta-analysis and research methods. Email: \href{mailto:mia.costa@dartmouth.edu}{mia.costa@dartmouth.edu}.
