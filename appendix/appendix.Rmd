@@ -35,85 +35,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-\newpage
+\pagebreak
 
-## A Model of Legislature Size and Service Provision
-
-### Model Primitives
-
-Consider an strategic interaction between a mayor $M$ and $N \geq 3$ city councilors indexed as $i \in \{1, 2, \cdots, N \}$. The mayor is the head of the local executive branch and submits policy proposals to the city councilors. Policy proposals comprise funds allocated to public goods provision ($g$), rents for the mayor ($r$), and transfers to the city councilors (\textbf{x}).
-
-The city council votes the mayor's proposal, which is implemented if they accept it. Otherwise, a reversal policy takes place, indicating that the mayor failed to secure the majority of the councilors' votes. In this case, the policy proposal either stops or is transferred to the council. The different types of reversal policies are crucial for our argument, as they change the bargaining position of the councilors relative to the mayor. We investigate three types of reversal policies: 1) a \textit{non-partisan} reversal mechanism, in which city councilors have no partisan affiliation; 2) a \textit{partisan} reversal mechanism, where the council is divided into supporters and non-supporters of the mayor; 3) and finally, a \textit{hybrid} reversal mechanism, which combines partisan and non-partisan features. The main paper focuses on the hybrid model, as it is the more realistic scenario. However, comparing the partisan and non-partisan reversal mechanisms provides further evidence that the partisan mechanism drives our results.
-
-The mayor needs to secure the support of at least half of the city councilors to implement his or her policy. Similar to \citet{buenodemesquita2005logic}, we assume that the selectorate is composed by the $N$ city councilors. That is, these are the individuals who have a say in the mayor's policy proposals. The winning coalition, which is the minimum number of members required to implement the policy, equals half of the selectorate ($N/2$). City councilors are motivated by policy concerns $p$ and transfers received either from the mayor or from a councilor \textbf{x} who proposes the policy. We leave the content of these transfers open, as this allows us to analyze how mayors combine transfers with other incentives to pressure city councilors. For instance, a mayor may grant councilors electoral favors, spend in areas where they have political or personal interests, offer portfolio or public sector jobs to associates, or even provide campaign contributions and bribes. These transfers affect the councilors' decisions and generate governing costs $C_G$. Governing costs vary according to the type of reversal mechanism and the size of the legislature.
-
-Finally, after paying the aforementioned governing costs, the mayor proposes some level of public goods provision $g$ and rents $r$. Public goods provision helps the mayor to get reelected. Rents are for the mayor's direct benefit and do not contribute to his or her electoral success. This makes the mayor's expected utility a sum of the gains from rents plus the benefits from reelection. Both the utilities from rents $u(.)$ and the probability of reelection $\pi(.)$ are concave functions, meaning that more rents or more public goods increase his or her utility at a decreasing rate.\footnote{In technical terms, $u'>0$ and $\pi'>0$; and $u''<0$ and $\pi''<0$.} The probability of reelection is multiplied by the benefit from holding office $B_M > 0$. This benefit captures the tangible and intangible gains the mayor receives from holding the public office. We assume these benefits are high enough to rule out an equilibrium with only rents and transfers, which is equivalent to saying that mayors strongly prefer to be reelected. If the mayor's policy proposal is approved, then the expected utility for the mayor is:
-
-\[
-\mathbb{E}U(r, g) \ = \ u(r) + B_M\pi(g)
-\]
-
-The mayor's policy choices are subject to municipal budget constraints. The municipality has $R > 0$ resources and cannot run deficits, that is, it must always balance its budget. We also assume that there are enough resources for the mayor to govern.
-
-Let $C_G$ be the mayor's governing costs. The budget balance constraints implies that mayors will only offer public services and rents that satisfy following inequality:
-
-\[
-r + g + C_G \ \leq \ R
-\]
-
-The expected utility for the city councilors depends on which reversal policy takes place. As mentioned above, we explore the implications of three different mechanisms. First, in the \textit{non-partisan} reversal mechanism, when the council rejects the mayor's proposal, a reversal stage starts with resources diminishing by a factor $\delta \in (0,1)$ and the random selection of one councilor. The randomly selected councilor becomes the new proposer. If her proposal is accepted, it is implemented. If rejected, the budget shrinks again by $\delta$ and another city councilor is chosen to propose the policy. The process continues until a proposal is finally accepted.
-
-In the second reversal mode, the \textit{partisan} reversal mechanism, we assume that each councilor has a party affiliation. Party affiliations are mutually exclusive, that is, one councilor cannot belong to two parties at once. If a city councilor is affiliated to a party aligned with the mayor, we say that she belongs to the government coalition $G \subset \{1, 2, \cdots, N \}$. Otherwise, the city councilor belongs to the opposition $O = \{1, 2, \cdots, N \} \setminus G$. The mayor-sponsored policy generates a political value of $p > 0$ for the councilors, and whether this adds or reduces the councilor's utility depends on his or her party affiliation. If the mayor's proposal is rejected, a city councilor aligned with the mayor receives zero instead of $p$. In contrast, a city councilor from the opposition receives zero if the proposal is rejected and $-p$ if is is enacted. Although these assumptions are rather strong, they capture the underlying political dynamics of political partisanship, in which councilors and mayors in the same coalition share similar policy preferences. Voting against the mayor's proposals defies the partisan logic.
-
-Lastly, in the \textit{hybrid} reversal mechanism, we combine partisanship with legislature bargaining costs. Here councilors receive a partisan utility from the mayor's policy, but if they reject the policy, a reversal policy similar to the non-partisan mechanism takes place. In the mayor's proposal stage, city councilors in the mayor's coalition receive a benefit of $p > 0$ when the mayor's policy is implemented. Opposition members receive $-p$ if the mayor's proposal is implemented. In case the mayor's proposal is rejected, as the city council does not control the executive when the two branches are separated, there is no provision of public goods ($p=0$). Moreover, in equilibrium, we assume that city councilors prefer to receive transfers instead of providing public goods. This is in line with the empirical evidence from most developing economies [e.g., @FerrazFinan2011; @Nichter2010].
-
-The timeline of the game is as follows:
-
-\begin{enumerate}
-  \item The mayor learns how many government $|G|$ and opposition $|O|$ legislators have been elected.
-  \item The mayor proposes a policy vector $(r, g, x)_M$.
-  \item The city council votes the proposal.
-  \begin{itemize}
-    \item If the council accepts the proposal, it is implemented and the game ends.
-    \item Otherwise, a reversal policy is implemented.
-  \end{itemize}
-  \item (Reversal Policy) We propose three reversal policies, namely \textit{partisan}, \textit{non-partisan}, and \textit{hybrid}. We have introduced them above and will discuss them in further detail in the following sections.
-\end{enumerate}
-
-The solution concept we use in this model is the subgame perfect Nash equilibrium. This game requires that the strategies follow a Nash equilibrium in each subgame. We find the solution by backward induction. In the model with infinitely repeated proposals, we extend the equilibrium concept and require that the equilibrium is stationary. This implies that if the politician accepts an offer at time $k+1$, they should take the same offer at time $k$. This assumption holds at each point of the game. Stationarity provides a method to find a proposal that the politician accepts at any stage in the game. In our case, the optimal offer for the mayor is at $k=0$, which indicates an immediate policy implementation.
-
-\begin{definition}
-The game equilibrium consists of a sequence of strategic policy vectors $(g^*, r^*, x^*)_k$, indexed in $k \in \{0, 1, \cdots, \infty\}$, such that the mayor and the councilors have no profitable deviations from the equilibrium at any stage of the game.
-\end{definition}
-
-Moreover, we assume that players have no dominated strategies, even if the policy is not implemented due to insufficient support.
-
-### The Mayor's Decision Stage
-
-Solving the game by backward induction requires us to know which strategies councilors may adopt. However, assume for now that we have solved the game for the councilors and found the equilibrium cost of governing $C_G(N)$ when there are $N$ city councilors. In the next section, we define $C_G(N)$ for each mechanism using backward induction and show that the definitions are well-behaved. Here we start from this assumption just to simplify our exposition.
-
-We derive the optimal rents ($r$) and public goods provision ($g$) a mayor should propose. Mayors benefit from public goods provision, as it increases their chances of reelection. However, they would rather provide the lowest necessary amount of public goods and extract the remaining resources as political rents. As we noted previously, their objective is to maximize their expected utility, subject to the municipal budget constraint.
-
-\[
-\begin{aligned}
-\max_{r, g} \quad & u(r) + B_M\pi(g)\\
-\textrm{s.t.} \quad & r + g + C_G(N) \leq R
-\end{aligned}
-\]
-
-In equilibrium, the budget binds, and the provision of the public goods maximizes to:
-
-\[
-\max_{g} \{ u(R - g - C_G(N)) + B_M\pi(g) \}
-\]
-
-The first-order condition for an optimal public goods provision makes the marginal benefits of increasing rents---in this case, the marginal costs of providing the public goods---equal to the marginal benefits of reelection:
-
-\[
-u'(R - g - C_G(N)) = B_M\pi'(g)
-\]
-
-This is sufficient for the equilibrium, as the second order condition reassures the concavity of the mayor's expected utility: $u''(R - g^* - C_G(N)) + B_M\pi''(g^*) < 0$.
+## A Model of Legisture Size and Service Provision (Proofs)
 
 \begin{proposition}
 Public goods provision increases with larger legislatures if governing costs decrease in larger legislatures.
@@ -157,32 +81,6 @@ C_G(N+1) \leq C_G(N)
 
 \end{proof}
 
-This provides the first empirical hypothesis we test in our article: \textit{public goods provision increases along with legislature size, but only if governing costs decrease when legislature size increases}.
-
-At this stage, we need to solve for the existence of these governing costs. In the following sections we show that while this proposition is valid for the *partisan* and *hybrid* mechanisms, it is not applicable to the *non-partisan* mechanism.
-
-### Non-Partisan Reversal Mechanism
-
-In the \textit{non-partisan reversal} mechanism, we assume that if the council rejects the mayor's proposal, a reversal policy starts with the random selection of one councilor. To find the stationary subgame perfect Nash equilibrium, suppose that there were $k-1$ rejections and the game is at the $k$-th stage. A councilor accepts the proposer's offer if, and only if, getting the offer at $k$ is better than waiting until the next stage $k+1$. If the offer is $x_i$, then:
-
-\[
-x_i \geq \dfrac{1}{N}\left[ \delta^{k+1}R - \dfrac{N}{2}x_i \right] + \left( 1 - \dfrac{1}{N} \right)\left[\dfrac{1}{2} x_i \right]
-\]
-
-We place the offer on the left-hand side. There are two components on the right-hand side. The first is the amount that councilor $i$ receives when he/she is the proposer. The amount is equal to the chance that they are recognized as the proposer, times the budget in the next round, minus the offers they have to make to convince half of the councilors. The second part denotes the gains obtained by the councilor if he/she rejects the current offer but still receives an offer in the following round. This is equal to the chance that they are not recognized as the proposer, times the chance that they receive a transfer, times the transfer amount. Note that the councilor's offer as the proposer is the same as the offer they want to receive, as city councilors are exchangeable. The solution is symmetric for all councilors receiving an offer (this means that, without loss of generality, we could have dropped the $i$ in the solution). After some calculations, the offer $x_i$ has to be greater than or equal to:
-
-\[
-x_i \geq \dfrac{2 \delta^{k+1}R}{2N + 1} \equiv \underline{x}(k, N)
-\]
-
-The proposer always offers the minimum required to get the proposal approved. In this case, the offer at any given stage $k$ is going to be equal to $\underline{x}(k, N)$.
-
-Proceeding backwards, at the mayor's proposal stage $k=0$, the mayor offers $\underline{x}(0, N) = \dfrac{2 \delta R}{2N + 1}$ to half of the councilors. In this context, the governing costs for the mayor are:
-
-\[
-C_G(N) \ = \ \dfrac{N}{2}\left[\dfrac{2 \delta R }{2N + 1}\right] \ = \ \dfrac{\delta R N}{2N + 1}
-\]
-
 \begin{proposition}
 In the \textit{non-partisan reversal} mechanism, governing costs always increase when legislature size increases.
 \end{proposition}
@@ -206,69 +104,6 @@ Therefore, costs always increase when legislature size increases.
 \begin{corollary}
 In the \textit{non-partisan reversal} mechanism, public goods provision decreases as legislature size increases.
 \end{corollary}
-
-This result is crucial for us to explain the role of politics in our model. If governing costs increase with legislature size, then any increase in public goods provision associated with legislature size comes from a different mechanism. In this case, we show that there is a \textit{political} reason to increase the provision of public goods.
-
-### Partisan Reversal Mechanism
-
-We now focus on the other extreme, which is a fully politicized legislature. In this case, when the mayor implements the policy, it generates a value of $p > 0$. A legislator aligned with the mayor receives a benefit $p$ while an opposition legislator receives a cost of $-p$. Moreover, as in the non-partisan reversal, the mayor may choose to distribute $x_i$ private goods for a legislator $i$. In this case, when the policy is implemented, the aligned legislator's utility equals $x_i + p$. When the legislator is not aligned with the mayor, their utility equals $x_i - p$. If the policy is not implemented, then we assume a reversal policy of zero in all choice vectors $g = x_i = p = 0$.
-
-A legislator aligned with the mayor always supports the mayor's policy, regardless of receiving private goods. This is because $p > 0$, that is, the councilor always receives positive benefits from the policy.\footnote{The mayor could even impose costs to aligned city councilors. Although this seems unrealistic, it is mostly the case when government-aligned legislators are called to draft legislation for the mayor's office or to take the fallout from a failed policy.} However, politicians who not aligned with the mayor require compensation when their votes are needed. In this case, if the mayor's proposal requires the support of an opposition politician, then the mayor compensates the councilor for the policy costs. In such case:
-
-\[
-x_i \geq p
-\]
-
-Optimality dictates that the mayor offers $x_i = p$ to the opposition legislator. Let $\gamma$ be the ex-ante probability of electing a politician aligned with the mayor. Then, the governing costs when the legislature size is $N$ equals the expected number of opposition members the mayor has to compensate, minus the amount needed to implement the policy. In this case, it is half of the city council:
-
-\[
-C_G(N) \ = \ p\left(\dfrac{N}{2} - \gamma N\right)
-\]
-
-\begin{proposition}
-In the \textit{partisan reversal} mechanism, if the chances of electing a mayor-aligned politician are greater than $1/2$, then governing costs decrease as legislature size increases.
-\end{proposition}
-
-\begin{proof}
-
-When we compare the difference in costs between $N$ and $N+1$ legislators, we find that:
-
-\[
-\begin{aligned}
-C_G(N+1) - C_G(N) \ = \ & p\left(\dfrac{N+1}{2} - \gamma (N+1)\right) - p\left(\dfrac{N}{2} - \gamma N\right) \\
- = \ & p\left( \dfrac{1}{2} - \gamma \right)
-\end{aligned}
-\]
-
-Therefore, when $\gamma < \dfrac{1}{2}$, governing costs increase. Otherwise, such costs decrease.
-
-\end{proof}
-
-\begin{corollary}
-In the \textit{partisan reversal} mechanism, if the chances of electing a mayor-aligned politician is greater than $1/2$, then public goods provision increase as legislature size increases.
-\end{corollary}
-
-This result shows that, when the likelihood of electing an aligned politician is sufficiently high, governing costs tend to decrease. Consequently, the provision of public goods tends increases, as well as the rents. The marginal change in the utility from rents and the utility from reelection determines the allocation between these two vectors. In any case, the amount distributed to both increases.
-
-### Hybrid Partisan and Non-partisan Reversal Mechanism
-
-The \textit{hybrid reversal} mechanism combines both partisan and non-partisan motivations. Here, a city councilor aligned with the government favors the mayor's offer if:
-
-\[
-x_i \geq \dfrac{2\delta R}{2N+1} - p
-\]
-
-An opposition politician, in contrast, favors the mayor's offer if, and only if:
-
-\[
-x_i \geq \dfrac{2\delta R}{2N+1} + p
-\]
-
-We divide these costs into two components. First, the costs in terms of rents. Second, the costs (or benefits) from political alignment. In this context, governing costs depend on what the mayor offers to their supporters in the council versus what they provide to members of the opposition. The ex-ante chance of an opposition member being elected is equal to $1-\gamma$, therefore, after taking the weighted averages, these costs become:
-
-\[
-C_G(N) \ = \ \dfrac{N}{2}\left( \dfrac{2\delta R}{2N+1} - p \right) + \left(\dfrac{N}{2} - \gamma N \right)p
-\]
 
 \begin{proposition}
 In the \textit{hybrid reversal} mechanism, if $\gamma \leq \dfrac{1}{p}\left[ \dfrac{1}{(2N+1)(2N+3)} \right]$, then governing costs increase as legislature size increases. Otherwise, such costs decrease when legislature size increases.
@@ -298,25 +133,10 @@ The conditions for the difference in governing costs to decrease when legislatur
 In the \textit{hybrid reversal} mechanism, when the chances of electing a mayor-aligned city councilor are sufficiently high, then increasing council size lowers the bargaining costs for mayors.
 \end{corollary}
 
-The threshold $\underline{\gamma}$ for the probability of electing an aligned politician decreases according to the value of the mayor's policy $p$ and the legislature size $N$. Higher political values and larger legislatures make it easier to satisfy the electoral threshold.
-
-### Main Hypotheses
-
-Our model provides two empirically testable hypotheses. Consider a city council comprised of $N$ legislators that increase its size to $N+1$. Then:
-
-\begin{enumerate}
-  \item[H1. ] Governing costs decrease with legislature size when the chances of electing a government-aligned legislator are sufficiently high.
-  \item[H2. ] Public goods provision increases if governing costs decrease with legislature size.
-\end{enumerate}
-
-In the main paper, we show that larger legislatures improve the provision of public education and health care in Brazil. What drives this result is the 91% chance of electing a mayor-aligned city councilor to the local chamber.
-
-\newpage
+\pagebreak
 
 ## Variable Sources and Descriptive Statistics
 \label{appsources}
-
-We use three data sources in our work, mainly from Brazilian governmental agencies. Table \ref{tab:varsources} presents the variables we use here and their respective URLs.
 
 \begin{table}[!htbp] \centering
 \small
@@ -391,8 +211,6 @@ We ran an online survey asking 174 councilors about their representation duties 
 \item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (e.g. fix potholes in the councilor's neighborhoods) (source: survey).
 \end{itemize}
 
-This Appendix contains other questions we asked in the survey. We collected them to improve our knowledge about the perceptions city councilors have about the roles the municipality and themselves play in the government. We omitted these questions in the main paper because they are not of general interest to our argument. The descriptive statistics of the variables used in the main article follow in Table \ref{tab:descrvarspaper}.
-
 \begin{table}[htb!]
 \centering
 \caption{Summary Statistics}
@@ -444,112 +262,18 @@ Coalition Support -- Councilors Constructions & 174 & 0.43 & 0.50 & 0 & 1 \\
 }
 \end{table}
 
-\newpage
+
 
 ## Threshold Manipulation, Sorting, and Pre-Treatment Consistency
 
-The validity of our causal claim relies on three assumptions:
-
-\begin{enumerate}
-  \item Municipalities cannot place themselves on the left- or the right-hand side of the cutoffs.
-  \item Regression models correctly compare cities in the adjacent cutoffs.
-  \item There are no pre-treatment differences in the sample.
-\end{enumerate}
-
-Regarding the first assumption, \citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
+\citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
 
 We run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomials ranging from first to fourth order. As the null hypothesis implies that there is no manipulation, the $p$-values for each polynomial order are: local linear ($p$-value $=0.442$); quadratic ($p$-value $=0.740$); cubic ($p$-value $=0.998$); and quartic ($p$-value $=0.620$). Therefore, we also see no evidence of manipulation.
-
-Lastly, we graph the \citet{McCrary2008} test, pooling all the discontinuities together. The results follow in Figure \ref{manipulationplot} and show no signs of manipulation.
-
-\begin{figure}[htb!]
-  \begin{center}
-  \begin{minipage}{1 \linewidth}
-  \centerline{\includegraphics[width=5in,angle=0]{../figures/McCrary.pdf}}
-  \caption{\citet{McCrary2008} manipulation test}
-  \bigskip
-  \label{manipulationplot}
-  \end{minipage}
-  \end{center}
-\end{figure}
 
 ## Population Thresholds in Brazil Before and After the 2003 Supreme Court Decision
 \label{appidentif}
 
-The identification strategy requires exogenous changes in the city council size thresholds. Prior to the changes we exploit here, the 1988 Brazilian Constitution stated the following distribution of seats per population size, presented in Table \ref{tab:citycouncilsize1988}.
-
-\begin{table}[htp!]
-\centering
-\caption{City council size from the 1988 Constitution}
-\label{tab:citycouncilsize1988}
-\scalebox{1}{
-\begin{tabular}{rccrrr}
-  \hline\hline
- & \multicolumn{1}{c}{Min. Leg.} & \multicolumn{1}{c}{Max. Leg.} & \multicolumn{1}{c}{Min. Pop.} & \multicolumn{1}{c}{Max. Pop.} & \multicolumn{1}{c}{Num. Mun. Bin} \\
- & & & & & \multicolumn{1}{c}{(2001-2004)} \\
-  \hline
-  1 & 9  & 21 & 0 & 1,000,000 &  5,537 \\
-  2 & 33 & 41 & 1,000,001 & 5,000,000 & 11 \\
-  3 & 42 & 55 & 5,000,001 & $\infty$ & 2 \\
-   \hline\hline
-\end{tabular}
-}
-\end{table}
-
-These cutoffs were in place until 2003, when the municipality of Mira Estrela decided to decrease its own council size from eleven to nine councilors. The two losing councilors contested the measure and took the proposal to the Supreme Federal Court (STF). The Justices ruled that council sizes should vary according to the city population, from a minimum of nine legislators to a maximum of 55. Following this decision, the Supreme Electoral Court (TSE) set the thresholds for the 2004 election (Resolution 21,702/2004). According to their decision, the legislature should increase as displayed in Table \ref{tab:citycouncilsize2004all}.
-
-\begin{table}[htp!]
-\centering
-\caption{City council size thresholds according to TSE resolution 21,702/2004}
-\scalebox{1}{
-\begin{tabular}{rcrrr}
-  \hline\hline
- &  \multicolumn{1}{c}{Num. Leg.} & \multicolumn{1}{c}{Min. Pop.} & \multicolumn{1}{c}{Max. Pop.} & \multicolumn{1}{c}{Num. Mun. Bin} \\
- & & & & \multicolumn{1}{c}{(2003 pop. proj.)} \\
-  \hline
-  1 &  9 & 0 & 47,619 & 5,029 \\
-  2 &  10 & 47,620 & 95,238 & 317 \\
-  3 &  11 & 95,239 & 142,857 & 89 \\
-  4 &  12 & 142,858 & 190,476 & 43 \\
-  5 &  13 & 190,477 & 238,095 & 30 \\
-  6 &  14 & 238,096 & 285,714 & 21 \\
-  7 &  15 & 285,715 & 333,333 & 13 \\
-  8 &  16 & 333,334 & 380,952 & 13 \\
-  9 &  17 & 380,953 & 428,571 & 6 \\
-  10  & 18 & 428,572 & 476,190 & 6 \\
-  11  & 19 & 476,191 & 523,809 & 4 \\
-  12  & 20 & 523,810 & 571,428 & 5 \\
-  13  & 21 & 571,429 & 1,000,000 & 13 \\
-  14  & 33 & 1,000,001 & 1,121,952 & 1 \\
-  15  & 34 & 1,121,953 & 1,243,903 & 2 \\
-  16  & 35 & 1,243,904 & 1,365,854 & 1 \\
-  17  & 36 & 1,365,855 & 1,487,805 & 2 \\
-  18  & 37 & 1,487,806 & 1,609,756 & 1 \\
-  19  & 38 & 1,609,757 & 1,731,707 & 1 \\
-  20  & 39 & 1,731,708 & 1,853,658 & 0 \\
-  21  & 40 & 1,853,659 & 1,975,609 & 0 \\
-  22  & 41 & 1,975,610 & 4,999,999 & 4 \\
-  23  & 42 & 5,000,000 & 5,119,047 & 0 \\
-  24  & 43 & 5,119,048 & 5,238,094 & 0 \\
-  25  & 44 & 5,238,095 & 5,357,141 & 0 \\
-  26  & 45 & 5,357,142 & 5,476,188 & 0 \\
-  27  & 46 & 5,476,189 & 5,595,235 & 0 \\
-  28  & 47 & 5,595,236 & 5,714,282 & 0 \\
-  29  & 48 & 5,714,283 & 5,833,329 & 0 \\
-  30  & 49 & 5,833,330 & 5,952,376 & 0 \\
-  31  & 50 & 5,952,377 & 6,071,423 & 1 \\
-  32  & 51 & 6,071,424 & 6,190,470 & 0 \\
-  33  & 52 & 6,190,471 & 6,309,517 & 0 \\
-  34  & 53 & 6,309,518 & 6,428,564 & 0 \\
-  35  & 54 & 6,428,565 & 6,547,611 & 1 \\
-  36  & 55 & 6,547,612 & $\infty$  & 0 \\
-   \hline\hline
-\end{tabular}
-}
-\label{tab:citycouncilsize2004all}
-\end{table}
-
-As Brazil has only a few municipalities with more than one million inhabitants, we focus on cities with less than $571,429 + 47,619 = 619,048$ inhabitants. Table \ref{tab:citycouncilsize2004short} displays the number of municipalities by the thresholds we use in this paper.
+Table \ref{tab:citycouncilsize2004short} displays the number of municipalities by the thresholds we use in this paper.
 
 \begin{table}[htp!]
 \centering
@@ -580,8 +304,6 @@ As Brazil has only a few municipalities with more than one million inhabitants, 
 \label{tab:citycouncilsize2004short}
 \end{table}
 
-The Supreme Court stated that local electoral courts should use the 2003 population projection to assign municipalities to cutoffs. In Brazil, the Brazilian Institute of Geography and Statistics (IBGE) makes the official population projections. We have strong reason to believe that sorting is not a threat to our identification strategy, as IBGE is notably insulated from local politics (see also the McCrary test above).
-
 To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the municipalities by their proximity to the cutoffs. In the map, we give the contour of every Brazilian city, coloring it by the proximity to the council size thresholds. Darker colors represent municipalities closer to the population thresholds. In regression discontinuity models, the closer a city is to the cutoff, the more influential it is in the estimation. Figure \ref{sampleplot} also shows that the municipalities around the cutoff are reasonably well distributed across the country.
 
 \begin{figure}[htb!]
@@ -595,7 +317,7 @@ To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the
   \end{center}
 \end{figure}
 
-\newpage
+
 
 ## Identification Strategy in Regression Discontinuity Designs with Multiple Thresholds
 \label{ISMT}
@@ -606,22 +328,22 @@ When estimating regression discontinuities with multiple cutoffs, authors usuall
 LATE_{no\_controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C \right]
 \]
 
-Nevertheless, this may be problematic in our case as municipal characteristics may vary between cutoffs. For instance, population imbalance is a known source of heterogeneity, as shown by \citet{Cattaneo2016}. To ensure that cases are comparable, we estimate the average LATE for all cutoffs. We add a set of controls $Z_i$ to reduce heterogeneity. For instance, the population that determines the change from one threshold to another also determines all the cutoffs. As the population runs smoothly around each cutoff, it makes this variable an ideal control to add to our models. The new estimator is:
+Nevertheless, this may be problematic in our case as municipal characteristics may vary between cutoffs. For instance, population imbalance is a known source of heterogeneity. To ensure that cases are comparable, we add a set of controls $Z_i$ to reduce heterogeneity. For instance, the population that determines the change from one threshold to another also determines all the cutoffs. As the population runs smoothly around each cutoff, it makes this variable an ideal control to add to our models. The new estimator is:
 
 \[
 LATE_{controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C, Z_i \right]
 \]
 
-We control for population, GDP, whether the state is located in the Northeast region, seats before the 2003 decision, and year. All control variables are smooth around each cutoff but are significantly different across cutoffs, making them adequate controls for our purposes \citep{calonico2019regression}. We use a triangular kernel in our estimations, which gives more weigh to municipalities closer to each cutoff. To compute the optimal bandwidth, we use the \citet{CCT2014} method. We vary the bandwidth from 50\% to 200\% of the optimal bandwidth size to assess whether our results are robust to bandwidth choice. We also use cluster-robust standard errors at the municipal level.
+We control for population, GDP, whether the state is located in the Northeast region, seats before the 2003 decision, and year. We use a triangular kernel in our estimations, which gives more weigh to municipalities closer to each cutoff. To compute the optimal bandwidth, we use the \citet{CCT2014} method. We vary the bandwidth from 50\% to 200\% of the optimal bandwidth size to assess whether our results are robust to bandwidth choice. We also use cluster-robust standard errors at the municipal level.
 
-However, as it is uncommon for regression discontinuity designs to include control variables, some readers may ask why we have added these covariates in the first place. To answer this question, we run a series of simulations to show that controlling for the variable that determines the assignment helps improve both the consistency and the efficiency of the estimates.
+As it is uncommon for regression discontinuity designs to include control variables, we run a series of simulations to show that controlling for the variable that determines the assignment helps improve both the consistency and the efficiency of the estimates.
 
 Consider data distributed according to one of the four forms depicted in Figure \ref{simRDdd}. We add nine thresholds, at 0.1, 0.2, and so on until 0.9, to create different outcomes. The first three are sharp changes. First, we vary from one to 10, moving one step at each shift. In the second case, we add 1 to the first discontinuity, zero to the second, and -1 to the third, repeating this pattern for the remaining cutoffs. The estimated change should be equal to zero. In the third model, we again add one to the first cutoff, but $1+0.9$ to the second, $1+0.9+0.8$ to the third, and repeat this process until the last cutoff. This simulates a diminishing effect from one cutoff to the other. The previous three outcomes are the same as depicted here, plus a Normal random disturbance with mean equal to zero and variance equal to 0.01. We then run a thousand Monte Carlo simulations for each combination, fitting regressions with and without the running variable as a covariate.
 
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{0.9\linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{../figures/simdistrRDD.pdf}}
+      \centerline{\includegraphics[height=3in,angle=0]{../figures/simdistrRDD.pdf}}
       \caption{Simulation RD with Multiple Thresholds -- Data Distribution}
       \bigskip
       \label{simRDdd}
@@ -636,13 +358,15 @@ A consistent estimator should fit either the first or the fourth data distributi
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=4.5in,angle=0]{../figures/estimsRDD.pdf}}
+      \centerline{\includegraphics[width=4in,angle=0]{../figures/estimsRDD.pdf}}
       \caption{Estimations for the Different Data Generating Processes}
       \bigskip
       \label{estimDGP}
     \end{minipage}
   \end{center}
 \end{figure}
+
+\pagebreak
 
 ## Placebo Regressions for Political Mechanism
 \label{placmechmain}
@@ -715,27 +439,12 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
   \end{center}
 \end{figure}
 
-In Figure \ref{placgraphbw}, we run the same bandwidth analysis for the placebo outcomes. The results, as expected, are mostly statistically insignificant.
-
-\begin{figure}[H]
-  \begin{center}
-    \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[width=5in,height=4in,angle=0]{../figures/placBwSens.pdf}}
-      \caption{Bandwidth Sensitivity -- Placebo Regressions}
-      \bigskip
-      \label{placgraphbw}
-    \end{minipage}
-  \end{center}
-\end{figure}
-
-\newpage
+\pagebreak
 
 ## Sensitivity Analysis of State Characteristics
 \label{sensstate}
 
-Given its massive size and large social inequalities, Brazil presents considerable geographic variation. In this respect, some states have such poor health care and education systems that they could be driving our results. We run the analysis dropping one state at a time to investigate this statewide heterogeneity. The results are in Figures \ref{graphsensstatedrop1}, \ref{graphsensstatedrop2}, \ref{placgraphsensstatedrop1}, and \ref{placgraphsensstatedrop2}.
-
-First, note that for infant mortality and education enrollment, all coefficients remain significant even after removing some states from our sample. For postneonatal mortality, the coefficient loses significance when we remove the states of Bahia, Pernambuco, Rio Grande do Norte, and Rio Grande do Sul. The mayoral coalition size remains significant in most models, losing significance when we remove Rio Grande do Norte and São Paulo. The number of appointed employees loses significance after removing Espirito Santo and São Paulo. All the alternative mechanism models are insignificant, regardless of the state removed.
+Given its massive size and large social inequalities, Brazil presents considerable geographic variation. In this respect, some states have such poor health care and education systems that they could be driving our results. We run the analysis dropping one state at a time to investigate this statewide heterogeneity. The results are in Figures \ref{graphsensstatedrop1} and \ref{graphsensstatedrop2}.
 
 \begin{figure}[H]
   \begin{center}
@@ -759,34 +468,10 @@ First, note that for infant mortality and education enrollment, all coefficients
   \end{center}
 \end{figure}
 
-\begin{figure}[H]
-  \begin{center}
-      \centerline{\includegraphics[width=0.9\linewidth,angle=0]{../figures/placDropStateSens1.pdf}}
-      \caption{Sensitivity Analysis of State Characteristics with Placebo Cutoffs -- Welfare Outcomes}
-      \bigskip
-      \label{placgraphsensstatedrop1}
-  \end{center}
-\end{figure}
-
-\pagebreak
-
-\begin{figure}[htb!]
-  \begin{center}
-      \centerline{\includegraphics[width=0.9\linewidth,angle=0]{../figures/placDropStateSens2.pdf}}
-      \caption{Sensitivity Analysis of State Characteristics with Placebo Cutoffs -- Mechanism Outcomes}
-      \bigskip
-      \label{placgraphsensstatedrop2}
-  \end{center}
-\end{figure}
-
-\newpage
-
 ## Sensitivity Analysis of Model Functional Form
 \label{sensfuncform}
 
-In the paper, we run all the regressions using local linear polynomials. \citet{GelmanImbens2014} show that local linear and quadratic polynomials are better than cubic and quartic models in terms of consistency.
-
-However, to assess the robustness of our results, we also run every model using different polynomials, from local linear to a quartic, to show that our results are robust to different regression functional forms. The results are similar in all models, with significance changing only in the quartic polynomials. Figures \ref{graphsensff} and \ref{placgraphsensff} present the results for the real and the placebo cutoffs.
+In the paper, we run all the regressions using local linear polynomials. However, to assess the robustness of our results, we also run every model using different polynomials, from local linear to a quartic, to show that our results are robust to different regression functional forms. The results are similar in all models, with significance changing only in the quartic polynomials. Figure \ref{graphsensff} presents the results.
 
 \begin{figure}[H]
   \begin{center}
@@ -799,25 +484,10 @@ However, to assess the robustness of our results, we also run every model using 
   \end{center}
 \end{figure}
 
-\pagebreak
-
-\begin{figure}[H]
-  \begin{center}
-      \centerline{\includegraphics[width=6in,angle=0]{../figures/placFfSens.pdf}}
-      \caption{Sensitivity Analysis of Model Functional Form -- Placebo Cutoffs}
-      \bigskip
-      \label{placgraphsensff}
-  \end{center}
-\end{figure}
-
-\newpage
-
 ## Sensitivity Analysis of Covariates
 \label{senstcovapp}
 
-Control variables play a major role in our model. As we have argued above, our estimates may be inconsistent without the addition of control variables, as we may be capturing differences \textit{between} cutoffs, instead of \textit{within} cutoffs.
-
-However, if the selection of control variables makes the models biased towards our main arguments, this would pose a significant credibility threat to our results. To study the sensitivity to controls, we run the same regressions for all possible control combinations. Figure \ref{graphsenscontrol} displays the results for this sensitivity test.\footnote{\textit{NC} stands for No Controls. The controls used are \textit{gdp}, the municipal GDP in a given year; \textit{nseats2000}, the number of seats before the 2003 Supreme Court decision; \textit{northeast}, a dummy variable for Northeast Brazil; \textit{pop2003}, population in 2003; and \textit{year}.}
+Control variables play a major role in our model. To study the sensitivity to controls, we run the same regressions for all possible control combinations. Figure \ref{graphsenscontrol} displays the results for this sensitivity test.\footnote{\textit{NC} stands for No Controls. The controls used are \textit{gdp}, the municipal GDP in a given year; \textit{nseats2000}, the number of seats before the 2003 Supreme Court decision; \textit{northeast}, a dummy variable for Northeast Brazil; \textit{pop2003}, population in 2003; and \textit{year}.}
 
 \begin{landscape}
 \begin{figure}[htb!]
@@ -849,46 +519,18 @@ For instance, changes in controls substantially affect the quality of elementary
 
 We included the model with all controls to be conservative in our estimations. This is because the full model is significant only when most of the combinations also are significant. Regarding the point estimates, our variable choices tend to keep the models which have smaller coefficient sizes.
 
-We also plot sensitivity tests to covariates in the placebo regressions. They are displayed in Figures \ref{placsenscov1} and \ref{placsenscov2}. The theoretical expectations here are that most of these outcomes would fail, and the graphs indeed confirm our expectations.
-
-\pagebreak
-
-\begin{figure}[htb!]
-\begin{center}
-\centerline{\includegraphics[width=5in,angle=0]{../figures/placSens1Cov.pdf}}
-\caption{Placebo Regressions Outcomes -- Sensitivity to Covariates}
-\bigskip
-\label{placsenscov1}
-\end{center}
-\end{figure}
-
-\pagebreak
-
-\begin{figure}[htb!]
-\begin{center}
-\centerline{\includegraphics[width=5in,angle=0]{../figures/placSens2Cov.pdf}}
-\caption{Placebo Regressions Mechanisms -- Sensitivity to Covariates}
-\bigskip
-\label{placsenscov2}
-\end{center}
-\end{figure}
-
-\newpage
-
 ## Sensitivity Analysis of Additional Cutoffs
 
-Here we evaluate the robustness of our results when we change the number of cutoffs. We run a series of regressions limiting the population sizes to half the cutoffs, starting from the second cutoff to the last. This strategy is similar to adding one cutoff at a time. The results are stable and do not change our main conclusions. Moreover, there are no clear increasing or decreasing patterns, which would indicate the existence of differential returns. Figures \ref{senscut1} and \ref{senscut2} display the results for the main cutoffs, while Figures \ref{placsenscut1} and \ref{placsenscut2} present the same results for the placebo cutoffs.
+Here we evaluate the robustness of our results when we change the number of cutoffs. We run a series of regressions limiting the population sizes to half the cutoffs, starting from the second cutoff to the last. This strategy is similar to adding one cutoff at a time. The results are stable and do not change our main conclusions. Moreover, there are no clear increasing or decreasing patterns, which would indicate the existence of differential returns. Figures \ref{senscut1} and \ref{senscut2} display the results for the main cutoffs.
 
 \begin{figure}[H]
 \begin{center}
-\centerline{\includegraphics[width=6in,height=6.5in,angle=0]{../figures/rdAddCuts1.pdf}}
+\centerline{\includegraphics[width=6in,height=5in,angle=0]{../figures/rdAddCuts1.pdf}}
 \caption{Sensitivity to Additional Cutoffs -- Welfare Outcomes}
 \bigskip
 \label{senscut1}
 \end{center}
 \end{figure}
-
-\pagebreak
 
 \begin{figure}[H]
 \begin{center}
@@ -899,41 +541,13 @@ Here we evaluate the robustness of our results when we change the number of cuto
 \end{center}
 \end{figure}
 
-\pagebreak
-
-\begin{figure}[htb!]
-\begin{center}
-\begin{minipage}{0.8 \linewidth}
-\centerline{\includegraphics[width=5.5in,angle=0]{../figures/placRDAddCuts1.pdf}}
-\caption{Sensitivity to Additional Cutoffs -- Placebo Welfare Outcomes}
-\bigskip
-\label{placsenscut1}
-\end{minipage}
-\end{center}
-\end{figure}
-
-\pagebreak
-
-\begin{figure}[htb!]
-\begin{center}
-\begin{minipage}{0.8 \linewidth}
-\centerline{\includegraphics[width=5.5in,angle=0]{../figures/placRDAddCuts2.pdf}}
-\caption{Sensitivity to Additional Cutoffs -- Placebo Mechanism Outcomes}
-\bigskip
-\label{placsenscut2}
-\end{minipage}
-\end{center}
-\end{figure}
-
-\newpage
-
 ## Mayor's Characteristics, Revenues, and Transfers from the Central Government
 
 Two alternative explanations may confound our results. First, the mayor's selection could be affected by the size of the city council, thus public welfare improves due to the quality of the mayor and not because of the partisan mechanism we have described. Second, the partisan mechanism could be capturing a dynamic similar to @Weingastetal1981 "law of 1/n", whereby welfare improvements are caused by higher available revenues. This section shows that none of these concerns are valid in our case.
 
 \subsubsection{Mayors' characteristics}
 
-We select four characteristics of the city mayors: gender, level of schooling, whether the mayor was reelected in 2004, and whether the mayor was reelected in 2008. The results show no variation in council size and mayoral characteristics.
+We select four characteristics of the city mayors: gender, level of schooling, whether the mayor was reelected in 2004, and whether the mayor was reelected in 2008. The results in Table \ref{appmaychar} show no variation in council size and mayoral characteristics.
 
 \begin{table}[!htbp] \centering
 \caption{Mayor Characteristics}
@@ -959,33 +573,11 @@ We select four characteristics of the city mayors: gender, level of schooling, w
   \end{tabular} }
 \end{table}
 
-\begin{table}[!htbp] \centering
-\caption{Mayor Characteristics -- Placebo}
-\label{placappmaychar}
-\resizebox{\textwidth}{!}{
-  \begin{tabular}{@{\extracolsep{\fill}}l c c c c}
-  \\[-1.8ex]\hline \\[-1.8ex]
-  & \multicolumn{1}{c}{\textbf{Female Mayor}} & \multicolumn{1}{c}{\textbf{Mayor w. College Degree}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2004}} & \multicolumn{1}{c}{\textbf{Reelected Mayor 2008}} \\
-  \hline \\[-1.8ex]
-  LATE & 0.03 & 0.04 & 0.08 & -0.07 \\
-  & (0.05) & (0.08) & (0.07) & (0.08) \\
-  N Left & 4526 & 4526 & 4621 & 4620 \\
-  N Right & 878 & 878 & 906 & 906 \\
-  Eff N Left & 567 & 707 & 683 & 759 \\
-  Eff N Right & 342 & 406 & 397 & 427 \\
-  BW Loc Poly & 6.197 & 7.413 & 7.006 & 7.71 \\
-  BW Bias & 10.241 & 12.64 & 13.536 & 12.648 \\
-  \hline \\[-1.8ex]
-  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\
-  \multicolumn{5}{l}{\footnotesize{Local linear RD estimates using CCT optimal bandwidth selection and triangular kernel.}} \\
-  \multicolumn{5}{l}{\footnotesize{Quadratic robust standard errors in parentheses.}} \\
-  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for Northeast region.}} \\
-  \end{tabular} }
-\end{table}
-
 \subsubsection{Revenues and Transfers}
 
-We run another series of models on federal transfers and revenue raised within the municipalities. There is only a negligible effect on education transfers, yet it is barely significant at 10%. The other indicators remain insignificant. Note that the placebo is significant, which reinforces the claim that the education effect may be spurious.
+In Table \ref{apptrev}, we run another series of models on federal transfers and revenue raised within the municipalities. There is only a negligible effect on education transfers, yet it is barely significant at 10%. The other indicators remain insignificant.
+
+\pagebreak
 
 \begin{table}[!htbp] \centering
 \caption{Transfers and Revenue}
@@ -1010,32 +602,6 @@ We run another series of models on federal transfers and revenue raised within t
   \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\
   \end{tabular} }
 \end{table}
-
-\begin{table}[!htbp] \centering
-\caption{Transfers and Revenue -- Placebo}
-\label{plactrev}
-\resizebox{\textwidth}{!}{
-  \begin{tabular}{@{\extracolsep{\fill}}l c c c c}
-  \\[-1.8ex]\hline \\[-1.8ex]
-  & \multicolumn{1}{c}{\textbf{Total Transfers}} & \multicolumn{1}{c}{\textbf{FPM Transfers}} & \multicolumn{1}{c}{\textbf{Education Transfers}} & \multicolumn{1}{c}{\textbf{Total Revenue}} \\
-  \hline \\[-1.8ex]
-  LATE & 0.07$^{**}$ & 0.04 & 0.03 & 0.07$^{**}$ \\
-  & (0.03) & (0.03) & (0.06) & (0.03) \\
-  N Left & 13865 & 13865 & 13776 & 13103 \\
-  N Right & 2719 & 2719 & 2712 & 2563 \\
-  Eff N Left & 807 & 636 & 1928 & 848 \\
-  Eff N Right & 619 & 544 & 1163 & 611 \\
-  BW Loc Poly & 3.418 & 3.028 & 6.738 & 3.67 \\
-  BW Bias & 6.021 & 5.36 & 10.871 & 6.222 \\
-  \hline \\[-1.8ex]
-  \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\
-  \multicolumn{5}{l}{\footnotesize{Local linear RD estimates using CCT optimal bandwidth selection and triangular kernel.}} \\
-  \multicolumn{5}{l}{\footnotesize{Quadratic robust standard errors in parentheses.}} \\
-  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\
-  \end{tabular} }
-\end{table}
-
-\newpage
 
 \subsection{Legislation Dataset}
 
@@ -1072,26 +638,22 @@ Others                       & 93.5               \\
 
 After we classified all the bills, we added the frequency of each category to the main paper. We have also added the productivity per legislator, which consists of the ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little when we used this alternative measure.
 
-\newpage
-
 \subsection{City Councilors Survey\label{appsurv}}
 
 From November 21^st^ to December 1^st^, 2016, we surveyed former city councilors elected for the 2005-2008 term. We asked them how mayors secure electoral support, which services are commonly discussed in the city council, and which services give them the highest electoral yield.
 
 We sent 3,240 emails to politicians who had ran in the 2016 election and held public offices in 2005. On December 1^st^, we closed the pool and obtained 174 responses. Figure \ref{geodistrsurv} displays the distribution of responses.
 
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=6in,angle=0]{../figures/distrRespSurvey.pdf}}
+      \centerline{\includegraphics[width=4in,angle=0]{../figures/distrRespSurvey.pdf}}
       \caption{Geographical Distribution of Survey Responses}
       \bigskip
       \label{geodistrsurv}
     \end{minipage}
   \end{center}
 \end{figure}
-
-\pagebreak
 
 To weight the survey, we use the Legislative Census, conducted by *Interlegis* on the behalf of the Brazilian Senate. The company was hired to improve the quality of Brazilian government branches. We include the following categories in the weighting procedure: region of Brazil, legislature size (9 to 15 or more), gender, and age less than 39. We use the proportions in each bin to weight the graphs and statistics generated after the raking process.\footnote{The `survey` package for `R` describes the raking process in more detail \citep{lumley2004analysis}. In summary, it iterates the post-stratification procedure until the sample marginals match the population marginals for all variables.} Table \ref{tabweight} shows the sample, population, and weighted proportions.
 
@@ -1121,8 +683,6 @@ To weight the survey, we use the Legislative Census, conducted by *Interlegis* o
 \end{tabular}
 \end{table}
 
-Note that the algorithm performs very well, with minimal differences occurring only after the third decimal place.
-
 The survey included the following questions of interest:
 
 \begin{enumerate}
@@ -1141,7 +701,7 @@ English translation:
 
 The second question is particularly relevant to our argument, as it indicates whether councilors engage in activities that give them high electoral yields. Figure \ref{commonservice} shows the results for each of the activities we analyzed.
 
-\begin{figure}[htb!]
+\begin{figure}[H]
   \begin{center}
     \begin{minipage}{1 \linewidth}
       \centerline{\includegraphics[width=6.5in,angle=0]{../figures/commonJobsCouncilors.pdf}}
