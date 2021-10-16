@@ -529,7 +529,7 @@ Here we evaluate the robustness of our results when we change the number of cuto
 
 \begin{figure}[H]
 \begin{center}
-\centerline{\includegraphics[width=6.5in,height=5.5in,angle=0]{../figures/rdAddCuts1.pdf}}
+\centerline{\includegraphics[width=5.2in,height=5.5in,angle=0]{../figures/rdAddCuts1.pdf}}
 \caption{Sensitivity to Additional Cutoffs -- Welfare Outcomes}
 \bigskip
 \label{senscut1}
