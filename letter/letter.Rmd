@@ -45,7 +45,7 @@ Should you select our manuscript for peer review, we would like to kindly sugges
 \begin{itemize}
     \item Claudio Ferraz. Professor of Economics at the Vancouver School of Economics, University of British Columbia. Email: \url{claudio.ferraz@ubc.ca}.
     \item Thomas Fujiwara. Associate Professor of Economics and International Affairs, Princeton University. Email: \url{fujiwara@princeton.edu}
-    \item F. Daniel Hidalgo. Cecil and Ida Green Associate Professor of Political Science, Massachusetts Institute of Technology. Email: \url{dhidalgo@mit.edu}.
+    \item Marko Klašnja. Assistant Professor of Political Science, Georgetown University. Email: \url{marko.klasnja@georgetown.edu}.
     \item Guillermo Toral. Assistant Professor of Political Science, Vanderbilt University. Email: \url{guillermo.toral@vanderbilt.edu}.
     \item Ryan Hübert. Assistant Professor of Political Science, University of California, Davis. Email: \url{rhubert@ucdavis.edu}.
 \end{itemize}
