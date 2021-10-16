@@ -39,6 +39,8 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 
 ## A Model of Legisture Size and Service Provision (Proofs)
 
+In this section, we show the proofs for the model included in the main paper.
+
 \begin{proposition}
 Public goods provision increases with larger legislatures if governing costs decrease in larger legislatures.
 \end{proposition}
@@ -137,6 +139,8 @@ In the \textit{hybrid reversal} mechanism, when the chances of electing a mayor-
 
 ## Variable Sources and Descriptive Statistics
 \label{appsources}
+
+Our data come mainly from Brazilian public agencies. Further information about them are available below.
 
 \begin{table}[!htbp] \centering
 \small
@@ -343,8 +347,8 @@ Consider data distributed according to one of the four forms depicted in Figure 
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{0.9\linewidth}
-      \centerline{\includegraphics[height=3in,angle=0]{../figures/simdistrRDD.pdf}}
-      \caption{Simulation RD with Multiple Thresholds -- Data Distribution}
+      \centerline{\includegraphics[height=3.45in,angle=0]{../figures/simdistrRDD.pdf}}
+      \caption{Simulation: RD with Multiple Thresholds -- Data Distribution}
       \bigskip
       \label{simRDdd}
     \end{minipage}
@@ -358,7 +362,7 @@ A consistent estimator should fit either the first or the fourth data distributi
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=4in,angle=0]{../figures/estimsRDD.pdf}}
+      \centerline{\includegraphics[width=4.5in,angle=0]{../figures/estimsRDD.pdf}}
       \caption{Estimations for the Different Data Generating Processes}
       \bigskip
       \label{estimDGP}
@@ -368,7 +372,7 @@ A consistent estimator should fit either the first or the fourth data distributi
 
 \pagebreak
 
-## Placebo Regressions for Political Mechanism
+## Placebo Regressions for the Political Mechanism
 \label{placmechmain}
 
 Here we present the placebo regressions for the mechanism-aggregated outcomes. In Panel A of the main paper, we run the regression on alternative explanations. Only the number of female councilors changed significantly, but that is to be expected in at least 10% of cases. We have not collected data on non-white legislators for the placebo cutoffs; therefore, we leave it blank. In Panel B, we have the placebo regressions for the primary mechanism, which concerns bargaining costs and public appointed employees. As expected, the placebo regressions are statistically insignificant.
@@ -431,7 +435,7 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}
-      \centerline{\includegraphics[width=5in,height=4in,angle=0]{../figures/bwSens.pdf}}
+      \centerline{\includegraphics[width=7in,height=7.5in,angle=0]{../figures/bwSens.pdf}}
       \caption{Bandwidth Sensitivity -- Main Models}
       \bigskip
       \label{graphbw}
@@ -449,7 +453,7 @@ Given its massive size and large social inequalities, Brazil presents considerab
 \begin{figure}[H]
   \begin{center}
     \begin{minipage}{\linewidth}
-      \centerline{\includegraphics[height=5.9in,width=0.9\linewidth,angle=0]{../figures/dropStateSens1.pdf}}
+      \centerline{\includegraphics[height=8in,width=0.9\linewidth,angle=0]{../figures/dropStateSens1.pdf}}
       \caption{Sensitivity Analysis for the States in the Sample -- Welfare Outcomes}
       \bigskip
       \label{graphsensstatedrop1}
@@ -525,7 +529,7 @@ Here we evaluate the robustness of our results when we change the number of cuto
 
 \begin{figure}[H]
 \begin{center}
-\centerline{\includegraphics[width=6in,height=5in,angle=0]{../figures/rdAddCuts1.pdf}}
+\centerline{\includegraphics[width=6.5in,height=5.5in,angle=0]{../figures/rdAddCuts1.pdf}}
 \caption{Sensitivity to Additional Cutoffs -- Welfare Outcomes}
 \bigskip
 \label{senscut1}
@@ -545,7 +549,7 @@ Here we evaluate the robustness of our results when we change the number of cuto
 
 Two alternative explanations may confound our results. First, the mayor's selection could be affected by the size of the city council, thus public welfare improves due to the quality of the mayor and not because of the partisan mechanism we have described. Second, the partisan mechanism could be capturing a dynamic similar to @Weingastetal1981 "law of 1/n", whereby welfare improvements are caused by higher available revenues. This section shows that none of these concerns are valid in our case.
 
-\subsubsection{Mayors' characteristics}
+### Mayors' Characteristics
 
 We select four characteristics of the city mayors: gender, level of schooling, whether the mayor was reelected in 2004, and whether the mayor was reelected in 2008. The results in Table \ref{appmaychar} show no variation in council size and mayoral characteristics.
 
@@ -569,11 +573,11 @@ We select four characteristics of the city mayors: gender, level of schooling, w
   \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\
   \multicolumn{5}{l}{\footnotesize{Local linear RD Estimates using CCT Optimal Bandwidth Selection and Triangular Kernel.}} \\
   \multicolumn{5}{l}{\footnotesize{Quadratic Robust Standard Errors in Parentheses.}} \\
-  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for Northeast region.}} \\
   \end{tabular} }
 \end{table}
 
-\subsubsection{Revenues and Transfers}
+### Revenues and Transfers
 
 In Table \ref{apptrev}, we run another series of models on federal transfers and revenue raised within the municipalities. There is only a negligible effect on education transfers, yet it is barely significant at 10%. The other indicators remain insignificant.
 
@@ -599,13 +603,13 @@ In Table \ref{apptrev}, we run another series of models on federal transfers and
   \multicolumn{5}{l}{$^{***}$p $<$ .01; $^{**}$p $<$ .05; $^{*}$p $<$ .1} \\
   \multicolumn{5}{l}{\footnotesize{Local linear RD estimates using CCT optimal bandwidth selection and triangular kernel.}} \\
   \multicolumn{5}{l}{\footnotesize{Quadratic robust standard errors in parentheses.}} \\
-  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for northeast region.}} \\
+  \multicolumn{5}{l}{\footnotesize{Controls: population, GDP per capita, number of seats in 2000, year, and dummy for Northeast region.}} \\
   \end{tabular} }
 \end{table}
 
-\subsection{Legislation Dataset}
+## Legislation Dataset
 
-In the Fall of 2018, we collected data on the legislation approved by the city councils of 63 municipalities, all of which were 10 thousand inhabitants away from the thresholds we discussed above. There are 202 municipalities 10 thousand inhabitants away from the cutoff, but only 63 had relevant information about local legislation between 2005 to 2008.
+In Fall 2018, we collected data on the legislation approved by the city councils of 63 municipalities, all of which were 10 thousand inhabitants away from the thresholds we discussed above. There are 202 municipalities 10 thousand inhabitants away from the cutoff, but only 63 had relevant information about local legislation between 2005 to 2008.
 
 We hand-coded 1\% of the dataset (3,466 cases) and applied a Supporting Vector Machine (SVM) algorithm to the remaining 99\% cases to classify the legislation. First, we trained and tested the accuracy of the SVM classifier on 80\% of the dataset. Then, we ran the training algorithm on the complete hand-coded data and predicted the remaining cases.\footnote{We tested SVM, Naïve Bayes, Random Forests, and Neural Networks for this task. We have chosen SVM as it gives the highest prediction rate of all of the algorithms we have tried. We use a simple bag-of-words classifier provided by the `RTextTools` package for `R` \citep{collingwood2013rtexttools}.}
 
@@ -638,7 +642,8 @@ Others                       & 93.5               \\
 
 After we classified all the bills, we added the frequency of each category to the main paper. We have also added the productivity per legislator, which consists of the ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little when we used this alternative measure.
 
-\subsection{City Councilors Survey\label{appsurv}}
+## City Councilors Survey
+\label{appsurv}
 
 From November 21^st^ to December 1^st^, 2016, we surveyed former city councilors elected for the 2005-2008 term. We asked them how mayors secure electoral support, which services are commonly discussed in the city council, and which services give them the highest electoral yield.
 
@@ -647,7 +652,7 @@ We sent 3,240 emails to politicians who had ran in the 2016 election and held pu
 \begin{figure}[H]
   \begin{center}
     \begin{minipage}{1 \linewidth}
-      \centerline{\includegraphics[width=4in,angle=0]{../figures/distrRespSurvey.pdf}}
+      \centerline{\includegraphics[width=4.5in,angle=0]{../figures/distrRespSurvey.pdf}}
       \caption{Geographical Distribution of Survey Responses}
       \bigskip
       \label{geodistrsurv}
@@ -675,11 +680,11 @@ To weight the survey, we use the Legislative Census, conducted by *Interlegis* o
 \textbf{Number of Seats = 13}           & 0.006        & 0.005      & 0.005          \\
 \textbf{Number of Seats = 14}           & 0.01         & 0.004      & 0.005          \\
 \textbf{Number of Seats = 15 or more}          & 0.02         & 0.009      & 0.008          \\
-\textbf{Region = CENTRO-OESTE} & 0.11         & 0.08       & 0.08           \\
-\textbf{Region = NORDESTE}     & 0.33         & 0.32       & 0.32           \\
-\textbf{Region = NORTE}        & 0.05         & 0.08       & 0.08           \\
-\textbf{Region = SUDESTE}      & 0.30         & 0.30       & 0.30           \\
-\textbf{Region = SUL}          & 0.20         & 0.21       & 0.21           \\ \hline
+\textbf{Region = Central-West} & 0.11         & 0.08       & 0.08           \\
+\textbf{Region = Northeast}     & 0.33         & 0.32       & 0.32           \\
+\textbf{Region = North}        & 0.05         & 0.08       & 0.08           \\
+\textbf{Region = Southeast}      & 0.30         & 0.30       & 0.30           \\
+\textbf{Region = South}          & 0.20         & 0.21       & 0.21           \\ \hline
 \end{tabular}
 \end{table}
 
