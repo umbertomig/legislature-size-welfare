@@ -671,20 +671,20 @@ To weight the survey, we use the Legislative Census, conducted by *Interlegis* o
 & Sample & Population & Weighted \\
 & Proportions & Proportions & Proportions \\
 \hline
-\textbf{Age less than 39}         & 0.50         & 0.34       & 0.34           \\
-\textbf{Female}            & 0.18         & 0.12       & 0.12           \\
-\textbf{Number of Seats = 9}            & 0.83         & 0.90       & 0.90           \\
-\textbf{Number of Seats = 10}           & 0.10         & 0.06       & 0.06           \\
-\textbf{Number of Seats = 11}           & 0.01         & 0.02       & 0.01           \\
-\textbf{Number of Seats = 12}           & 0.01         & 0.01       & 0.01           \\
-\textbf{Number of Seats = 13}           & 0.006        & 0.005      & 0.005          \\
-\textbf{Number of Seats = 14}           & 0.01         & 0.004      & 0.005          \\
-\textbf{Number of Seats = 15 or more}          & 0.02         & 0.009      & 0.008          \\
-\textbf{Region = Central-West} & 0.11         & 0.08       & 0.08           \\
-\textbf{Region = Northeast}     & 0.33         & 0.32       & 0.32           \\
-\textbf{Region = North}        & 0.05         & 0.08       & 0.08           \\
-\textbf{Region = Southeast}      & 0.30         & 0.30       & 0.30           \\
-\textbf{Region = South}          & 0.20         & 0.21       & 0.21           \\ \hline
+Age lower than 39         & 0.50         & 0.34       & 0.34           \\
+Female            & 0.18         & 0.12       & 0.12           \\
+Number of Seats = 9            & 0.83         & 0.90       & 0.90           \\
+Number of Seats = 10           & 0.10         & 0.06       & 0.06           \\
+Number of Seats = 11           & 0.01         & 0.02       & 0.01           \\
+Number of Seats = 12           & 0.01         & 0.01       & 0.01           \\
+Number of Seats = 13           & 0.006        & 0.005      & 0.005          \\
+Number of Seats = 14           & 0.01         & 0.004      & 0.005          \\
+Number of Seats = 15 or more          & 0.02         & 0.009      & 0.008          \\
+Region = Central-West & 0.11         & 0.08       & 0.08           \\
+Region = Northeast     & 0.33         & 0.32       & 0.32           \\
+Region = North        & 0.05         & 0.08       & 0.08           \\
+Region = Southeast      & 0.30         & 0.30       & 0.30           \\
+Region = South          & 0.20         & 0.21       & 0.21           \\ \hline
 \end{tabular}
 \end{table}
 
