@@ -1,6 +1,8 @@
 % !TEX program = XeLaTeX
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
 
+\renewcommand{\footnotesize}{\normalsize}
+
 \usepackage{amsthm}
 
 % Fonts
@@ -446,29 +448,6 @@ $if(lof)$
 $endif$
 $body$
 
-% More bibliography
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
-$endif$
-$for(include-after)$
-$include-after$
-
-$endfor$
-
 \newpage
 
 \appendix
@@ -504,4 +483,30 @@ The Supplementary Materials can be found at (\textit{edited}).
 \subsection*{Replication Materials}
 
 The replication materials are available at (\textit{edited}).
+
+\singlespacing
+
+% More bibliography
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+
 \end{document}
