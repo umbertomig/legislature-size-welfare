@@ -1,0 +1,79 @@
+---
+title: "Dinner"
+to: Ralf
+from: Martin
+date: "`r Sys.time()`"
+output: 
+  pdf_document:
+    template: article-template.latex
+logo: "\\includegraphics[width=.25\\textwidth]{unnamed.png}"
+
+---
+We would like to thank the editor and three reviewers for their thoughtful consideration of our manuscript. We endeavored to incorporate the changes you suggested, and we believe our manuscript is much improved as a result. Below, we intersperse our reactions and revisions to the suggestions enumerated in the editor's decision letter and the three manuscript reviews. We adopt the following conventions:
+
+\begin{itemize}
+\item Suggestions identified in reviewers' reports are in \textit{italicized text}. We provide direct quotation of their reviewers' reports, which have been lightly edited for clarifications or to conserve space.
+\item Our responses to the reviewers' suggestions are in standard text.
+\item The specific locations in the manuscript and online appendix where incorporated
+revisions can be found are shown in \textbf{bold text}.
+\end{itemize}
+
+\section{Suggestions Raised by Reviewer 1}
+\begin{itemize}
+\item \textit{Overall the literature review is strong. I would recommend a couple of additions. Include among them is an important work the authors should cite on legislative size and spending and that is Gilligan and Matsusaka's 2001 article entitled ""Fiscal Policy, Legislature Size, and Political Parties: Evidence from the First Half of the Twentieth Century." Their findings are relevant for this study and should be referenced. In addition, the recently published book Population and Politics: The Impact of Scale by Gerring and Veenendaal which has a comprehensive analysis of this topic should also be incorporated into the literature review.\ldots }
+
+\vspace{.2cm}
+We thank the reviewer 1 for these two relevant additions. \textbf{We cite Gilligan and Matsusaka's 2001 article on page XXX:}: XXXX. \textbf{The Gerring and Veenendaal's book citation is on page XXX:} XXX. 
+\vspace{.5cm}
+
+\item \textit{In examining the relationship between legislative size and welfare why were education and health care selected as the independent variables? Was that decision based on data availability or were there another basis for the decision? It is not clear in the text of the manuscript.} 
+
+\vspace{.2cm}
+The decision was based both on the relevance of these variables and due to data availability. We explain our decision on \textbf{page XXX}: XXX. We thank R1 for the opportunity to clarify the selection of these two central variables to our paper.
+\vspace{.5cm}
+
+\vspace{.2cm}
+\item \textit{The details of the online survey conducted of Brazilian city councilors are lacking. What is the empirical contribution to the study? Beyond the online format what were the other administrative details involved with collecting that data?}
+
+We agree with R1 that needed to provide more information on the online survey. Therefore, we detailed our procedures in the \textbf{Appendix Section XXX}.
+
+\vspace{.5cm}
+
+\item \textit{The models include a dummy variable for the northeast region. What specifically about this region would require adding it to the model. I am generally skeptical about including such a variable particularly since clustered standard errors are being estimated for municipal level. Is there logical reason to control for regional effects here? Very curious modeling decision by the authors.}
+
+\vspace{.2cm}
+\textbf{We now show the analysis without the dummy variable (page XXX) for the northeast region in the main paper and move the regressions with the dummy to the Appendix (page XXX).} The results are virtually the same. We agree with R1 that the inclusion of the dummy variable might generate unecessary confusion and are not central to our argument. \textbf{Therefore, we also explain on page XXX why we included the dummy variable for the northeast region on page XXX}: XXX.
+
+\vspace{.5cm}
+
+\end{itemize}
+\section{Suggestions Raised by Reviewer 2}
+\begin{itemize}
+\item \textit{One minor issue for the author(s) to consider in future research: on p. 14 the paper states, "On average, municipal taxes account for only 5\% of the local budgets, while mandatory transfers from state and federal governments correspond to the remaining 95\%. This reduces the ability of municipal legislators to effectively increase local spending, which makes improvements in local services dependent only on the composition of their local investments." There is an alternative mechanism that the author(s) has not considered and that has been shown to work in resource allocations to municipalities in Japan under similar circumstances. A recent paper by Amy Catalinac, Bruce Bueno de Mesquita and Alastair Smith tests a formal model in which variance in centrally-provided local municipality resources is a function of a tournament among municipalities within a larger legislative district ("A Tournament Theory of Pork Barrel Politics: The Case of Japan" Comparative Political Studies 2020). Perhaps future research might compare the impact of the tournament structure with the local city council effects in Brazil as studied here.}
+
+\vspace{.2cm}
+We incorporate the suggestion for future research in the conclusion: XXX \textbf{(page XXX)}. We also agree with R2 that the testing of the proposed mechanism is an extremelly interesting project for a follow-up article.
+
+\vspace{.5cm}
+
+\end{itemize}
+\section{Suggestions Raised by Reviewer 3}
+\begin{itemize}
+\item \textit{The central story rests on some assumptions that I would like to see justified. Do mayor's generally want to spend more, and the city council holds them back? Why? I wonder about this assumption. Why does increasing the size of the city council usually result in pro-mayor additions? Under what conditions might increasing the size of the council bring in more diverse viewpoints or more polarized policy stances? What role is partisanship playing? It seems like it is mainly a proxy for agreement between councilors and the mayor, but do different parties have strongly different policy preferences? Does that matter for the results presented here?}
+
+\vspace{.2cm}
+We collapse two paragraphs from R3 since they speak to core topics in our paper, such as the allocation of the resources and polarization. First, \textbf{in the Appendix,} page XXX, we show that an extra-legislator does not increase the municipal spending significantly. Therefore, our results speaks more about the allocation of resources than on public spending. Also, \textbf{in the Appendix, page XX,} we show that the mayors' party and the representativeness of the extra legislator is not driving the results. Unfortunately. 
+
+\vspace{.5cm}
+
+\item \textit{I wonder about the scope conditions. The evidence for the patterns presented from Brazil are very convincing, but I'd like to see more discussion of why these patterns hold in Brazil and how they might be different/ similar elsewhere.}
+
+\vspace{.2cm}
+We acknowledge that the external valitidy of our findings might be conditional on the time period of our study, since Frye (XXX) finds... We also mention that, unlikely many papers in the literature, we cannot corroborate the assertion that one extra legislator increases public spending, representativeness, and corruption. See the relevant passages on pages XXX.
+
+\vspace{.5cm}
+
+
+\end{itemize}
+
+

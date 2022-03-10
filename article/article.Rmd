@@ -168,7 +168,7 @@ C_G(N) \ = \ \dfrac{N}{2}\left[\dfrac{2 \delta R }{2N + 1}\right] \ = \ \dfrac{\
 In the baseline non-partisan reversal, bargaining costs always increase when the size of the legislature increases.
 \end{proposition}
 
-The intuition for the results is that every additional councilor demands more resources from the mayor. Thus, more councilors represent higher bargaining costs. And if the bargaining costs increase with legislature size, then any increase in public goods provision associated with legislature size has come from a different mechanism. Below we show that partisanship is the key to understand how this relationship.
+The intuition for the results is that every additional councilor demands more resources from the mayor. Thus, more councilors represent higher bargaining costs. And if the bargaining costs increase with legislature size, then any increase in public goods provision associated with legislature size has come from a different mechanism. Below we show that partisanship is the key to understand how this relationship works.
 
 ## Partisan and Non-Partisan Bargaining
 
@@ -458,10 +458,6 @@ BW Bias & 11.95 & 11.01 & 10.58 & 15.107 \\ [1.0ex]
 \end{tablenotes}
 \end{threeparttable}}
 \end{table} 
-
-Table \ref{tab:outcomes} shows that increasing the city council by one legislator generates welfare improvement in municipalities. In health care, increasing the legislature size decreases infant mortality in 2.01 deaths per 1,000 children born. This impact is significant in absolute terms and represents an effect of 0.14 in standard deviations. Moreover, postneonatal mortality decreases by 0.90 casualties per 1,000 births, which remains around the 0.14 standard deviations improvement as infant mortality. Infant mortality is a primary outcome for welfare, and it correlates with several other indicators of well-being \citep{world2005health}. The fact that infant mortality improved in the Brazilian case shows that the increased mayor's support mechanism results in sizable welfare effects.
-
-In terms of education, with the addition of a city councilor, enrollment in elementary schools increased by 2.58 children on average per school. This represents a change of around 0.20 standard deviations. Besides the influence of the mayoral support, enrollment can also directly impact the councilor's representation: Councilors can pressure the bureaucracy to accommodate a few extra students. With support from the mayor, they can help voters get access to schools, improving the voter's welfare. Education quality remains unchanged, but with more students in the classroom, it could potentially decrease.
 
 ## Robustness to Alternative Mechanisms
 
