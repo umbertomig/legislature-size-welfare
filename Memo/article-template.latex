@@ -179,10 +179,10 @@
 
 $body$ % will be replaced by the content of your rmd document
 
+
 \clearpage
  
 \bibliographystyle{apsr}
 \bibliography{references}
-
 
 \end{document}
