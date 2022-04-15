@@ -448,7 +448,7 @@ $if(lof)$
 $endif$
 $body$
 
-\newpage
+% \newpage
 
 \appendix
 

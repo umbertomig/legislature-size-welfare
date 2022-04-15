@@ -1,16 +1,44 @@
 ---
 title: 
-to:
-from: 
 date: "`r Sys.time()`"
 output: 
   pdf_document:
-    template: article-template.latex
+    template: memo-template.latex
 bibliography: references.bib 
-
 ---
 
-We would like to thank the editor and three reviewers for their thoughtful consideration of our manuscript. We endeavored to incorporate the changes you suggested, and we believe our manuscript is much improved as a result. Below, we intersperse our reactions and revisions to the suggestions enumerated in the editor's decision letter and the three manuscript reviews. We adopt the following conventions:
+\noindent Dear Editors and Reviewers,
+\vspace{.5cm}
+
+
+\noindent We would like to thank you all for the opportunity to revise our
+manuscript, "Legislature Size and Welfare: Evidence from Brazil" (Ms. No.
+AJPS-44979). We have made several revisions to the paper along the lines
+suggested by the editors and reviewers and we believe the manuscript has
+improved significantly as a result. 
+
+
+
+We have also incorporated additional literature into the manuscript, which has
+indeed given the paper a clearer theoretical framework through which our
+results can be interpreted.  
+
+
+Below we discuss in more detail these changes and the several other changes we
+have made to the manuscript in response to comments from the editors and
+reviewers. We thank the editors again for the opportunity to revise the
+manuscript, and the reviewers for their extremely helpful comments.
+
+\vspace{.5cm}
+\noindent Sincerely,
+
+\vspace{.2cm}
+\noindent The Authors
+
+
+\newpage
+
+the editor and the three anonymous reviewers for their thoughtful consideration of our manuscript. We endeavored to incorporate the changes you suggested, and we believe our manuscript is much improved as a result. Below, we intersperse our reactions and revisions to the suggestions enumerated in the editor's decision letter and the three manuscript reviews. We adopt the following conventions:
 
 \begin{itemize}
 \item Suggestions identified in reviewers' reports are in \textit{italicized text}. We provide direct quotations of their reviewers' reports, lightly edited for clarifications or to conserve space.
