@@ -3,9 +3,9 @@ title:  |
         | Legislature Size and Welfare: Evidence from Brazil
 author: 
 date: \today
-abstract: "How does legislature size impact public service provision? Despite the importance of institutional design for democratic governance, the effect of legislative features on citizen welfare remains little understood. In this paper, we use a formal model to show that increasing legislature size improves public goods delivery. We argue that changes in bargaining costs depend on whether additional legislators share the executive's party affiliation: More opposition members reduce the executive's public goods provision, while more government-aligned members increase it. We test this theory by exploiting sharp discontinuities in city council size in Brazil. We show that an additional city councilor has a 91% chance of belonging to the mayoral coalition, and this significantly improves primary school enrollment and infant mortality measures. To explore possible mechanisms, we surveyed former city councilors and analyzed 346,553 bills proposed between 2005 and 2008. This paper has implications for the design of representative institutions."
+abstract: "How does legislature size impact public service provision? Despite the importance of institutional design for democratic governance, the effect of legislative features on citizen welfare remains little understood. In this paper, we use a formal model to show that increasing legislature size improves public goods delivery. We argue that changes in bargaining costs depend on whether additional legislators share the executive's party affiliation: More opposition members reduce the executive's public goods provision, while more government-aligned members increase it. We test this theory by exploiting sharp discontinuities in city council size in Brazil. We show that an additional city councilor has a 91% chance of belonging to the mayoral coalition, and this significantly improves primary school enrollment and infant mortality measures. To explore possible mechanisms, we surveyed 174 former city councilors and analyzed 346,553 bills proposed between 2005 and 2008. This paper has implications for the design of representative institutions."
 abstractspacing: double
-keywords: Legislature Size; Legislative Bargaining; Local Public Goods Provision; Regression Discontinuity Design; Brazil
+keywords: legislature size; legislative bargaining; local public goods provision; regression discontinuity design; Brazil
 jelcodes: H41; H80; I31; I38
 fontsize: 12pt
 margin: 2cm
@@ -40,14 +40,15 @@ knitr::opts_chunk$set(echo = TRUE)
 \label{sec:intro}
 
 Legislative institutions are crucial for citizen welfare and public service
-provision in democratic countries. Historically, the division of power and the
-birth of representative governments placed legislatures at the center of the
-political stage. In modern democracies, most countries have assemblies at all
-levels of government. These institutions regulate the quantity and quality of
-legislation, check and veto other political powers, and influence policymaking.
-Moreover, legislatures also determine taxation, government spending and oversee
-public programs \citep{auriol2012optimal, north1989constitutions,
-poulsen2018political, stasavage2011states, Weingastetal1981}.
+provision in democratic countries. Historically, the separation of powers and
+the birth of representative governments placed legislatures at the center of
+the political stage. In modern democracies, most countries have assemblies at
+all levels of government. These institutions regulate the quantity and quality
+of legislation, check and veto other political powers, and influence
+policymaking. Moreover, legislatures also determine taxation, government
+spending and oversee public programs \citep{auriol2012optimal,
+north1989constitutions, poulsen2018political, stasavage2011states,
+Weingastetal1981}.
 
 Regardless of eventual differences in electoral rules, social composition, and
 internal procedures, all legislatures share one common feature: They are
@@ -66,21 +67,22 @@ thus hindering service provision \citep{gottlieb2019countervailing,
 tsebelis2002veto}. Therefore, what is the effect of larger legislatures on
 public service delivery?
 
-In this paper, we propose a new theory based on executive leadership and party
+In this paper, we propose a theory based on executive leadership and party
 politics to explain how city council size impacts local public goods provision.
 First, in mayor-council municipalities, mayors are the main responsible for
-public service decisions and have the power to boost public investment similar
-to presidents and governors. Second, partisanship plays a key role in city
-politics, even in countries in which ideological attachment is relatively weak.
-Party attachment structures political views \citep{samuels2014power}, and
-local-level elites usually belong to different factions and parties. They fight
-for power in the municipality by controlling various parties and forming
-distinct pre-electoral coalitions.\footnote{Elite political competition in the
-local level has also been linked to violence and conflict in Brazil and
-elsewhere \citep{hoelscher2015politics, mignozzetti2018predatory}.} In many
-cities, family ties may be substitutes for the ideological component, but
-influential local leaders usually sort themselves into different political
-groups \citep{ferraz2020political, nunes1977coronelismo}. 
+public service decisions, and like presidents and governors, they can boost
+local public investments by altering the government budget. Second,
+partisanship plays a key role in city politics, even in countries in which
+ideological attachment is relatively weak. Party attachment structures
+political views \citep{samuels2014power}, and local-level elites usually belong
+to different factions and parties. They fight for power in the municipality by
+controlling various parties and forming distinct pre-electoral
+coalitions.\footnote{Elite political competition in the local level has also
+been linked to violence and conflict in Brazil and elsewhere
+\citep{hoelscher2015politics, mignozzetti2018predatory}.} In many cities,
+family ties may be substitutes for the ideological component, but influential
+local leaders usually sort themselves into different political groups
+\citep{ferraz2020political, nunes1977coronelismo}. 
 
 This paper incorporates partisanship and mayoral first-move advantage to a
 \citet{baron1989bargaining} bargaining model. Mayors make the initial policy
@@ -92,12 +94,12 @@ investments. In this mayor-council bargaining process, costs come from the
 side-transfers required to secure a majority among councilors. We show that in
 a model without partisan concerns, bargaining costs always increase with larger
 city councils, which in turn lower public goods provision and rents. However,
-partisanship decreases bargaining costs when the chances of electing councilors
-aligned with the mayor are sufficiently high. Lower bargaining costs release
-funds for mayors to invest in public goods provision. In this case, a larger
-city council may have more partisan councilors aligned with the mayor, reducing
-the mayor's bargaining costs and increasing the equilibrium public goods
-provision.
+partisanship decreases bargaining costs when the chances of electing
+government-aligned councilors are sufficiently high. Lower bargaining costs
+release funds for mayors to invest in public goods provision. In this case, a
+larger city council may add more members to the government coalition, thus
+reducing the mayor's bargaining costs and increasing the equilibrium public
+goods provision.
 
 We test these theoretical predictions by exploiting exogenous variation in city
 council size in Brazil. In 2004, the judiciary reinterpreted the Brazilian
@@ -124,20 +126,19 @@ paper. They confirm that mayors indeed use bureaucratic appointments and
 political favors to secure legislative support. As our formal model shows,
 bargaining with councilors requires offering transfers to the representatives.
 By asking councilors what they would like to provide to voters, we find that
-councilors mainly demand job appointments, as these increase their reelection
-prospects and improve municipal welfare. These findings are in line with
-quantitative results from a novel dataset we built with 346,553 laws passed in
-63 municipalities within ten thousand inhabitants away from the cutoffs. We see
-that legislation in municipalities both on the left- and on the right-hand side
-of the cutoffs mention public goods provision. However, municipalities with
-larger city councils have 15 percent more proposals about public goods
-provision, which is consistent with our argument.
+councilors mainly demand job appointments, which are regarded as an effective
+means to boost their reelection prospects and improve municipal welfare. These
+findings are in line with quantitative results from a novel dataset we built
+with 346,553 laws passed in 63 municipalities within ten thousand inhabitants
+away from the cutoffs. While all municipalities mention public goods in their
+legislation, those with larger city councils have 15 percent more proposals
+about public service delivery, which is consistent with our argument.
 
 Finally, we show that the increase in legislature size significantly impacts
 municipal education and health care. Increasing the city council size by one
 legislator lowers infant mortality by 2.01 children per one thousand infants
 born and reduces postneonatal mortality by 0.90 children per one thousand
-infants that survived their first 28 days. Larger councils also increase
+infants who survived their first 28 days. Larger councils also increase
 enrollment by 2.58 children in elementary education classrooms without reducing
 school quality. These services are crucial for citizen welfare and result from
 eased bargaining between the mayor and the city council.
@@ -153,11 +154,11 @@ of the required majority, and partisanship in the model
 calvert2005legislative, choate2019partisan}.\footnote{See
 \citet{eraslan2019legislative} for a comprehensive review of multilateral
 bargaining and \citet{ray2015coalition} for a review on coalition formation.}
-In this paper, we extend the \citet{baron1989bargaining} model under closed
+In this article, we extend the \citet{baron1989bargaining} model under closed
 rules and add the mayor's first move and political partisanship. We consider
 partisanship as a zero-sum effect that is positive for politicians aligned with
-the mayor and negative otherwise. This paper investigates the often overlooked
-effect of legislature size on the bargaining equilibrium strategies.
+the mayor and negative otherwise. We investigate the often overlooked effect of
+legislature size on the bargaining equilibrium strategies.
 
 Second, this paper contributes to the literature on the effects of larger
 legislatures in service provision. Following the seminal contribution by
@@ -265,11 +266,11 @@ public debate on public service provision in most mayor-council (or
 presidential) systems. For instance, while in 2021 the New York Times cited
 Mayor Bill De Blasio 2,084 times, it mentioned the 49 seating city councilors
 only 440 times in the same year. When we expand the search for the past five
-years, we see that De Blasio was mentioned 8,978 while the 49 seating city
-councilors were mentioned 2,046 times.\footnote{We computed these figures using
-the Dow Jones Factiva Database in November 2021.} On average, the mayor was
-cited four times more often than all the city councilors combined. This
-executive dominance has implications for policymaking, as coalitions and
+years, we see that De Blasio was mentioned 8,978 times while the 49 seating
+city councilors were mentioned only 2,046 times.\footnote{We computed these
+figures using the Dow Jones Factiva Database in November 2021.} On average, the
+mayor was cited four times more often than all the city councilors combined.
+This executive dominance has implications for policymaking, as coalitions and
 affinity with the executive are going to be crucial for service provision
 \citep{buenodemesquita2005logic}.
 
@@ -418,7 +419,7 @@ size and bargaining costs.
 ## The Mayor's Decision Stage
 
 Solving the game by backward induction requires us to start with the
-councilors' strategies. However, to conserve space, assume that we solved the
+councilors' strategies. To conserve space, assume that we solved the
 game for the councilors and found the equilibrium bargaining costs $C_G(N)$
 when there are $N$ city councilors. We now derive the optimal rents ($r$) and
 public goods provision ($g$) proposed by the mayor. The mayor benefits from
@@ -446,7 +447,7 @@ The optimal level of public goods provision equates the marginal gains accrued
 from rents with the marginal benefits from reelection.
 
 \begin{proposition}\label{prop1}
-Public goods provision increases with legislature size when the bargaining costs decrease with legislature size.
+Public goods provision increases with legislature size if bargaining costs decrease with legislature size.
 \end{proposition}
 
 All proofs are in section A.1 of the Supplementary Materials. The proof's
@@ -560,7 +561,7 @@ Therefore, a higher probability of electing a legislator aligned with the mayor
 reverts into lower bargaining costs.
 
 Also, the threshold $\underline{\gamma}$ that captures the probability of
-electing a mayor-aligned policitian decreases along with the political value of
+electing a government supporter decreases along with the political value of
 policy $p$ and the size of the legislature $N$. This means that intensive
 partisanship and larger legislatures make it easier to satisfy the electoral
 threshold.
@@ -574,7 +575,7 @@ size of the council to $N+1$. Thus, in a partisan setting:
 \begin{enumerate}[labelindent=*, 
 style=multiline, leftmargin=*, 
 label=H\arabic*.]
-  \item Bargaining costs decrease with legislature size when the chances of electing a government-aligned legislator are sufficiently high.
+  \item Bargaining costs decrease with legislature size when the chances of electing a government partisan are sufficiently high.
   \item Public goods provision increases if bargaining costs decrease with legislature size.
 \end{enumerate}
 
@@ -607,18 +608,18 @@ nichter2011electoral}.
 
 Until 2004, there was no specific regulation on the size of city councils. The
 1988 Brazilian Constitution set only broad guidelines about the number of
-council seats in each municipality, thus allowing cities to determine how many
-legislators they should have in their local chambers. This led to severe
-imbalances in the proportion of representatives per citizen across the country.
-For instance, the Nova Russas municipality had 30,009 inhabitants and 21
-councilors, accounting for one legislator per 1,429 citizens. In contrast, the
-city of Sorocaba had only 15 councilors for 528,735 inhabitants, that is, one
-legislator per 35,249 citizens. In 2003, this malapportionment problem gained
-national visibility when Mira Estrela, a small municipality with only 2,651
-residents, reduced its city council from 11 to 9 seats because of fiscal
-considerations. The change motivated a legal dispute that reached the Brazilian
-Supreme Court. The Court favored the city's decision and ruled that the size of
-every local council should correspond to precise population thresholds.
+council seats in each municipality, allowing cities to determine how many
+legislators their local chambers should have. This led to severe imbalances in
+the representation ratio across the country. For instance, the Nova Russas
+municipality had 30,009 inhabitants and 21 councilors, or one legislator per
+1,429 citizens. In contrast, the city of Sorocaba had only 15 councilors for
+528,735 inhabitants, that is, one legislator per 35,249 citizens. In 2003, this
+malapportionment problem gained national visibility when Mira Estrela, a small
+municipality with only 2,651 residents, reduced its city council from 11 to 9
+seats because of fiscal considerations. The change motivated a legal dispute
+that reached the Brazilian Supreme Court. The Court favored the city's decision
+and ruled that the size of every local council should correspond to precise
+population thresholds.
 
 Following the ruling of the Supreme Court, in March 2004 the Supreme Electoral
 Court established a series of population cutoffs for all municipal
@@ -634,7 +635,7 @@ increases up to 41 members following the previous formula of one additional
 legislator per 47,619 inhabitants. 
 
 Brazil also adopts a unique formula to allocate seats, which combines the Hare
-quota and the D'Hondt method and favors larger parties
+quota and the D'Hondt method and strongly favors larger parties
 \citep{nicolau2015sistemas}. This poses a major obstacle for small parties to
 reach the electoral quorum, so they often join party coalitions to improve
 their chances of winning legislative seats \citep[p. 68]{Ames2001}. In Brazil,
@@ -684,24 +685,24 @@ of laws proposed by the city council that was approved. All variables come from
 the Supreme Electoral Court, the Senate legislative support Interlegis, and the
 Brazilian Bureau of Statistics.
 
-Third, we also collected 346,553 bills from cities within ten thousand
-inhabitants from the 2004 population thresholds. We selected 63 out of 202
-municipalities whose voting records were available online. We evaluate proposal
-types, discriminating between local public goods, oversight, and other
-legislative activity. Examples of the local public goods are investing in a
-public health clinic, requesting school staff to accommodate an extra child,
-renovating sewage, and fixing potholes on a given street.\footnote{Our theory
-does not differentiate between clientelism and broad service provision, as it
-is hard to disentangle differences in the local level legislation. A voter may
-request a particular service, such as fixing a pothole. Attending this request
-can be interpreted as a clientelistic practice. Still, the provision of the
-service generates non-excludable benefits to the adjacent neighborhood.}
-Oversight bills are accountability and transparency mechanisms meant to keep
-public services provision in check. Other legislation comprises bills that do
-not fit in the previous categories, such as changes in street names, motions to
-honor citizens or groups, and legislative and internal city council procedures.
-We provide further information about the legislation dataset and the city
-council survey in sections A.13 and A.14 of the Supplementary Materials.
+Third, we collected 346,553 bills from cities within ten thousand inhabitants
+from the 2004 population thresholds. We selected 63 out of 202 municipalities
+whose voting records were available online. We evaluated proposal types,
+discriminating between local public goods, oversight, and other legislative
+activity. Examples of the local public goods are investing in a public health
+clinic, requesting school staff to accommodate an extra child, renovating
+sewage, and fixing potholes on a given street.\footnote{Our theory does not
+differentiate between clientelism and broad service provision, as it is hard to
+disentangle differences in the local level legislation. A voter may request a
+particular service, such as fixing a pothole. Attending this request can be
+interpreted as a clientelistic practice. Still, the provision of the service
+generates non-excludable benefits to the adjacent neighborhood.} Oversight
+bills are accountability and transparency mechanisms meant to keep public
+services provision in check. Other legislation comprises bills that do not fit
+in the previous categories, such as changes in street names, motions to honor
+citizens or groups, and legislative and internal city council procedures. We
+provide further information about the legislation dataset and the city council
+survey in sections A.13 and A.14 of the Supplementary Materials.
 
 The last set of variables quantifies social welfare. Our focus is on the impact
 of legislature size on education and health care, which are the two most
@@ -725,8 +726,8 @@ of Health Data Center (DataSUS).
 
 Together, this evidence provides a clear picture of local-level politics in
 Brazil, from the political mechanism to the municipal welfare consequences of
-the council size ruling. Summary statistics and variable descriptions follow in
-section A.2 of the Supplementary Materials.
+the council size ruling. Summary statistics and variable descriptions are
+available in section A.2 of the Supplementary Materials.
 
 # Empirical Strategy
 \label{sec:empstrat}
@@ -931,6 +932,8 @@ voters. Table \ref{tab:bargain} tests the first hypothesis about the nexus
 between city council size and bargaining costs and explores the consequences of
 larger legislatures on the municipal bureaucracy.
 
+\vspace{.4cm}
+
 \begin{table}[!htpb] \centering 
   \caption{Political Effects of Increasing the Number of Legislators} 
   \label{tab:bargain} 
@@ -970,11 +973,11 @@ BW Bias & 15.889 & 10.243 & 11.780 & 8.902 \\
 
 Column (1) shows a 91\% chance of the extra legislator belonging to the mayoral
 coalition. The model hypothesis stated that the probability of electing a city
-councilor aligned with the mayor is sufficiently high. However, sufficiently
-high can be ambiguous, and it depends on the intensity of the political
-disagreement and the current legislature size. In any case, 91\% chance is a
-considerably large quantity, and the extra city councilor is going to the
-mayoral coalition nine in every ten legislature size increases. This
+councilor who is aligned with the mayor is sufficiently high. However,
+sufficiently high can be ambiguous, and it depends on the intensity of the
+political disagreement and the current legislature size. In any case, 91\%
+chance is a considerably large quantity, and the extra city councilor is going
+to the mayoral coalition nine in every ten legislature size increases. This
 strengthens the political position of the mayor and diminishes bargaining
 costs.\footnote{The effect of city council size on the number of mayor-aligned
 politicians stems from the rounding rule adopted by the proportional
@@ -1068,16 +1071,6 @@ mortality improved in the Brazilian case shows that the increased mayor's
 support mechanism results in large welfare effects. As expected, placebo
 regressions were statistically insignificant.
 
-In terms of education, with the addition of a city councilor, enrollment in
-elementary schools increased by 2.58 children on average per school. This
-represents a change of around 0.20 standard deviations. Besides the influence
-of the mayoral support, enrollment can also directly impact the councilor's
-representation: Councilors can pressure the bureaucracy to accommodate a few
-extra students. With support from the mayor, they can help voters get access to
-schools, improving the welfare of voters. Education quality remains unchanged,
-but with more students in the classroom, it could potentially decrease. As
-expected, the placebo regressions are insignificant.
-
 \begin{table}[!htpb] \centering 
   \caption{Legislature Size and Welfare} 
   \label{tab:outcomes} 
@@ -1115,15 +1108,25 @@ BW Bias & 11.95 & 11.01 & 10.58 & 15.107 \\ [1.0ex]
 \end{threeparttable}}
 \end{table} 
 
+In terms of education, with the addition of a city councilor, enrollment in
+elementary schools increased by 2.58 children on average per school. This
+represents a change of around 0.20 standard deviations. Besides the influence
+of the mayoral support, enrollment can also directly impact the councilor's
+representation: Councilors can pressure the bureaucracy to accommodate a few
+extra students. With support from the mayor, they can help voters get access to
+schools, improving the welfare of voters. Education quality remains unchanged,
+but with more students in the classroom, it could potentially decrease. Again,
+the placebo regressions are insignificant.
+
 ## Robustness to Alternative Mechanisms
 
 In this paper, we show that the provision of education and health care in
 Brazil improves with larger legislatures. This is because the chances of
-electing a city councilor aligned with the mayor are 91 percent, thanks to the
-rule of distributing seats adopted in the country. In the Supplemental
-Materials, we also run regressions in placebo cutoffs between the actual
-cutoffs, showing that our estimates are consistently null when we are indeed
-supposed to find insignificant results.
+electing a government-aligned candidate are 91 percent thanks to the rule of
+distributing seats adopted in the country. In the Supplemental Materials, we
+also run regressions in placebo cutoffs between the actual cutoffs, showing
+that our estimates are consistently null when we are indeed supposed to find
+insignificant results.
 
 However, other pathways may also explain the nexus between city council size
 and welfare. First, improvements in representation could change the provision
@@ -1295,13 +1298,13 @@ interacts with the mechanisms we suggest in this paper. Third, scholars might
 want to investigate whether our findings remain valid under different
 conditions. It is possible that the mechanisms we present here are non-linear,
 with additional legislators having a positive or negative impact on welfare
-depending on certain electoral characteristics. Finally, it remains uncertain
-how other legislative features affect citizen well-being. For example, city
+depending on certain electoral characteristics. Finally, it remains unclear how
+other legislative features affect citizen well-being. For example, city
 councils may vary in size, monetary compensation for councilors, committee
 structure, and internal power structure. Understanding how legislature size
-interacts with other features would improve our knowledge about how local
-legislatures impact public service delivery. These questions are crucial for
-institution design and welfare in developing democracies.
+interacts with other features would improve our knowledge about the impact of
+local and national legislatures impact public services. These questions are
+crucial for institution design and welfare in developing democracies.
 
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{5pt}
