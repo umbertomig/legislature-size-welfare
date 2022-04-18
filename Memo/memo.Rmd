@@ -1,33 +1,59 @@
 ---
-title: 
-date: "`r Sys.time()`"
-output: 
+title:  |
+        | Legislature Size and Welfare: Evidence from Brazil
+author: Response to Reviewers
+date: \today
+fontsize: 12pt
+margin: 2cm
+urlcolor: darkblue
+linkcolor: Mahogany
+citecolor: Mahogany
+spacing: single
+papersize: a4paper
+bibliography: references.bib
+biblio-style: apalike
+output:
   pdf_document:
+    citation_package: natbib
+    fig_caption: yes
+    number_sections: no
+    keep_tex: no
+    toc: no
+    toc_depth: 3
     template: memo-template.latex
-bibliography: references.bib 
+    md_extensions: +raw_attribute
 ---
 
 \noindent Dear Editors and Reviewers,
 \vspace{.5cm}
 
-
 \noindent We would like to thank you all for the opportunity to revise our
 manuscript, "Legislature Size and Welfare: Evidence from Brazil" (Ms. No.
 AJPS-44979). We have made several revisions to the paper along the lines
-suggested by the editors and reviewers and we believe the manuscript has
+suggested by the Editors and Reviewers and we believe the manuscript has
 improved significantly as a result. 
 
+Following Reviewers 1 and 2, we have incorporated additional literature into
+the manuscript, which has given the paper a clearer theoretical framework
+through which our results can be interpreted. We have also discussed the scope
+conditions of our findings in further detail and included a new paragraph
+explaining why newly-elected councilors tend to join pro-mayor coalitions, thus
+addressing two important concerns raised by Reviewer 3. We believe these
+changes have made the paper clearer and more comprehensive.
 
+In response to comments from Reviewer 1, we have revised our Methods section to
+clarify our selection of independent variables, including the use of dummy
+variables to improve the accuracy of our estimates, and to provide further
+information about our online survey. Additionally, we have included a new
+section in the Supplemental Materials to explain how our survey was conducted
+and how they contribute to our results. We believe these addition also give the
+paper a better theoretical frame to help readers sort through the (many)
+results we present.
 
-We have also incorporated additional literature into the manuscript, which has
-indeed given the paper a clearer theoretical framework through which our
-results can be interpreted.  
-
-
-Below we discuss in more detail these changes and the several other changes we
-have made to the manuscript in response to comments from the editors and
-reviewers. We thank the editors again for the opportunity to revise the
-manuscript, and the reviewers for their extremely helpful comments.
+Below we discuss in more detail these changes and the several others we have
+made to the manuscript in response to comments from the editors and reviewers.
+We thank the editors again for the opportunity to revise the manuscript, and
+the reviewers for their extremely helpful comments.
 
 \vspace{.5cm}
 \noindent Sincerely,
@@ -35,77 +61,255 @@ manuscript, and the reviewers for their extremely helpful comments.
 \vspace{.2cm}
 \noindent The Authors
 
+# Reviewer 1 Comments and Responses
 
-\newpage
-
-the editor and the three anonymous reviewers for their thoughtful consideration of our manuscript. We endeavored to incorporate the changes you suggested, and we believe our manuscript is much improved as a result. Below, we intersperse our reactions and revisions to the suggestions enumerated in the editor's decision letter and the three manuscript reviews. We adopt the following conventions:
-
-\begin{itemize}
-\item Suggestions identified in reviewers' reports are in \textit{italicized text}. We provide direct quotations of their reviewers' reports, lightly edited for clarifications or to conserve space.
-\item Our responses to the reviewers' suggestions are in standard text.
-\item The specific locations in the manuscript and online Appendix where incorporated
-revisions can be found are shown in \textbf{bold text}.
-\end{itemize}
-
-\section{Suggestions Raised by Reviewer 1}
-\begin{itemize}
-\item \textit{Overall the literature review is strong. I would recommend a couple of additions. Include among them is an important work the authors should cite on legislative size and spending and that is \citet{GilliganMatsusaka2001} article entitled "Fiscal Policy, Legislature Size, and Political Parties: Evidence from the First Half of the Twentieth Century." Their findings are relevant for this study and should be referenced. In addition, the recently published book Population and Politics: The Impact of Scale by Gerring and Veenendaal which has a comprehensive analysis of this topic should also be incorporated into the literature review.}
+\noindent 1) Reviewer 1 writes: "Overall the literature review is strong. I
+would recommend a couple of additions. Include among them is an important work
+the authors should cite on legislative size and spending and that is Gilligan
+and Matsusaka's 2001 article entitled 'Fiscal Policy, Legislature Size, and
+Political Parties: Evidence from the First Half of the Twentieth Century.'
+Their findings are relevant for this study and should be referenced. In
+addition, the recently published book \textit{Population and Politics: The
+Impact of Scale} by Gerring and Veenendaal which has a comprehensive analysis
+of this topic should also be incorporated into the literature review."
 
 \vspace{.2cm}
-We thank reviewer 1 for these two relevant additions. We cite \citet{GilliganMatsusaka2001}'s article \textbf{on page 7:} "Yet, \citet{GilliganMatsusaka2001} finds that in the US legislature size is associated primarily with higher spending on geographically concentrated benefits, such as education and highways."   The Population and Politics book citation is \textbf{on page 6:} "However, legislature size does not \textit{necessarily} assure representativeness" \citep[p. 85]{gerring2020population}.
 
-\vspace{.5cm}
+\noindent \textbf{Response:}
 
-\item \textit{In examining the relationship between legislative size and welfare why were education and health care selected as the independent variables? Was that decision based on data availability or were there another basis for the decision? It is not clear in the text of the manuscript.} 
+\begin{quote} 
+
+We thank Reviewer 1 for these two relevant suggestions. We now cite Gilligan
+and Matsusaka's 2001 article three times in our paper. We mention it twice in
+our Introduction, first on page 2: ``\textit{On the one hand, enlarged
+legislatures may reduce political particularism and increase overall government
+spending, which can lead to more public goods (Gerring and Veenendaal 2020;
+Gilligan and Matsusaka 2001; Weingast et al. 1981)}'', and then on page 4:
+``\textit{The corollary of the "law of $1/n$" is that increasing legislature
+size promotes excessive public spending, regardless of the partisan makeup of
+the legislature (Gilligan and Matsusaka 2001)}''. We also cite it in our Theory
+section (page 7): ``\textit{Yet, Gilligan and Matsusaka (2001) find that in the
+US legislature size is associated primarily with higher spending on
+geographically concentrated benefits, such as education and highways}''.
+
+We cite Gerring and Veenendaal's book four times. We mention it twice on page
+2: ``\textit{Legislature size is known to have a significant effect on
+collective action strategies, the bargaining power between state branches,
+government spending, and representation (Crain 1979; Freire et al. 2021;
+Gerring and Veenendaal 2020; Primo and Snyder Jr. 2008; Rogers 2002; Weingast
+et al. 1981). However, how legislature size impacts social welfare remains less
+understood. On the one hand, enlarged legislatures may reduce political
+particularism and increase overall government spending, which can lead to more
+public goods (Gerring and Veenendaal 2020; Gilligan and Matsusaka 2001;
+Weingast et al. 1981)}''. We mention the book again on page 4:
+``\textit{Following the seminal contribution by Weingast et al. (1981), the
+"law of $1/n$" posits that larger legislatures increase the legislative pressure
+for providing targeted public goods to local supporters at the expense of the
+entire polity (Freire et al. 2021). This question has become more relevant
+since legislature size has increased consistently over time (Gerring and
+Veenendaal 2020)}''. Finally, we also cite it on page 6: ``\textit{Larger
+legislatures improve representation as both the election thresholds and the
+ratio of population-per-politician decrease, which facilitate the electoral
+success of ethnic and political minorities (Allen and Stoll 2014; Gerring and
+Veenendaal 2020)}.''
+
+\end{quote}
+
+\noindent 2) Reviewer 1 writes: "In examining the relationship between
+legislative size and welfare why were education and health care selected as the
+independent variables? Was that decision based on data availability or were
+there another basis for the decision? It is not clear in the text of the
+manuscript."
 
 \vspace{.2cm}
-We thank R1 for the opportunity to clarify the selection of these two central variables for our paper. We explain our decision on \textbf{page 17}: "Access to basic education and health care are relevant goals to developing countries. For instance, according to Brazil's 1988 Constitution, municipalities have to spend 25\% of their budget on education and 15\% on health care. Consequently, the Health Ministry Data Service and the Ministry of Education Data Service provide readily available quality data on health care and education."
 
-\vspace{.5cm}
+\noindent \textbf{Response:}
 
-\vspace{.2cm}
-\item \textit{The details of the online survey conducted of Brazilian city councilors are lacking. What is the empirical contribution to the study? Beyond the online format what were the other administrative details involved with collecting that data?}
+\begin{quote}
 
-We agree with R1 that we needed to provide more information on the online survey. Therefore, we detailed our procedures in the \textbf{Appendix Section A.14, on pages 22-23}. We also reference it \textbf{on pages 17 and 22 (footnote 13)} in the main article.
+We thank Reviewer 1 for the opportunity to clarify the selection of these two
+sets of variables for our paper. We explain our decision on page 17:
+"\textit{Our focus is on the impact of legislature size on education and health
+care, which are the two most important public services the municipal government
+should provide to citizens. According to Brazilian Constitution, municipalities
+must spend 25\% of their budget on education and 15\% on health care.
+Consequently, the Ministry of Health and the Ministry of Education provide
+readily available, fine-grained data on health care and education at the
+municipal level, which we leverage in this study}."
 
-\vspace{.5cm}
+\end{quote}
 
-\item \textit{The models include a dummy variable for the northeast region. What specifically about this region would require adding it to the model. I am generally skeptical about including such a variable particularly since clustered standard errors are being estimated for municipal level. Is there logical reason to control for regional effects here? Very curious modeling decision by the authors.}
-
-\vspace{.2cm}
-\textbf{FALTA FAZER: Dummy para a região Nordeste: estimar os modelos sem a dummy e reportar este resultado no artigo. Corrigir as menções aos coeficientes caso eles mudem. Colocar as regressões com a dummy no apêndice.}
-
-\vspace{.5cm}
-
-\end{itemize}
-\section{Suggestions Raised by Reviewer 2}
-\begin{itemize}
-\item \textit{One minor issue for the author(s) to consider in future research: on p. 14 the paper states, "On average, municipal taxes account for only 5\% of the local budgets, while mandatory transfers from state and federal governments correspond to the remaining 95\%. This reduces the ability of municipal legislators to effectively increase local spending, which makes improvements in local services dependent only on the composition of their local investments." There is an alternative mechanism that the author(s) has not considered and that has been shown to work in resource allocations to municipalities in Japan under similar circumstances. A recent paper by \citet{catalinac2020tournament} tests a formal model in which variance in centrally-provided local municipality resources is a function of a tournament among municipalities within a larger legislative district. Perhaps future research might compare the impact of the tournament structure with the local city council effects in Brazil as studied here.}
-
-\vspace{.2cm}
-We agree with R2 that testing the proposed mechanism is an extremely exciting project for a follow-up article. In our \textbf{conclusion, on page 29,} we write: "Future research should also evaluate whether an extra-legislator is helping the mayor in her competition for state or federal transfers, as proposed by \citet{catalinac2020tournament}."
-
-\vspace{.5cm}
-
-\end{itemize}
-\section{Suggestions Raised by Reviewer 3}
-\begin{itemize}
-\item \textit{The central story rests on some assumptions that I would like to see justified. Do mayor's generally want to spend more, and the city council holds them back? Why? I wonder about this assumption. Why does increasing the size of the city council usually result in pro-mayor additions? Under what conditions might increasing the size of the council bring in more diverse viewpoints or more polarized policy stances? What role is partisanship playing? It seems like it is mainly a proxy for agreement between councilors and the mayor, but do different parties have strongly different policy preferences? Does that matter for the results presented here?}
+\noindent 3) Reviewer 1 writes: "The details of the online survey conducted of
+Brazilian city councilors are lacking. What is the empirical contribution to
+the study? Beyond the online format what were the other administrative details
+involved with collecting that data?"
 
 \vspace{.2cm}
-\textbf{FALTA COMPLETAR:} We collapse two paragraphs from R3 since they speak to core topics in our paper. \textbf{In the Appendix Table XXX, on page XXX,} we show that an extra-legislator usually does not increase the municipal spending significantly. Therefore, our results speak more about the allocation of resources than on public spending. \textbf{On page 15, in the Background on the Brazilian Case Section,} we clarify why increasing the city council size usually results in a pro-mayor legislator. "Additionally, Brazil's formula for apportioning legislative seats (a combination of the Hara quota and the D'Hondt method) is an obstacle to small parties or coalitions attaining the electoral quotient that might give them a legislative seat. As a result, they often ally with larger coalitions so that they can reach the electoral quotient \citep[p. 68]{Ames2001}. Being a central political figure in the municipality, often the mayor is also a member of the most voted coalition." See also \textbf{footnote 12, on page 21-22.} Unfortunately, we could not find evidence that an extra-legislator improves descriptive representation in the city council, for instance, more female or non-white legislators \textbf{(see Table 4).} Finally, \textbf{in the Appendix, on page XX,} we show that the mayors' party is not driving the results. 
 
-\vspace{.5cm}
+\noindent \textbf{Response:}
 
-\item \textit{I wonder about the scope conditions. The evidence for the patterns presented from Brazil are very convincing, but I'd like to see more discussion of why these patterns hold in Brazil and how they might be different/ similar elsewhere.}
+\begin{quote}
+
+We agree with Reviewer 1 that we needed to provide more information on the
+online survey. Therefore, we have detailed our procedures in Section A.14 of
+the Supplementary Materials (pages 22-23), and we also reference the survey on
+pages 17 and 22 (footnote 13) in the main article.
+
+\end{quote}
+
+\noindent 4) Reviewer 1 writes: "The models include a dummy variable for the
+northeast region. What specifically about this region would require adding it
+to the model. I am generally skeptical about including such a variable
+particularly since clustered standard errors are being estimated for municipal
+level. Is there logical reason to control for regional effects here? Very
+curious modeling decision by the authors."
 
 \vspace{.2cm}
-We acknowledge that the external validity of our findings might be conditional on the contextual characteristics of our study. \textbf{On page 6-7,} we acknowledge that "since the seminal paper by \citet{Weingastetal1981}, 30 papers have systematically tested the effects of legislature size on government spending. Of these papers, only \citet{lewis2019legislature} investigates its effects on welfare, showing that larger legislatures have a negative welfare effect. \citet{frey2021legislature} analyses the Brazilian case after the 2009 legislature size change and finds a null effect in service provision from 2012 to 2016. Yet, \citet{GilliganMatsusaka2001} finds that in the US legislature size is associated primarily with higher spending on geographically concentrated benefits, such as education and highways. These results suggest that the legislature size and welfare nexus needs a dedicated theoretical and empirical assessment."
-Additionally, \textbf{in the Discussion Section, on page 29,} we write about the implications of our findings beyond Brazil. In this paragraph, we added the following new sentence: "As a caveat, our results might not be externally valid under different institutional norms (e.g., election rules or methods to allocating legislative seats) or at other governmental levels (federal or state). The findings presented here might also not be linear, since the impact of an extra-legislator should be heterogeneous depending upon the size of different legislatures or jurisdictions."
 
-\vspace{.5cm}
+\noindent \textbf{Response:}
 
+\begin{quote}
 
-\end{itemize}
+\textbf{TO DO.}
 
+\vspace{.2cm}
 
+We would like to thank Reviewer 1 for their helpful comments and suggestions.
+\end{quote}
+
+# Reviewer 2 Comments and Responses
+
+\noindent 1) Reviewer 2 writes: "One minor issue for the author(s) to consider
+in future research: on p. 14 the paper states, "On average, municipal taxes
+account for only 5\% of the local budgets, while mandatory transfers from state
+and federal governments correspond to the remaining 95\%. This reduces the
+ability of municipal legislators to effectively increase local spending, which
+makes improvements in local services dependent only on the composition of their
+local investments." There is an alternative mechanism that the author(s) has
+not considered and that has been shown to work in resource allocations to
+municipalities in Japan under similar circumstances. A recent paper by Amy
+Catalinac, Bruce Bueno de Mesquita and Alastair Smith tests a formal model in
+which variance in centrally-provided local municipality resources is a function
+of a tournament among municipalities within a larger legislative district.
+Perhaps future research might compare the impact of the tournament structure
+with the local city council effects in Brazil as studied here."
+
+\vspace{.2cm}
+
+\noindent \textbf{Response:}
+
+\begin{quote}
+
+We agree with R2 that testing the proposed mechanism is an extremely exciting
+project for a follow-up article. In the Discussion section (page 29), we write:
+"\textit{Second, future research could evaluate whether additional legislators
+help mayors gain access to federal or state transfers in countries where
+resources are centrally provided, such as Japan. As suggested by Catalinac et
+al. (2020), in these situations the national government can create a tournament
+between municipalities and provide resources to those which offer more
+electoral support. Scholars might want to analyze whether this tournament
+structure interacts with the mechanisms we suggest in this paper}."
+
+\vspace{.2cm}
+
+We would like to thank Reviewer 2 for their helpful comments and suggestions.
+
+\end{quote}
+
+# Reviewer 3 Comments and Responses
+
+\noindent 1) Reviewer 3 writes: "The central story rests on some assumptions
+that I would like to see justified. Do mayor's generally want to spend more,
+and the city council holds them back? Why? I wonder about this assumption. Why
+does increasing the size of the city council usually result in pro-mayor
+additions? Under what conditions might increasing the size of the council bring
+in more diverse viewpoints or more polarized policy stances? What role is
+partisanship playing? It seems like it is mainly a proxy for agreement between
+councilors and the mayor, but do different parties have strongly different
+policy preferences? Does that matter for the results presented here?"
+
+\vspace{.2cm}
+
+\noindent \textbf{Response:}
+
+\begin{quote}
+
+We collapse two concerns from Reviewer 3 since they both speak to core topics
+in our paper. In Table \textbf{XX} of the Supplementary Materials (page
+\textbf{XX}), we show that an additional legislator usually does not lead to
+significant increases in public expenditure. Therefore, our results speak more
+about the allocation of resources than about government spending. In our
+section titled "Background on the Brazilian Case" (page 15), we clarify why
+increasing the city council size often results in a pro-mayor legislator. We
+write: "\textit{Brazil also adopts a unique formula to allocate seats, which
+combines the Hare quota and the D’Hondt method and strongly favors larger
+parties (Nicolau 2015). This poses a major obstacle for small parties to reach
+the electoral quorum, so they often join party coalitions to improve their
+chances of winning legislative seats (Ames 2001, p. 68). In Brazil, mayors are
+usually members of the largest coalitions (Poulsen and Varjao 2018), thus there
+is an incentive for candidates to side with the mayor before and after the
+election}." We mention that information again on page 22, footnote 12:
+"\textit{The effect of city council size on the number of mayor-aligned
+politicians stems from the rounding rule adopted by the proportional
+representation system in Brazil. The rounding rule favors the coalitions with
+more votes. Most of the time, the coalition of the elected mayor is the one
+that receives more votes.}". 
+
+We did not find evidence that electing an additional legislator improves
+descriptive representation in the city council. For instance, we see no
+significant increase in the number of more female or non-white legislators, as
+shown in Table 4 (page 27). Finally, we show in Section \textbf{AAA} of the
+Supplementary Materials (page \textbf{XX}) that the mayors' parties are driving
+our results.
+
+\end{quote}
+
+\noindent 2) Reviewer 3 writes: "Finally, I wonder about the scope conditions.
+The evidence for the patterns presented from Brazil are very convincing, but
+I'd like to see more discussion of why these patterns hold in Brazil and how
+they might be different/ similar elsewhere."
+
+\vspace{.2cm}
+
+\noindent \textbf{Response:}
+
+\begin{quote}
+
+We entirely agree with Reviewer 3 that we need to discuss the scope conditions
+of our findings in more detail. We acknowledge that the external validity of
+our findings might be conditional on the contextual characteristics of our
+study. We have rewritten two paragraphs in the Discussion (page 29) to highligh
+the implications and limits of our findings. We write: "\textit{Our findings
+have implications that extend well beyond Brazil. A general form of our
+argument is that it is easy for a politician to negotiate with members of her
+in-group (Abbink and Harris 2019; Alt et al. 2018). Specifically, several
+countries have separate executive and legislative powers, such as the federal
+level of presidential systems, state governments, and local city councils. As
+these political bodies are influenced by political allegiances, the dynamics we
+expose here may be generalizable. Depending on legislative support, changing
+the legislature size could increase the chance of electing politicians that are
+not aligned with the executive, hence decreasing welfare. Despite the
+particular effects on political support and welfare, the logic described in
+this paper would remain relevant for empirically accessing the effect of
+enlarged legislatures on welfare. mtex-ac)vOur findings may also help scholars
+understand why other countries in Latin America and Asia can generate effective
+governance despite having strong executives and large coalitions (Pereira and
+Melo 2012)}".
+
+In the next paragraph (page 29), we indicate some of the limitations of our
+findings and encourage scholars to conduct further research on the topic. We
+write: "\textit{This paper opens several questions for future analysis. [...]
+Third, scholars might want to investigate whether our findings remain valid
+under different conditions. It is possible that the mechanisms we present here
+are non-linear, with additional legislators having a positive or negative
+impact on welfare depending on certain electoral characteristics. Finally, it
+remains unclear how other legislative features affect citizen well-being. For
+example, city councils may vary in size, monetary compensation for councilors,
+committee structure, and internal power structure. Understanding how
+legislature size interacts with other features would improve our knowledge
+about the impact of local and national legislatures impact public services.
+These questions are crucial for institution design and welfare in developing
+democracies.}"
+
+We would like to thank Reviewer 3 for their comments and suggestions.
+\end{quote}

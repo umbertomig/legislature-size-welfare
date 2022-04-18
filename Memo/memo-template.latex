@@ -1,188 +1,451 @@
-%l !Rnw weave = knitr
+% !TEX program = XeLaTeX
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
 
-\documentclass[12pt]{article}
+\renewcommand{\footnotesize}{\normalsize}
 
-% equations
-\usepackage{amsmath}
+\usepackage{amsthm}
 
-\usepackage[]{graphicx} % omit 'demo' option in real doc.
-\usepackage[]{color}
-%% maxwidth is the original width if it is less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
-\makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
+% Fonts
+$if(fontfamily)$
+\usepackage[$fontfamilyoptions$]{$fontfamily$}
+$else$
+\usepackage{libertine}
+$endif$
 
-\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
-\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+% This is a nice mathfont, it fits well with Libertine
+% Comment the line if you want to use a different one
+\usepackage[libertine]{newtxmath}
 
+% The default monofont 
+% Again, comment the line below if you want to change it
+\usepackage[scaled=.85]{inconsolata}
 
-
-
-\usepackage{framed}
-\makeatletter
-\newenvironment{kframe}{%
- \def\at@end@of@kframe{}%
- \ifinner\ifhmode%
-  \def\at@end@of@kframe{\end{minipage}}%
-  \begin{minipage}{\columnwidth}%
- \fi\fi%
- \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
- \colorbox{shadecolor}{##1}\hskip-\fboxsep
-     % There is no \\@totalrightmargin, so:
-     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
- \MakeFramed {\advance\hsize-\width
-   \@totalleftmargin\z@ \linewidth\hsize
-   \@setminipage}}%
- {\par\unskip\endMakeFramed%
- \at@end@of@kframe}
-\makeatother
-
-\definecolor{shadecolor}{rgb}{.97, .97, .97}
-\definecolor{messagecolor}{rgb}{0, 0, 0}
-\definecolor{warningcolor}{rgb}{1, 0, 1}
-\definecolor{errorcolor}{rgb}{1, 0, 0}
-\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
-
-\usepackage{alltt}
-
-\usepackage{hyperref}
-\hypersetup{
-        colorlinks=true,
-        breaklinks,
-        allcolors=[RGB]{128,0,0}
-}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{crimson}
-
-\usepackage{geometry}
-\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-\usepackage{url}
-\usepackage{dcolumn}
-%\usepackage{ctable}
-\usepackage{booktabs} 
-\usepackage{multirow}
-\usepackage{setspace}
-\usepackage{rotating}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{seqsplit}
-%\usepackage{longtable}
-
-\renewcommand{\textfraction}{0.05}
-\renewcommand{\topfraction}{0.8}
-\renewcommand{\bottomfraction}{0.8}
-\renewcommand{\floatpagefraction}{0.75}
-
-% checkmarks
-\usepackage{amssymb}% http://ctan.org/pkg/amssymb
-\usepackage{pifont}% http://ctan.org/pkg/pifont
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
-
-%\verb|\checkmark|: \checkmark \par
-%\verb|\cmark|: \cmark \par
-%\verb|\xmark|: \xmark
-
-%Bibliography
-\usepackage{natbib}
-%\usepackage[autostyle]{csquotes}
-%\usepackage[backend=bibtex, style=authoryear, natbib=true]{biblatex}
-%\addbibresource{slaves.bib}
-
-% causal diagram
-\usepackage{istgame} 
-
-%%For Hypotheses and Subhypotheses
-\usepackage{ntheorem}
-\newtheorem{hyp}{Hypothesis}
-\makeatletter
-\newcounter{subhyp}
-\let\savedc@hyp\c@hyp
-\newenvironment{subhyp}
- {%
-  \setcounter{subhyp}{0}%
-  \stepcounter{hyp}%
-  \edef\saved@hyp{\thehyp}% Save the current value of hyp
-  \let\c@hyp\c@subhyp     % Now hyp is subhyp
-  \renewcommand{\thehyp}{\saved@hyp\alph{hyp}}%
- }
- {}
-\newcommand{\normhyp}{%
-  \let\c@hyp\savedc@hyp % revert to the old one
-  \renewcommand\thehyp{\arabic{hyp}}%
-}
-\makeatother
-%%%
-
-%For nice tables
+% Add the following packages to support kableExtra
 \usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable, subcaption}
 \usepackage{array}
-\usepackage{threeparttable}
-\usepackage{tabulary}
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-
-%Expectation opperator
-\newcommand{\Expect}{{\rm I\kern-.3em E}}
-
-%Significance commands
-\newcommand*{\SuperScriptSameStyle}[1]{%
-  \ensuremath{%
-    \mathchoice
-      {{}^{\displaystyle #1}}%
-      {{}^{\textstyle #1}}%
-      {{}^{\scriptstyle #1}}%
-      {{}^{\scriptscriptstyle #1}}%
-  }%
-}
-
-\newcommand*{\oneS}{\SuperScriptSameStyle{*}}
-\newcommand*{\twoS}{\SuperScriptSameStyle{**}}
-\newcommand*{\threeS}{\SuperScriptSameStyle{*{*}*}}
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-
 \usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape, lscape}
+\usepackage{tabu}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{etoolbox, enumitem}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{tocloft, rotating, graphicx, arydshln}
 
-%\usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
+% Dots in toc
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
 
-\usepackage{array}
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{enumitem}
+% Colours
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.55}
 
+% Spacing
+\usepackage{setspace}
+
+% Margin
+$if(margin)$
+\usepackage[margin=$margin$]{geometry}
+$else$
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+$endif$
+
+% Packages I've been using for different reasons...
+\usepackage{hyperref}
+\usepackage{dcolumn}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}  
+\floatplacement{figure}{H}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{shapes.arrows,arrows.meta,positioning,shapes.geometric}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usepackage{mathtools}
+\usepackage{caption, xltabular}
+
+% American English
+\usepackage[english]{babel}
+
+% Supercharge
+\newenvironment{quotemig}{\singlespacing \begin{quote} \begin{small}\it}{\end{small}\end{quote}}
+
+\newcommand{\wh}[1] {\widehat { #1 }}
+
+\newcommand{\twopd}[4]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{if } #4 \end{array} \right.}
+
+\newcommand{\twopdo}[3]{\left\{\begin{array}{ll} #1 & \text{if } #2 \\ #3 & \text{otherwise} \end{array} \right.}
+
+\newcommand{\threepd}[6]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\ 
+#3 & \text{if } #4 \\ #5 & \text{if } #6 \end{array} \right.}
+
+\newcommand{\threepdo}[5]{ \left\{ \begin{array}{lll} #1 & \text{if } #2 \\ 
+#3 & \text{if } #4 \\ #5 & \text{otherwise} \end{array} \right.}
+
+% Bold letters
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\F}{\mathbf{F}}
+\renewcommand{\O}{\mathbf{O}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\g}{\mathbf{g}}
+\renewcommand{\r}{\mathbf{r}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\dd}{\mathbf{d}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\x}{\mathbf{x}}
+% \newcommand{\vv}{\mathbf{v}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\Beta}{\boldsymbol{\beta}}
+\newcommand{\bveps}{\boldsymbol{\varepsilon}}
+\newcommand{\bvphi}{\boldsymbol{\varphi}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bups}{\boldsymbol{\upsilon}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\arrowp}{\stackrel{p}{\rightarrow}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\indf}{\mathds{1}}
+
+% Theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+%\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+% Illustration
+\theoremstyle{definition}
+\newtheorem{example}{Example}%[subsection]
+\newtheorem{hypothesis}{Hypothesis}%[subsection]
+
+% Claims in the theorems (without numbering)
+\theoremstyle{remark}
+\newtheorem*{claimnn}{Claim}
+
+% Penalties
+\exhyphenpenalty=1000
+\hyphenpenalty=1000
+\widowpenalty=1000
+\clubpenalty=1000
+
+% Hypersetup
+\hypersetup{
+  linkcolor=$if(linkcolor)$$linkcolor$$else$Mahogany$endif$,
+  citecolor=$if(citecolor)$$linkcolor$$else$Mahogany$endif$,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$darkblue$endif$, 
+  breaklinks=true, 
+  colorlinks=true,
+  $if(title-meta)$
+  pdftitle={$title-meta$},
+  $endif$
+  $if(author-meta)$
+  pdfauthor={$author-meta$},
+  $endif$
+  $if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
+  $endif$}
+
+% If XeTex, LuaLaTeX, etc
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{amssymb,amsmath}
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+$if(euro)$
+  \newcommand{\euro}{€}
+$endif$
+$if(mainfont)$
+    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$endif$
+$if(sansfont)$
+    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
+$endif$
+$if(mathfont)$
+    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+$endif$
+$if(CJKmainfont)$
+    \usepackage{xeCJK}
+    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+$endif$
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+% Language
+$if(lang)$
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+$if(babel-newcommands)$
+  $babel-newcommands$
+$endif$
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+$for(polyglossia-otherlangs)$
+  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+$endfor$
+\fi
+$endif$
+
+% Bibliography
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$apalike$endif$}
+\makeatletter
+% Remove comma after author
+\setcitestyle{aysep={}}
+\patchcmd{\NAT@citex}
+	  {\@citea\NAT@hyper@{%
+		 \NAT@nmfmt{\NAT@nm}%
+		 \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+		 \NAT@date}}
+	  {\@citea\NAT@nmfmt{\NAT@nm}%
+	   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+	\patchcmd{\NAT@citex}
+	  {\@citea\NAT@hyper@{%
+		 \NAT@nmfmt{\NAT@nm}%
+		 \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+		   {\@citeb\@extra@b@citeb}%
+		 \NAT@date}}
+	  {\@citea\NAT@nmfmt{\NAT@nm}%
+	   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+	  {}{}
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+\makeatother
+$endif$
+$if(biblatex)$
+\usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
+$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
+% Listings
+$if(listings)$
+\usepackage{listings}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Verbatim
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+% Tables
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+
+% Graphics
+$if(graphics)$
+\usepackage{grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+% Make links footnotes instead of hotlinks:
+$if(links-as-notes)$
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+% $if(parindent)$
+%\setlength{\parindent}{1.5em}
+%\setlength{\parskip}{0pt}
+% $endif$
+ \setlength{\emergencystretch}{3em}  % prevent overfull lines
+ \providecommand{\tightlist}{%
+   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+   
+% Numbered sections
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+% $if(subparagraph)$
+% $else$
+% % Redefines (sub)paragraphs to behave more like sections
+% \ifx\paragraph\undefined\else
+% \let\oldparagraph\paragraph
+% \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+% \fi
+% \ifx\subparagraph\undefined\else
+% \let\oldsubparagraph\subparagraph
+% \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+% \fi
+% $endif$
+$if(dir)$
+\ifxetex
+  % load bidi as late as possible as it modifies e.g. graphicx
+  $if(latex-dir-rtl)$
+  \usepackage[RTLdocument]{bidi}
+  $else$
+  \usepackage{bidi}
+  $endif$
+\fi
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+% Spacing
+$if(spacing)$
+\$spacing$spacing
+$endif$
+
+% Title
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+\providecommand{\subtitle}[1]{}
+\subtitle{$subtitle$}
+$endif$
+
+% Author
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+
+% Date
+\date{$date$}
+
+% Begin document
 \begin{document}
-
-\title{Legislature Size and Welfare: Evidence from Brazil}
-
-\author{Response to Reviewers}
-
-\date{\today}
-
+$if(title)$
 \maketitle
+$endif$
 
-$body$ % will be replaced by the content of your rmd document
+% Abstract
+$if(abstract)$
+\begin{abstract}
+$if(abstractspacing)$\$abstractspacing$spacing$else$\doublespacing$endif$ \noindent $abstract$
+\vspace{.25cm}
 
+$if(keywords)$
+\noindent \textbf{Keywords}: $keywords$
+\vspace{.25cm}
 
-\clearpage
- 
-\bibliographystyle{apsr}
-\bibliography{references}
+$if(jelcodes)$
+\noindent \textbf{JEL Classification Codes}: $jelcodes$
+$endif$
+$endif$
+
+\vspace{.3cm}
+\noindent \textbf{Word Count}: 9,743.
+\end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+% Table of Contents
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$body$
 
 \end{document}

@@ -255,7 +255,7 @@ where the proposal prerogative rotates in a legislature, that larger
 legislatures increase the chances of non-cooperative outcomes, lowering public
 goods provision.} \citet{frey2021legislature} analyzes the Brazilian case after
 the 2009 legislature size change and finds a null effect in service provision
-from 2012 to 2016. Yet, \citet{GilliganMatsusaka2001} finds that in the US
+from 2012 to 2016. Yet, \citet{GilliganMatsusaka2001} find that in the US
 legislature size is associated primarily with higher spending on geographically
 concentrated benefits, such as education and highways. These results suggest
 that the legislature size and welfare nexus needs a dedicated theoretical and
