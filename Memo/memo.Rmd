@@ -46,7 +46,7 @@ clarify our selection of independent variables, including the use of dummy
 variables to improve the accuracy of our estimates, and to provide further
 information about our online survey. Additionally, we have included a new
 section in the Supplemental Materials to explain how we conducted our survey
-and how it contributes to our results. We believe these addition also give the
+and how it contributes to our results. We believe these additions also give the
 paper a better theoretical frame to help readers sort through the (many)
 results we present.
 
