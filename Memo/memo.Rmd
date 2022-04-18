@@ -51,9 +51,9 @@ paper a better theoretical frame to help readers sort through the (many)
 results we present.
 
 Below we discuss in more detail these changes and the several others we have
-made to the manuscript in response to comments from the editors and reviewers.
-We thank the editors again for the opportunity to revise the manuscript, and
-the reviewers for their extremely helpful comments.
+made to the manuscript in response to comments from the Editors and Reviewers.
+We thank the Editors again for the opportunity to revise the manuscript, and
+the Reviewers for their extremely helpful comments.
 
 \vspace{.5cm}
 \noindent Sincerely,
