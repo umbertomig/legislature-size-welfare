@@ -790,9 +790,12 @@ reason for the first variable is the multiple threshold assignments. We add GDP
 per capita because wealthier cities tend to have better public services. The
 number of seats in 2000 intends to control that some municipalities could
 experience a change provoked by the previous council size, confounding our
-estimates. The year and the Northeast dummies were added to improve efficiency.
-Adding controls improves efficiency in RDD and also enhances the consistency in
-the multiple thresholds RDD \citep{calonico2019regression}.
+estimates. The Northeast dummy was added to control for the fact that the Lula
+administration heavily invested in the region from 2003 until 2010, improving 
+several development indicators \citep{de2015politica}. The years were added 
+to improve efficiency. Moreover, adding controls improves efficiency in RDD
+\citep{calonico2019regression} and also enhances the consistency in the 
+multiple thresholds RDD.
 
 For the last assumption, there should be no changes in pre-treatment
 covariates. These pre-treatment covariates are measured before the primary
