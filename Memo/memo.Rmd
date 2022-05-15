@@ -170,7 +170,15 @@ curious modeling decision by the authors."
 
 \begin{quote}
 
-\textbf{TO DO.}
+We thank Reviewer 1 for the opportunity to clarify the selection of the control variables in our empirical analysis. The inclusion of control variables in our model has two purposes. The first one is to improving the consistency of the estimates. In section XXXX of the appendix, we show by simulation that adding controls improve the consistency of the point estimate, for several distributions of the running variables. In the section XXXX of the appendix, we show that for our data, it improves consistency significantly in both the main estimates and the placebo one. Table XXXX in section XXXX (reproduced below), shows that without controls, the estimated treatment effect is overXXXX and underXXXX. The reason for this improvement is that having control variables make the subpopulations more comparable across thresholds.
+
+XXXX PUT TABLE HERE
+
+The second reason, per \citet{calonico2019regression} results, is that adding control variables improve efficiency in the estimates. Adding XXXX and XXXX, XXXX. 
+
+To reflect these informations, we rewrote paragraph XXXX in section XXXX of the main text to:
+
+``XXXX''
 
 \vspace{.2cm}
 
