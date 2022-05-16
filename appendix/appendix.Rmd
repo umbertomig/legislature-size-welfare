@@ -2,9 +2,6 @@
 title: |
        | Supplementary Materials for "Legislature Size and Welfare: Evidence from Brazil"
 author:
-  - Umberto Mignozzeti[^umberto]
-  - Gabriel Cepaluni[^gabriel]
-  - Danilo Freire[^danilo]
 date: \today
 fontfamily: libertine
 fontawesome: yes
@@ -39,24 +36,18 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-[^umberto]: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>. Corresponding author.
-
-[^gabriel]: Associate Professor, Department of International Relations, São Paulo State University, <gabi.cepal@gmail.com>.
-
-[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <dfreire@lincoln.ac.uk>, <https://danilofreire.github.io>.
-
 \newpage
 
-## A Model of Legisture Size and Service Provision (Proofs)
+## A Model of Legislature Size and Service Provision (Proofs)
 
-In this section, we show the proofs for the model included in the main paper.
+In this section, we show the proofs for the model included in the article.
 
 \begin{proposition}
 Public goods provision increases with larger legislatures if governing costs decrease in larger legislatures.
 \end{proposition}
 
 \begin{proof}
-To prove this result, we need to show that the mayor's expected utility satisfies the increasing differences in $g$ and $N$. This means that, when increasing the size of the council, the optimal solution $g^*$ should also increase. However, as $N$ increases discretely, we cannot take the cross-partial derivative on $N$ or use the implicit function theorem. Instead, we use monotone comparative statics to derive these results \citep{milgrom1994monotone}.
+To prove this result, we need to show that the mayor's expected utility satisfies the increasing differences in $g$ and $N$. This means that, when increasing the size of the council, the optimal solution $g^*$ should also increase. However, as $N$ increases discretely, we cannot take the cross-partial derivative on $N$ and $g$ or use the implicit function theorem. Instead, we use monotone comparative statics to derive these results \citep{milgrom1994monotone}.
 
 The mayor's expected utility satifies the increasing differences in $g$ and $N$ when, for $g > g'$ and $N+1 > N$,\footnote{The requirement that the decision and type space are a complete lattice is satisfied for $\mathbb{R} \times \mathbb{N}$.} we have:
 
@@ -150,7 +141,7 @@ In the \textit{hybrid reversal} mechanism, when the chances of electing a mayor-
 ## Variable Sources and Descriptive Statistics
 \label{appsources}
 
-Our data come mainly from Brazilian public agencies. Further information about them are available below.
+Our data come mainly from Brazilian public agencies. Further information about them is available below.
 
 \begin{table}[!htbp] \centering
 \small
@@ -166,7 +157,7 @@ Our data come mainly from Brazilian public agencies. Further information about t
   & & & \\
   IBGE & Brazilian Institute of Geography and Statistics & Geographic, economic, and demographic data & \url{http://www.ibge.gov.br} \\
   & & & \\
-  INEP & Ministry of Education Data Service & Education performance & \url{http://www.inep.gov.br} \\
+  INEP & Ministry of Education Data Service & Educational performance & \url{http://www.inep.gov.br} \\
   & & & \\
   InterLegis & Senate Legislative Data Service & Legislative data & \url{http://www.interlegis.leg.br} \\
   & & & \\
@@ -193,11 +184,11 @@ Our data come mainly from Brazilian public agencies. Further information about t
 \item \textbf{Infant Mortality 2005--2008}: Number of children who died before reaching one year of age, divided by the number of children born alive, multiplied by 1,000 (source: DataSUS)
 \item \textbf{Postneonatal Mortality 2005--2008}: Number of children alive for at least 28 days who died before reaching one year of age, divided by the total number of children who lived for 28 days, multiplied by 1,000 (source: DataSUS)
 \item \textbf{Enrollment Elementary School 2005--2008}: Number of children enrolled in elementary schools, averaged by classroom size (K--4) (source: INEP).
-\item \textbf{Quality of Elementary School 2005--2008}: Average municipal IDEB scores. IDEB scores are estimated as follows. The Ministry of Education takes the average of the students' grades in math and Portuguese, then multiply the those numbers by the student yearly approval rate. INEP reweights the estimators to avoid schools and classroom specific effects (source: INEP, years: 2005, 2007).
+\item \textbf{Quality of Elementary School 2005--2008}: Average municipal IDEB scores. IDEB scores are estimated as follows. The Ministry of Education takes the average of the students' grades in math and Portuguese, then multiply the those numbers by the student yearly approval rate. INEP reweights the estimators to avoid school and classroom specific distortions (source: INEP, years: 2005, 2007).
 \item \textbf{Size of Mayoral Pre-Electoral Coalition 2004}: Number of elected councilors in the mayoral pre-electoral coalition (source: TSE)
 \item \textbf{Number of Appointed Bureaucrats 2005--2008}: Number of bureaucrats of the direct administration who were appointed to jobs in the municipality (source: IBGE, years: 2005, 2006, and 2008)
-\item \textbf{Number of Females Elected 2004}: Number of females elected to city council (source: TSE)
-\item \textbf{Number of Non-Whites Elected 2004}: Number of non-whites elected to the city council. We collect this data for municipalities less than 10,000 inhabitants away from the cutoffs (source: own compilation based on the TSE candidate pictures).
+\item \textbf{Number of Females Elected 2004}: Number of females elected to the city council (source: TSE)
+\item \textbf{Number of Non-Whites Elected 2004}: Number of non-whites elected to the city council. We collect these data for municipalities less than 10,000 inhabitants away from the cutoffs (source: own compilation based on the TSE candidate pictures).
 \item \textbf{Competition per Seat 2004}: Number of people running for city councilor divided by the city council size (source: TSE)
 \item \textbf{Proportion Approved Legislation 2005}: Number of approved legislation in 2005 divided by the number of proposed legislation (source: InterLegis)
 \end{itemize}
@@ -209,8 +200,8 @@ We code the legislation approved by the councilors of 63 municipalities around a
 \begin{itemize}
 \item \textbf{Public Goods}: Legislation that provides public goods or services.
 \item \textbf{Oversight}: Legislation that requests information to the mayor's office or the bureaucracy about the provision of services.
+\item \textbf{Others}: Legislation that is not classified as public goods or oversight. Usually honors or procedures.
 \item \textbf{Education and Health Care}: Legislation about education or health care provision.
-\item \textbf{Others}: Legislation that is not classified as local public goods, public goods, or oversight. Usually honors or procedures.
 \end{itemize}
 
 ### Online 2016 Former City Councilors Survey
@@ -218,11 +209,11 @@ We code the legislation approved by the councilors of 63 municipalities around a
 We ran an online survey asking 174 councilors about their representation duties and how mayors allocate public services to expand his or her government coalition. The services we include are:
 
 \begin{itemize}
-\item \textbf{Councilors Job Appointments}: Whether mayors appoint supporters of the city councilors to bureaucratic jobs (source: survey).
-\item \textbf{Councilors Demands}: Whether mayors satisfy the public service demands of an allied councilor (e.g., build a health clinic in a councilor's neighborhood) (source: survey).
-\item \textbf{Councilors Personal Requests}: Whether mayors satisfy the private requests of an allied councilor (e.g., hire an ally in the bureaucracy) (source: survey).
-\item \textbf{Councilors Legislation}: Whether mayors support the councilors' legislative agenda (source: survey).
-\item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (e.g. fix potholes in the councilor's neighborhoods) (source: survey).
+\item \textbf{Councilors Job Appointments}: Whether mayors appoint supporters of the city councilors to bureaucratic jobs (source: own survey).
+\item \textbf{Councilors Demands}: Whether mayors satisfy the public service demands of an allied councilor (e.g., build a health clinic in a councilor's neighborhood) (source: own survey).
+\item \textbf{Councilors Personal Requests}: Whether mayors satisfy the private requests of an allied councilor (e.g., hire an ally in the bureaucracy) (source: own survey).
+\item \textbf{Councilors Legislation}: Whether mayors support the councilors' legislative agenda (source: own survey).
+\item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (i.e., fix potholes in the councilor's neighborhoods) (source: own survey).
 \end{itemize}
 
 \begin{table}[htb!]
@@ -270,19 +261,17 @@ Coalition Support -- Councilors Constructions & 174 & 0.43 & 0.50 & 0 & 1 \\
 \end{tabular}
 \begin{tablenotes}
 \small
-\textbf{Notes:} The legislation approved dataset contains information on 63 of the 202 municipalities 10 thousand inhabitants away from the council size thresholds. Survey summary statistics are unweighted. Numbers of cases vary due to missingness.
+\textbf{Notes:} The legislation approved dataset contains information on 63 of the 202 municipalities which are 10 thousand inhabitants away from the council size thresholds. Survey summary statistics are unweighted. Numbers of cases vary due to missingness.
 \end{tablenotes}
 \end{threeparttable}
 }
 \end{table}
 
-
-
 ## Threshold Manipulation, Sorting, and Pre-Treatment Consistency
 
 \citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
 
-We run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomials ranging from first to fourth order. As the null hypothesis implies that there is no manipulation, the $p$-values for each polynomial order are: local linear ($p$-value $=0.442$); quadratic ($p$-value $=0.740$); cubic ($p$-value $=0.998$); and quartic ($p$-value $=0.620$). Therefore, we also see no evidence of manipulation.
+We also run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomials ranging from first to fourth order. As the null hypothesis implies that there is no manipulation, the $p$-values for each polynomial order are: local linear ($p$-value $=0.442$); quadratic ($p$-value $=0.740$); cubic ($p$-value $=0.998$); and quartic ($p$-value $=0.620$). Therefore, the test also shows no evidence of manipulation.
 
 ## Population Thresholds in Brazil Before and After the 2003 Supreme Court Decision
 \label{appidentif}
@@ -336,7 +325,7 @@ To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the
 ## Identification Strategy in Regression Discontinuity Designs with Multiple Thresholds
 \label{ISMT}
 
-When estimating regression discontinuities with multiple cutoffs, authors usually pool all the discontinuities together to estimate the treatment effect on the outcomes of interest \citep{cattaneo2016interpreting}. Let $C = \{c_0, c_1, \cdots, c_n, c_{n+1}\}$ be the set of cutoffs thresholds associated with the running variable $X$. The outcome variable is assumed to be $Y$. In the pooled model, the Local Average Treatment Effect (LATE) is:
+When estimating regression discontinuities with multiple cutoffs, authors usually pool all the discontinuities together to estimate the treatment effect on the outcomes of interest \citep{cattaneo2016interpreting}. Let $C = \{c_0, c_1, \cdots, c_n, c_{n+1}\}$ be the set of cutoff thresholds associated with the running variable $X$. The outcome variable is assumed to be $Y$. In the pooled model, the Local Average Treatment Effect (LATE) is:
 
 \[
 LATE_{no\_controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C \right]
@@ -348,7 +337,9 @@ Nevertheless, this may be problematic in our case as municipal characteristics m
 LATE_{controls} \quad = \quad \E \left[ \lim_{x \downarrow c_i} \E[Y_i | X_i] - \lim_{x \uparrow c_i} \E[Y_i | X_i] | \forall c_i \in C, Z_i \right]
 \]
 
-We control for population, GDP, whether the state is located in the Northeast region, seats before the 2003 decision, and year. We use a triangular kernel in our estimations, which gives more weigh to municipalities closer to each cutoff. To compute the optimal bandwidth, we use the \citet{CCT2014} method. We vary the bandwidth from 50\% to 200\% of the optimal bandwidth size to assess whether our results are robust to bandwidth choice. We also use cluster-robust standard errors at the municipal level.
+The inclusion of controls in our model has another purpose, which is to improve the efficiency of our estimates \citep{calonico2019regression}. We add five controls to the main specifications. We include the 2003 population because it conditions the multiple threshold assignments. We add GDP per capita to control for Brazil's economic expansion during the 2000s. We also add the number of seats in 2000 to ensure that our results come from the current legislature size and not from past seat allocations. Year was included in the models to control for seasonal effects. Finally, we add a dummy for Northeast states. The Northeast region received considerable attention from the Federal Government in the 2000s. According to \citet{de2015politica}, in 2003 the Lula administration recreated the Superintendency for the Development of the Northeast (SUDENE), investing BRL 84 Billion from 2003 to 2010. This amounts to around 70% of all targeted regional investments. One example of these investments is that the Federal Government created about 100 new universities in the Northeast region. Moreover, infant mortality in the region decreased from 22.4 deaths per 1000 infants born in 2005 to 19.6 deaths per 1000 infants born in 2008 due to larger federal investments. In turn, education quality improved from 2.69 in 2005 to a 3.14 score in 2007 (0 to 10 quality of education score). For this reason, adding a dummy for Northeast states is essential for ensuring the consistency and the efficiency of our estimates.
+
+We use a triangular kernel in our estimations, which gives more weigh to municipalities closer to each cutoff. To compute the optimal bandwidth, we use the \citet{CCT2014} method. We vary the bandwidth from 50\% to 200\% of the optimal bandwidth size to assess whether our results are robust to bandwidth choice. We also use cluster-robust standard errors at the municipal level.
 
 As it is uncommon for regression discontinuity designs to include control variables, we run a series of simulations to show that controlling for the variable that determines the assignment helps improve both the consistency and the efficiency of the estimates.
 
@@ -367,30 +358,7 @@ Consider data distributed according to one of the four forms depicted in Figure 
 
 \pagebreak
 
-A consistent estimator should fit either the first or the fourth data distributions.  In the second distribution, the change should be equal to $(1, 0, -1, 1, 0, -1, 1, 0, -1)$, and the average change here is equal to zero. In the third model, the change should be $(0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1)$ and the average change should be equal to $0.5$. We display the results in Figure \ref{estimDGP}, showing that the models with control variables are more consistent and efficient.
-
-The inclusion of controls in our model has two purposes. The first one is to
-improve the consistency of the estimates. The second reason is that adding
-control variables improves the efficiency of our estimates
-\citep{calonico2019regression}. We add five controls to the main
-specifications. We include the 2003 population because it conditions the
-multiple threshold assignments. We add GDP per capita to control for Brazil's
-economic expansion during the 2000s. We also add the number of seats in 2000 to
-ensure that our results come from the current legislature size and not from
-past seat allocations. Year was included in the models to control for seasonal
-effects. Finally, we add a dummy for Northeast states. The Northeast region
-received considerable attention from the Federal Government in the 2000s.
-According to \citet{de2015politica}, in 2003 the Lula administration recreated
-the Superintendency for the Development of the Northeast (SUDENE), investing
-BRL 84 Billion from 2003 to 2010. This amounts to around 70% of all targeted
-regional investments. One example of these investments is that the Federal
-Government created about 100 new universities in the Northeast region.
-Moreover, infant mortality in the region decreased from 22.4 deaths per 1000
-infants born in 2005 to 19.6 deaths per 1000 infants born in 2008 due to larger
-federal investments. In turn, education quality improved from 2.69 in 2005 to a
-3.14 score in 2007 (0 to 10 quality of education score). For this reason,
-adding a dummy for Northeast states is essential for ensuring the consistency
-and the efficiency of our estimates.
+A consistent estimator should fit either the first or the fourth data distributions.  In the second distribution, the change should be equal to $(1, 0, -1, 1, 0, -1, 1, 0, -1)$, and the average change here is equal to zero. In the third model, the change should be $(0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1)$ and the average change should be equal to $0.5$. We display the results in Figure \ref{estimDGP}, showing that the models with control variables are the most consistent and efficient.
 
 \begin{figure}[htb!]
   \begin{center}
@@ -481,7 +449,7 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
 ## Sensitivity Analysis of State Characteristics
 \label{sensstate}
 
-Given its massive size and large social inequalities, Brazil presents considerable geographic variation. In this respect, some states have such poor health care and education systems that they could be driving our results. We run the analysis dropping one state at a time to investigate this statewide heterogeneity. The results are in Figures \ref{graphsensstatedrop1} and \ref{graphsensstatedrop2}.
+Given its massive size and large social inequalities, Brazil presents considerable geographic variation. In this respect, some states have such poor health care and education systems that they could be driving our results. We run the analyses dropping one state at a time to investigate this statewide heterogeneity. The results are in Figures \ref{graphsensstatedrop1} and \ref{graphsensstatedrop2}.
 
 \begin{figure}[H]
   \begin{center}
@@ -508,7 +476,7 @@ Given its massive size and large social inequalities, Brazil presents considerab
 ## Sensitivity Analysis of Model Functional Form
 \label{sensfuncform}
 
-In the paper, we run all the regressions using local linear polynomials. However, to assess the robustness of our results, we also run every model using different polynomials, from local linear to a quartic, to show that our results are robust to different regression functional forms. The results are similar in all models, with significance changing only in the quartic polynomials. Figure \ref{graphsensff} presents the results.
+In the paper, we run all the regressions using local linear polynomials. However, to assess the robustness of our results, we also run every model using different polynomial orders, from local linear to quartic, showing that our results are robust to different regression functional forms. Figure \ref{graphsensff} presents the results.
 
 \begin{figure}[H]
   \begin{center}
@@ -580,7 +548,7 @@ Here we evaluate the robustness of our results when we change the number of cuto
 
 ## Mayor's Characteristics, Revenues, and Transfers from the Central Government
 
-Two alternative explanations may confound our results. First, the mayor's selection could be affected by the size of the city council, thus public welfare improves due to the quality of the mayor and not because of the partisan mechanism we have described. Second, the partisan mechanism could be capturing a dynamic similar to @Weingastetal1981 "law of 1/n", whereby welfare improvements are caused by higher available revenues. This section shows that none of these concerns are valid in our case.
+Two alternative explanations may confound our results. First, the mayor's selection could be affected by the size of the city council. Thus, public welfare can improve due to the quality of the mayor and not because of the partisan mechanism we describe. Second, the partisan mechanism could be capturing a dynamic similar to @Weingastetal1981 "law of 1/n", whereby welfare improvements are caused by higher available revenues. This section shows that none of these concerns are valid in our case.
 
 ### Mayors' Characteristics
 
@@ -642,7 +610,7 @@ In Table \ref{apptrev}, we run another series of models on federal transfers and
 
 ## Legislation Dataset
 
-In Fall 2018, we collected data on the legislation approved by the city councils of 63 municipalities, all of which were 10 thousand inhabitants away from the thresholds we discussed above. There are 202 municipalities 10 thousand inhabitants away from the cutoff, but only 63 had relevant information about local legislation between 2005 to 2008.
+In Fall 2018, we collected data on the legislation approved by the city councils of 63 municipalities, all of which were 10 thousand inhabitants away from the thresholds we discussed above. There are 202 municipalities that are 10 thousand inhabitants away from the cutoff, but only 63 had relevant information about local legislation between 2005 to 2008.
 
 We hand-coded 1\% of the dataset (3,466 cases) and applied a Supporting Vector Machine (SVM) algorithm to the remaining 99\% cases to classify the legislation. First, we trained and tested the accuracy of the SVM classifier on 80\% of the dataset. Then, we ran the training algorithm on the complete hand-coded data and predicted the remaining cases.\footnote{We tested SVM, Naïve Bayes, Random Forests, and Neural Networks for this task. We have chosen SVM as it gives the highest prediction rate of all of the algorithms we have tried. We use a simple bag-of-words classifier provided by the `RTextTools` package for `R` \citep{collingwood2013rtexttools}.}
 
@@ -651,8 +619,8 @@ We hand-coded these data according to four characteristics:
 \begin{enumerate}
 \item \textbf{Local Public Goods}: Whether the bills provided a local public good or service to citizens. For instance, bills that aim to fix street potholes, staff a given health clinic, or purchase equipment to a given school.
 \item \textbf{Oversight}: Legislation requesting information on the status of service provision.
+\item \textbf{Others}: Legislation not categorized as any of the previous two, such as honors to notable citizens.
 \item \textbf{Health Care and Education}: Bills on education and health care, broadly defined.
-\item \textbf{Others}: Legislation not categorized as any of the previous three, such as honors to notable citizens.
 \end{enumerate}
 
 Table \ref{accurClassif} shows the classification accuracy for each of the variables that we have hand-coded. In all models, we set cost to 10 to avoid overfitting.
@@ -734,7 +702,7 @@ English translation:
 \begin{enumerate}
     \item In Brazil, mayors commonly negotiate to establish a government majority in the city council. How often do you think mayors use the following goods in exchange for support?
     \item Which of those activities do city councilors perform most often in their duties?
-    \item Which of the following activities do you believe helps city councilors the most in elections?
+    \item Which of the following activities do you believe help city councilors the most in elections?
 \end{enumerate}
 
 The second question is particularly relevant to our argument, as it indicates whether councilors engage in activities that give them high electoral yields. Figure \ref{commonservice} shows the results for each of the activities we analyzed.
