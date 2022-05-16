@@ -369,6 +369,29 @@ Consider data distributed according to one of the four forms depicted in Figure 
 
 A consistent estimator should fit either the first or the fourth data distributions.  In the second distribution, the change should be equal to $(1, 0, -1, 1, 0, -1, 1, 0, -1)$, and the average change here is equal to zero. In the third model, the change should be $(0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1)$ and the average change should be equal to $0.5$. We display the results in Figure \ref{estimDGP}, showing that the models with control variables are more consistent and efficient.
 
+The inclusion of controls in our model has two purposes. The first one is to
+improve the consistency of the estimates. The second reason is that adding
+control variables improves the efficiency of our estimates
+\citep{calonico2019regression}. We add five controls to the main
+specifications. We include the 2003 population because it conditions the
+multiple threshold assignments. We add GDP per capita to control for Brazil's
+economic expansion during the 2000s. We also add the number of seats in 2000 to
+ensure that our results come from the current legislature size and not from
+past seat allocations. Year was included in the models to control for seasonal
+effects. Finally, we add a dummy for Northeast states. The Northeast region
+received considerable attention from the Federal Government in the 2000s.
+According to \citet{de2015politica}, in 2003 the Lula administration recreated
+the Superintendency for the Development of the Northeast (SUDENE), investing
+BRL 84 Billion from 2003 to 2010. This amounts to around 70% of all targeted
+regional investments. One example of these investments is that the Federal
+Government created about 100 new universities in the Northeast region.
+Moreover, infant mortality in the region decreased from 22.4 deaths per 1000
+infants born in 2005 to 19.6 deaths per 1000 infants born in 2008 due to larger
+federal investments. In turn, education quality improved from 2.69 in 2005 to a
+3.14 score in 2007 (0 to 10 quality of education score). For this reason,
+adding a dummy for Northeast states is essential for ensuring the consistency
+and the efficiency of our estimates.
+
 \begin{figure}[htb!]
   \begin{center}
     \begin{minipage}{1\linewidth}

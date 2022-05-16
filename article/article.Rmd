@@ -707,7 +707,7 @@ survey in sections A.13 and A.14 of the Supplementary Materials.
 The last set of variables quantifies social welfare. Our focus is on the impact
 of legislature size on education and health care, which are the two most
 important public services the municipal government should provide to citizens.
-According to Brazilian Constitution, municipalities must spend 25\% of their
+According to the Brazilian Constitution, municipalities must spend 25\% of their
 budget on education and 15\% on health care. Consequently, the Ministry of
 Health and the Ministry of Education provide readily available, fine-grained
 data on health care and education at the municipal level, which we leverage in
@@ -1020,16 +1020,17 @@ the highest performance.
   \end{center}
 \end{figure}
 
-We assume that city councilors want to extract rents and to get reelected.
-The rents come from continuing in the repeated game, and the partisanship
-discounts that benefit. Figure \ref{survelec} shows that 65.9 percent of
-councilors mentioned that mayors use job appointments to consolidate their
-coalition support. Moreover, 59.0 percent of the surveyed councilors affirmed
-that mayors use personal favors, such as shifting resources to places where the
-councilors have electoral support, to solidify their governing coalition.
-Granting favors works as rent transfers for councilors. Job appointments are
-also convenient for the mayors because patronage in Brazil has positive results
-in terms of welfare \citep{toral2019benefits}.
+We assume that city councilors want to extract rents and to get reelected. The
+rents come from continuing in the repeated game, and the partisanship discounts
+that benefit. Figure \ref{survelec} shows that 65.9 percent of councilors
+mentioned that mayors use job appointments to consolidate their coalition
+support. Moreover, 59.0 percent of the surveyed councilors affirmed that mayors
+use personal favors, such as shifting resources to places where the councilors
+have electoral support, to solidify their governing coalition. This provides
+further evidence that mayors do offer city councilors the benefits they demand.
+In this regard, granting favors works as rent transfers for councilors. Job
+appointments are also convenient for the mayors because patronage in Brazil has
+positive results in terms of welfare \citep{toral2019benefits}.
 
 \begin{figure}[H]
   \begin{center}
@@ -1275,7 +1276,7 @@ of our argument is that it is easy for a politician to negotiate with members
 of her in-group \citep{abbink2019, g9030057}. Specifically, several countries
 have separate executive and legislative powers, such as the federal level of
 presidential systems, state governments, and local city councils. As these
-political bodies are influenced by political allegiances, the dynamics we
+institutions are influenced by political allegiances, the dynamics we
 expose here may be generalizable. Depending on legislative support, changing
 the legislature size could increase the chance of electing politicians that are
 not aligned with the executive, hence decreasing welfare. Despite the
@@ -1305,9 +1306,9 @@ depending on certain electoral characteristics. Finally, it remains unclear how
 other legislative features affect citizen well-being. For example, city
 councils may vary in size, monetary compensation for councilors, committee
 structure, and internal power structure. Understanding how legislature size
-interacts with other features would improve our knowledge about the impact of
-local and national legislatures impact public services. These questions are
-crucial for institution design and welfare in developing democracies.
+interacts with other features would improve our knowledge about how local and
+national legislatures impact public services. These questions are crucial for
+institution design and welfare in developing democracies.
 
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{5pt}
