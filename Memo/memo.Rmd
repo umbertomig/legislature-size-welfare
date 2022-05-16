@@ -170,15 +170,81 @@ curious modeling decision by the authors."
 
 \begin{quote}
 
-We thank Reviewer 1 for the opportunity to clarify the selection of control variables in our empirical analysis. The inclusion of controls in our model has two purposes. The first one is to improving the consistency of the estimates. In section XXXX of the appendix, we show by simulation that adding controls improve the consistency of the point estimates. This is true for several distributions of the running variables and XXXX assumptions for the treatment effects. In the section XXXX of the appendix, we show that for our data, it improves consistency significantly in both the main estimates and the placebo one. Table XXXX in section XXXX (reproduced below), shows that without controls, the estimated treatment effect is overXXXX and underXXXX. The reason for this improvement is that having control variables make the subpopulations more comparable across thresholds.
+We thank Reviewer 1 for the opportunity to clarify the selection of control variables in our empirical analysis. The inclusion of controls in our model has two purposes. The first one is to improve the consistency of the estimates. In section A.5 of the Appendix, we show by simulation that adding controls enhances the consistency of the point estimates. This is true for several distributions of the running variables and many assumptions regarding the shape of the treatment effects. Section 5 of the Main Paper demonstrates that it improves consistency significantly in both the main estimates and the placebo ones. Table 1 in Section 5 of the Main Paper (reproduced below), shows that without controls, we would overestimate the treatment effects (finding an increase of 1.63 legislators instead of a sharp increase of one legislator), and underestimate the placebo treatment effects (finding a significant decrease of 0.31 legislators where there was supposed to be no effects in legislature size). This substantial improvement is because having control variables makes the subpopulations in each threshold more comparable across all the thresholds, avoiding comparing cases to the left (right) of one given threshold with points in the right (left) of a different threshold.
 
-XXXX PUT TABLE HERE
+\begin{table}[H] \centering 
+  \caption{Research Design Validity Check (reproduction from the main paper)}
+    \scalebox{0.9}{
+  \begin{threeparttable}
+\begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}l c c c c }
+\toprule
+ & \multicolumn{4}{c}{\textbf{Panel A: Validity Check --- Treatment Effect on City Council Size}} \\ \cline{2-5}
+   & \multicolumn{1}{c}{\small{(1)}} & 
+ \multicolumn{1}{c}{\small{(2)}} & 
+ \multicolumn{1}{c}{\small{(3)}} & 
+ \multicolumn{1}{c}{\small{(4)}} \\
 
-The second reason, per \citet{calonico2019regression} results, is that adding control variables improve efficiency in the estimates. Adding XXXX and XXXX, XXXX. 
+ & \multicolumn{1}{c}{\small{Additional Num.}} & 
+ \multicolumn{1}{c}{\small{Placebo Add.}} & 
+ \multicolumn{1}{c}{\small{Additional Num.}} & 
+ \multicolumn{1}{c}{\small{Placebo Add.}} \\ 
+  & \multicolumn{1}{c}{\small{Seats 2004}} & 
+  \multicolumn{1}{c}{\small{Num. Seats 2004}} & 
+  \multicolumn{1}{c}{\small{Seats 2004}} & 
+  \multicolumn{1}{c}{\small{Num. Seats 2004}} \\
+  & \multicolumn{1}{c}{\small{(Without Controls)}} & 
+  \multicolumn{1}{c}{\small{(Without Controls)}} & 
+  \multicolumn{1}{c}{\small{(With Controls)}} & 
+  \multicolumn{1}{c}{\small{(With Controls)}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
+\\[-1.8ex] 
+ LATE & 1.63$^{***}$ & -0.31$^{**}$ & 1.00$^{***}$ & -0.00 \\ 
+  & (0.51) & (0.14) & (0.0004) & (0.0000) \\ 
+\hdashline \\[-1.8ex]   
+ N Left & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{4621} & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{4621} \\ 
+N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{906} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{906} \\ 
+Eff N Left & \multicolumn{1}{c}{199} & \multicolumn{1}{c}{638} & \multicolumn{1}{c}{49} & \multicolumn{1}{c}{886} \\ 
+Eff N Right & \multicolumn{1}{c}{145} & \multicolumn{1}{c}{385} & \multicolumn{1}{c}{51} & \multicolumn{1}{c}{477} \\ 
+BW Loc Poly & 8.717 & 6.700 & 3.008 & 8.629 \\ 
+BW Bias & 13.620 & 12.114 & 5.008 & 13.466 \\ 
+\bottomrule
+\end{tabularx}
+\end{threeparttable}}
+\end{table}
 
-To reflect these informations, we rewrote paragraph XXXX in section XXXX of the main text to:
+The second reason, per \citet{calonico2019regression} results, is that adding control variables improves the efficiency of our estimates. We add five controls to the main specifications. We added the population in 2003 because it conditions the multiple assignments. Adding the GDP per capita ensures that the gains detected are not resulting from the hot job market experienced during the period. We add the number of seats in 2000 to ensure that the results come from the current legislature size decision and not from their past seat allocation. We add the year to control for likely seasonal effects. Finally, we added a dummy for Northeast states. The Northeast region received considerable attention from the Federal Government in the 2000s. According to \citet{de2015politica}, the Lula government in 2003 recreated the Superintendency for the Development of the Northeast (SUDENE), investing BRL 84 Billion from 2003 to 2010. This amounts to around 70% of all targeted regional investments. One example of these investments is the number of Federal Educational Institutions: the Federal Government created about 100 university campuses in the region. Moreover, infant mortality in the Northeast region decreased from 22.4 deaths per 1000 infants born in 2005 to 19.6 deaths per 1000 infants born in 2008. Education quality improved from a 2.69 score in 2005 to a 3.14 score in 2007 (0 to 10 quality of education score). For this reason, adding a dummy for Northeast states is essential for ensuring the consistency and the efficiency of our estimates.
 
-``XXXX''
+To reflect these pieces of information, we rewrote paragraph five in Section 5 of the Main Text to:
+
+``\textit{(...) In the dataset, there are twelve discontinuities. At
+each threshold, there is a sharp increase of one councilor, from 9 to 21. When
+running an RDD on these discontinuities, a consistent estimator should fit the
+exact change of one councilor. However, if we pool all the discontinuities
+together with no correction, we find an increase in council size of 1.63
+councilors (see the first estimate in Table 1). This
+imbalance occurs because when we combine all the discontinuities, the model
+implies that municipalities below the 47,619 cutoffs (9 to 10 councilors) are
+comparable to changes in towns right above the 571,428 cutoffs (20 to 21
+council members). That is incorrect because the comparison is inconsistent in
+council size, and these municipalities diverge in many other aspects.}
+
+\textit{To avoid this problem, in section A.5 of the Supplemental Materials, we show by
+simulation that adding controls, especially the variables responsible for the
+multiple threshold assignments (in our case, the population in 2003), improves
+the consistency and efficiency of the estimates. Relying on this fact, we add
+five controls to the estimates: population in 2003; GDP per capita; the number
+of seats in 2000; year; and a dummy for Northeast municipalities. The
+reason for the first variable is the multiple threshold assignments. We add GDP
+per capita because wealthier cities tend to have better public services. The
+number of seats in 2000 intends to control that some municipalities could
+experience a change provoked by the previous council size, confounding our
+estimates. The Northeast dummy was added to control for the fact that the Lula
+administration heavily invested in the region from 2003 until 2010, improving 
+several development indicators \citep{de2015politica}. The years were added 
+to improve efficiency and control for seasonal effects. Moreover, adding controls improves efficiency in RDD \citep{calonico2019regression} and also enhances the consistency in the multiple thresholds RDD.}''
+
+And we added the discussions here to the Appendix at the end of Section A.5.
+
+We want to highlight further that this decision to add controls in our case is also because of consistency. Even though clustered standard errors may provide the best standard errors for our model, this would not affect the consistency. And the consistency here relies on making the subpopulations comparable, i.e., the subpopulation of towns between 9 and 10 legislators as comparable as the subpopulation of towns between 10 and 11 legislators, and so on.
 
 \vspace{.2cm}
 
