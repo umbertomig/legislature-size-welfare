@@ -95,10 +95,9 @@ a model without partisan concerns, bargaining costs always increase with larger
 city councils, which in turn lower public goods provision and rents. However,
 partisanship decreases bargaining costs when the chances of electing
 government-aligned councilors are sufficiently high. Lower bargaining costs
-release funds for mayors to invest in public goods provision. In this case, a
-larger city council may add more members to the government coalition, thus
-reducing the mayor's bargaining costs and increasing the equilibrium public
-goods provision.
+release funds for mayors to invest in public goods. In this case, a larger city
+council may add more members to the government coalition, thus reducing the
+mayor's bargaining costs and increasing the equilibrium public goods provision.
 
 We test these theoretical predictions by exploiting exogenous variation in city
 council size in Brazil. In 2004, the judiciary reinterpreted the Brazilian
@@ -116,8 +115,8 @@ councilor had a 91 percent chance of belonging to the mayor's pre-electoral
 coalition. With a larger coalition, mayors face lower bargaining costs and are
 able to boost public investments with fewer constraints. Each additional
 legislator also leads to 104 new appointed bureaucrats, and research shows that
-political appointees civil servants improve public service provision and
-enhance accountability in Brazil \citep{toral2019benefits}.
+political appointees improve public service provision and enhance
+accountability in Brazil \citep{toral2019benefits}.
 
 To provide further evidence for our mechanisms, we surveyed 174 former
 councilors who served during the 2005-2008 term, the period we analyse in this
@@ -173,20 +172,20 @@ legislature size may result in positive or negative expenditures, depending on
 factors such as the degree that local public goods can exclude non-locals or
 deadweight costs associated with taxation.} In the US metaphor, this would
 explain significant infrastructure spending in smaller districts. However, the
-"law of $1/n$" literature rarely mentions the relationship between public goods
-provision and welfare. This paper is one of the first to study how the number
-of local legislators affects welfare. Our model provides a theoretical
-expectation based on the chances of electing a politician aligned with the
-mayor. The empirical estimates confirm our theoretical predictions, with the
-additional fact that legislature size has a null effect on expenditures in
-Brazil.
+literature on the "law of $1/n$" rarely mentions the relationship between
+public goods provision and welfare. This paper is one of the first to study how
+the number of local legislators affects citizen well-being. Our model provides
+a theoretical expectation based on the chances of electing a politician aligned
+with the mayor. The empirical estimates confirm our theoretical predictions,
+with the additional fact that legislature size has a null effect on
+expenditures in Brazil.
 
 Third, our article also contributes to the growing literature on municipal
 partisan politics. Most papers in this field estimate the effects of the
 mayor's party on political outcomes. For instance, \citet{de2016mayoral} and
 \citet{gerber2011mayors} find differences in governance when comparing
 Democratic and Republican mayors. Specifically about Brazil,
-\citet{gouvea2021partisanship} shows that social policy expenditure increase
+\citet{gouvea2021partisanship} show that social policy expenditure increases
 with left-wing mayors. \citet{frey2021legislature}, using discontinuities in
 city council size after the 2009 constitutional amendment that reverted the
 thresholds we study here, shows that changes in council size lower the support
@@ -1226,7 +1225,7 @@ unchanged when council size increases.
 This paper shows that partisanship considerably decreases bargaining costs and
 improves citizen welfare. The crucial actors in providing public goods are the
 mayors, but they cannot do it alone. Legislatures are a solid check to the
-mayor's policy. Bargaining with them in a country plagued by corruption can be
+mayor's agenda. Bargaining with them in a country plagued by corruption can be
 costly \citep{bertholini2017price}. Therefore, an extra ally in the city
 council may help ease the bargaining and increase social welfare.
 
@@ -1236,39 +1235,40 @@ increasing enrollment without affecting quality should be interpreted as a
 positive outcome. The analysis of the approved legislation shows that the
 frequency of laws on local public goods increases in municipalities above the
 council size thresholds. Finally, our survey data demonstrate that councilors
-and mayors agree about appointing more public servants to the public
+and mayors agree about appointing more civil servants to the public
 administration.
 
 \citet{Ames2001} argues that the Brazilian democracy is prone to deadlocks
-because the executive has its hands tied by legislators that demand consistent
-provision of particularistic and private goods. Indeed, the most successful
-presidents after 1995 had to build multiparty coalitions by negotiating with
-parties \citep{limongi1998bases, raile2011executive}. Despite evidence that
-side payments cemented these coalitions, many social and economic policies have
+because the executive has its hands tied by legislators who demand consistent
+provision of private goods. Indeed, the most successful presidents after 1995
+had to build extensive coalitions by negotiating with several parties
+\citep{limongi1998bases, raile2011executive}. Despite evidence that side
+payments cemented these coalitions, many social and economic policies have
 since been implemented. For instance, education and health care notably
-improved during the Cardoso and Lula governments \citep{acemoglu2012nations}.
-Presidents who challenged the coalition system did not succeed. For instance,
-former President Rousseff was impeached in her second term. Bolsonaro can be
-considered one of the most ineffective presidents in Brazilian history.
+improved during the Cardoso and Lula administrations
+\citep{acemoglu2012nations}. Presidents who challenged the coalition system did
+not succeed. For instance, former President Rousseff was impeached in her
+second term. Bolsonaro can be considered one of the most ineffective presidents
+in Brazilian history.
 
 Municipalities work similarly in terms of the incentives for
 legislative-executive bargaining. The stakes are lower, and the negotiations
 involve only one legislative branch. Still, in a system such as Brazil's, with
 more than thirty-five registered parties, mayors face substantial challenges to
-the support for their agendas. Having extra help in the council can tilt the
+approve their political agendas. Having extra help in the council can tilt the
 bargaining towards cheaper governing costs, thus improving public goods
 provision. 
 
 However, we do not argue that these benefits result from the absence of
 corruption or clientelism. Both the formal model and empirical evidence
 provided by \citet{britto2020corruption} show that corruption increases with
-legislature size. As the model shows, city councilors receive a side transfer
-from mayors to support their agenda. Mayors also divide the resources saved in
-the bargain into public goods and rents. The rate for the division depends on
-the marginal changes of the rents and public goods, but these two components
-receive the extra resources. In this case, the mayor's rents may be primarily
-corruption, and the councilor's transfers can be clientelistic, aimed at
-improving the councilor's reelection chances.
+legislature size. As the model shows, city councilors may receive a side
+transfer from the mayor to support her agenda. Mayors also divide the resources
+saved in the bargain into public goods and rents. The rate for the division
+depends on the marginal changes of the rents and public goods, but these two
+components receive the extra resources. In this case, the mayor's rents may be
+primarily corruption, and the councilor's transfers can be clientelistic, aimed
+at improving the councilor's reelection chances.
 
 Our findings have implications that extend well beyond Brazil. A general form
 of our argument is that it is easy for a politician to negotiate with members
