@@ -151,7 +151,7 @@ involved with collecting that data?"
 
 We agree with Reviewer 1 that we needed to provide more information about our
 online survey. Therefore, we have detailed our survey procedures in Section A.14
-of the Supplementary Materials (pages 22-23), and we also briefly discuss our
+of the Supplementary Materials (pages 23-24), and we also briefly discuss our
 survey methodology on pages 17 and 22 (footnote 13) of the main article.
 Furthermore, we have rewritten paragraph 2 of Section 6.2 to clarify the
 importance of the survey results in our paper. It now reads as follows:
@@ -260,8 +260,8 @@ improved from 2.69 in 2005 to a 3.14 score in 2007 (0 to 10 quality of education
 score). For this reason, adding a dummy for Northeast states is essential for
 ensuring the consistency and the efficiency of our estimates.
 
-To reflect these pieces of information, we have rewritten paragraph five in Section 5
-of the manuscript to (page 19):
+To reflect these pieces of information, we have rewritten paragraph five in
+Section 5 of the manuscript to (page 19):
 
 ``[...] \textit{we add
 five controls to the estimates: Population in 2003; GDP per capita; the number
