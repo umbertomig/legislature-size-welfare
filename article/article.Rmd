@@ -782,17 +782,18 @@ To avoid this problem, in section A.5 of the Supplemental Materials, we show by
 simulation that adding controls, especially the variables responsible for the
 multiple threshold assignments (in our case, the population in 2003), improves
 the consistency and efficiency of the estimates. Relying on this fact, we add
-five controls to the estimates: population in 2003; GDP per capita; the number
-of seats in 2000; year; and a dummy for Northeast municipalities. The
-reason for the first variable is the multiple threshold assignments. We add GDP
-per capita because wealthier cities tend to have better public services. The
-number of seats in 2000 intends to control that some municipalities could
-experience a change provoked by the previous council size, confounding our
-estimates. The Northeast dummy was added to control for the fact that the Lula
-administration heavily invested in the region from 2003 until 2010, improving 
-several development indicators \citep{de2015politica}. The years were added 
-to improve efficiency. Moreover, adding controls improves efficiency in RDD
-\citep{calonico2019regression} and also enhances the consistency in the 
+five controls to the estimates: Population in 2003; GDP per capita; the number
+of seats in 2000; year; and a dummy for Northeast municipalities. The reason
+for the inclusion of first variable is the multiple threshold assignments. We
+add GDP per capita because wealthier cities tend to have better public
+services. We include number of seats in 2000 because some municipalities could
+have experienced a change provoked by the previous council size, thus
+confounding our estimates. The Northeast dummy was added to control for the
+fact that the Lula administration heavily invested in the region from 2003
+until 2010, improving several development indicators \citep{de2015politica}. We
+included an indicator for year to improve efficiency and control for seasonal
+effects. Moreover, adding controls improves efficiency in RDD
+\citep{calonico2019regression} and also enhances the consistency in the
 multiple thresholds RDD.
 
 For the last assumption, there should be no changes in pre-treatment

@@ -42,9 +42,9 @@ addressing two important concerns raised by Reviewer 3. We believe these
 changes have made the paper clearer and more comprehensive.
 
 In response to comments from Reviewer 1, we have revised our Methods section to
-clarify our selection of independent variables, including the use of covariates
-to improve the efficiency and consistency of our estimates. Additionally, we
-have included a new section in the Supplemental Materials to explain how we
+clarify our selection of independent variables, particularly the use of
+covariates to improve the efficiency and consistency of our estimates. Moreover,
+we have also added a new section in the Supplemental Materials to explain how we
 conducted our survey and how it contributes to our results. We believe these
 additions also give the paper a better theoretical frame to help readers sort
 through the results we present.
@@ -79,36 +79,37 @@ of this topic should also be incorporated into the literature review."
 \begin{quote} 
 
 We thank Reviewer 1 for these two relevant suggestions. We now cite Gilligan and
-Matsusaka's 2001 article three times in our paper. We mention it twice in our
-Introduction, first on page 2: ``\textit{On the one hand, enlarged legislatures
-may reduce political particularism and increase overall government spending,
-which can lead to more public goods  \citep{gerring2020population,
-GilliganMatsusaka2001, Weingastetal1981}}'', and then in the end of page 4:
-``\textit{The corollary of the "law of $1/n$" is that increasing legislature
-size promotes excessive public spending, regardless of the partisan makeup of
-the legislature \citep{GilliganMatsusaka2001}}''. We also cite it in our Theory
+Matsusaka's 2001 article three times in our paper. We mention their article
+twice in our Introduction, first on page 2: ``\textit{On the one hand, enlarged
+legislatures may reduce political particularism and increase overall government
+spending, which can lead to more public goods  \citep{gerring2020population,
+GilliganMatsusaka2001, Weingastetal1981}}'', and then on page 5: ``\textit{[The]
+corollary of the "law of $1/n$" is that increasing legislature size promotes
+excessive public spending, regardless of the partisan makeup of the legislature
+\citep{GilliganMatsusaka2001}}''. We cite the article once more in our Theory
 section (page 7): ``\textit{Yet, \citet{GilliganMatsusaka2001} find that in the
 US legislature size is associated primarily with higher spending on
 geographically concentrated benefits, such as education and highways}''.
 
-We cite Gerring and Veenendaal's book four times. We mention it twice on page 2:
-``\textit{Legislature size is known to have a significant effect on collective
-action strategies, the bargaining power between state branches, government
-spending, and representation \citep{crain1979cost, freire2021legislature,
-gerring2020population, PrimoSnyder2008, rogers2002free, Weingastetal1981}.
-However, how legislature size impacts social welfare remains less understood. On
-the one hand, enlarged legislatures may reduce political particularism and
-increase overall government spending, which can lead to more public goods
-\citep{gerring2020population, GilliganMatsusaka2001, Weingastetal1981}}''. We
-mention the book again on page 4: ``\textit{Following the seminal contribution
-by \citet{Weingastetal1981}, the "law of $1/n$" posits that larger legislatures
-increase the legislative pressure for providing targeted public goods to local
-supporters at the expense of the entire polity \citep{freire2021legislature}. This
-question has become more relevant since legislature size has increased
-consistently over time \citep{gerring2020population}}''. Finally, we also cite
-it on page 6: ``\textit{Larger legislatures improve representation as both the
-election thresholds and the ratio of population-per-politician decrease, which
-facilitate the electoral success of ethnic and political minorities
+We now cite Gerring and Veenendaal's book four times. We mention it twice on
+page 2: ``\textit{Legislature size is known to have a significant effect on
+collective action strategies, the bargaining power between state branches,
+government spending, and representation \citep{crain1979cost,
+freire2021legislature, gerring2020population, PrimoSnyder2008, rogers2002free,
+Weingastetal1981}. However, how legislature size impacts social welfare remains
+less understood. On the one hand, enlarged legislatures may reduce political
+particularism and increase overall government spending, which can lead to more
+public goods \citep{gerring2020population, GilliganMatsusaka2001,
+Weingastetal1981}}''. We mention it again on page 4: ``\textit{Following the
+seminal contribution by \citet{Weingastetal1981}, the "law of $1/n$" posits that
+larger legislatures increase the legislative pressure for providing targeted
+public goods to local supporters at the expense of the entire polity
+\citep{freire2021legislature}. This question has become more relevant since
+legislature size has increased consistently over time
+\citep{gerring2020population}}''. Finally, we also cite the book on page 6:
+``\textit{Larger legislatures improve representation as both the election
+thresholds and the ratio of population-per-politician decrease, which facilitate
+the electoral success of ethnic and political minorities
 \citep{allenrepresentation, gerring2020population}}.''
 
 \end{quote}
@@ -125,11 +126,11 @@ manuscript."
 
 \begin{quote}
 
-We thank Reviewer 1 for the opportunity to clarify the selection of these two
-sets of variables for our paper. We included an explanation for our choice on
-page 17: "\textit{Our focus is on the impact of legislature size on education
-and health care, which are the two most important public services the municipal
-government should provide to citizens. According to the Brazilian Constitution,
+We thank Reviewer 1 for the opportunity to clarify why we have selected these
+two sets of variables. We included an explanation for our decision on page 17:
+"\textit{Our focus is on the impact of legislature size on education and health
+care, which are the two most important public services the municipal government
+should provide to citizens. According to the Brazilian Constitution,
 municipalities must spend 25\% of their budget on education and 15\% on health
 care. Consequently, the Ministry of Health and the Ministry of Education provide
 readily available, fine-grained data on health care and education at the
@@ -148,13 +149,14 @@ involved with collecting that data?"
 
 \begin{quote}
 
-We agree with Reviewer 1 that we needed to provide more information on the
-online survey. Therefore, we have detailed our procedures in Section A.14 of the
-Supplementary Materials (pages 22-23), and we also reference the survey on pages
-17 and 22 (footnote 13) in the main article. We rewrote paragraph 2 of Section
-6.2 to clarify the importance of the survey results in our paper. It reads as
-follows: ``\textit{We assume that city councilors want to extract rents and to
-get reelected. The rents come from continuing in the repeated game, and the
+We agree with Reviewer 1 that we needed to provide more information about our
+online survey. Therefore, we have detailed our survey procedures in Section A.14
+of the Supplementary Materials (pages 22-23), and we also briefly discuss our
+survey methodology on pages 17 and 22 (footnote 13) of the main article.
+Furthermore, we have rewritten paragraph 2 of Section 6.2 to clarify the
+importance of the survey results in our paper. It now reads as follows:
+``\textit{We assume that city councilors want to extract rents and to get
+reelected. The rents come from continuing in the repeated game, and the
 partisanship discounts that benefit. Figure 2 shows that 65.9 percent of
 councilors mentioned that mayors use job appointments to consolidate their
 coalition support. Moreover, 59.0 percent of the surveyed councilors affirmed
@@ -164,7 +166,6 @@ provides further evidence that mayors do offer city councilors the benefits they
 demand. In this regard, granting favors works as rent transfers for councilors.
 Job appointments are also convenient for the mayors because patronage in Brazil
 has positive results in terms of welfare \citep{toral2019benefits}.}''
-
 
 \end{quote}
 
@@ -181,23 +182,23 @@ curious modeling decision by the authors."
 
 \begin{quote}
 
-We thank Reviewer 1 for the opportunity to clarify the selection of control
-variables in our empirical analysis. The inclusion of controls in our model has
-two purposes. The first one is to improve the consistency of the estimates. In
-Section A.5 of the Appendix, we use simulation to show that the inclusion of
-covariates enhances the consistency of our point estimates. The simulation
-indicates improved consistency for several distributions of the running
-variables and different treatment effects. Section 5 of the manuscript
-demonstrates that it improves consistency in both the main estimates and the
-placebo ones. Table 1 (page 20, reproduced below) shows that without controls,
-we would overestimate the treatment effects (finding an increase of 1.63
-legislators instead of an increase of exactly one legislator), and underestimate
-the placebo treatment effects (finding a significant decrease of 0.31
-legislators where there was supposed to be no effects in legislature size). This
-substantial improvement is because having control variables makes the
-subpopulations in each threshold more comparable across all the thresholds,
-avoiding comparing cases to the left (right) of one given threshold with points
-in the right (left) of a different threshold.
+We thank Reviewer 1 for this constructive comment. The inclusion of control
+variables in our model has two purposes. Firstly, the covariates improve the
+consistency of our empirical results. In Section A.5 of the Appendix, we use
+simulations to show that the inclusion of covariates enhances the consistency of
+our RDD estimates. The simulations indicate that the controls improve
+consistency even if we assume different distributions for the running variables
+and for the treatment effects. Similaly, Section 5 of the manuscript
+demonstrates that the covariates improve consistency in both the main estimates
+and the placebo ones. Table 1 (page 20, reproduced below) shows that without
+controls, we would overestimate the treatment effects (finding an increase of
+1.63 legislators instead of an increase of exactly one legislator), and
+underestimate the placebo treatment effects (finding a significant decrease of
+0.31 legislators where there was supposed to be no effects in legislature size).
+This substantial improvement is attributed to the addition of control variables,
+which make the subpopulations in each threshold more comparable across all the
+thresholds. Thus, we avoid spurious comparisons between cases on the left
+(right) of one threshold and those on the right (left) of a different threshold.
 
 \begin{table}[H] \centering 
   \caption{Research Design Validity Check (reproduction from the main paper)}
@@ -238,51 +239,55 @@ BW Bias & 13.620 & 12.114 & 5.008 & 13.466 \\
 \end{threeparttable}}
 \end{table}
 
-The second reason is that adding control variables improves the efficiency of
-our estimates \citep{calonico2019regression}. We add five controls to the main
+Secondly, the addition of control variables also improves the efficiency of our
+estimates \citep{calonico2019regression}. We add five controls to the main
 specifications. We include the 2003 population because it conditions the
 multiple threshold assignments. We add GDP per capita to control for Brazil's
 economic expansion during the 2000s. We also add the number of seats in 2000 to
 ensure that our results come from the current legislature size and not from past
 seat allocations. Year was included in the models to control for seasonal
 effects. Finally, we add a dummy for Northeast states. The Northeast region
-received considerable attention from the Federal Government in the 2000s.
+received considerable attention from the federal government in the 2000s.
 According to \citet{de2015politica}, in 2003 the Lula administration recreated
 the Superintendency for the Development of the Northeast (SUDENE), investing BRL
 84 Billion from 2003 to 2010. This amounts to around 70\% of all targeted
-regional investments. One example of these investments is that the Federal
-Government created about 100 new universities in the Northeast region. Moreover,
-infant mortality in the region decreased from 22.4 deaths per 1000 infants born
-in 2005 to 19.6 deaths per 1000 infants born in 2008 due to larger federal
-investments. In turn, education quality improved from 2.69 in 2005 to a 3.14
-score in 2007 (0 to 10 quality of education score). For this reason, adding a
-dummy for Northeast states is essential for ensuring the consistency and the
-efficiency of our estimates.
+regional investments. One example of these investments is that the federal
+government created about 100 new universities in the Northeast region during
+that period. Moreover, infant mortality in the Brazilian Northeast decreased
+from 22.4 deaths per 1000 infants born in 2005 to 19.6 deaths in 2008 largely
+due to substantial federal investments in the region. In turn, education quality
+improved from 2.69 in 2005 to a 3.14 score in 2007 (0 to 10 quality of education
+score). For this reason, adding a dummy for Northeast states is essential for
+ensuring the consistency and the efficiency of our estimates.
 
-To reflect these pieces of information, we rewrote paragraph five in Section 5
+To reflect these pieces of information, we have rewritten paragraph five in Section 5
 of the manuscript to (page 19):
 
-``[...] \textit{we add five controls to the estimates: population in 2003; GDP
-per capita; the number of seats in 2000; year; and a dummy for Northeast
-municipalities. The reason for the first variable is the multiple threshold
-assignments. We add GDP per capita because wealthier cities tend to have better
-public services. The number of seats in 2000 intends to control that some
-municipalities could experience a change provoked by the previous council size,
-confounding our estimates. The Northeast dummy was added to control for the fact
-that the Lula administration heavily invested in the region from 2003 until
-2010, improving several development indicators \citep{de2015politica}. The years
-were added to improve efficiency and control for seasonal effects. Moreover,
-adding controls improves efficiency in RDD \citep{calonico2019regression} and
-also enhances the consistency in the multiple thresholds RDD.}''
+``[...] \textit{we add
+five controls to the estimates: Population in 2003; GDP per capita; the number
+of seats in 2000; year; and a dummy for Northeast municipalities. The reason
+for the inclusion of first variable is the multiple threshold assignments. We
+add GDP per capita because wealthier cities tend to have better public
+services. We include number of seats in 2000 because some municipalities could
+have experienced a change provoked by the previous council size, thus
+confounding our estimates. The Northeast dummy was added to control for the
+fact that the Lula administration heavily invested in the region from 2003
+until 2010, improving several development indicators \citep{de2015politica}. We
+included an indicator for year to improve efficiency and control for seasonal
+effects. Moreover, adding controls improves efficiency in RDD
+\citep{calonico2019regression} and also enhances the consistency in the
+multiple thresholds RDD.}''
 
-And we added the discussions here to the Appendix at the end of Section A.5.
+We have also added a similar discussion to Section A.5 of the Supplementary
+Materials.
 
 We want to highlight further that this decision to add controls in our case is
-also because of consistency. Even though clustered standard errors may provide
-the best standard errors for our model, this would not affect the consistency.
-And the consistency here relies on making the subpopulations comparable, i.e.,
-the subpopulation of towns between 9 and 10 legislators as comparable as the
-subpopulation of towns between 10 and 11 legislators, and so on.
+mainly to ensure that our estimates are consistent. Even though clustered
+standard errors are adequate for our purposes, they do not improve the
+consistency of our estimates. In our case, the model consistency relies on
+making the subpopulations comparable. That is, the subpopulation of
+municipalities who have 9 and 10 legislators should be comparable with that of
+of cities between 10 and 11 legislators, and so on.
 
 \vspace{.2cm}
 
@@ -370,8 +375,9 @@ We did not find evidence that electing an additional legislator improves
 descriptive representation in the city council. For instance, we see no
 significant increase in the number of female or non-white legislators, as shown
 in Table 4 (page 27). Finally, we show in the table below that the mayors'
-parties are not driving our results. This result is also available on our GitHub
-repository. We ommitted it from the Supplementary Materials to conserve space.
+parties are not driving our results. We have ommitted the table from the
+Supplementary Materials to conserve space, but it is available on the article's
+GitHub repository.
 
 \begin{table}[!htbp] \centering 
 \caption{Councilors from Major Parties} 
@@ -394,8 +400,6 @@ repository. We ommitted it from the Supplementary Materials to conserve space.
   \end{tabular} }
 \end{table}
 
-
-
 \end{quote}
 
 \noindent 2) Reviewer 3 writes: "Finally, I wonder about the scope conditions.
@@ -409,7 +413,7 @@ they might be different/ similar elsewhere."
 
 \begin{quote}
 
-We entirely agree with Reviewer 3 that we need to discuss the scope conditions
+We entirely agree with Reviewer 3 that we needed to discuss the scope conditions
 of our findings in more detail. We acknowledge that the external validity of
 our results might be conditional on the contextual characteristics of our
 study. We have rewritten two paragraphs in the Discussion (page 29) to highligh
@@ -445,7 +449,7 @@ about how local and national legislatures impact public services.
 These questions are crucial for institution design and welfare in developing
 democracies.}"
 
-We would like to thank Reviewer 3 for their comments and suggestions.
+We would like to thank Reviewer 3 for their helpful comments and suggestions.
 \end{quote}
 
 \newpage
