@@ -151,7 +151,7 @@ involved with collecting that data?"
 
 We agree with Reviewer 1 that we needed to provide more information about our
 online survey. Therefore, we have detailed our survey procedures in Section A.14
-of the Supplementary Materials (pages 23-24), and we also briefly discuss our
+of the Supplemental Materials (pages 23-24), and we also briefly discuss our
 survey methodology on pages 17 and 22 (footnote 13) of the main article.
 Furthermore, we have rewritten paragraph 2 of Section 6.2 to clarify the
 importance of the survey results in our paper. It now reads as follows:
@@ -278,7 +278,7 @@ effects. Moreover, adding controls improves efficiency in RDD
 \citep{calonico2019regression} and also enhances the consistency in the
 multiple thresholds RDD.}''
 
-We have also added a similar discussion to Section A.5 of the Supplementary
+We have also added a similar discussion to Section A.5 of the Supplemental
 Materials.
 
 We want to highlight further that this decision to add controls in our case is
@@ -352,7 +352,7 @@ policy preferences? Does that matter for the results presented here?"
 \begin{quote}
 
 We collapse two concerns from Reviewer 3 since they both speak to core topics in
-our paper. In Table 6 of the Supplementary Materials (page 21), we show that an
+our paper. In Table 6 of the Supplemental Materials (page 21), we show that an
 additional legislator usually does not lead to significant increases in public
 expenditure. Therefore, our results speak more about the allocation of resources
 than about government spending. In our section titled "Background on the
@@ -376,7 +376,7 @@ descriptive representation in the city council. For instance, we see no
 significant increase in the number of female or non-white legislators, as shown
 in Table 4 (page 27). Finally, we show in the table below that the mayors'
 parties are not driving our results. We have ommitted the table from the
-Supplementary Materials to conserve space, but it is available on the article's
+Supplemental Materials to conserve space, but it is available on the article's
 GitHub repository.
 
 \begin{table}[!htbp] \centering 
