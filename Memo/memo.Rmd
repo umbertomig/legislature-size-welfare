@@ -249,7 +249,7 @@ effects. Finally, we add a dummy for Northeast states. The Northeast region
 received considerable attention from the Federal Government in the 2000s.
 According to \citet{de2015politica}, in 2003 the Lula administration recreated
 the Superintendency for the Development of the Northeast (SUDENE), investing BRL
-84 Billion from 2003 to 2010. This amounts to around 70% of all targeted
+84 Billion from 2003 to 2010. This amounts to around 70\% of all targeted
 regional investments. One example of these investments is that the Federal
 Government created about 100 new universities in the Northeast region. Moreover,
 infant mortality in the region decreased from 22.4 deaths per 1000 infants born
@@ -364,7 +364,7 @@ that information again on page 22, footnote 12: "\textit{The effect of city
 council size on the number of mayor-aligned politicians stems from the rounding
 rule adopted by the proportional representation system in Brazil. The rounding
 rule favors the coalitions with more votes. Most of the time, the coalition of
-the elected mayor is the one that receives more votes.}". 
+the elected mayor is the one that receives more votes.}" 
 
 We did not find evidence that electing an additional legislator improves
 descriptive representation in the city council. For instance, we see no
@@ -413,21 +413,21 @@ We entirely agree with Reviewer 3 that we need to discuss the scope conditions
 of our findings in more detail. We acknowledge that the external validity of
 our results might be conditional on the contextual characteristics of our
 study. We have rewritten two paragraphs in the Discussion (page 29) to highligh
-the implication of our results. We write: "\textit{Our findings
-have implications that extend well beyond Brazil. A general form of our
-argument is that it is easy for a politician to negotiate with members of her
-in-group \citep{abbink2019, g9030057}. Specifically, several
-countries have separate executive and legislative powers, such as the federal
-level of presidential systems, state governments, and local city councils. As
-these institutions are influenced by political allegiances, the dynamics we
-expose here may be generalizable. Depending on legislative support, changing
-the legislature size could increase the chance of electing politicians that are
-not aligned with the executive, hence decreasing welfare. Despite the
-particular effects on political support and welfare, the logic described in
-this paper would remain relevant for empirically accessing the effect of
-enlarged legislatures on welfare. Our findings may also help scholars
-understand why other countries in Latin America and Asia can generate effective
-governance despite having strong executives and large coalitions
+the implication of our results. We write: "\textit{Our findings have
+implications that extend well beyond Brazil. A general form of our argument is
+that it is easy for a politician to negotiate with members of her in-group
+\citep{abbink2019, alt2018giving}. Specifically, several countries have
+separate executive and legislative powers, such as the federal level of
+presidential systems, state governments, and local city councils. As these
+institutions are influenced by political allegiances, the dynamics we expose
+here may be generalizable. Depending on legislative support, changing the
+legislature size could increase the chance of electing politicians that are not
+aligned with the executive, hence decreasing welfare. Despite the particular
+effects on political support and welfare, the logic described in this paper
+would remain relevant for empirically accessing the effect of enlarged
+legislatures on welfare. Our findings may also help scholars understand why
+other countries in Latin America and Asia can generate effective governance
+despite having strong executives and large coalitions
 \citep{pereira2012surprising}.}".
 
 In the next paragraph (page 29), we indicate some of the limitations of our

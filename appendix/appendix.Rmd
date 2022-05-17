@@ -204,18 +204,6 @@ We code the legislation approved by the councilors of 63 municipalities around a
 \item \textbf{Education and Health Care}: Legislation about education or health care provision.
 \end{itemize}
 
-### Online 2016 Former City Councilors Survey
-
-We ran an online survey asking 174 councilors about their representation duties and how mayors allocate public services to expand his or her government coalition. The services we include are:
-
-\begin{itemize}
-\item \textbf{Councilors Job Appointments}: Whether mayors appoint supporters of the city councilors to bureaucratic jobs (source: own survey).
-\item \textbf{Councilors Demands}: Whether mayors satisfy the public service demands of an allied councilor (e.g., build a health clinic in a councilor's neighborhood) (source: own survey).
-\item \textbf{Councilors Personal Requests}: Whether mayors satisfy the private requests of an allied councilor (e.g., hire an ally in the bureaucracy) (source: own survey).
-\item \textbf{Councilors Legislation}: Whether mayors support the councilors' legislative agenda (source: own survey).
-\item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (i.e., fix potholes in the councilor's neighborhoods) (source: own survey).
-\end{itemize}
-
 \begin{table}[htb!]
 \centering
 \caption{Summary Statistics}
@@ -266,6 +254,18 @@ Coalition Support -- Councilors Constructions & 174 & 0.43 & 0.50 & 0 & 1 \\
 \end{threeparttable}
 }
 \end{table}
+
+### Online 2016 Former City Councilors Survey
+
+We ran an online survey asking 174 councilors about their representation duties and how mayors allocate public services to expand his or her government coalition. The services we include are:
+
+\begin{itemize}
+\item \textbf{Councilors Job Appointments}: Whether mayors appoint supporters of the city councilors to bureaucratic jobs (source: own survey).
+\item \textbf{Councilors Demands}: Whether mayors satisfy the public service demands of an allied councilor (e.g., build a health clinic in a councilor's neighborhood) (source: own survey).
+\item \textbf{Councilors Personal Requests}: Whether mayors satisfy the private requests of an allied councilor (e.g., hire an ally in the bureaucracy) (source: own survey).
+\item \textbf{Councilors Legislation}: Whether mayors support the councilors' legislative agenda (source: own survey).
+\item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (i.e., fix potholes in the councilor's neighborhoods) (source: own survey).
+\end{itemize}
 
 ## Threshold Manipulation, Sorting, and Pre-Treatment Consistency
 
@@ -702,7 +702,7 @@ English translation:
 \begin{enumerate}
     \item In Brazil, mayors commonly negotiate to establish a government majority in the city council. How often do you think mayors use the following goods in exchange for support?
     \item Which of those activities do city councilors perform most often in their duties?
-    \item Which of the following activities do you believe help city councilors the most in elections?
+    \item Which of the following activities do you believe helps city councilors the most in elections?
 \end{enumerate}
 
 The second question is particularly relevant to our argument, as it indicates whether councilors engage in activities that give them high electoral yields. Figure \ref{commonservice} shows the results for each of the activities we analyzed.
@@ -717,5 +717,3 @@ The second question is particularly relevant to our argument, as it indicates wh
 \end{minipage}
 \end{center}
 \end{figure}
-
-\pagebreak

@@ -1273,7 +1273,7 @@ improving the councilor's reelection chances.
 
 Our findings have implications that extend well beyond Brazil. A general form
 of our argument is that it is easy for a politician to negotiate with members
-of her in-group \citep{abbink2019, g9030057}. Specifically, several countries
+of her in-group \citep{abbink2019, alt2018giving}. Specifically, several countries
 have separate executive and legislative powers, such as the federal level of
 presidential systems, state governments, and local city councils. As these
 institutions are influenced by political allegiances, the dynamics we
