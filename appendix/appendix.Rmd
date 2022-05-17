@@ -1,6 +1,6 @@
 ---
 title: |
-       | Supplementary Materials for "Legislature Size and Welfare: Evidence from Brazil"
+       | Supplemental Materials for "Legislature Size and Welfare: Evidence from Brazil"
 author:
 date: \today
 fontfamily: libertine
