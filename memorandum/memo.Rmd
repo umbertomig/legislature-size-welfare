@@ -50,9 +50,9 @@ additions also give the paper a better theoretical frame to help readers sort
 through the results we present.
 
 Below we discuss in more detail these changes and the several others we have
-made to the manuscript in response to comments from the Editors and Reviewers.
-We thank the Editors again for the opportunity to revise the manuscript, and
-the Reviewers for their extremely helpful comments.
+made to the manuscript in response to comments from the Editors, the Reviewers,
+and the Editorial Office. We thank the Editors again for the opportunity to
+revise the manuscript, and the Reviewers for their extremely helpful comments.
 
 \vspace{.5cm}
 \noindent Sincerely,
@@ -125,10 +125,10 @@ manuscript."
 \begin{quote}
 
 We thank Reviewer 1 for the opportunity to clarify why we have selected these
-two sets of variables. We included an explanation for our decision on pages
-14-15: "\textit{Our focus is on the impact of legislature size on education and
-health care, which are the two most important public services the municipal
-government should provide to citizens. According to the Brazilian Constitution,
+two sets of variables. We included an explanation for our decision on page 14:
+"\textit{Our focus is on the impact of legislature size on education and health
+care, which are the two most important public services the municipal government
+should provide to citizens. According to the Brazilian Constitution,
 municipalities must spend 25\% of their budget on education and 15\% on health
 care. Consequently, the Ministry of Health and the Ministry of Education
 provide readily available, fine-grained data on health care and education at
@@ -183,20 +183,21 @@ curious modeling decision by the authors."
 We thank Reviewer 1 for this constructive comment. The inclusion of control
 variables in our model has two purposes. Firstly, the covariates improve the
 consistency of our empirical results. In Section A.5 of the Appendix, we use
-simulations to show that the inclusion of covariates enhances the consistency of
-our RDD estimates. The simulations indicate that the controls improve
+simulations to show that the inclusion of covariates enhances the consistency
+of our RDD estimates. The simulations indicate that the controls improve
 consistency even if we assume different distributions for the running variables
 and for the treatment effects. Similaly, Section 5 of the manuscript
 demonstrates that the covariates improve consistency in both the main estimates
-and the placebo ones. Table \ref{validitycheck} (page 17, reproduced below) shows that without
-controls, we would overestimate the treatment effects (finding an increase of
-1.63 legislators instead of an increase of exactly one legislator), and
-underestimate the placebo treatment effects (finding a significant decrease of
-0.31 legislators where there was supposed to be no effects in legislature size).
-This substantial improvement is attributed to the addition of control variables,
-which make the subpopulations in each threshold more comparable across all the
-thresholds. Thus, we avoid spurious comparisons between cases on the left
-(right) of one threshold and those on the right (left) of a different threshold.
+and the placebo ones. Table \ref{validitycheck} (page 17, reproduced below)
+shows that without controls, we would overestimate the treatment effects
+(finding an increase of 1.63 legislators instead of an increase of exactly one
+legislator), and underestimate the placebo treatment effects (finding a
+significant decrease of 0.31 legislators where there was supposed to be no
+effects in legislature size). This substantial improvement is attributed to the
+addition of control variables, which make the subpopulations in each threshold
+more comparable across all the thresholds. Thus, we avoid spurious comparisons
+between cases on the left (right) of one threshold and those on the right
+(left) of a different threshold.
 
 \begin{table}[H] \centering 
   \caption{Research Design Validity Check (reproduction from the main paper)}
@@ -260,7 +261,7 @@ score). For this reason, adding a dummy for Northeast states is essential for
 ensuring the consistency and the efficiency of our estimates.
 
 To reflect these pieces of information, we have rewritten paragraph five in
-Section 5 of the manuscript (pages 16-17). It now reads:
+Section 5 of the manuscript (page 16). It now reads:
 
 ``[...] \textit{we add five controls to the estimates: Population in 2003; GDP
 per capita; the number of seats in 2000; year; and a dummy for Northeast
