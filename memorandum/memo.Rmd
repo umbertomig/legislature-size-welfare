@@ -108,7 +108,7 @@ This question has become more relevant since legislature size has increased
 consistently over time \citep{gerring2020population}}.'' Finally, we also cite
 the book on page 5: ``\textit{On the one hand, larger legislatures improve
 representation and facilitate the electoral success of ethnic and political
-minorities\citep{allenrepresentation, gerring2020population}}.''
+minorities \citep{allenrepresentation, gerring2020population}}.''
 
 \end{quote}
 
