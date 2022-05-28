@@ -65,21 +65,22 @@ public service delivery?
 
 In this paper, we propose a theory based on executive leadership and party
 politics to explain how city council size impacts local public goods provision.
-We incorporate partisanship and mayoral first-move advantage to a
-\citet{baron1989bargaining} bargaining model. Mayors make the initial policy
-proposal, which consists of investments in public goods provision, rents for
-personal gains, and a vector of side transfers for councilors. If mayors fail
-to secure majoritarian support from councilors, a reversal stage occurs, in
-which the decision leaves the mayor's office and councilors propose the public
-investments. In this bargaining process, costs come from the side transfers
-required to secure a majority among councilors. We show that in a model without
-partisan concerns, bargaining costs always increase with larger city councils,
-which in turn lower public goods provision and rents. However, partisanship
-decreases bargaining costs when the chances of electing government-aligned
-councilors are sufficiently high. Lower bargaining costs release funds for
-mayors to invest in public goods. In this case, a larger city council may add
-more members to the government coalition, thus reducing the mayor's bargaining
-costs and increasing the equilibrium public goods provision.
+We incorporate partisanship and mayoral first-mover advantage to
+Baron and Ferejohn's (\citeyear{baron1989bargaining}) bargaining
+model. Mayors make the initial policy proposal, which consists of investments
+in public goods provision, rents for personal gains, and a vector of side
+transfers for councilors. If mayors fail to secure majoritarian support from
+councilors, a reversal stage occurs, in which the decision leaves the mayor's
+office and councilors propose the public investments. In this bargaining
+process, costs come from the side transfers required to secure a majority among
+councilors. We show that in a model without partisan concerns, bargaining costs
+always increase with larger city councils, which in turn lower public goods
+provision and rents. However, partisanship decreases bargaining costs when the
+chances of electing government-aligned councilors are sufficiently high. Lower
+bargaining costs release funds for mayors to invest in public goods. In this
+case, a larger city council may add more members to the government coalition,
+thus reducing the mayor's bargaining costs and increasing the equilibrium
+public goods provision.
 
 We test these theoretical predictions by exploiting exogenous variation in city
 council size in Brazil. Brazilian cities could freely determine their
@@ -126,10 +127,10 @@ of multilateral bargaining started with \citet{baron1989bargaining}, and
 scholars have recently analyzed how endogenous recognition power, the size of
 the required majority, and partisanship impact these results
 \citep{agranov2020persistence, baranski2020determinants,
-calvert2005legislative, choate2019partisan}. Here we include the mayor's first
-move advantage and political partisanship to Baron and Ferejohn
-(\citeyear{baron1989bargaining}) and investigate the often-overlooked effect of
-legislature size on bargaining equilibrium strategies.
+calvert2005legislative, choate2019partisan}. Here we include the mayor's
+first-mover advantage and political partisanship to Baron and Ferejohn's
+(\citeyear{baron1989bargaining}) model and investigate the often-overlooked
+effect of legislature size on bargaining equilibrium strategies.
 
 Second, this paper contributes to the literature on the effects of larger
 legislatures on service provision. Following the seminal contribution by
