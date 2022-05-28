@@ -424,7 +424,7 @@ $endif$
 $endif$
 
 \vspace{.3cm}
-\noindent \textbf{Word Count}: 9,743.
+\noindent \textbf{Word Count}: 9,968.
 \end{abstract}
 $endif$
 
@@ -453,36 +453,36 @@ $body$
 \appendix
 
 % Variable sources
-\section*{Appendix (Print)}
+% \section*{Appendix (Print)}
 
-\subsection*{Online Supplementary Materials Content}
+% \subsection*{Online Supplementary Materials Content}
 
-In the online Supplementary Materials we present the following complementary information:
+% In the online Supplementary Materials we present the following complementary information:
 
-\begin{enumerate}
-    \setlength\itemsep{0em}
-    \item A formal model of number of legislators, bargaining costs, and service provision with all proofs.
-    \item The source of the variables and descriptive statistics.
-    \item Threshold manipulation and sorting tests.
-    \item A discussion of the before and after of the Brazilian 2003 city-council-size decision.
-    \item The identification strategy for the multiple thresholds estimation, where we show how our correction works.
-    \item The identification strategy for the marginal returns, with simulations.
-    \item The placebo regressions for the mechanism outcomes.
-    \item The sensitivity analysis for the bandwidth selection.
-    \item The sensitivity to the polynomial degree, varying from local linear to quartic.
-    \item The sensitivity to covariates used in the estimate.
-    \item The sensitivity to the heterogeneous effects of different Brazilian states.
-    \item The sensitivity to eliminate one or more cutoffs from the estimation.
-    \item Further analysis on revenues, transfers, and mayor's characteristics.
-    \item A description of the bills dataset collected for the 63 municipalities that had this information online.
-    \item A description of the city councilors' survey.
-\end{enumerate}
+% \begin{enumerate}
+%     \setlength\itemsep{0em}
+%     \item A formal model of number of legislators, bargaining costs, and service provision with all proofs.
+%     \item The source of the variables and descriptive statistics.
+%     \item Threshold manipulation and sorting tests.
+%     \item A discussion of the before and after of the Brazilian 2003 city-council-size decision.
+%     \item The identification strategy for the multiple thresholds estimation, where we show how our correction works.
+%     \item The identification strategy for the marginal returns, with simulations.
+%     \item The placebo regressions for the mechanism outcomes.
+%     \item The sensitivity analysis for the bandwidth selection.
+%     \item The sensitivity to the polynomial degree, varying from local linear to quartic.
+%     \item The sensitivity to covariates used in the estimate.
+%     \item The sensitivity to the heterogeneous effects of different Brazilian states.
+%     \item The sensitivity to eliminate one or more cutoffs from the estimation.
+%     \item Further analysis on revenues, transfers, and mayor's characteristics.
+%     \item A description of the bills dataset collected for the 63 municipalities that had this information online.
+%     \item A description of the city councilors' survey.
+% \end{enumerate}
 
-The Supplementary Materials can be found at (\textit{edited}).
+% The Supplementary Materials can be found at (\textit{edited}).
 
-\subsection*{Replication Materials}
+% \subsection*{Replication Materials}
 
-The replication materials are available at (\textit{edited}).
+% The replication materials are available at (\textit{edited}).
 
 \singlespacing
 
