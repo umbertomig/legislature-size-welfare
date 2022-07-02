@@ -1,7 +1,7 @@
 % !TEX program = XeLaTeX
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
 
-\renewcommand{\footnotesize}{\normalsize}
+% \renewcommand{\footnotesize}{\normalsize}
 
 \usepackage{amsthm}
 
@@ -423,8 +423,8 @@ $if(jelcodes)$
 $endif$
 $endif$
 
-\vspace{.3cm}
-\noindent \textbf{Word Count}: 9,946.
+% \vspace{.3cm}
+% \noindent \textbf{Word Count}: 9,946.
 \end{abstract}
 $endif$
 
