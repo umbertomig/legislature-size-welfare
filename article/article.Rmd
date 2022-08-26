@@ -5,10 +5,10 @@ author:
   - Umberto Mignozzetti[^umberto]
   - Gabriel Cepaluni[^gabriel]
   - Danilo Freire[^danilo]
-date: May 28, 2022
-thanks: We would like to thank Victor Araujo, Eric Arias, Mark Bennister, Taylor Boas, Natalia Bueno, Nick Cowen, Andrea Freitas, Saad Gulzar, Shoaib Jillani, Fernando Limongi, James Mahon, Lucas Mingardi, Lucas Novaes, Ingrid Oliveira, Nelson Ruiz, David Skarbek, Mike Slaven, Denis Stukal, the AJPS Editorial Team, and three anonymous reviewers for their valuable comments. We also thank the participants of seminars and conferences at the CEPESP-FGV, CUNY, INSPER, IPSA, IR-FGV, LACEA, LASA, Lincoln, MPSA, Notre Dame, NYU, PUC Chile, SPSA, and Uppsala. We gratefully acknolwedge funding from the São Paulo Research Foundation (FAPESP 2017/07290-5). Replication materials are available at <https://github.com/umbertomig/legislature-size-welfare>.
+date: August 26, 2022
+thanks: "We would like to thank Victor Araujo, Eric Arias, Mark Bennister, Taylor Boas, Natalia Bueno, Nick Cowen, Dominik Duell, Andrea Freitas, Saad Gulzar, Cathy Hafer, Daniel Hidalgo, Fernando Limongi, James Mahon, Lucas Novaes, Adam Przeworski, Catarina Roman, Howard Rosenthal, Nelson Ruiz, Renard Sexton, David Skarbek, Mike Slaven, Denis Stukal, the AJPS Editorial Team, and three anonymous reviewers for their valuable comments. We also thank the participants of seminars and conferences at the CEPESP-FGV, CUNY, INSPER, IPSA, LACEA, LASA, Lincoln, MPSA, Notre Dame, NYU, PUC Chile, SPSA, and Uppsala. The data and materials required to verify the computational reproducibility of the results, procedures and analyses in this article are available at <https://github.com/umbertomig/legislature-size-welfare>. We gratefully acknolwedge funding from the São Paulo Research Foundation (FAPESP 2017/07290-5)."
 abstract: "How does legislature size impact public service provision? Despite the importance of institutional design for democratic governance, the effect of legislative features on citizen welfare remains little understood. In this paper, we use a formal model to show that increasing legislature size improves public goods delivery. We argue that changes in bargaining costs depend on whether additional legislators share the executive's party affiliation: More opposition members reduce the equilibrium public goods provision, while more government-aligned members increase it. We test this theory by exploiting sharp discontinuities in city council size in Brazil. We show that an additional city councilor has a 91% chance of belonging to the mayoral coalition, and this significantly improves primary school enrollment and infant mortality rates. To explore possible mechanisms, we surveyed 174 former city councilors and analyzed 346,553 bills proposed between 2005 and 2008. This paper has implications for the design of representative institutions."
-abstractspacing: double
+abstractspacing: onehalf
 keywords: legislature size; legislative bargaining; local public goods provision; regression discontinuity design; Brazil
 jelcodes: H41; H80; I31; I38
 fontsize: 12pt
@@ -38,11 +38,11 @@ knitr::opts_chunk$set(fig.pos = "H") # holds figure position
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-[^umberto]: Visiting Assistant Professor, Quantitative Theory and Methods Department, Emory University, <umberto.mignozzetti@emory.edu>, <http://umbertomig.com>. Corresponding author.
+[^umberto]: Assistant Teaching Professor, Department of Political Science and Computational Social Sciences Program, University of California, San Diego, SSB 393, 2997 Thurgood Marshall Ln, La Jolla, CA 92037, United States of America, <umbertomig@ucsd.edu>, <http://umbertomig.com>. Corresponding author.
 
-[^gabriel]: Associate Professor, Department of Public Policy and International Relations, State University of São Paulo, <gabi.cepal@gmail.com>.
+[^gabriel]: Associate Professor, Department of Public Policy and International Relations, São Paulo State University, Av. Eufrásia Monteiro Petráglia 900, Franca, SP 14409-160, Brazil, <gabi.cepal@gmail.com>.
 
-[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, <dfreire@lincoln.ac.uk>, <https://danilofreire.github.io>.
+[^danilo]: Senior Lecturer, School of Social and Political Sciences, University of Lincoln, Brayford Pool, Lincoln, LN6 7TS, United Kingdom, <dfreire@lincoln.ac.uk>, <https://danilofreire.github.io>.
 
 \newpage
 
@@ -734,15 +734,15 @@ place.
   \multicolumn{1}{c}{\small{(With Controls)}} & 
   \multicolumn{1}{c}{\small{(With Controls)}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
 \\[-1.8ex] 
- LATE & 1.63$^{***}$ & -0.31$^{**}$ & 1.00$^{***}$ & -0.00 \\ 
+LATE & 1.63$^{***}$ & -0.31$^{**}$ & 1.00$^{***}$ & -0.00 \\ 
   & (0.51) & (0.14) & (0.0004) & (0.0000) \\ 
-\hdashline \\[-1.8ex]   
- N Left & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{4621} & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{4621} \\ 
-N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{906} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{906} \\ 
-Eff N Left & \multicolumn{1}{c}{199} & \multicolumn{1}{c}{638} & \multicolumn{1}{c}{49} & \multicolumn{1}{c}{886} \\ 
-Eff N Right & \multicolumn{1}{c}{145} & \multicolumn{1}{c}{385} & \multicolumn{1}{c}{51} & \multicolumn{1}{c}{477} \\ 
-BW Loc Poly & 8.717 & 6.700 & 3.008 & 8.629 \\ 
-BW Bias & 13.620 & 12.114 & 5.008 & 13.466 \\ 
+    \hdashline \\[-1.8ex]
+ N Left & 5184 & 4621 & 5184 & 4621 \\ 
+N Right & 343 & 906 & 343 & 906 \\ 
+Eff N Left & 201 & 645 & 51 & 935 \\ 
+Eff N Right & 145 & 388 & 55 & 493 \\ 
+BW Loc Poly & 8.783 & 6.741 & 3.194 & 8.978 \\ 
+BW Bias & 13.638 & 12.199 & 5.321 & 13.943 \\[1.0ex] 
 \midrule 
  & \multicolumn{4}{c}{\textbf{Panel B: Validity Check --- Pre-Treatment Variables}} \\ \cline{2-5}
  & \multicolumn{1}{c}{\small{(5)}} & 
@@ -757,15 +757,15 @@ BW Bias & 13.620 & 12.114 & 5.008 & 13.466 \\
   \multicolumn{1}{c}{\small{2000 Census}} & 
   \multicolumn{1}{c}{\small{2000 Census}} &
    \multicolumn{1}{c}{\small{2000 Census}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
- LATE & 0.17 & -2057.60 & 0.06 & -9.72 \\ 
-  & (0.67) & (1926.33) & (0.18) & (6.27) \\ 
+LATE & 0.17 & -2055.17 & 0.06 & -9.71 \\ 
+  & (0.67) & (1920.89) & (0.18) & (6.27) \\ 
   \hdashline \\[-1.8ex]
- N Left & \multicolumn{1}{c}{5178} & \multicolumn{1}{c}{5131} & \multicolumn{1}{c}{5131} & \multicolumn{1}{c}{5131} \\ 
-N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{343} \\ 
-Eff N Left & \multicolumn{1}{c}{208} & \multicolumn{1}{c}{219} & \multicolumn{1}{c}{200} & \multicolumn{1}{c}{194} \\ 
-Eff N Right & \multicolumn{1}{c}{147} & \multicolumn{1}{c}{157} & \multicolumn{1}{c}{145} & \multicolumn{1}{c}{142} \\ 
-BW Loc Poly & 8.970 & 9.368 & 8.739 & 8.530 \\ 
-BW Bias & 13.860 & 15.029 & 14.752 & 13.035 \\ 
+ N Left & 5178 & 5131 & 5131 & 5131 \\ 
+N Right & 343 & 343 & 343 & 343 \\ 
+Eff N Left & 211 & 224 & 205 & 195 \\ 
+Eff N Right & 148 & 157 & 146 & 145 \\ 
+BW Loc Poly & 9.018 & 9.464 & 8.871 & 8.591 \\ 
+BW Bias & 13.835 & 15.079 & 14.82 & 13.05 \\[1.0ex] 
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
@@ -845,15 +845,15 @@ municipal bureaucracy.
  \multicolumn{1}{c}{\small{Appointed Bureaucrats}} & 
  \multicolumn{1}{c}{\small{Bureaucrats}} & 
  \multicolumn{1}{c}{\small{Assistants}} \\[1ex]  \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
- LATE & 0.91$^{*}$ & 104.49$^{*}$ & 71.57 & 2.09 \\ 
-  & (0.50) & (61.53) & (218.12) & (4.37) \\ 
-    \hdashline \\[-1.8ex] 
- N Left & \multicolumn{1}{c}{5179} & \multicolumn{1}{c}{15536} & \multicolumn{1}{c}{15531} & \multicolumn{1}{c}{5179} \\ 
-N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{1027} & \multicolumn{1}{c}{1027} & \multicolumn{1}{c}{344} \\ 
-Eff N Left & \multicolumn{1}{c}{244} & \multicolumn{1}{c}{372} & \multicolumn{1}{c}{513} & \multicolumn{1}{c}{99} \\ 
-Eff N Right & \multicolumn{1}{c}{162} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{388} & \multicolumn{1}{c}{101} \\ 
-BW Loc Poly & 10.025 & 6.242 & 7.695 & 5.134 \\ 
-BW Bias & 15.889 & 10.243 & 11.780 & 8.902 \\ 
+LATE & 0.91$^{*}$ & 104.48$^{*}$ & 73.02 & 2.08 \\ 
+  & (0.50) & (61.51) & (216.64) & (4.40) \\ 
+\hdashline \\[-1.8ex] 
+N Left & \multicolumn{1}{c}{5179} & \multicolumn{1}{c}{15536} & \multicolumn{1}{c}{15531} & \multicolumn{1}{c}{5179} \\ 
+N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{1028} & \multicolumn{1}{c}{1027} & \multicolumn{1}{c}{344} \\ 
+Eff N Left & \multicolumn{1}{c}{244} & \multicolumn{1}{c}{372} & \multicolumn{1}{c}{540} & \multicolumn{1}{c}{100} \\ 
+Eff N Right & \multicolumn{1}{c}{162} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{400} & \multicolumn{1}{c}{101} \\
+BW Loc Poly & 10.025 & 6.245 & 8.256 & 5.226 \\ 
+BW Bias & 15.889 & 10.249 & 11.769 & 8.959 \\[1.0ex] 
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
@@ -971,15 +971,15 @@ regressions were statistically insignificant.
  \multicolumn{1}{c}{\small{Mortality}} &
   \multicolumn{1}{c}{\small{Enrollment}} & 
   \multicolumn{1}{c}{\small{Quality}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
-LATE & -2.01$^{**}$ & -0.90$^{*}$ & 2.52$^{***}$ & -0.03 \\ 
+LATE & -2.01$^{**}$ & -0.90$^{*}$ & 2.52$^{***}$ & -0.02 \\ 
   & (0.79) & (0.48) & (0.80) & (0.13) \\ 
-  \hdashline \\[-1.8ex] 
- N Left & \multicolumn{1}{c}{12299} & \multicolumn{1}{c}{5441} & \multicolumn{1}{c}{10156} & \multicolumn{1}{c}{8597} \\ 
-N Right & \multicolumn{1}{c}{1029} & \multicolumn{1}{c}{672} & \multicolumn{1}{c}{686} & \multicolumn{1}{c}{669} \\ 
-Eff N Left & \multicolumn{1}{c}{501} & \multicolumn{1}{c}{324} & \multicolumn{1}{c}{206} & \multicolumn{1}{c}{409} \\ 
-Eff N Right & \multicolumn{1}{c}{381} & \multicolumn{1}{c}{244} & \multicolumn{1}{c}{208} & \multicolumn{1}{c}{291} \\ 
-BW Loc Poly & 7.527 & 7.564 & 5.425 & 9.05 \\ 
-BW Bias & 11.95 & 11.01 & 10.58 & 15.107 \\ [1.0ex] 
+\hdashline \\[-1.8ex] 
+ N Left & 12299 & 5441 & 10156 & 8597 \\ 
+N Right & 1030 & 672 & 686 & 670 \\ 
+Eff N Left & 495 & 324 & 206 & 411 \\ 
+Eff N Right & 378 & 244 & 208 & 291 \\ 
+BW Loc Poly & 7.494 & 7.564 & 5.425 & 9.08 \\ 
+BW Bias & 11.908 & 11.01 & 10.58 & 15.144 \\ [1.0ex] 
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
@@ -1051,22 +1051,22 @@ legislation is being approved by the city council.
  & \multicolumn{1}{c}{\small{(3)}} 
  & \multicolumn{1}{c}{\small{(4)}} \\
  & \multicolumn{1}{c}{\small{Num. Female}} & 
- \multicolumn{1}{c}{\small{Num. Non-white}} &
+ \multicolumn{1}{c}{\small{Num. Non-White}} &
   \multicolumn{1}{c}{\small{Candidates}} & 
   \multicolumn{1}{c}{\small{Prop. Laws}} \\ 
-   & \multicolumn{1}{c}{\small{councillors}} & 
- \multicolumn{1}{c}{\small{councillors}} &
+   & \multicolumn{1}{c}{\small{Councillors}} & 
+ \multicolumn{1}{c}{\small{Councillors}} &
   \multicolumn{1}{c}{\small{Per Seat}} & 
   \multicolumn{1}{c}{\small{Approved Council}} \\[1ex] \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}
 LATE & 0.22 & 0.60 & -0.19 & -0.02 \\ 
   & (0.38) & (0.85) & (1.11) & (0.08) \\ 
   \hdashline \\[-1.8ex] 
- N Left & \multicolumn{1}{c}{5183} & \multicolumn{1}{c}{239} & \multicolumn{1}{c}{5184} & \multicolumn{1}{c}{3424} \\ 
-N Right & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{158} & \multicolumn{1}{c}{343} & \multicolumn{1}{c}{269} \\ 
-Eff N Left & \multicolumn{1}{c}{195} & \multicolumn{1}{c}{47} & \multicolumn{1}{c}{179} & \multicolumn{1}{c}{227} \\ 
-Eff N Right & \multicolumn{1}{c}{145} & \multicolumn{1}{c}{47} & \multicolumn{1}{c}{132} & \multicolumn{1}{c}{141} \\ 
-BW Loc Poly & 8.623 & 2.958 & 8.144 & 10.976 \\ 
-BW Bias & 13.565 & 4.922 & 12.018 & 16.708 \\[1.0ex] 
+ N Left & 5183 & 239 & 5184 & 3424 \\ 
+N Right & 343 & 158 & 343 & 270 \\ 
+Eff N Left & 195 & 47 & 179 & 227 \\ 
+Eff N Right & 145 & 47 & 132 & 142 \\ 
+BW Loc Poly & 8.623 & 2.958 & 8.144 & 11.088 \\ 
+BW Bias & 13.565 & 4.922 & 12.018 & 16.908 \\ [1.0ex] 
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
