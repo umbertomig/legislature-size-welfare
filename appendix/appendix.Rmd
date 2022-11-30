@@ -26,7 +26,6 @@ output:
 ---
 
 \appendix
-\addtocounter{section}{1}
 
 ```{r, include=FALSE}
 # Knitr options
@@ -47,7 +46,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 
 \newpage
 
-## A Model of Legislature Size and Service Provision (Proofs)
+# A Model of Legislature Size and Service Provision (Proofs)
 
 In this section, we show the proofs for the formal model we present in the article.
 
@@ -147,7 +146,7 @@ In the \textit{hybrid reversal} mechanism, when the chances of electing a mayor-
 
 \pagebreak
 
-## Variable Sources and Descriptive Statistics
+# Variable Sources and Descriptive Statistics
 \label{appsources}
 
 Our data come mainly from Brazilian public agencies. Further information about them is available below.
@@ -182,7 +181,7 @@ Our data come mainly from Brazilian public agencies. Further information about t
 \end{table}
 \normalsize
 
-### Outcomes Aggregated at the Municipal Level
+## Outcomes Aggregated at the Municipal Level
 
 \begin{itemize}
 \item \textbf{Number of Seats 2000}: Number of city councilors in 2000 (source: TSE).
@@ -204,7 +203,7 @@ Our data come mainly from Brazilian public agencies. Further information about t
 \item \textbf{Proportion Approved Legislation 2005}: Number of approved legislation in 2005 divided by the number of proposed legislation (source: InterLegis).
 \end{itemize}
 
-### Legislation Dataset
+## Legislation Dataset
 
 We code the legislation approved by the councilors of 63 municipalities around a ten thousand inhabitants buffer from the council size thresholds. We classify the legislation into four categories:
 
@@ -268,7 +267,7 @@ Coalition Support -- Councilors Constructions & 174 & 0.43 & 0.50 & 0 & 1 \\
 }
 \end{table}
 
-### Online 2016 Former City Councilors Survey
+## Online 2016 Former City Councilors Survey
 
 We ran an online survey asking 174 councilors about their representation duties and how mayors allocate public services to expand his or her government coalition. The services we include are:
 
@@ -280,13 +279,13 @@ We ran an online survey asking 174 councilors about their representation duties 
 \item \textbf{Councilors Constructions}: Whether mayors support councilors' requests for more public works (i.e., fix potholes in the councilor's neighborhoods) (source: own survey).
 \end{itemize}
 
-## Threshold Manipulation, Sorting, and Pre-Treatment Consistency
+# Threshold Manipulation, Sorting, and Pre-Treatment Consistency
 
 \citet{McCrary2008} proposes a measure of the distributional imbalance around the discontinuity, testing whether cases are more abundant on either side of the cutoff. In our sample, the McCrary statistic is 0.391 (SE $=$ 0.299), showing no evidence of manipulation.
 
 We also run the \citet{cattaneo2019simple} manipulation test, which is based on the density of the local polynomial estimator. We use local polynomials ranging from first to fourth order. As the null hypothesis implies that there is no manipulation, the $p$-values for each polynomial order are: local linear ($p$-value $=0.442$); quadratic ($p$-value $=0.740$); cubic ($p$-value $=0.998$); and quartic ($p$-value $=0.620$). Therefore, the test also shows no evidence of manipulation.
 
-## Population Thresholds in Brazil Before and After the 2003 Supreme Court Decision
+# Population Thresholds in Brazil Before and After the 2003 Supreme Court Decision
 \label{appidentif}
 
 Table \ref{tab:citycouncilsize2004short} displays the number of municipalities by the thresholds we use in this paper.
@@ -335,7 +334,7 @@ To provide an overview of the data dispersion, Figure \ref{sampleplot} plots the
 
 
 
-## Identification Strategy in Regression Discontinuity Designs with Multiple Thresholds
+# Identification Strategy in Regression Discontinuity Designs with Multiple Thresholds
 \label{ISMT}
 
 When estimating regression discontinuities with multiple cutoffs, authors usually pool all the discontinuities together to estimate the treatment effect on the outcomes of interest \citep{cattaneo2016interpreting}. Let $C = \{c_0, c_1, \cdots, c_n, c_{n+1}\}$ be the set of cutoff thresholds associated with the running variable $X$. The outcome variable is assumed to be $Y$. In the pooled model, the Local Average Treatment Effect (LATE) is:
@@ -386,7 +385,7 @@ A consistent estimator should fit either the first or the fourth data distributi
 
 \pagebreak
 
-## Placebo Regressions for the Political Mechanism
+# Placebo Regressions for the Political Mechanism
 \label{placmechmain}
 
 Here we present the placebo regressions for the mechanism-aggregated outcomes. In Panel A of the main paper, we run the regression on alternative explanations. Only the number of female councilors changed significantly, but that is to be expected in at least 10% of cases. We have not collected data on non-white legislators for the placebo cutoffs; therefore, we leave it blank. In Panel B, we have the placebo regressions for the primary mechanism, which concerns bargaining costs and public appointed employees. As expected, the placebo regressions are statistically insignificant.
@@ -443,7 +442,7 @@ BW Bias & 10.501 & 8.194 & 13.251 & 11.031 \\
 \end{threeparttable}}
 \end{table}
 
-## Sensitivity Analysis of Bandwidth Selection
+# Sensitivity Analysis of Bandwidth Selection
 \label{sensffapp}
 
 In this section we present the sensitivity tests for bandwidth selection. Following the suggestion of \citet{Bueno2015}, we vary the bandwidth from 50\% to 200\% of the \citet{CCT2014} estimate.
@@ -461,7 +460,7 @@ In this section we present the sensitivity tests for bandwidth selection. Follow
 
 \pagebreak
 
-## Sensitivity Analysis of State Characteristics
+# Sensitivity Analysis of State Characteristics
 \label{sensstate}
 
 Given its massive size and large social inequalities, Brazil presents considerable geographic variation. In this respect, some states have such poor health care and education systems that they could be driving our results. We run the analyses dropping one state at a time to investigate this statewide heterogeneity. The results are in Figures \ref{graphsensstatedrop1} and \ref{graphsensstatedrop2}.
@@ -488,7 +487,7 @@ Given its massive size and large social inequalities, Brazil presents considerab
   \end{center}
 \end{figure}
 
-## Sensitivity Analysis of Model Functional Form
+# Sensitivity Analysis of Model Functional Form
 \label{sensfuncform}
 
 In the paper, we run all the regressions using local linear polynomials. However, to assess the robustness of our results, we also run every model using different polynomial orders, from local linear to quartic, showing that our results are robust to different regression functional forms. Figure \ref{graphsensff} presents the results.
@@ -504,7 +503,7 @@ In the paper, we run all the regressions using local linear polynomials. However
   \end{center}
 \end{figure}
 
-## Sensitivity Analysis of Covariates
+# Sensitivity Analysis of Covariates
 \label{senstcovapp}
 
 Control variables play a major role in our model. To study the sensitivity to controls, we run the same regressions for all possible control combinations. Figure \ref{graphsenscontrol} displays the results for this sensitivity test.\footnote{\textit{NC} stands for No Controls. The controls used are \textit{gdp}, the municipal GDP in a given year; \textit{nseats2000}, the number of seats before the 2003 Supreme Court decision; \textit{northeast}, a dummy variable for Northeast Brazil; \textit{pop2003}, population in 2003; and \textit{year}.}
@@ -539,7 +538,7 @@ For instance, changes in the controls variables substantially affect the quality
 
 We included the model with all controls to be conservative in our estimations. This is because the full model is significant only when most of the combinations also are significant. Regarding the point estimates, our variable choices tend to keep the models which have smaller coefficient sizes.
 
-## Sensitivity Analysis of Additional Cutoffs
+# Sensitivity Analysis of Additional Cutoffs
 
 Here we evaluate the robustness of our results when we vary the number of cutoffs. We run a series of regressions limiting the population sizes to half the cutoffs, starting from the second cutoff to the last. This strategy is similar to adding one cutoff at a time. The results are stable and do not change our main conclusions. Moreover, there are no clear increasing or decreasing patterns, which would indicate the existence of differential returns. Figures \ref{senscut1} and \ref{senscut2} display the results for the main cutoffs.
 
@@ -561,11 +560,11 @@ Here we evaluate the robustness of our results when we vary the number of cutoff
 \end{center}
 \end{figure}
 
-## Mayors' Characteristics, Revenues, and Transfers from the Central Government
+# Mayors' Characteristics, Revenues, and Transfers from the Central Government
 
 Two alternative explanations may confound our results. First, the mayor's selection could be affected by the size of the city council. Thus, public welfare can improve due to the quality of the mayor and not because of the partisan mechanism we describe. Second, the partisan mechanism could be capturing a dynamic similar to Weingast et al.'s [-@Weingastetal1981] "law of 1/n", whereby welfare improvements are caused by higher available revenues. This section shows that none of these concerns are valid in our case.
 
-### Mayors' Characteristics
+## Mayors' Characteristics
 
 We select four characteristics of the city mayors: gender, level of schooling, whether the mayor was reelected in 2004, and whether the mayor was reelected in 2008. The results in Table \ref{appmaychar} show no variation in council size and mayoral characteristics.
 
@@ -593,7 +592,7 @@ BW Bias & 17.081 & 15.8 & 13.399 & 14.758 \\
   \end{tabular} }
 \end{table}
 
-### Revenues and Transfers
+## Revenues and Transfers
 
 In Table \ref{apptrev}, we run another series of models on federal transfers and revenue raised within the municipalities. There is only a negligible effect on education transfers, yet it is barely significant at 10%. The other indicators remain insignificant.
 
@@ -623,7 +622,7 @@ BW Bias & 16.599 & 8.382 & 11.603 & 15.583 \\
   \end{tabular} }
 \end{table}
 
-## Legislation Dataset
+# Legislation Dataset
 
 In Fall 2018, we collected data on the legislation approved by the city councils of 63 municipalities, all of which were 10 thousand inhabitants away from the thresholds we discussed above. There are 202 municipalities that are 10 thousand inhabitants away from the cutoff, but only 63 had relevant information about local legislation between 2005 to 2008.
 
@@ -658,7 +657,7 @@ Others                       & 93.5               \\
 
 After we classified all the bills, we added the frequency of each category to the main paper. We have also added the productivity per legislator, which consists of the ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little when we used this alternative measure.
 
-## City Councilors Survey
+# City Councilors Survey
 \label{appsurv}
 
 From November 21^st^ to December 1^st^, 2016, we surveyed former city councilors elected for the 2005-2008 term. We asked them how mayors secure electoral support, which services are commonly discussed in the city council, and which services give them the highest electoral yield.
