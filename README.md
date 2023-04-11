@@ -15,7 +15,7 @@ You can cite the article as:
 BibTeX entry:
 
 ```
-@misc{mignozzetti_cepaluni_freire_2022_legislature_size},
+@misc{mignozzetti2022legislature,
  author={Mignozzetti, Umberto and Cepaluni, Gabriel and Freire, Danilo},
  title={{Legislature Size and Welfare: Evidence from Brazil}},
  url={https://osf.io/preprints/socarxiv/x97gf},
