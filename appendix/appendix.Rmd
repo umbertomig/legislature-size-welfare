@@ -5,7 +5,7 @@ author:
   - Umberto Mignozzetti[^umberto]
   - Gabriel Cepaluni[^gabriel]
   - Danilo Freire[^danilo]
-date: August 26, 2022
+date: ""
 fontfamily: libertine
 fontawesome: yes
 fontsize: 11pt
@@ -636,24 +636,6 @@ We hand-coded these data according to four characteristics:
 \item \textbf{Others}: Legislation not categorized as any of the previous two, such as honors to notable citizens.
 \item \textbf{Health Care and Education}: Bills on education and health care, broadly defined.
 \end{enumerate}
-
-Table \ref{accurClassif} shows the classification accuracy for each of the variables that we have hand-coded. In all models, we set cost to 10 to avoid overfitting.
-
-\begin{table}[htb!]
-\centering
-\caption{Accuracy of SVM Classifier (Tested in 20\% of the Data)}
-\label{accurClassif}
-\begin{tabular}{lc}
-\hline
-\textbf{Variable}            & \textbf{Accuracy}  \\
-\hline
-Local Public Goods           & 93.8               \\
-Oversight                    & 94.9               \\
-Education and Health Care    & 92.5               \\
-Others                       & 93.5               \\
-\hline
-\end{tabular}
-\end{table}
 
 After we classified all the bills, we added the frequency of each category to the main paper. We have also added the productivity per legislator, which consists of the ratio of the legislation approved in the municipality in the four-year term, divided by the council size. As expected, the results changed little when we used this alternative measure.
 
